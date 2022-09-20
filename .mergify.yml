@@ -1,1 +1,10 @@
-
+pull_request_rules:
+  - name: automatic merge
+    conditions:
+      - author=renovate
+      - "-merged"
+      - "-conflict"
+    actions:
+      merge:
+        strict: "smart"
+        method: rebase
