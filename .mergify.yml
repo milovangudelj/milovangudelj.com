@@ -2,8 +2,10 @@ pull_request_rules:
   - name: automatic merge
     conditions:
       - author=renovate[bot]
+      - base=master
       - "-merged"
       - "-conflict"
+      - check-success=Vercel
     actions:
       merge:
         method: rebase
