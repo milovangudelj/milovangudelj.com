@@ -6,5 +6,4 @@ pull_request_rules:
       - "-conflict"
     actions:
       merge:
-        strict: "smart"
         method: rebase
