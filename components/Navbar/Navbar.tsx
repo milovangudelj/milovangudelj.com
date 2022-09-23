@@ -7,6 +7,8 @@ export const Navbar = () => {
 	const [mobile, setMobile] = useState<boolean>(true);
 
 	useEffect(() => {
+		setMobile(window.innerWidth <= 768);
+
 		const resized = (ev: UIEvent) => {
 			setMobile(window.innerWidth <= 768);
 		};
@@ -19,8 +21,8 @@ export const Navbar = () => {
 	}, []);
 
 	return (
-		<div className="bg-primary">
-			<div className="max-w-[1440px] relative px-8 py-4 w-full text-black mx-auto flex justify-between items-center">
+		<div className="bg-primary sticky top-0 z-10">
+			<div className="max-w-[1440px] relative px-8 py-4 md:p-0 w-full text-black mx-auto flex justify-between items-center">
 				<span className="text-sub-heading">
 					<Link href="/">milo</Link>
 				</span>

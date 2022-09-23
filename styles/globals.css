@@ -1,12 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+@font-face {
+	font-family: "Space Grotesk";
+	font-weight: 400;
+	src: url("/fonts/woff2/SpaceGrotesk-Regular.woff2") format("woff2"),
+		url("/fonts/ttf/OpenSans-Regular-webfont.ttf") format("truetype");
+}
+@font-face {
+	font-family: "Space Grotesk";
+	font-weight: 500;
+	src: url("/fonts/woff2/SpaceGrotesk-Medium.woff2") format("woff2"),
+		url("/fonts/ttf/OpenSans-Medium-webfont.ttf") format("truetype");
+}
+@font-face {
+	font-family: "Space Grotesk";
+	font-weight: 700;
+	src: url("/fonts/woff2/SpaceGrotesk-Bold.woff2") format("woff2"),
+		url("/fonts/ttf/OpenSans-Bold-webfont.ttf") format("truetype");
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-	h1, h2, h3, h4, h5, h6, .text-sub-heading, .text-sub-heading-mobile {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.text-sub-heading,
+	.text-sub-heading-mobile {
 		@apply font-space;
+	}
+
+	.clip-hourglass {
+		clip-path: url(#hourglass);
+	}
+
+	.salt,
+	.salt-1 {
+		font-feature-settings: "salt";
+	}
+	.salt-2 {
+		font-feature-settings: "salt" 2;
+	}
+	.salt-3 {
+		font-feature-settings: "salt" 3;
+	}
+	.salt-4 {
+		font-feature-settings: "salt" 4;
 	}
 }
