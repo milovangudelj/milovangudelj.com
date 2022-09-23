@@ -82,7 +82,12 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 							skills. Here are some of them.
 						</p>
 						<span className="absolute top-[-64px] right-0">
-							<Image src={smiley} width={65} height={64} />
+							<Image
+								src={smiley}
+								width={65}
+								height={64}
+								alt="Smile emoji sticker"
+							/>
 						</span>
 					</div>
 					<ul className="flex">
