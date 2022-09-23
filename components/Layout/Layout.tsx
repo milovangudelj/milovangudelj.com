@@ -11,7 +11,7 @@ export const Layout = ({ children, ...props }: LayoutProps) => {
 	return (
 		<div
 			className={`absolute inset-0 ${
-				scrollable ? "overflow-scroll" : "overflow-hidden"
+				scrollable ? "overflow-y-scroll" : "overflow-hidden"
 			} bg-black text-white`}
 			{...props}
 		>
