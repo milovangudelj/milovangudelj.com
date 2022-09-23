@@ -36,7 +36,7 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 	return (
 		<Layout>
 			<section className="">
-				<main className="max-w-7xl mx-auto py-16 px-8 space-y-16">
+				<main className="max-w-8xl mx-auto py-16 px-8 space-y-16">
 					<h1 className="text-h3-mobile max-w-[8ch] md:max-w-full">
 						Web developer <span className="text-primary">/</span> designer
 					</h1>
@@ -47,7 +47,7 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 				</main>
 			</section>
 			<section className="text-black bg-orange">
-				<div className="max-w-7xl mx-auto py-16 px-8 space-y-16">
+				<div className="max-w-8xl mx-auto py-16 px-8 space-y-16">
 					<div className="flex justify-center">
 						<Hourglass>
 							<span className="text-body-sm">photo of me</span>
@@ -73,7 +73,7 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 				</div>
 			</section>
 			<section className="text-black bg-green">
-				<div className="max-w-7xl mx-auto py-16 px-8 space-y-16">
+				<div className="max-w-8xl mx-auto py-16 px-8 space-y-16">
 					<div className="space-y-8 relative">
 						<h2 className="text-h3-mobile">My work</h2>
 						<p className="text-body-lg">

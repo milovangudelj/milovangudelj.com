@@ -31,6 +31,9 @@ module.exports = {
 			transparent: "transparent",
 		},
 		extend: {
+			maxWidth: {
+				"8xl": "1440px",
+			},
 			fontSize: {
 				h1: [
 					"182.25px",
