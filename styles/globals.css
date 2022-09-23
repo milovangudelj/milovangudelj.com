@@ -34,22 +34,4 @@
 	.text-sub-heading-mobile {
 		@apply font-space;
 	}
-
-	.clip-hourglass {
-		clip-path: url(#hourglass);
-	}
-
-	.salt,
-	.salt-1 {
-		font-feature-settings: "salt";
-	}
-	.salt-2 {
-		font-feature-settings: "salt" 2;
-	}
-	.salt-3 {
-		font-feature-settings: "salt" 3;
-	}
-	.salt-4 {
-		font-feature-settings: "salt" 4;
-	}
 }

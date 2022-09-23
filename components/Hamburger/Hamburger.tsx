@@ -1,12 +1,15 @@
 import { useState } from "react";
 
 import { NavLinks } from "../";
+import { useScroll } from "../../lib/scrollContext";
 
 export const Hamburger = () => {
 	const [visible, setVisible] = useState<boolean>(false);
+	const [, setScrollable] = useScroll();
 
 	const toggleMenu = () => {
 		setVisible((s) => !s);
+		setScrollable((s) => !s);
 	};
 
 	return (

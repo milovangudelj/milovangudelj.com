@@ -1,12 +1,20 @@
 import { ComponentPropsWithRef } from "react";
 
 import { Navbar } from "../";
+import { useScroll } from "../../lib/scrollContext";
 
 interface LayoutProps extends ComponentPropsWithRef<"div"> {}
 
 export const Layout = ({ children, ...props }: LayoutProps) => {
+	const [scrollable] = useScroll();
+
 	return (
-		<div className="min-h-screen bg-black text-white" {...props}>
+		<div
+			className={`absolute inset-0 ${
+				scrollable ? "overflow-scroll" : "overflow-hidden"
+			} bg-black text-white`}
+			{...props}
+		>
 			<Navbar />
 			{children}
 		</div>
