@@ -1,6 +1,5 @@
-import Image from "next/image";
-
-import dummy from "../../public/dummy.png";
+import Image from "next/future/image";
+import Link from "next/link";
 
 type ProjectCardProps = {
 	title: string;
@@ -12,9 +11,16 @@ type ProjectCardProps = {
 export const ProjectCard = ({ title, href, link, image }: ProjectCardProps) => {
 	return (
 		<div>
-			<span className="relative bg-black border-2 inline-block w-[266.5px] h-[150px] [filter:drop-shadow(4px_4px_0_black)]">
-				<Image src={image} layout="fill" alt="Dummy project card image" />
-			</span>
+			<Link href={href}>
+				<span className="relative cursor-pointer bg-black border-2 inline-block w-max [filter:drop-shadow(4px_4px_0_black)]">
+					<Image
+						src={image}
+						height={150}
+						width={(150 / 9) * 16}
+						alt="Dummy project card image"
+					/>
+				</span>
+			</Link>
 			<div className="flex flex-col mt-8">
 				<span className="text-sub-heading-mobile font-medium">
 					{title} →
