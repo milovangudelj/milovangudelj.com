@@ -1,22 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@font-face {
+	font-family: "Space Grotesk";
+	src: url("/fonts/SpaceGrotesk-Var.woff2") format("woff2");
+	font-weight: 300 700;
+	font-style: normal;
+}
 
 @font-face {
-	font-family: "Space Grotesk";
-	font-weight: 400;
-	src: url("/fonts/woff2/SpaceGrotesk-Regular.woff2") format("woff2"),
-		url("/fonts/ttf/OpenSans-Regular-webfont.ttf") format("truetype");
-}
-@font-face {
-	font-family: "Space Grotesk";
-	font-weight: 500;
-	src: url("/fonts/woff2/SpaceGrotesk-Medium.woff2") format("woff2"),
-		url("/fonts/ttf/OpenSans-Medium-webfont.ttf") format("truetype");
-}
-@font-face {
-	font-family: "Space Grotesk";
-	font-weight: 700;
-	src: url("/fonts/woff2/SpaceGrotesk-Bold.woff2") format("woff2"),
-		url("/fonts/ttf/OpenSans-Bold-webfont.ttf") format("truetype");
+	font-family: "Inter";
+	src: url("/fonts/Inter-Var.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: oblique -10deg 0deg;
 }
 
 @tailwind base;

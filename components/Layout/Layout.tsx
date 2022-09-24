@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef } from "react";
 
-import { Navbar } from "../";
+import { Navbar, Footer } from "../";
 import { useScroll } from "../../lib/scrollContext";
 
 interface LayoutProps extends ComponentPropsWithRef<"div"> {}
@@ -17,6 +17,7 @@ export const Layout = ({ children, ...props }: LayoutProps) => {
 		>
 			<Navbar />
 			{children}
+			<Footer />
 		</div>
 	);
 };
