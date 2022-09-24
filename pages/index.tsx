@@ -131,7 +131,7 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 			<section className="bg-blue">
 				<div className="max-w-8xl mx-auto py-16 px-8 space-y-16">
 					<div className="space-y-8">
-						<h2 className="text-h3-mobile">Let's work together</h2>
+						<h2 className="text-h3-mobile">Let&apos;s work together</h2>
 						<p className="text-body-lg">
 							If you like what I do please feel free to contact me and
 							who nkows, we might build the next big thing or just a cool
