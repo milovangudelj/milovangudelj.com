@@ -114,9 +114,12 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 							/>
 						</span>
 					</div>
-					<ul className="-mx-8 px-8 flex flex-nowrap space-x-12 overflow-x-auto">
+					<ul className="-mx-8 flex flex-nowrap overflow-x-auto snap-x snap">
 						{projects.map((project) => (
-							<li key={project.id} className="flex-initial">
+							<li
+								key={project.id}
+								className="flex-initial snap-start pl-8 last:pr-8"
+							>
 								<ProjectCard
 									title={project.title}
 									href={project.href}
@@ -141,6 +144,8 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 					<div className="flex space-x-4 py-0.5 items-center">
 						<a
 							href="mailto:milovan.gudelj@gmail.com"
+							target="_blank"
+							rel="noreferrer"
 							className="text-body-lg font-semibold"
 						>
 							milovan.gudelj@gmail.com
