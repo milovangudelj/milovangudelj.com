@@ -28,3 +28,25 @@
 		@apply font-space;
 	}
 }
+
+@media screen and (min-width: 640px) {
+	/* Width */
+	::-webkit-scrollbar {
+		@apply w-1 h-1;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		@apply bg-black;
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		@apply bg-white;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		@apply bg-primary;
+	}
+}
