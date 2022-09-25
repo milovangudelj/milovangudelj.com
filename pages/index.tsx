@@ -40,21 +40,21 @@ const projects = [
 		title: "Swim club Agordo",
 		href: "https://piscinacomprensorialeagordina.it",
 		link: "https://piscinacomprensorialeagordina.it",
-		image: "/dummy.png",
+		image: "/swimclubagordo.png",
 	},
 	{
 		id: "pr_02",
 		title: "DoYourThing",
 		href: "https://doyourthing.dev",
 		link: "https://doyourthing.dev",
-		image: "/dummy.png",
+		image: "/doyourthing.png",
 	},
 	{
 		id: "pr_03",
 		title: "UniOrari",
 		href: "https://uniorari.it",
 		link: "https://uniorari.it",
-		image: "/dummy.png",
+		image: "/uniorari.png",
 	},
 ];
 
@@ -124,17 +124,12 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 						</span>
 					</div>
 					<ul className="-mx-8 flex flex-nowrap overflow-x-auto snap-x snap">
-						{projects.map((project) => (
+						{projects.map(({ id, ...props }) => (
 							<li
-								key={project.id}
+								key={id}
 								className="flex-initial snap-start pl-8 last:pr-8"
 							>
-								<ProjectCard
-									title={project.title}
-									href={project.href}
-									link={project.link}
-									image={project.image}
-								/>
+								<ProjectCard {...props} />
 							</li>
 						))}
 					</ul>
