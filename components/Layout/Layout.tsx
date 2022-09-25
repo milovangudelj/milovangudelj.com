@@ -10,7 +10,7 @@ export const Layout = ({ children, ...props }: LayoutProps) => {
 
 	return (
 		<div
-			className={`h-screen w-screen ${
+			className={`h-screen w-screen scroll-smooth ${
 				scrollable ? "overflow-y-scroll" : "overflow-hidden"
 			} bg-black text-white`}
 			{...props}
