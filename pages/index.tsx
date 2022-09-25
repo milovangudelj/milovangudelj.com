@@ -73,7 +73,7 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 				</main>
 			</section>
 			<section
-				className="text-black bg-orange md:scroll-mt-[88px]"
+				className="text-black bg-orange scroll-mt-[72px] md:scroll-mt-[88px]"
 				id="about"
 			>
 				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-0 md:relative">
@@ -108,7 +108,10 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 					</div>
 				</div>
 			</section>
-			<section className="text-black bg-green md:scroll-mt-[88px]" id="work">
+			<section
+				className="text-black bg-green scroll-mt-[72px] md:scroll-mt-[88px]"
+				id="work"
+			>
 				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-32	">
 					<div className="space-y-8 md:space-y-0 relative">
 						<h2 className="text-h3-mobile md:mb-8 md:text-h2-mobile">
@@ -140,7 +143,10 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 					</ul>
 				</div>
 			</section>
-			<section className="bg-blue md:scroll-mt-[88px]" id="contact">
+			<section
+				className="bg-blue scroll-mt-[72px] md:scroll-mt-[88px]"
+				id="contact"
+			>
 				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16">
 					<div className="space-y-8">
 						<h2 className="text-h3-mobile md:text-h2-mobile">
