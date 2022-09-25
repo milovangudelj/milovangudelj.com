@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 
 type ProjectCardProps = {
@@ -10,20 +10,19 @@ type ProjectCardProps = {
 
 export const ProjectCard = ({ title, href, link, image }: ProjectCardProps) => {
 	return (
-		<div>
-			<Link href={href}>
-				<span className="relative cursor-pointer bg-black border-2 inline-block w-max [filter:drop-shadow(4px_4px_0_black)]">
+		<div className="space-y-8 md:space-y-[26px]">
+			<Link href={href} passHref>
+				<a className="relative h-[150px] aspect-video md:h-[300px] cursor-pointer bg-black border-2 inline-block [filter:drop-shadow(4px_4px_0_black)] md:[filter:drop-shadow(8px_8px_0_black)]">
 					<Image
 						src={image}
-						height={150}
-						width={(150 / 9) * 16}
+						layout={"fill"}
 						quality={100}
 						alt="Dummy project card image"
 					/>
-				</span>
+				</a>
 			</Link>
-			<div className="flex flex-col mt-8">
-				<span className="text-sub-heading-mobile font-medium">
+			<div className="flex flex-col">
+				<span className="text-sub-heading-mobile md:text-sub-heading font-medium">
 					{title} →
 				</span>
 				<span className="text-body-sm text-dark-me">{link}</span>

@@ -28,7 +28,7 @@ export const NavLinks = () => {
 				{links.map((link) => (
 					<li
 						key={link.key}
-						className="border-t-2 last:border-b-2 md:border-t-0 md:last:border-b-0 md:border-l-2 md:last:border-r-2 border-black bg-black"
+						className="border-t-2 last:border-b-2 md:border-t-0 md:last:border-b-0 md:last:border-r-0 md:border-l-2 lg:last:border-r-2 border-black bg-black"
 					>
 						<Link href={link.href} passHref>
 							<a

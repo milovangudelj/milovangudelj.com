@@ -4,7 +4,7 @@ import { hygraph } from "../lib/hygraph";
 import { Hourglass, Layout } from "../components";
 import Image from "next/image";
 
-import { ProjectCard } from "../components/ProjectCard/ProjectCard";
+import { ProjectCard } from "../components";
 
 import me from "../public/poly-me.png";
 import smiley from "../public/smiley.svg";
@@ -62,21 +62,21 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 	return (
 		<Layout>
 			<section className="">
-				<main className="max-w-8xl mx-auto py-16 px-8 space-y-16">
-					<h1 className="text-h3-mobile max-w-[8ch] md:max-w-full">
+				<main className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16">
+					<h1 className="text-h3-mobile md:text-h1-mobile max-w-[8ch]">
 						Web developer <span className="text-primary">/</span> designer
 					</h1>
-					<p className="text-sub-heading-mobile">
+					<p className="text-sub-heading-mobile md:text-sub-heading">
 						Hi, I&apos;m Milo. I design and develop engaging websites and
 						delightful digital experiences.
 					</p>
 				</main>
 			</section>
 			<section className="text-black bg-orange">
-				<div className="max-w-8xl mx-auto py-16 px-8 space-y-16">
-					<div className="flex justify-center">
+				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-0 md:relative">
+					<div className="flex justify-center md:absolute md:-top-16 md:right-16 ">
 						<Hourglass>
-							<span className="absolute inset-0 border-b-2 overflow-hidden">
+							<span className="absolute inset-0 left-4 border-b-2 overflow-hidden">
 								<Image
 									src={me}
 									layout={"fill"}
@@ -87,7 +87,7 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 						</Hourglass>
 					</div>
 					<div className="space-y-8">
-						<h2 className="text-h3-mobile">About me</h2>
+						<h2 className="text-h3-mobile md:text-h2-mobile">About me</h2>
 						<p className="text-body-lg">
 							I&apos;m a computer science student really passionate about
 							web development and UI/UX design. I love seeing a simple
@@ -106,28 +106,30 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 				</div>
 			</section>
 			<section className="text-black bg-green">
-				<div className="max-w-8xl mx-auto py-16 px-8 space-y-16">
-					<div className="space-y-8 relative">
-						<h2 className="text-h3-mobile">My work</h2>
+				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-32	">
+					<div className="space-y-8 md:space-y-0 relative">
+						<h2 className="text-h3-mobile md:mb-8 md:text-h2-mobile">
+							My work
+						</h2>
 						<p className="text-body-lg">
 							In the past couple of years I&apos;ve had the opportunity
 							to work on a few diverse projects and demonstrate my
 							skills. Here are some of them.
 						</p>
-						<span className="absolute top-[-64px] right-0">
+						<span className="absolute -top-16 right-0 w-16 md:w-32 aspect-square">
 							<Image
 								src={smiley}
-								width={65}
-								height={64}
+								layout={"fill"}
+								objectFit={"cover"}
 								alt="Smile emoji sticker"
 							/>
 						</span>
 					</div>
-					<ul className="-mx-8 flex flex-nowrap overflow-x-auto snap-x snap">
+					<ul className="-mx-8 md:-mx-16 flex flex-nowrap overflow-x-auto snap-x snap">
 						{projects.map(({ id, ...props }) => (
 							<li
 								key={id}
-								className="flex-initial snap-start pl-8 last:pr-8"
+								className="flex-initial snap-start pl-8 last:pr-8 md:pl-16 md:last:pr-16"
 							>
 								<ProjectCard {...props} />
 							</li>
@@ -136,9 +138,11 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 				</div>
 			</section>
 			<section className="bg-blue">
-				<div className="max-w-8xl mx-auto py-16 px-8 space-y-16">
+				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16">
 					<div className="space-y-8">
-						<h2 className="text-h3-mobile">Let&apos;s work together</h2>
+						<h2 className="text-h3-mobile md:text-h2-mobile">
+							Let&apos;s work together
+						</h2>
 						<p className="text-body-lg">
 							If you like what I do please feel free to contact me and
 							who nkows, we might build the next big thing or just a cool
@@ -150,7 +154,7 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 							href="mailto:milovan.gudelj@gmail.com"
 							target="_blank"
 							rel="noreferrer"
-							className="text-body-lg font-semibold"
+							className="text-body-lg md:text-sub-heading-mobile font-semibold"
 						>
 							milovan.gudelj@gmail.com
 						</a>
