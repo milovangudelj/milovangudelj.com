@@ -7,10 +7,10 @@ export const Navbar = () => {
 	const [mobile, setMobile] = useState<boolean>(true);
 
 	useEffect(() => {
-		setMobile(window.innerWidth <= 768);
+		setMobile(window.innerWidth < 768);
 
 		const resized = (ev: UIEvent) => {
-			setMobile(window.innerWidth <= 768);
+			setMobile(window.innerWidth < 768);
 		};
 
 		addEventListener("resize", resized);
