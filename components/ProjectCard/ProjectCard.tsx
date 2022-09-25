@@ -17,6 +17,7 @@ export const ProjectCard = ({ title, href, link, image }: ProjectCardProps) => {
 						src={image}
 						height={150}
 						width={(150 / 9) * 16}
+						quality={100}
 						alt="Dummy project card image"
 					/>
 				</span>
