@@ -4,8 +4,10 @@ import { hygraph } from "../lib/hygraph";
 import { Hourglass, Layout } from "../components";
 import Image from "next/image";
 
-import smiley from "../public/smiley.svg";
 import { ProjectCard } from "../components/ProjectCard/ProjectCard";
+
+import me from "../public/poly-me.png";
+import smiley from "../public/smiley.svg";
 
 // const QUERY = gql`
 // 	{
@@ -74,7 +76,14 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 				<div className="max-w-8xl mx-auto py-16 px-8 space-y-16">
 					<div className="flex justify-center">
 						<Hourglass>
-							<span className="text-body-sm">photo of me</span>
+							<span className="absolute inset-0 border-b-2 overflow-hidden">
+								<Image
+									src={me}
+									layout={"fill"}
+									objectPosition={"top left"}
+									objectFit={"cover"}
+								/>
+							</span>
 						</Hourglass>
 					</div>
 					<div className="space-y-8">
