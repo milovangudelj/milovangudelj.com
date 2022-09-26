@@ -63,10 +63,10 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 		<Layout>
 			<section className="">
 				<main className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16">
-					<h1 className="text-h3-mobile md:text-h1-mobile max-w-[8ch]">
+					<h1 className="text-h3-mobile md:text-h1-mobile max-w-[8ch] xl:text-h1 xl:max-w-full">
 						Web developer <span className="text-primary">/</span> designer
 					</h1>
-					<p className="text-sub-heading-mobile md:text-sub-heading">
+					<p className="text-sub-heading-mobile md:text-sub-heading xl:max-w-[36ch]">
 						Hi, I&apos;m Milo. I design and develop engaging websites and
 						delightful digital experiences.
 					</p>
@@ -77,7 +77,7 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 				id="about"
 			>
 				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-0 md:relative">
-					<div className="flex justify-center md:absolute md:-top-16 md:right-16 ">
+					<div className="flex justify-center md:absolute md:-top-16 md:right-16 xl:right-32">
 						<Hourglass>
 							<span className="absolute inset-0 left-4 border-b-2 overflow-hidden">
 								<Image

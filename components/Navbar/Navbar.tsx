@@ -22,7 +22,7 @@ export const Navbar = () => {
 
 	return (
 		<div className="bg-primary sticky top-0 z-10">
-			<div className="max-w-[1440px] relative px-8 md:pl-16 py-4 md:p-0 w-full text-black mx-auto flex justify-between items-center">
+			<div className="max-w-8xl relative px-8 py-4 md:p-0 md:pl-16 2xl:pl-0 w-full text-black mx-auto flex justify-between items-center">
 				<span className="text-sub-heading">
 					<Link href="/">milo</Link>
 				</span>

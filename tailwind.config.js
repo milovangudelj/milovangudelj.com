@@ -31,6 +31,10 @@ module.exports = {
 			transparent: "transparent",
 		},
 		extend: {
+			screens: {
+				"2xl": "1440px",
+				"3xl": defaultTheme.screens["2xl"],
+			},
 			maxWidth: {
 				"8xl": "1440px",
 			},
