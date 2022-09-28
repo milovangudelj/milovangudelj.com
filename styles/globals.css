@@ -1,5 +1,6 @@
 @font-face {
 	font-family: "Space Grotesk";
+	font-display: swap;
 	src: url("/fonts/SpaceGrotesk-Var.woff2") format("woff2");
 	font-weight: 300 700;
 	font-style: normal;
@@ -7,6 +8,7 @@
 
 @font-face {
 	font-family: "Inter";
+	font-display: swap;
 	src: url("/fonts/Inter-Var.woff2") format("woff2");
 	font-weight: 100 900;
 	font-style: oblique -10deg 0deg;
@@ -26,6 +28,10 @@
 	.text-sub-heading,
 	.text-sub-heading-mobile {
 		@apply font-space;
+	}
+
+	.scrollbar-hidden::-webkit-scrollbar {
+		@apply hidden;
 	}
 }
 

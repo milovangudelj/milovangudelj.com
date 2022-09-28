@@ -6,8 +6,9 @@ import Image from "next/image";
 
 import { ProjectCard } from "../components";
 
-import me from "../public/poly-me.png";
-import smiley from "../public/smiley.svg";
+import me from "../public/images/poly-me.png";
+import smiley from "../public/images/smiley.svg";
+import Head from "next/head";
 
 // const QUERY = gql`
 // 	{
@@ -40,31 +41,35 @@ const projects = [
 		title: "Swim club Agordo",
 		href: "https://piscinacomprensorialeagordina.it",
 		link: "https://piscinacomprensorialeagordina.it",
-		image: "/swimclubagordo.png",
+		image: "/images/swimclubagordo.png",
 	},
 	{
 		id: "pr_02",
 		title: "DoYourThing",
 		href: "https://doyourthing.dev",
 		link: "https://doyourthing.dev",
-		image: "/doyourthing.png",
+		image: "/images/doyourthing.png",
 	},
 	{
 		id: "pr_03",
 		title: "UniOrari",
 		href: "https://uniorari.it",
 		link: "https://uniorari.it",
-		image: "/uniorari.png",
+		image: "/images/uniorari.png",
 	},
 ];
 
 const Home: NextPage<{ posts: any }> = ({ posts }) => {
 	return (
 		<Layout>
+			<Head>
+				<title>Milovan Gudelj - Web developer / UI designer</title>
+			</Head>
 			<section className="">
 				<main className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16">
-					<h1 className="text-h3-mobile md:text-h1-mobile max-w-[8ch] xl:text-h1 xl:max-w-full">
-						Web developer <span className="text-primary">/</span> designer
+					<h1 className="text-h3-mobile md:text-h1-mobile xl:text-h1">
+						Web developer <br />
+						<span className="text-primary">/</span> UI designer
 					</h1>
 					<p className="text-sub-heading-mobile md:text-sub-heading xl:max-w-[36ch]">
 						Hi, I&apos;m Milo. I design and develop engaging websites and
@@ -90,18 +95,20 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 						</Hourglass>
 					</div>
 					<div className="space-y-8">
-						<h2 className="text-h3-mobile md:text-h2-mobile">About me</h2>
-						<p className="text-body-lg">
+						<h2 className="text-h3-mobile md:text-h2-mobile xl:text-h2">
+							About me
+						</h2>
+						<p className="text-body-lg xl:max-w-[680px]">
 							I&apos;m a computer science student really passionate about
 							web development and UI/UX design. I love seeing a simple
 							yet empowerig User Interface and a great User Experience.
 						</p>
-						<p className="text-body-lg">
+						<p className="text-body-lg xl:max-w-[680px]">
 							I started building websites about 4 years ago and I fell in
 							love with it. At the same time I also began experimenting
 							with graphic design and making posters.
 						</p>
-						<p className="text-body-lg">
+						<p className="text-body-lg xl:max-w-[680px]">
 							Slowly but surely I made my way into the wonderful world of
 							web development and UI/UX design.
 						</p>
@@ -114,15 +121,15 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 			>
 				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-32	">
 					<div className="space-y-8 md:space-y-0 relative">
-						<h2 className="text-h3-mobile md:mb-8 md:text-h2-mobile">
+						<h2 className="text-h3-mobile md:mb-8 md:text-h2-mobile xl:text-h2">
 							My work
 						</h2>
-						<p className="text-body-lg">
+						<p className="text-body-lg xl:max-w-[680px]">
 							In the past couple of years I&apos;ve had the opportunity
 							to work on a few diverse projects and demonstrate my
 							skills. Here are some of them.
 						</p>
-						<span className="absolute -top-16 right-0 w-16 md:w-32 aspect-square">
+						<span className="absolute -top-16 right-0 xl:-top-0 xl:right-16 w-[65px] h-[64px] md:w-[130px] md:h-[128px] xl:w-[196.23px] xl:h-[192.2px]">
 							<Image
 								src={smiley}
 								layout={"fill"}
@@ -131,16 +138,19 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 							/>
 						</span>
 					</div>
-					<ul className="-mx-8 md:-mx-16 flex flex-nowrap overflow-x-auto snap-x snap">
-						{projects.map(({ id, ...props }) => (
-							<li
-								key={id}
-								className="flex-initial snap-start pl-8 last:pr-8 md:pl-16 md:last:pr-16"
-							>
-								<ProjectCard {...props} />
-							</li>
-						))}
-					</ul>
+					<div className="relative">
+						<ul className="-mx-8 md:-mx-16 xl:mx-0 xl:space-x-16 flex flex-nowrap overflow-x-auto scrollbar-hidden snap-x snap">
+							{projects.map(({ id, ...props }) => (
+								<li
+									key={id}
+									className="flex-initial snap-start pl-8 last:pr-8 md:pl-16 md:last:pr-16 xl:p-0"
+								>
+									<ProjectCard {...props} />
+								</li>
+							))}
+						</ul>
+						<span className="hidden xl:block absolute top-0 right-0 bottom-0 w-32 bg-gradient-to-r from-green/0 to-green"></span>
+					</div>
 				</div>
 			</section>
 			<section
@@ -149,10 +159,10 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 			>
 				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16">
 					<div className="space-y-8">
-						<h2 className="text-h3-mobile md:text-h2-mobile">
+						<h2 className="text-h3-mobile md:text-h2-mobile xl:text-h2">
 							Let&apos;s work together
 						</h2>
-						<p className="text-body-lg">
+						<p className="text-body-lg xl:max-w-[680px]">
 							If you like what I do please feel free to contact me and
 							who nkows, we might build the next big thing or just a cool
 							looking website.
@@ -163,7 +173,7 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 							href="mailto:milovan.gudelj@gmail.com"
 							target="_blank"
 							rel="noreferrer"
-							className="text-body-lg md:text-sub-heading-mobile font-semibold"
+							className="text-body-lg md:text-sub-heading-mobile xl:text-sub-heading font-semibold"
 						>
 							milovan.gudelj@gmail.com
 						</a>
