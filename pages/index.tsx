@@ -90,6 +90,7 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 									layout={"fill"}
 									objectPosition={"top left"}
 									objectFit={"cover"}
+									alt={"My profile picture"}
 								/>
 							</span>
 						</Hourglass>
