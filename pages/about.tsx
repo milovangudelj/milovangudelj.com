@@ -1,7 +1,6 @@
-import Head from "next/head";
 import Image from "next/image";
 
-import { Hourglass, Layout } from "../components";
+import { HeadMeta, Hourglass, Layout } from "../components";
 
 import me from "../public/images/poly-me.png";
 
@@ -16,23 +15,7 @@ const meta = {
 const About = () => {
 	return (
 		<Layout>
-			<Head>
-				<title>{meta.title}</title>
-				<meta name="title" content={meta.title} />
-				<meta name="description" content={meta.description} />
-
-				<meta property="og:type" content="website" />
-				<meta property="og:url" content={meta.url} />
-				<meta property="og:title" content={meta.title} />
-				<meta property="og:description" content={meta.description} />
-				<meta property="og:image" content={meta.image} />
-
-				<meta property="twitter:card" content="summary_large_image" />
-				<meta property="twitter:url" content={meta.url} />
-				<meta property="twitter:title" content={meta.title} />
-				<meta property="twitter:description" content={meta.description} />
-				<meta property="twitter:image" content={meta.image} />
-			</Head>
+			<HeadMeta metadata={meta} />
 			<section className="text-black bg-orange scroll-mt-[72px] md:scroll-mt-[88px]">
 				<main className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-0 md:relative">
 					<div className="flex justify-center md:absolute md:top-32 md:rotate-12 md:right-16 xl:right-32">

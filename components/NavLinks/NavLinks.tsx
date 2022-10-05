@@ -10,7 +10,7 @@ const links = [
 	{
 		key: "li_02",
 		label: "work",
-		href: "/#work",
+		href: "/work",
 		color: "bg-green",
 	},
 	{

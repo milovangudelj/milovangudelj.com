@@ -1,14 +1,15 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import { gql } from "graphql-request";
 import { hygraph } from "../lib/hygraph";
-import { Hourglass, Layout } from "../components";
+import { HeadMeta, Hourglass, Layout } from "../components";
 import Image from "next/image";
 
 import { ProjectCard } from "../components";
 
 import me from "../public/images/poly-me.png";
 import smiley from "../public/images/smiley.svg";
-import Head from "next/head";
+import { BASE_URL } from "../lib/constants";
+import { Project } from "./work";
 
 // const QUERY = gql`
 // 	{
@@ -35,30 +36,6 @@ import Head from "next/head";
 // 	};
 // }
 
-const projects = [
-	{
-		id: "pr_01",
-		title: "Swim club Agordo",
-		href: "https://piscinacomprensorialeagordina.it",
-		link: "https://piscinacomprensorialeagordina.it",
-		image: "/images/swimclubagordo.png",
-	},
-	{
-		id: "pr_02",
-		title: "DoYourThing",
-		href: "https://doyourthing.dev",
-		link: "https://doyourthing.dev",
-		image: "/images/doyourthing.png",
-	},
-	{
-		id: "pr_03",
-		title: "UniOrari",
-		href: "https://uniorari.it",
-		link: "https://uniorari.it",
-		image: "/images/uniorari.png",
-	},
-];
-
 const meta = {
 	title: "Milovan Gudelj - Web developer / UI designer",
 	description:
@@ -67,26 +44,22 @@ const meta = {
 	image: "https://milovangudelj.com/images/og-image.png",
 };
 
-const Home: NextPage<{ posts: any }> = ({ posts }) => {
+export const getStaticProps: GetStaticProps = async () => {
+	const projects = await (
+		await fetch(`${BASE_URL}/data/projects.json`)
+	).json();
+
+	return {
+		props: {
+			projects,
+		},
+	};
+};
+
+const Home: NextPage<{ projects: Project[] }> = ({ projects }) => {
 	return (
 		<Layout>
-			<Head>
-				<title>{meta.title}</title>
-				<meta name="title" content={meta.title} />
-				<meta name="description" content={meta.description} />
-
-				<meta property="og:type" content="website" />
-				<meta property="og:url" content={meta.url} />
-				<meta property="og:title" content={meta.title} />
-				<meta property="og:description" content={meta.description} />
-				<meta property="og:image" content={meta.image} />
-
-				<meta property="twitter:card" content="summary_large_image" />
-				<meta property="twitter:url" content={meta.url} />
-				<meta property="twitter:title" content={meta.title} />
-				<meta property="twitter:description" content={meta.description} />
-				<meta property="twitter:image" content={meta.image} />
-			</Head>
+			<HeadMeta metadata={meta} />
 			<section className="">
 				<main className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16">
 					<h1 className="text-h3-mobile md:text-h1-mobile xl:text-h1">
@@ -142,7 +115,7 @@ const Home: NextPage<{ posts: any }> = ({ posts }) => {
 				className="text-black bg-green scroll-mt-[72px] md:scroll-mt-[88px]"
 				id="work"
 			>
-				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-32	">
+				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-32">
 					<div className="space-y-8 md:space-y-0 relative">
 						<h2 className="text-h3-mobile md:mb-8 md:text-h2-mobile xl:text-h2">
 							My work

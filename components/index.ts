@@ -5,3 +5,5 @@ export * from "./Hamburger";
 export * from "./NavLinks";
 export * from "./Hourglass";
 export * from "./ProjectCard";
+export * from "./ProjectShowcase";
+export * from "./HeadMeta";
