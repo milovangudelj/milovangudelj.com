@@ -4,7 +4,7 @@ const links = [
 	{
 		key: "li_01",
 		label: "about",
-		href: "#about",
+		href: "/about",
 		color: "bg-orange",
 	},
 	{
