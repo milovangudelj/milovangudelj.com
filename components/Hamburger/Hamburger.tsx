@@ -7,13 +7,6 @@ import { useScroll } from "../../lib/scrollContext";
 export const Hamburger = () => {
 	const [visible, setVisible] = useState<boolean>(false);
 	const [, setScrollable] = useScroll();
-	const router = useRouter();
-
-	router.events.on("routeChangeStart", () => {
-		console.log(`Route is about to change.`);
-		setScrollable(true);
-		return true;
-	});
 
 	const toggleMenu = () => {
 		setVisible((s) => !s);
