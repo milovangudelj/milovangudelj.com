@@ -45,13 +45,11 @@ const meta = {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-	const projects = await (
-		await fetch(`${BASE_URL}/data/projects.json`)
-	).json();
+	const data = await(await fetch(`${BASE_URL}/data/projects.json`)).json();
 
 	return {
 		props: {
-			projects,
+			projects: data.projects,
 		},
 	};
 };

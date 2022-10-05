@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+
 import { Project } from "../../pages/work";
 
 type ProjectShowcaseProps = Omit<Project, "id">;
