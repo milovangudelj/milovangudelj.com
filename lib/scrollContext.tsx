@@ -33,10 +33,7 @@ const useProvideScroll = (): ScrollProviderValue => {
 	const router = useRouter();
 
 	useEffect(() => {
-		const changeHandler = () => {
-			console.log("Route changed. Scroll reset.");
-			setScrollable(true);
-		};
+		const changeHandler = () => setScrollable(true);
 
 		router.events.on("routeChangeComplete", changeHandler);
 
