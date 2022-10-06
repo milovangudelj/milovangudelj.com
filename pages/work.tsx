@@ -16,11 +16,18 @@ export type Project = {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-	const data = await(await fetch(`${BASE_URL}/data/projects.json`)).json();
+	const projects = await(
+		await fetch(`${BASE_URL}/data/projects.json`, {
+			headers: {
+				Accept: "application/json",
+				"User-Agent": "*",
+			},
+		})
+	).json();
 
 	return {
 		props: {
-			projects: data.projects,
+			projects,
 		},
 	};
 };
