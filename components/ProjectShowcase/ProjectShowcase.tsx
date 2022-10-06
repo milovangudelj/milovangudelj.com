@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { MDXRemote } from "next-mdx-remote";
 
 import { Project } from "../../pages/work";
 
@@ -24,14 +25,7 @@ export const ProjectShowcase = ({
 					/>
 				</span>
 				<div>
-					{description.map((paragraph, idx: number) => (
-						<p
-							key={`pp_${idx}`}
-							className="text-body-lg xl:max-w-[680px]"
-						>
-							{paragraph}
-						</p>
-					))}
+					<MDXRemote {...description} />
 				</div>
 			</div>
 			<div className="col-span-1 h-full">

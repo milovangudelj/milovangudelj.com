@@ -1,40 +1,36 @@
 import type { GetStaticProps, NextPage } from "next";
 import { gql } from "graphql-request";
-import { hygraph } from "../lib/hygraph";
-import { HeadMeta, Hourglass, Layout } from "../components";
 import Image from "next/image";
 
-import { ProjectCard } from "../components";
+import { HeadMeta, Hourglass, Layout, ProjectCard } from "../components";
+import { hygraph } from "../lib/hygraph";
 
 import me from "../public/images/poly-me.png";
 import smiley from "../public/images/smiley.svg";
-import { BASE_URL } from "../lib/constants";
+
 import { Project } from "./work";
 
-// const QUERY = gql`
-// 	{
-// 		posts {
-// 			id
-// 			slug
-// 			title
-// 			subtitle
-// 			body {
-// 				markdown
-// 				html
-// 			}
-// 		}
-// 	}
-// `;
+const QUERY = gql`
+	{
+		projects {
+			id
+			title
+			href
+			link
+			image
+		}
+	}
+`;
 
-// export async function getStaticProps() {
-// 	const { posts } = await hygraph.request(QUERY);
+export const getStaticProps: GetStaticProps = async () => {
+	const { projects } = await hygraph.request(QUERY);
 
-// 	return {
-// 		props: {
-// 			posts,
-// 		},
-// 	};
-// }
+	return {
+		props: {
+			projects,
+		},
+	};
+};
 
 const meta = {
 	title: "Milovan Gudelj - Web developer / UI designer",
@@ -44,24 +40,9 @@ const meta = {
 	image: "https://milovangudelj.com/images/og-image.png",
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-	const projects = await(
-		await fetch(`${BASE_URL}/data/projects.json`, {
-			headers: {
-				Accept: "application/json, text/plain, */*",
-				"User-Agent": "*",
-			},
-		})
-	).json();
-
-	return {
-		props: {
-			projects,
-		},
-	};
-};
-
-const Home: NextPage<{ projects: Project[] }> = ({ projects }) => {
+const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
+	projects,
+}) => {
 	return (
 		<Layout>
 			<HeadMeta metadata={meta} />

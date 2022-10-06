@@ -1,8 +1,11 @@
 import { GetStaticProps, NextPage } from "next";
+import { gql } from "graphql-request";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 
+import { hygraph } from "../lib/hygraph";
 import { Layout, ProjectShowcase } from "../components";
-import { BASE_URL } from "../lib/constants";
 
 import smiley from "../public/images/smiley.svg";
 
@@ -12,18 +15,33 @@ export type Project = {
 	href: string;
 	link: string;
 	image: string;
-	description: string[];
+	description: MDXRemoteSerializeResult;
 };
 
+const QUERY = gql`
+	{
+		projects {
+			id
+			title
+			href
+			link
+			image
+			description
+		}
+	}
+`;
+
 export const getStaticProps: GetStaticProps = async () => {
-	const projects = await(
-		await fetch(`${BASE_URL}/data/projects.json`, {
-			headers: {
-				Accept: "application/json, text/plain, */*",
-				"User-Agent": "*",
-			},
-		})
-	).json();
+	const { projects: data } = await hygraph.request(QUERY);
+
+	const projects: Project[] = [];
+
+	for (const project of data) {
+		projects.push({
+			...project,
+			description: await serialize(project.description),
+		});
+	}
 
 	return {
 		props: {
