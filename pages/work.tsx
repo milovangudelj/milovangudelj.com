@@ -5,7 +5,7 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 
 import { hygraph } from "../lib/hygraph";
-import { Layout, ProjectShowcase } from "../components";
+import { HeadMeta, Layout, ProjectShowcase } from "../components";
 
 import smiley from "../public/images/smiley.svg";
 
@@ -50,9 +50,18 @@ export const getStaticProps: GetStaticProps = async () => {
 	};
 };
 
+const meta = {
+	title: "Milovan Gudelj - My work",
+	description:
+		"I design and develop engaging websites and delightful digital experiences.",
+	url: "https://milovangudelj.com/work",
+	image: "https://milovangudelj.com/images/og-image.png",
+};
+
 const Work: NextPage<{ projects: Project[] }> = ({ projects }) => {
 	return (
 		<Layout>
+			<HeadMeta metadata={meta} />
 			<section className="text-black bg-green scroll-mt-[72px] md:scroll-mt-[88px]">
 				<main className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-32">
 					<div className="space-y-8 md:space-y-0 relative">
