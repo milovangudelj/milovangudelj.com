@@ -146,7 +146,7 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 						</h2>
 						<p className="text-body-lg xl:max-w-[680px]">
 							If you like what I do please feel free to contact me and
-							who nkows, we might build the next big thing or just a cool
+							who knows, we might build the next big thing or just a cool
 							looking website.
 						</p>
 					</div>
