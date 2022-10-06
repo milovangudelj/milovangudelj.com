@@ -9,7 +9,7 @@ import { HeadMeta, Layout, ProjectShowcase } from "../components";
 
 import smiley from "../public/images/smiley.svg";
 
-export type Project = {
+export interface Project {
 	id: string;
 	title: string;
 	year: number;
@@ -17,7 +17,7 @@ export type Project = {
 	link: string;
 	image: string;
 	description: MDXRemoteSerializeResult;
-};
+}
 
 const QUERY = gql`
 	{
@@ -85,7 +85,7 @@ const Work: NextPage<{ projects: Project[] }> = ({ projects }) => {
 						</span>
 					</div>
 					<div className="">
-						<ul className="space-y-40">
+						<ul className="space-y-32 xl:space-y-40">
 							{projects.map(({ id, ...props }) => (
 								<li key={id} className="">
 									<ProjectShowcase {...props} />

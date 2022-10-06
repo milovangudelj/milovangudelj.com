@@ -10,7 +10,7 @@ const links = [
 	{
 		key: "li_02",
 		label: "work",
-		href: "/#work",
+		href: "/work",
 		color: "bg-green",
 	},
 	{
@@ -21,9 +21,9 @@ const links = [
 	},
 ];
 
-export const NavLinks = () => {
+export const NavLinks = ({ className = "" }: { className?: string }) => {
 	return (
-		<nav>
+		<nav className={className}>
 			<ul className="md:flex">
 				{links.map((link) => (
 					<li

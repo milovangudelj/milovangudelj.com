@@ -47,7 +47,7 @@ const useProvideWindowSize = (): WindowSizeProviderValue => {
 	const [desktop, setDesktop] = useState<boolean>(true);
 
 	useBrowserLayoutEffect(() => {
-		const resized = (ev: UIEvent) => {
+		const resized = () => {
 			let w = window.innerWidth;
 			let h = window.innerHeight;
 
@@ -57,6 +57,7 @@ const useProvideWindowSize = (): WindowSizeProviderValue => {
 			setTablet(w >= 768 && w < 1280);
 			setDesktop(w >= 1280);
 		};
+		resized();
 
 		addEventListener("resize", resized);
 

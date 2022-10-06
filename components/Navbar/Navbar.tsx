@@ -12,7 +12,7 @@ export const Navbar = () => {
 				<span className="text-sub-heading inline-block h-10">
 					<Link href="/">milo</Link>
 				</span>
-				{mobile ? <Hamburger /> : <NavLinks />}
+				{mobile ? <Hamburger /> : <NavLinks className="hidden md:block" />}
 			</div>
 		</div>
 	);
