@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const projects = await(
 		await fetch(`${BASE_URL}/data/projects.json`, {
 			headers: {
-				Accept: "application/json",
+				Accept: "application/json, text/plain, */*",
 				"User-Agent": "*",
 			},
 		})
