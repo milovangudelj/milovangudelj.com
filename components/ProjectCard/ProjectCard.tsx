@@ -12,7 +12,7 @@ export const ProjectCard = ({ title, href, link, image }: ProjectCardProps) => {
 	return (
 		<div className="space-y-8 md:space-y-[26px]">
 			<Link href={href} passHref>
-				<a className="relative h-[150px] aspect-video md:h-[300px] cursor-pointer bg-black border-2 inline-block [filter:drop-shadow(4px_4px_0_black)] md:[filter:drop-shadow(8px_8px_0_black)]">
+				<a className="relative h-[150px] aspect-video md:h-[300px] cursor-pointer bg-black border-2 inline-block drop-shadow-brutal drop-shadow-brutal-lg">
 					<Image
 						src={image}
 						layout={"fill"}

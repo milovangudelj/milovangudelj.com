@@ -11,36 +11,49 @@ export const ProjectShowcase = ({
 	image,
 	link,
 	title,
+	year,
 }: ProjectShowcaseProps) => {
 	return (
-		<section className="grid grid-cols-[3fr_2fr] gap-16">
-			<div className="col-span-1">
-				<span className="block w-full aspect-video relative mb-8 bg-black border-2 [filter:drop-shadow(4px_4px_0_black)] md:[filter:drop-shadow(8px_8px_0_black)]">
-					<Image
-						src={image}
-						layout={"fill"}
-						quality={100}
-						alt={`${title} website screenshot`}
-						title={`${title} website screenshot`}
-					/>
-				</span>
-				<div>
-					<MDXRemote {...description} />
+		<section className="grid grid-cols-8 gap-16">
+			<div className="col-span-3 h-full order-last">
+				<div className="sticky top-[136px] md:top-[152px] p-8 border-2 space-y-6 bg-lavender drop-shadow-brutal md:drop-shadow-brutal-lg">
+					<h3 className="text-sub-heading-mobile md:text-sub-heading xl:text-h4">
+						{title}
+					</h3>
+					<span className="text-body inline-block text-dark-me">
+						{link}
+					</span>
+					<div className="flex items-end justify-between">
+						<ul className="list-disc list-inside">
+							<li>Web development</li>
+							<li>Design</li>
+						</ul>
+						<a href={href} target={"_blank"} rel={"noreferrer"}>
+							<button className="py-2 px-4 border-2 bg-salmon hover:drop-shadow-brutal transition-all text-body-md font-bold tracking-wide">
+								Visit ↗
+							</button>
+						</a>
+					</div>
 				</div>
 			</div>
-			<div className="col-span-1 h-full">
-				<div className="sticky top-[72px] md:top-[88px] py-8">
-					<h2 className="text-h4-mobile md:text-h3-mobile xl:text-h3">
-						{title}
-					</h2>
-					<span className="text-body-sm text-dark-me">{link}</span>
-					<ul>
-						<li>Web development</li>
-						<li>Design</li>
-					</ul>
-					<a href={href} target={"_blank"} rel={"noreferrer"}>
-						<button>Visit their website ↗</button>
-					</a>
+			<div className="col-span-5">
+				<div className="relative">
+					<span className="block absolute top-0 left-0 [writing-mode:vertical-lr] scale-[-1] -translate-x-full w-min py-2 bg-black text-white text-body-lg">
+						{year}
+					</span>
+					<span className="block w-full aspect-video relative mb-16 bg-black border-2 drop-shadow-brutal md:drop-shadow-brutal-lg">
+						<Image
+							src={image}
+							layout={"fill"}
+							quality={100}
+							alt={`${title} website screenshot`}
+							title={`${title} website screenshot`}
+						/>
+					</span>
+				</div>
+
+				<div className="prose prose-lg prose-p:text-black">
+					<MDXRemote {...description} />
 				</div>
 			</div>
 		</section>

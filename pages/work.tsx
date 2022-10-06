@@ -12,6 +12,7 @@ import smiley from "../public/images/smiley.svg";
 export type Project = {
 	id: string;
 	title: string;
+	year: number;
 	href: string;
 	link: string;
 	image: string;
@@ -23,6 +24,7 @@ const QUERY = gql`
 		projects {
 			id
 			title
+			year
 			href
 			link
 			image
@@ -83,7 +85,7 @@ const Work: NextPage<{ projects: Project[] }> = ({ projects }) => {
 						</span>
 					</div>
 					<div className="">
-						<ul className="space-y-32">
+						<ul className="space-y-40">
 							{projects.map(({ id, ...props }) => (
 								<li key={id} className="">
 									<ProjectShowcase {...props} />

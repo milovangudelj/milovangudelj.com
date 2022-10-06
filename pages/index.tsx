@@ -159,7 +159,7 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 						>
 							milovan.gudelj@gmail.com
 						</a>
-						<span className="text-primary [filter:drop-shadow(4px_4px_0_black)]">
+						<span className="text-primary drop-shadow-brutal">
 							<svg
 								width="48"
 								height="48"
