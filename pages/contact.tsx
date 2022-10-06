@@ -3,8 +3,8 @@ import { HeadMeta, Layout } from "../components";
 const meta = {
 	title: "Milovan Gudelj - Contact me",
 	description:
-		"I design and develop engaging websites and delightful digital experiences.",
-	url: "https://milovangudelj.com/about",
+		"Let's work together! Feel free to reach out to me for any questions you might have.",
+	url: "https://milovangudelj.com/contact",
 	image: "https://milovangudelj.com/images/og-image.png",
 };
 

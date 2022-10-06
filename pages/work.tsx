@@ -56,8 +56,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const meta = {
 	title: "Milovan Gudelj - My work",
-	description:
-		"I design and develop engaging websites and delightful digital experiences.",
+	description: "A collection of past project I've worked on an am proud of.",
 	url: "https://milovangudelj.com/work",
 	image: "https://milovangudelj.com/images/og-image.png",
 };
