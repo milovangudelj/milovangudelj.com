@@ -6,6 +6,14 @@ import { useWindowSize } from "../../lib/windowSizeContext";
 
 type ProjectShowcaseProps = Omit<Project, "id">;
 
+const categoryMap: { [key: string]: string } = {
+	ui_design: "UI Design",
+	web_design: "Web Design",
+	frontend_development: "FrotEnd Development",
+	full_stack_development: "FullStack Development",
+	web_development: "Web Development",
+};
+
 export const ProjectShowcase = ({
 	description,
 	href,
@@ -13,6 +21,7 @@ export const ProjectShowcase = ({
 	link,
 	title,
 	year,
+	categories,
 }: ProjectShowcaseProps) => {
 	const { desktop } = useWindowSize();
 
@@ -21,7 +30,12 @@ export const ProjectShowcase = ({
 			<div className="xl:col-span-5 space-y-8 md:space-y-16">
 				{!desktop ? (
 					<div className="flex flex-col xl:w-full md:space-y-0 xl:space-y-8 md:grid md:grid-cols-5 md:h-max">
-						<ProjectDetails title={title} link={link} href={href} />
+						<ProjectDetails
+							title={title}
+							link={link}
+							href={href}
+							categories={categories}
+						/>
 						<ProjectImage
 							year={year}
 							image={image}
@@ -41,7 +55,12 @@ export const ProjectShowcase = ({
 			</div>
 			{desktop && (
 				<div className="h-full xl:col-span-3">
-					<ProjectDetails title={title} link={link} href={href} />
+					<ProjectDetails
+						title={title}
+						link={link}
+						href={href}
+						categories={categories}
+					/>
 				</div>
 			)}
 		</section>
@@ -52,10 +71,12 @@ const ProjectDetails = ({
 	title,
 	link,
 	href,
+	categories,
 }: {
 	title: Project["title"];
 	link: Project["link"];
 	href: Project["href"];
+	categories: Project["categories"];
 }) => {
 	const { mobile } = useWindowSize();
 	return (
@@ -68,8 +89,9 @@ const ProjectDetails = ({
 			</span>
 			<div className="xl:flex xl:items-end xl:justify-between md:space-y-6 xl:space-y-0">
 				<ul className="list-disc list-inside">
-					<li>Web development</li>
-					<li>Design</li>
+					{categories.map((category, idx) => (
+						<li key={`cat_${idx}`}>{categoryMap[category]}</li>
+					))}
 				</ul>
 				{!mobile && <VisitButton href={href} />}
 			</div>

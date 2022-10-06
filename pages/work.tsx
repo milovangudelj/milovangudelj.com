@@ -16,6 +16,7 @@ export interface Project {
 	href: string;
 	link: string;
 	image: string;
+	categories: string[];
 	description: MDXRemoteSerializeResult;
 }
 
@@ -29,6 +30,7 @@ const QUERY = gql`
 			link
 			image
 			description
+			categories
 		}
 	}
 `;
