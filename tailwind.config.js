@@ -103,6 +103,22 @@ module.exports = {
 						lineHeight: "48px",
 					},
 				],
+				h5: [
+					"36px",
+					{
+						fontWeight: "700",
+						letterSpacing: "normal",
+						lineHeight: "48px",
+					},
+				],
+				"h5-mobile": [
+					"34px",
+					{
+						fontWeight: "700",
+						letterSpacing: "normal",
+						lineHeight: "44px",
+					},
+				],
 				"sub-heading": [
 					"32px",
 					{

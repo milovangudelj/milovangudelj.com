@@ -27,7 +27,7 @@ export const ProjectShowcase = ({
 
 	return (
 		<section className="xl:grid xl:grid-cols-8 xl:gap-16 space-y-8 md:space-y-16 xl:space-y-0">
-			<div className="xl:col-span-5 space-y-8 md:space-y-16">
+			<div className="xl:col-span-5 space-y-12 md:space-y-16">
 				{!desktop ? (
 					<div className="flex flex-col xl:w-full md:space-y-0 xl:space-y-8 md:grid md:grid-cols-5 md:h-max">
 						<ProjectDetails
@@ -80,7 +80,7 @@ const ProjectDetails = ({
 }) => {
 	const { mobile } = useWindowSize();
 	return (
-		<div className="xl:sticky xl:top-[152px] md:p-4 xl:p-8 md:col-span-2 md:border-2 md:border-r xl:border-r-2 space-y-4 md:space-y-6 md:bg-lavender md:drop-shadow-brutal-lg">
+		<div className="relative z-[1] md:z-auto xl:sticky xl:top-[152px] p-4 xl:p-8 md:col-span-2 border-2 border-dashed border-t [border-top:1px_solid_black] md:border-dashed md:border-r md:border-t-2 xl:border-r-2 space-y-4 md:space-y-6 bg-lavender drop-shadow-brutal md:drop-shadow-brutal-lg">
 			<h3 className="text-h4-mobile md:text-sub-heading xl:text-h4">
 				{title}
 			</h3>
@@ -121,6 +121,7 @@ const ProjectDescription = ({
 }) => {
 	return (
 		<div className="prose prose-lg prose-p:text-black">
+			<h4 className="text-h5-mobile text-black">Brief</h4>
 			<MDXRemote {...description} />
 		</div>
 	);
@@ -139,8 +140,8 @@ const ProjectImage = ({
 }) => {
 	const { mobile } = useWindowSize();
 	return (
-		<div className="relative mb-8 md:mb-0 xl:w-full order-first md:col-span-3 md:h-full xl:h-auto md:order-none">
-			<span className="md:block hidden absolute top-0 left-0 [writing-mode:vertical-lr] scale-[-1] -translate-x-full w-min py-2 bg-black text-white text-body-lg">
+		<div className="relative md:mb-0 xl:w-full order-first md:col-span-3 md:h-full xl:h-auto md:order-none">
+			<span className="absolute top-0 left-0 [writing-mode:vertical-lr] scale-[-1] -translate-x-full w-min py-2 bg-black text-white text-body-lg">
 				{year}
 			</span>
 			{mobile && (
@@ -148,7 +149,7 @@ const ProjectImage = ({
 					<VisitButton href={href} />
 				</span>
 			)}
-			<span className="block w-full md:h-full xl:h-auto aspect-video md:aspect-none xl:aspect-video relative bg-black border-2 md:border-l xl:border-l-2 drop-shadow-brutal md:drop-shadow-brutal-lg">
+			<span className="block w-full md:h-full xl:h-auto aspect-video md:aspect-none xl:aspect-video relative bg-black border-2 border-b md:border-b-2 md:border-l xl:border-l-2 drop-shadow-brutal md:drop-shadow-brutal-lg">
 				<Image
 					src={image}
 					layout={"fill"}
