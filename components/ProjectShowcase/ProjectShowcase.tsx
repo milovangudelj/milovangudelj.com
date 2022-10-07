@@ -27,6 +27,16 @@ export const ProjectShowcase = ({
 
 	return (
 		<section className="xl:grid xl:grid-cols-8 xl:gap-16 space-y-8 md:space-y-16 xl:space-y-0">
+			{desktop && (
+				<div className="h-full order-last xl:col-span-3">
+					<ProjectDetails
+						title={title}
+						link={link}
+						href={href}
+						categories={categories}
+					/>
+				</div>
+			)}
 			<div className="xl:col-span-5 space-y-12 md:space-y-16">
 				{!desktop ? (
 					<div className="flex flex-col xl:w-full md:space-y-0 xl:space-y-8 md:grid md:grid-cols-5 md:h-max">
@@ -53,16 +63,6 @@ export const ProjectShowcase = ({
 				)}
 				<ProjectDescription description={description} />
 			</div>
-			{desktop && (
-				<div className="h-full xl:col-span-3">
-					<ProjectDetails
-						title={title}
-						link={link}
-						href={href}
-						categories={categories}
-					/>
-				</div>
-			)}
 		</section>
 	);
 };
