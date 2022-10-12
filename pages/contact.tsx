@@ -5,6 +5,7 @@ import { HeadMeta, Layout } from "../components";
 import igLogo from "../public/images/igLogo.png";
 import twLogo from "../public/images/twLogo.svg";
 import drLogo from "../public/images/drLogo.svg";
+import { useWindowSize } from "../lib/windowSizeContext";
 
 const meta = {
 	title: "Milovan Gudelj - Contact me",
@@ -15,12 +16,14 @@ const meta = {
 };
 
 const Contact = () => {
+	const { desktop } = useWindowSize();
+
 	return (
 		<Layout>
 			<HeadMeta metadata={meta} />
 			<section className="scroll-mt-[72px] md:scroll-mt-[88px]">
 				<main className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 flex justify-between items-center">
-					<div className="space-y-28">
+					<div className="space-y-16">
 						<div className="space-y-8">
 							<h1 className="text-h3-mobile md:text-h2-mobile xl:text-h2">
 								My @s
@@ -31,34 +34,37 @@ const Contact = () => {
 								platforms.
 							</p>
 						</div>
-						<div className="flex space-x-12 py-0.5 items-center">
+						<div className="flex space-x-6 md:space-x-12 py-0.5 items-center font-space">
 							<a
 								href="https://instagram.com/milovangudelj"
 								target="_blank"
 								rel="noreferrer"
-								className="hover:text-[#E4405F] transition text-body-lg md:text-sub-heading-mobile xl:text-sub-heading font-semibold"
+								className="hover:text-instagram transition text-body-lg md:text-sub-heading-mobile xl:text-sub-heading font-semibold"
 							>
-								Instagram ↗
+								Instagram <span className="text-instagram">↗</span>
 							</a>
 							<a
 								href="https://dribbble.com/milovangudelj"
 								target="_blank"
 								rel="noreferrer"
-								className="hover:text-[#EA4C89] transition text-body-lg md:text-sub-heading-mobile xl:text-sub-heading font-semibold"
+								className="hover:text-dribbble transition text-body-lg md:text-sub-heading-mobile xl:text-sub-heading font-semibold"
 							>
-								Dribbble ↗
+								Dribbble <span className="text-dribbble">↗</span>
 							</a>
 							<a
 								href="https://twitter.com/milovangudelj"
 								target="_blank"
 								rel="noreferrer"
-								className="hover:text-[#1DA1F2] transition text-body-lg md:text-sub-heading-mobile xl:text-sub-heading font-semibold"
+								className="hover:text-twitter transition text-body-lg md:text-sub-heading-mobile xl:text-sub-heading font-semibold"
 							>
-								Twitter ↗
+								Twitter <span className="text-twitter">↗</span>
 							</a>
 						</div>
 					</div>
-					<div className="space-y-20 rotate-12 origin-center flex flex-col items-center">
+					<div
+						aria-hidden={!desktop}
+						className="hidden xl:flex space-y-20 rotate-12 origin-center flex-col items-center"
+					>
 						<Image
 							alt="Dribbble logo"
 							className="-rotate-12 origin-center"
