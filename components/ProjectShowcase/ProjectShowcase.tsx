@@ -149,7 +149,7 @@ const ProjectImage = ({
 					<VisitButton href={href} />
 				</span>
 			)}
-			<span className="block w-full md:h-full xl:h-auto aspect-video md:aspect-none xl:aspect-video relative bg-black border-2 border-b md:border-b-2 md:border-l xl:border-l-2 drop-shadow-brutal md:drop-shadow-brutal-lg">
+			<span className="flex items-center justify-center w-full md:h-full xl:h-auto aspect-video md:aspect-none xl:aspect-video relative bg-black border-2 border-b md:border-b-2 md:border-l xl:border-l-2 drop-shadow-brutal md:drop-shadow-brutal-lg">
 				<Image
 					src={image}
 					layout={"fill"}
@@ -158,6 +158,9 @@ const ProjectImage = ({
 					alt={`${title} website screenshot`}
 					title={`${title} website screenshot`}
 				/>
+				<span className="font-space text-body-lg text-white" aria-hidden>
+					Loading...
+				</span>
 			</span>
 		</div>
 	);
