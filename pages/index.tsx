@@ -48,7 +48,7 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 			<HeadMeta metadata={meta} />
 			<section className="">
 				<main className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16">
-					<h1 className="text-h3-mobile md:text-h1-mobile xl:text-h1">
+					<h1 className="text-h3-mobile md:text-h2-mobile xl:text-h2 2xl:text-h1">
 						Web developer <br />
 						<span className="text-primary">/</span> UI designer
 					</h1>
