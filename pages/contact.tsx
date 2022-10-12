@@ -63,7 +63,7 @@ const Contact = () => {
 					</div>
 					<div
 						aria-hidden={!desktop}
-						className="hidden xl:flex space-y-20 rotate-12 origin-center flex-col items-center"
+						className="hidden xl:flex mr-8 space-y-20 rotate-12 origin-center flex-col items-center"
 					>
 						<Image
 							alt="Dribbble logo"
