@@ -64,6 +64,7 @@ const Contact = () => {
 							className="-rotate-12 origin-center"
 							src={drLogo}
 							width={100}
+							loading="eager"
 						/>
 						<div className="flex space-x-[100px]">
 							<Image
@@ -71,12 +72,14 @@ const Contact = () => {
 								className="-rotate-12 origin-center"
 								src={twLogo}
 								width={100}
+								loading="eager"
 							/>
 							<Image
 								alt="Instagram logo"
 								className="-rotate-12 origin-center"
 								src={igLogo}
 								width={100}
+								loading="eager"
 							/>
 						</div>
 					</div>
