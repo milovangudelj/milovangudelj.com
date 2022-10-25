@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from "react";
+import { ComponentPropsWithRef, useEffect } from "react";
 
 import { Navbar, Footer } from "../";
 import { useScroll } from "../../lib/scrollContext";
@@ -6,7 +6,14 @@ import { useScroll } from "../../lib/scrollContext";
 interface LayoutProps extends ComponentPropsWithRef<"div"> {}
 
 export const Layout = ({ children, ...props }: LayoutProps) => {
-	const [scrollable] = useScroll();
+	const { scrollable, scrollY } = useScroll();
+
+	useEffect(() => {
+		let scrollHeight = document.body.scrollHeight;
+		let viewportHeight = window.innerHeight;
+
+		console.log({ scrollY });
+	}, [scrollY]);
 
 	return (
 		<div
@@ -15,8 +22,10 @@ export const Layout = ({ children, ...props }: LayoutProps) => {
 			} bg-black text-white`}
 			{...props}
 		>
-			<Navbar />
-			{children}
+			<div className="bg-black relative z-[1] mb-[52px]">
+				<Navbar />
+				<div className="mx-[var(--scroll-margin-x)]">{children}</div>
+			</div>
 			<Footer />
 		</div>
 	);
