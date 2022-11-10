@@ -3,6 +3,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { Project } from "../../pages/work";
 import { useWindowSize } from "../../lib/windowSizeContext";
+import Link from "next/link";
 
 type ProjectShowcaseProps = Omit<Project, "id">;
 
@@ -17,6 +18,7 @@ const categoryMap: { [key: string]: string } = {
 export const ProjectShowcase = ({
 	description,
 	href,
+	caseStudy,
 	image,
 	link,
 	title,
@@ -61,7 +63,10 @@ export const ProjectShowcase = ({
 						href={href}
 					/>
 				)}
-				<ProjectDescription description={description} />
+				<ProjectDescription
+					description={description}
+					caseStudy={caseStudy}
+				/>
 			</div>
 		</section>
 	);
@@ -116,13 +121,22 @@ const VisitButton = ({ href }: { href: Project["href"] }) => {
 
 const ProjectDescription = ({
 	description,
+	caseStudy,
 }: {
 	description: Project["description"];
+	caseStudy: Project["caseStudy"];
 }) => {
 	return (
 		<div className="prose prose-lg prose-p:text-black">
 			<h4 className="text-h5-mobile text-black">Brief</h4>
 			<MDXRemote {...description} />
+			{caseStudy && (
+				<Link href={`/work/${caseStudy.slug}`} passHref>
+					<a className="py-2 no-underline text-black px-4 inline-block border-2 bg-salmon hover:drop-shadow-brutal transition-all text-body-md font-bold tracking-wide">
+						Read case study ↗
+					</a>
+				</Link>
+			)}
 		</div>
 	);
 };

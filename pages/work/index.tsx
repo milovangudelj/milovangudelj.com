@@ -4,10 +4,10 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 
-import { hygraph } from "../lib/hygraph";
-import { HeadMeta, Layout, ProjectShowcase } from "../components";
+import { hygraph } from "../../lib/hygraph";
+import { HeadMeta, Layout, ProjectShowcase } from "../../components";
 
-import smiley from "../public/images/smiley.svg";
+import smiley from "../../public/images/smiley.svg";
 
 export interface Project {
 	id: string;
@@ -18,6 +18,7 @@ export interface Project {
 	image: string;
 	categories: string[];
 	description: MDXRemoteSerializeResult;
+	caseStudy?: { slug: string };
 }
 
 const QUERY = gql`
@@ -31,6 +32,9 @@ const QUERY = gql`
 			image
 			description
 			categories
+			caseStudy {
+				slug
+			}
 		}
 	}
 `;
