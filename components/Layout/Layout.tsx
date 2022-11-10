@@ -11,8 +11,6 @@ export const Layout = ({ children, ...props }: LayoutProps) => {
 	useEffect(() => {
 		let scrollHeight = document.body.scrollHeight;
 		let viewportHeight = window.innerHeight;
-
-		console.log({ scrollY });
 	}, [scrollY]);
 
 	return (

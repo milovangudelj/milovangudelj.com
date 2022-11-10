@@ -4,6 +4,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { Project } from "../../pages/work";
 import { useWindowSize } from "../../lib/windowSizeContext";
 import Link from "next/link";
+import { RichText } from "@graphcms/rich-text-react-renderer";
 
 type ProjectShowcaseProps = Omit<Project, "id">;
 
@@ -129,7 +130,10 @@ const ProjectDescription = ({
 	return (
 		<div className="prose prose-lg prose-p:text-black">
 			<h4 className="text-h5-mobile text-black">Brief</h4>
-			<MDXRemote {...description} />
+			<RichText
+				content={description.json}
+				references={description.references}
+			/>
 			{caseStudy && (
 				<Link href={`/work/${caseStudy.slug}`} passHref>
 					<a className="py-2 no-underline text-black px-4 inline-block border-2 bg-salmon hover:drop-shadow-brutal transition-all text-body-md font-bold tracking-wide">

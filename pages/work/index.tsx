@@ -1,7 +1,5 @@
 import { GetStaticProps, NextPage } from "next";
 import { gql } from "graphql-request";
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 
 import { hygraph } from "../../lib/hygraph";
@@ -17,7 +15,7 @@ export interface Project {
 	link: string;
 	image: string;
 	categories: string[];
-	description: MDXRemoteSerializeResult;
+	description: { json: any; [key: string]: any };
 	caseStudy?: { slug: string };
 }
 
@@ -30,7 +28,18 @@ const QUERY = gql`
 			href
 			link
 			image
-			description
+			description {
+				json
+				references {
+					... on Asset {
+						id
+						url
+						mimeType
+						width
+						height
+					}
+				}
+			}
 			categories
 			caseStudy {
 				slug
@@ -40,16 +49,7 @@ const QUERY = gql`
 `;
 
 export const getStaticProps: GetStaticProps = async () => {
-	const { projects: data } = await hygraph.request(QUERY);
-
-	const projects: Project[] = [];
-
-	for (const project of data) {
-		projects.push({
-			...project,
-			description: await serialize(project.description),
-		});
-	}
+	const { projects } = await hygraph.request(QUERY);
 
 	return {
 		props: {
