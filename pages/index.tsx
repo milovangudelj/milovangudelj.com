@@ -54,7 +54,7 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 		<Layout>
 			<HeadMeta metadata={meta} />
 			<section className="">
-				<main className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16">
+				<main className="mx-auto max-w-8xl space-y-16 py-16 px-8 md:py-32 md:px-16">
 					<h1 className="text-d2-mobile md:text-d1-mobile xl:text-d1">
 						Web developer <br />
 						<span className="text-primary">/</span> UI designer
@@ -65,11 +65,11 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 					</p>
 				</main>
 			</section>
-			<Section id="about">
-				<Container className="md:space-y-0 md:relative">
+			<Section>
+				<Container className="md:relative md:space-y-0">
 					<div className="flex justify-center md:absolute md:-top-16 md:right-16 xl:right-32">
 						<Hourglass>
-							<span className="absolute inset-0 left-4 border-b-2 overflow-hidden">
+							<span className="absolute inset-0 left-4 overflow-hidden border-b-2">
 								<Image
 									src={me}
 									layout={"fill"}
@@ -101,12 +101,9 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 					</div>
 				</Container>
 			</Section>
-			<section
-				className="text-black bg-green scroll-mt-[72px] md:scroll-mt-[88px]"
-				id="work"
-			>
-				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-32">
-					<div className="space-y-8 md:space-y-0 relative">
+			<Section className="bg-green">
+				<Container className="md:space-y-32">
+					<div className="relative space-y-8 md:space-y-0">
 						<h2 className="text-h3-mobile md:mb-8 md:text-h2-mobile xl:text-h2">
 							My work
 						</h2>
@@ -115,7 +112,7 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 							to work on a few diverse projects and demonstrate my
 							skills. Here are some of them.
 						</p>
-						<span className="absolute -top-16 right-0 xl:-top-0 xl:right-16 w-[65px] h-[64px] md:w-[130px] md:h-[128px] xl:w-[196.23px] xl:h-[192.2px]">
+						<span className="absolute -top-16 right-0 h-[64px] w-[65px] md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]">
 							<Image
 								src={smiley}
 								layout={"fill"}
@@ -125,7 +122,7 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 						</span>
 					</div>
 					<div className="relative">
-						<ul className="-mx-8 md:-mx-16 xl:mx-0 xl:space-x-16 flex flex-nowrap overflow-x-auto scrollbar-hidden snap-x snap">
+						<ul className="scrollbar-hidden snap -mx-8 flex snap-x flex-nowrap overflow-x-auto md:-mx-16 xl:mx-0 xl:space-x-16">
 							{projects.map(({ id, ...props }) => (
 								<li
 									key={id}
@@ -135,15 +132,12 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 								</li>
 							))}
 						</ul>
-						<span className="hidden xl:block absolute top-0 right-0 bottom-0 w-32 bg-gradient-to-r from-green/0 to-green"></span>
+						<span className="absolute top-0 right-0 bottom-0 hidden w-32 bg-gradient-to-r from-green/0 to-green xl:block"></span>
 					</div>
-				</div>
-			</section>
-			<section
-				className="bg-blue scroll-mt-[72px] md:scroll-mt-[88px]"
-				id="contact"
-			>
-				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16">
+				</Container>
+			</Section>
+			<Section className="bg-blue text-white">
+				<Container>
 					<div className="space-y-8">
 						<h2 className="text-h3-mobile md:text-h2-mobile xl:text-h2">
 							Let&apos;s work together
@@ -154,12 +148,12 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 							looking website.
 						</p>
 					</div>
-					<div className="flex space-x-4 py-0.5 items-center">
+					<div className="flex items-center space-x-4 py-0.5">
 						<a
 							href="mailto:milovan.gudelj@gmail.com"
 							target="_blank"
 							rel="noreferrer"
-							className="text-body-lg md:text-sub-heading-mobile xl:text-sub-heading font-semibold"
+							className="text-body-lg font-semibold md:text-sub-heading-mobile xl:text-sub-heading"
 						>
 							milovan.gudelj@gmail.com
 						</a>
@@ -178,8 +172,8 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 							</svg>
 						</span>
 					</div>
-				</div>
-			</section>
+				</Container>
+			</Section>
 		</Layout>
 	);
 };
