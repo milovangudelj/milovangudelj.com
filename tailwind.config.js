@@ -212,8 +212,8 @@ module.exports = {
 				],
 			},
 			fontFamily: {
-				space: ["var(--font-space-grotesk)"],
-				sans: ["var(--font-inter)"],
+				space: ["'Space Grotesk'", ...defaultTheme.fontFamily.sans],
+				sans: ["'Inter'", ...defaultTheme.fontFamily.sans],
 			},
 			dropShadow: {
 				brutal: "4px 4px 0 black",

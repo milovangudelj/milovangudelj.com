@@ -4,6 +4,21 @@ export default function Document() {
 	return (
 		<Html>
 			<Head>
+				{/* Fonts */}
+				<link
+					rel="preload"
+					href="/fonts/SpaceGrotesk-Var.woff2"
+					crossOrigin="anonymous"
+					as="font"
+					type="font/woff2"
+				/>
+				<link
+					rel="preload"
+					href="/fonts/Inter-Var.woff2"
+					crossOrigin="anonymous"
+					as="font"
+					type="font/woff2"
+				/>
 				{/* Favicon */}
 				<link
 					rel="apple-touch-icon"
