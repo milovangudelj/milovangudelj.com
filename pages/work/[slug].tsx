@@ -5,7 +5,7 @@ import { getPlaiceholder } from "plaiceholder";
 
 import { hygraph } from "../../lib/hygraph";
 import Image from "next/legacy/image";
-import { HeadMeta, Layout } from "../../components";
+import { CS, HeadMeta, Layout } from "../../components";
 import Link from "next/link";
 import { renderers } from "../../components/richTextRenderers";
 
@@ -77,7 +77,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	);
 
 	return {
-		// Passed to the page component as props
 		props: { ...caseStudy },
 	};
 };
@@ -100,35 +99,10 @@ const CaseStudyPage = ({
 	return (
 		<Layout>
 			<HeadMeta metadata={meta} />
-			{/* <div className="h-80 relative">
-				<Image
-					src={cover.url}
-					layout="fill"
-					alt={`Case study cover image`}
-					objectFit="cover"
-				/>
-				<div className="absolute left-0 right-0 bottom-0 h-20 md:h-28 xl:h-36 bg-gradient-to-t from-black to-black/0"></div>
-			</div> */}
-			<main className="max-w-8xl mx-auto grid grid-cols-6 py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-0 md:relative">
-				<div className="relative pb-16 col-span-4 col-start-2">
-					<h1 className="px-4 py-2 mb-4 inline-block bg-lavender text-black text-sub-heading-mobile">
-						{title}
-					</h1>
-					<span className="text-h1-mobile xl:text-h1 block">
-						{subtitle}
-					</span>
-					<p className="font-medium whitespace-pre-line text-sub-heading-mobile text-white/75 max-w-[66ch] mb-4 mt-8">
-						{intro}
-					</p>
-				</div>
-				<div className="col-span-6 grid grid-cols-6">
-					<RichText
-						content={content.json}
-						references={content.references}
-						renderers={renderers("caseStudy")}
-					/>
-				</div>
-			</main>
+			<CS>
+				<CS.Header title={title} subtitle={subtitle} intro={intro} />
+				<CS.Content content={content} />
+			</CS>
 		</Layout>
 	);
 };
