@@ -7,3 +7,5 @@ export * from "./Hourglass";
 export * from "./ProjectCard";
 export * from "./ProjectShowcase";
 export * from "./HeadMeta";
+export * from "./Section";
+export * from "./Container";

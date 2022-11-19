@@ -30,8 +30,8 @@ const Contact = () => {
 							</h1>
 							<p className="text-body-lg xl:max-w-[680px]">
 								You can find me pretty much anywhere by typing in my
-								name. But just in case here are a few links to my social
-								platforms.
+								name. But just in case here you can find a few links to
+								my social platforms.
 							</p>
 						</div>
 						<div className="flex space-x-6 md:space-x-12 py-0.5 items-center font-space">

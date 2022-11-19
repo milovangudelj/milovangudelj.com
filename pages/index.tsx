@@ -2,7 +2,14 @@ import type { GetStaticProps, NextPage } from "next";
 import { gql } from "graphql-request";
 import Image from "next/image";
 
-import { HeadMeta, Hourglass, Layout, ProjectCard } from "../components";
+import {
+	Container,
+	HeadMeta,
+	Hourglass,
+	Layout,
+	ProjectCard,
+	Section,
+} from "../components";
 import { hygraph } from "../lib/hygraph";
 
 import me from "../public/images/poly-me.png";
@@ -48,7 +55,7 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 			<HeadMeta metadata={meta} />
 			<section className="">
 				<main className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16">
-					<h1 className="text-h3-mobile md:text-h2-mobile xl:text-h2 2xl:text-h1">
+					<h1 className="text-d2-mobile md:text-d1-mobile xl:text-d1">
 						Web developer <br />
 						<span className="text-primary">/</span> UI designer
 					</h1>
@@ -58,11 +65,8 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 					</p>
 				</main>
 			</section>
-			<section
-				className="text-black bg-orange scroll-mt-[72px] md:scroll-mt-[88px]"
-				id="about"
-			>
-				<div className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-0 md:relative">
+			<Section id="about">
+				<Container className="md:space-y-0 md:relative">
 					<div className="flex justify-center md:absolute md:-top-16 md:right-16 xl:right-32">
 						<Hourglass>
 							<span className="absolute inset-0 left-4 border-b-2 overflow-hidden">
@@ -95,8 +99,8 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 							web development and UI/UX design.
 						</p>
 					</div>
-				</div>
-			</section>
+				</Container>
+			</Section>
 			<section
 				className="text-black bg-green scroll-mt-[72px] md:scroll-mt-[88px]"
 				id="work"

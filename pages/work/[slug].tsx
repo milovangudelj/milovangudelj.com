@@ -109,19 +109,19 @@ const CaseStudyPage = ({
 				/>
 				<div className="absolute left-0 right-0 bottom-0 h-20 md:h-28 xl:h-36 bg-gradient-to-t from-black to-black/0"></div>
 			</div> */}
-			<main className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-0 md:relative">
-				<div className="relative pb-16">
-					<h1 className="px-4 py-2 inline-block bg-lavender text-black text-body-lg xl:text-sub-heading-mobile">
+			<main className="max-w-8xl mx-auto grid grid-cols-6 py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-0 md:relative">
+				<div className="relative pb-16 col-span-4 col-start-2">
+					<h1 className="px-4 py-2 mb-4 inline-block bg-lavender text-black text-sub-heading-mobile">
 						{title}
 					</h1>
-					<span className="text-h3-mobile block md:text-h2-mobile xl:text-h2">
+					<span className="text-h1-mobile xl:text-h1 block">
 						{subtitle}
 					</span>
-					<p className="font-medium whitespace-pre-line text-body-lg text-white/75 max-w-[66ch] mb-4 mt-8">
+					<p className="font-medium whitespace-pre-line text-sub-heading-mobile text-white/75 max-w-[66ch] mb-4 mt-8">
 						{intro}
 					</p>
 				</div>
-				<div className="">
+				<div className="col-span-6 grid grid-cols-6">
 					<RichText
 						content={content.json}
 						references={content.references}
