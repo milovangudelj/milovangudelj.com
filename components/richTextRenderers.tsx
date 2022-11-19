@@ -3,15 +3,10 @@ import Image from "next/legacy/image";
 import Link from "next/link";
 
 const commonRenderers: NodeRendererType = {
-	a: ({ children, openInNewTab, href, rel, ...rest }) => {
+	a: ({ children, openInNewTab = false, href, ...rest }) => {
 		if (href?.match(/^https?:\/\/|^\/\//i)) {
 			return (
-				<a
-					href={href}
-					target={openInNewTab ? "_blank" : "_self"}
-					rel={rel || "noopener noreferrer"}
-					{...rest}
-				>
+				<a href={href} target="_blank" rel="noreferrer" {...rest}>
 					{children}
 				</a>
 			);
