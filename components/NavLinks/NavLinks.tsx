@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ComponentProps } from "react";
 
 const links = [
 	{
@@ -21,9 +22,9 @@ const links = [
 	},
 ];
 
-export const NavLinks = ({ className = "" }: { className?: string }) => {
+export const NavLinks = ({ className, ...props }: ComponentProps<"nav">) => {
 	return (
-		<nav className={className}>
+		<nav className={className} {...props}>
 			<ul className="md:flex">
 				{links.map((link) => (
 					<li

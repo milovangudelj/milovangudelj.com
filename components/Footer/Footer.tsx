@@ -1,7 +1,7 @@
 export const Footer = () => {
 	return (
 		<footer className="fixed bottom-0 w-full">
-			<div className="max-w-[1440px] text-body-sm p-4 md:px-16 w-full mx-auto flex justify-between items-center">
+			<div className="mx-auto flex w-full max-w-[1440px] items-center justify-between p-4 text-label-md md:px-16">
 				<span>Milovan Gudelj &copy; 2022</span>
 				<ul className="flex space-x-2 md:space-x-4">
 					<li>

@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
 	return (
-		<Html>
+		<Html className="h-fill">
 			<Head>
 				{/* Fonts */}
 				<link
@@ -51,7 +51,7 @@ export default function Document() {
 				/>
 				<meta name="theme-color" content="#000000"></meta>
 			</Head>
-			<body>
+			<body className="h-fill">
 				<Main />
 				<NextScript />
 			</body>

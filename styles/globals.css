@@ -19,6 +19,31 @@
 @tailwind utilities;
 
 @layer base {
+	.w-fill {
+		width: -webkit-fill-available;
+		width: -moz-available;
+	}
+	.min-w-fill {
+		min-width: -webkit-fill-available;
+		min-width: -moz-available;
+	}
+	.max-w-fill {
+		max-width: -webkit-fill-available;
+		max-width: -moz-available;
+	}
+	.h-fill {
+		height: -webkit-fill-available;
+		height: -moz-available;
+	}
+	.min-h-fill {
+		min-height: -webkit-fill-available;
+		min-height: -moz-available;
+	}
+	.max-h-fill {
+		max-height: -webkit-fill-available;
+		max-height: -moz-available;
+	}
+
 	h1,
 	h2,
 	h3,

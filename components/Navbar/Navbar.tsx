@@ -13,7 +13,8 @@ export const Navbar = () => {
 					milo
 				</Link>
 
-				{mobile ? <Hamburger /> : <NavLinks className="hidden md:block" />}
+				<Hamburger aria-hidden={!mobile} />
+				<NavLinks className="hidden md:block" aria-hidden={!mobile} />
 			</div>
 		</div>
 	);

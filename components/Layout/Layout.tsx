@@ -1,4 +1,9 @@
-import { ComponentPropsWithRef, useEffect } from "react";
+import {
+	ComponentPropsWithRef,
+	useEffect,
+	useLayoutEffect,
+	useState,
+} from "react";
 
 import { Navbar, Footer } from "../";
 import { useScroll } from "../../lib/scrollContext";
@@ -6,24 +11,36 @@ import { useScroll } from "../../lib/scrollContext";
 interface LayoutProps extends ComponentPropsWithRef<"div"> {}
 
 export const Layout = ({ children, ...props }: LayoutProps) => {
-	const { scrollable, scrollY } = useScroll();
+	const { scrollable } = useScroll();
+	const [height, setHeight] = useState<number>();
 
-	useEffect(() => {
-		let scrollHeight = document.body.scrollHeight;
-		let viewportHeight = window.innerHeight;
-	}, [scrollY]);
+	useLayoutEffect(() => {
+		const resized = () => {
+			setHeight(window.innerHeight);
+			document.documentElement.style.setProperty(
+				"--innerHeight",
+				`${window.innerHeight}px`
+			);
+		};
+		resized();
+
+		window.addEventListener("resize", resized);
+		() => {
+			window.removeEventListener("resize", resized);
+		};
+	}, []);
 
 	return (
 		<div
-			className={`h-screen w-screen scroll-smooth ${
-				scrollable ? "overflow-y-scroll" : "overflow-hidden"
+			className={`h-fill min-h-[var(--innerHeight)] scroll-smooth ${
+				scrollable
+					? "overflow-x-hidden overflow-y-scroll"
+					: "overflow-hidden"
 			} bg-black text-white`}
 			{...props}
 		>
-			<div className="relative z-[1] mb-[56px] bg-black">
-				<Navbar />
-				<div className="mx-[var(--scroll-margin-x)]">{children}</div>
-			</div>
+			<Navbar />
+			<div className="relative z-[1] mb-[58.25px] bg-black">{children}</div>
 			<Footer />
 		</div>
 	);

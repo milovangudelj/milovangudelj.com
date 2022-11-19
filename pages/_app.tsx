@@ -19,8 +19,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<WindowSizeProvider>
 			<ScrollProvider>
+				<style jsx global>
+					{`
+						#__next {
+							height: -webkit-fill-available;
+							height: -moz-available;
+						}
+					`}
+				</style>
 				<div
-					className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}
+					className={`${inter.variable} ${spaceGrotesk.variable} h-fill font-sans`}
 				>
 					<Component {...pageProps} />
 				</div>

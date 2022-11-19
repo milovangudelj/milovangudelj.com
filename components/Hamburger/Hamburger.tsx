@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { ComponentProps, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 import { NavLinks } from "../";
 import { useScroll } from "../../lib/scrollContext";
 
-export const Hamburger = () => {
+export const Hamburger = ({ className, ...props }: ComponentProps<"div">) => {
 	const [visible, setVisible] = useState<boolean>(false);
 	const { setScrollable } = useScroll();
 
@@ -14,28 +15,28 @@ export const Hamburger = () => {
 	};
 
 	return (
-		<div className="">
+		<div className={twMerge("md:hidden", className)} {...props}>
 			<div onClick={toggleMenu} className="space-y-1.5">
 				<span
-					className={`block w-8 h-0.5 bg-black origin-center will-change-transform transition-all ${
-						visible ? "rotate-45 translate-y-2" : "transform"
+					className={`block h-0.5 w-8 origin-center bg-black transition-all will-change-transform ${
+						visible ? "translate-y-2 rotate-45" : "transform"
 					}`}
 				></span>
 				<span
-					className={`block w-8 h-0.5 bg-black transition ${
+					className={`block h-0.5 w-8 bg-black transition ${
 						visible && "opacity-0"
 					}`}
 				></span>
 				<span
-					className={`block w-8 h-0.5 bg-black origin-center will-change-transform transition-all ${
-						visible ? "-rotate-45 -translate-y-2" : "transform"
+					className={`block h-0.5 w-8 origin-center bg-black transition-all will-change-transform ${
+						visible ? "-translate-y-2 -rotate-45" : "transform"
 					}`}
 				></span>
 			</div>
 			<div
 				className={`${
 					visible ? "block" : "hidden"
-				} absolute top-full right-0 w-full h-[calc(100vh-72px)] bg-dark-me`}
+				} absolute top-full right-0 h-[calc(var(--innerHeight)-65.69px)] w-full bg-dark-me`}
 			>
 				<NavLinks />
 			</div>

@@ -11,13 +11,11 @@ import {
 
 type ScrollProviderValue = {
 	scrollable: boolean;
-	scrollY: number;
 	setScrollable: Dispatch<SetStateAction<boolean>>;
 };
 
 const ScrollContext = createContext<ScrollProviderValue>({
 	scrollable: true,
-	scrollY: 0,
 	setScrollable: () => {},
 });
 
@@ -35,25 +33,20 @@ export const ScrollProvider = ({ children }: { children: ReactNode }) => {
 
 const useProvideScroll = (): ScrollProviderValue => {
 	const [scrollable, setScrollable] = useState<boolean>(true);
-	const [scrollY, setScrollY] = useState<number>(0);
 	const router = useRouter();
 
 	useEffect(() => {
 		const changeHandler = () => setScrollable(true);
-		const scrollHandler = () => setScrollY(window.scrollY);
 
 		router.events.on("routeChangeComplete", changeHandler);
-		window.addEventListener("scroll", scrollHandler);
 
 		return () => {
 			router.events.off("routeChangeComplete", changeHandler);
-			window.removeEventListener("scroll", scrollHandler);
 		};
 	}, []);
 
 	return {
 		scrollable,
-		scrollY,
 		setScrollable,
 	};
 };
