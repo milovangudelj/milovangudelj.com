@@ -28,14 +28,13 @@ export const NavLinks = ({ className = "" }: { className?: string }) => {
 				{links.map((link) => (
 					<li
 						key={link.key}
-						className="border-t-2 last:border-b-2 md:border-t-0 md:last:border-b-0 md:last:border-r-0 md:border-l-2 xl:last:border-r-2 border-black bg-black"
+						className="border-t-2 border-black bg-black last:border-b-2 md:border-t-0 md:border-l-2 md:last:border-b-0 md:last:border-r-0 xl:last:border-r-2"
 					>
-						<Link href={link.href} passHref>
-							<a
-								className={`${link.color} text-white w-full md:w-max px-8 py-6 inline-block text-sub-heading hover:-translate-x-1 hover:-translate-y-1 transition-all will-change-transform`}
-							>
-								{link.label}
-							</a>
+						<Link
+							href={link.href}
+							className={`${link.color} inline-block w-full px-8 py-6 text-sub-heading text-white transition-all will-change-transform hover:-translate-x-1 hover:-translate-y-1 md:w-max`}
+						>
+							{link.label}
 						</Link>
 					</li>
 				))}

@@ -135,10 +135,11 @@ const ProjectDescription = ({
 				references={description.references}
 			/>
 			{caseStudy && (
-				<Link href={`/work/${caseStudy.slug}`} passHref>
-					<a className="py-2 no-underline text-black px-4 inline-block border-2 bg-salmon hover:drop-shadow-brutal transition-all text-body-md font-bold tracking-wide">
-						Read case study ↗
-					</a>
+				<Link
+					href={`/work/${caseStudy.slug}`}
+					className="text-body-md inline-block border-2 bg-salmon py-2 px-4 font-bold tracking-wide text-black no-underline transition-all hover:drop-shadow-brutal"
+				>
+					Read case study ↗
 				</Link>
 			)}
 		</div>

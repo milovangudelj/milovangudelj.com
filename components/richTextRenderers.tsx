@@ -18,8 +18,8 @@ const commonRenderers: NodeRendererType = {
 		}
 
 		return (
-			<Link href={href ?? ""} passHref>
-				<a {...rest}>{children}</a>
+			<Link href={href ?? ""} {...rest}>
+				{children}
 			</Link>
 		);
 	},
