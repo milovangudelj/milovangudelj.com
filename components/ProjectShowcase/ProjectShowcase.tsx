@@ -159,8 +159,8 @@ const ProjectImage = ({
 }) => {
 	const { mobile } = useWindowSize();
 	return (
-		<div className="relative md:mb-0 xl:w-full order-first md:col-span-3 md:h-full xl:h-auto md:order-none">
-			<span className="absolute top-0 left-0 [writing-mode:vertical-lr] scale-[-1] -translate-x-full w-min py-2 bg-black text-white text-body-lg">
+		<div className="relative order-first md:order-none md:col-span-3 md:mb-0 md:h-full xl:h-auto xl:w-full">
+			<span className="absolute top-0 left-0 w-min -translate-x-full scale-[-1] bg-black py-2 text-body text-white [writing-mode:vertical-lr]">
 				{year}
 			</span>
 			{mobile && (
@@ -168,7 +168,7 @@ const ProjectImage = ({
 					<VisitButton href={href} />
 				</span>
 			)}
-			<span className="flex items-center justify-center w-full md:h-full xl:h-auto aspect-video md:aspect-none xl:aspect-video relative bg-black border-2 border-b md:border-b-2 md:border-l xl:border-l-2 drop-shadow-brutal md:drop-shadow-brutal-lg">
+			<span className="md:aspect-none relative flex aspect-video w-full items-center justify-center border-2 border-b bg-black drop-shadow-brutal md:h-full md:border-b-2 md:border-l md:drop-shadow-brutal-lg xl:aspect-video xl:h-auto xl:border-l-2">
 				<Image
 					src={image}
 					layout={"fill"}
@@ -177,7 +177,7 @@ const ProjectImage = ({
 					alt={`${title} website screenshot`}
 					title={`${title} website screenshot`}
 				/>
-				<span className="font-space text-body-lg text-white" aria-hidden>
+				<span className="font-space text-body text-white" aria-hidden>
 					Loading...
 				</span>
 			</span>

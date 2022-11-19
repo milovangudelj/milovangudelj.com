@@ -20,7 +20,7 @@ export const Layout = ({ children, ...props }: LayoutProps) => {
 			} bg-black text-white`}
 			{...props}
 		>
-			<div className="bg-black relative z-[1] mb-[52px]">
+			<div className="relative z-[1] mb-[56px] bg-black">
 				<Navbar />
 				<div className="mx-[var(--scroll-margin-x)]">{children}</div>
 			</div>

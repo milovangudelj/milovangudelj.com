@@ -69,18 +69,18 @@ const Work: NextPage<{ projects: Project[] }> = ({ projects }) => {
 	return (
 		<Layout>
 			<HeadMeta metadata={meta} />
-			<section className="text-black bg-green scroll-mt-[72px] md:scroll-mt-[88px]">
-				<main className="max-w-8xl mx-auto py-16 px-8 md:py-32 md:px-16 space-y-16 md:space-y-32">
-					<div className="space-y-8 md:space-y-0 relative">
+			<section className="scroll-mt-[72px] bg-green text-black md:scroll-mt-[88px]">
+				<main className="mx-auto max-w-8xl space-y-16 py-16 px-8 md:space-y-32 md:py-32 md:px-16">
+					<div className="relative space-y-8 md:space-y-0">
 						<h2 className="text-h3-mobile md:mb-8 md:text-h2-mobile xl:text-h2">
 							My work
 						</h2>
-						<p className="text-body-lg xl:max-w-[680px]">
+						<p className="text-body xl:max-w-[680px]">
 							In the past couple of years I&apos;ve had the opportunity
 							to work on a few diverse projects and demonstrate my
 							skills. Here are some of them.
 						</p>
-						<span className="absolute -top-16 right-0 xl:-top-0 xl:right-16 w-[65px] h-[64px] md:w-[130px] md:h-[128px] xl:w-[196.23px] xl:h-[192.2px]">
+						<span className="absolute -top-16 right-0 h-[64px] w-[65px] md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]">
 							<Image
 								src={smiley}
 								layout={"fill"}
