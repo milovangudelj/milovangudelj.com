@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 import { gql } from "graphql-request";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 import {
 	Container,

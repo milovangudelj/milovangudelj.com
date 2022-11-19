@@ -4,7 +4,7 @@ import { gql } from "graphql-request";
 import { getPlaiceholder } from "plaiceholder";
 
 import { hygraph } from "../../lib/hygraph";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { HeadMeta, Layout } from "../../components";
 import Link from "next/link";
 import { renderers } from "../../components/richTextRenderers";
