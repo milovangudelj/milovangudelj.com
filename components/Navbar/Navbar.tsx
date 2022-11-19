@@ -9,9 +9,10 @@ export const Navbar = () => {
 	return (
 		<div className="sticky top-0 z-10 bg-primary">
 			<div className="relative mx-auto flex w-full max-w-8xl items-center justify-between px-8 py-4 text-black md:p-0 md:pl-16 2xl:pl-0">
-				<span className="inline-block h-10 text-sub-heading">
-					<Link href="/">milo</Link>
-				</span>
+				<Link href="/" className="text-sub-heading">
+					milo
+				</Link>
+
 				{mobile ? <Hamburger /> : <NavLinks className="hidden md:block" />}
 			</div>
 		</div>
