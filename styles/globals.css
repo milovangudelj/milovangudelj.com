@@ -44,12 +44,28 @@
 		max-height: -moz-available;
 	}
 
+	.text-d1,
+	.text-d1-mobile,
+	.text-d2,
+	.text-d2-mobile,
 	h1,
+	.text-h1,
+	.text-h1-mobile,
 	h2,
+	.text-h2,
+	.text-h2-mobile,
 	h3,
+	.text-h3,
+	.text-h3-mobile,
 	h4,
+	.text-h4,
+	.text-h4-mobile,
 	h5,
+	.text-h5,
+	.text-h5-mobile,
 	h6,
+	.text-h6,
+	.text-h6-mobile,
 	.text-sub-heading,
 	.text-sub-heading-mobile {
 		@apply font-space;
