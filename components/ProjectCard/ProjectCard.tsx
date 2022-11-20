@@ -26,7 +26,7 @@ export const ProjectCard = ({ title, href, link, image }: ProjectCardProps) => {
 				<span className="text-sub-heading-mobile font-medium md:text-sub-heading">
 					{title} →
 				</span>
-				<span className="text-body-sm text-dark-me">{link}</span>
+				<span className="text-label-md text-dark-me">{link}</span>
 			</div>
 		</div>
 	);

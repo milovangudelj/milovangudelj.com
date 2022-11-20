@@ -44,7 +44,7 @@ module.exports = {
 			},
 			fontSize: {
 				d1: [
-					"111.44px",
+					"99.08px",
 					{
 						fontWeight: "700",
 						letterSpacing: "-1px",
@@ -52,7 +52,7 @@ module.exports = {
 					},
 				],
 				"d1-mobile": [
-					"92.87px",
+					"82.57px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -60,7 +60,7 @@ module.exports = {
 					},
 				],
 				d2: [
-					"92.87px",
+					"82.57px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -68,7 +68,7 @@ module.exports = {
 					},
 				],
 				"d2-mobile": [
-					"77.39px",
+					"68.81px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -76,7 +76,7 @@ module.exports = {
 					},
 				],
 				h1: [
-					"77.39px",
+					"68.81px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -84,7 +84,7 @@ module.exports = {
 					},
 				],
 				"h1-mobile": [
-					"64.49px",
+					"57.34px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -92,7 +92,7 @@ module.exports = {
 					},
 				],
 				h2: [
-					"64.49px",
+					"57.34px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -100,7 +100,7 @@ module.exports = {
 					},
 				],
 				"h2-mobile": [
-					"53.74px",
+					"47.78px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -108,7 +108,7 @@ module.exports = {
 					},
 				],
 				h3: [
-					"53.74px",
+					"47.78px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -116,7 +116,7 @@ module.exports = {
 					},
 				],
 				"h3-mobile": [
-					"44.78px",
+					"39.82px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -124,7 +124,7 @@ module.exports = {
 					},
 				],
 				h4: [
-					"44.78px",
+					"39.82px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -132,7 +132,7 @@ module.exports = {
 					},
 				],
 				"h4-mobile": [
-					"37.32px",
+					"33.18px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -140,7 +140,7 @@ module.exports = {
 					},
 				],
 				h5: [
-					"37.32px",
+					"33.18px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -148,7 +148,7 @@ module.exports = {
 					},
 				],
 				"h5-mobile": [
-					"31.1px",
+					"27.65px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -156,7 +156,7 @@ module.exports = {
 					},
 				],
 				h6: [
-					"31.1px",
+					"27.65px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -164,7 +164,7 @@ module.exports = {
 					},
 				],
 				"h6-mobile": [
-					"25.92px",
+					"23.04px",
 					{
 						fontWeight: "700",
 						letterSpacing: "normal",
@@ -172,19 +172,19 @@ module.exports = {
 					},
 				],
 				"sub-heading": [
-					"25.92px",
+					"23.04px",
 					{
 						fontWeight: "500",
 						letterSpacing: "normal",
-						lineHeight: "1.3",
+						lineHeight: "1.5",
 					},
 				],
 				"sub-heading-mobile": [
-					"21.6px",
+					"19.2px",
 					{
 						fontWeight: "500",
 						letterSpacing: "normal",
-						lineHeight: "1.3",
+						lineHeight: "1.5",
 					},
 				],
 				body: [
@@ -219,6 +219,20 @@ module.exports = {
 			dropShadow: {
 				brutal: "4px 4px 0 black",
 				"brutal-lg": "8px 8px 0 black",
+			},
+			animation: {
+				wiggle: "wiggle 2.4s ease-in-out infinite",
+				"wiggle-inv": "wiggle-inv 2.4s ease-in-out infinite",
+			},
+			keyframes: {
+				wiggle: {
+					"0%, 100%": { transform: "rotate(-4deg)" },
+					"50%": { transform: "rotate(4deg)" },
+				},
+				"wiggle-inv": {
+					"0%, 100%": { transform: "rotate(4deg)" },
+					"50%": { transform: "rotate(-4deg)" },
+				},
 			},
 		},
 	},
