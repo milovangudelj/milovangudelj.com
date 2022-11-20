@@ -10,7 +10,7 @@ const Pattern = ({ className }: ComponentProps<"svg">) => {
 			viewBox="0 0 321 321"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			className={twMerge("text-primary/30", className)}
+			className={twMerge("text-yellow/30", className)}
 		>
 			<line y1="0.5" x2="320" y2="0.5" stroke="currentColor" />
 			<line x1="320.5" y1="1" x2="320.5" y2="321" stroke="currentColor" />
@@ -28,9 +28,9 @@ const Pattern = ({ className }: ComponentProps<"svg">) => {
 
 export const CTA = () => {
 	return (
-		<Section className="relative overflow-hidden bg-blue text-white">
+		<Section className="relative overflow-hidden bg-lavender text-white">
 			<div className="absolute top-0 right-0 left-0 xl:left-auto xl:h-[640px] xl:w-[640px]">
-				<div className="absolute top-0 bottom-0 right-0 w-[320px] bg-gradient-to-r from-blue to-blue/0 xl:right-1/2"></div>
+				<div className="absolute top-0 bottom-0 right-0 w-[320px] bg-gradient-to-r from-lavender to-lavender/0 xl:right-1/2"></div>
 				<div className="grid grid-cols-1 place-items-end xl:grid-cols-2">
 					<Pattern className="hidden xl:inline-block" />
 					<Pattern className="hidden xl:inline-block" />
@@ -58,7 +58,7 @@ export const CTA = () => {
 					>
 						milovan.gudelj@gmail.com
 					</a>
-					<span className="text-primary drop-shadow-brutal">
+					<span className="text-yellow drop-shadow-brutal">
 						<svg
 							width="48"
 							height="48"

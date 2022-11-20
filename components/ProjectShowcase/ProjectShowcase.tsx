@@ -86,15 +86,15 @@ const ProjectDetails = ({
 }) => {
 	const { mobile } = useWindowSize();
 	return (
-		<div className="relative z-[1] md:z-auto xl:sticky xl:top-[152px] p-4 xl:p-8 md:col-span-2 border-2 border-dashed border-t [border-top:1px_solid_black] md:border-dashed md:border-r md:border-t-2 xl:border-r-2 space-y-4 md:space-y-6 bg-lavender drop-shadow-brutal md:drop-shadow-brutal-lg">
+		<div className="bg-lilla relative z-[1] space-y-4 border-2 border-t border-dashed p-4 drop-shadow-brutal [border-top:1px_solid_black] md:z-auto md:col-span-2 md:space-y-6 md:border-r md:border-t-2 md:border-dashed md:drop-shadow-brutal-lg xl:sticky xl:top-[152px] xl:border-r-2 xl:p-8">
 			<h3 className="text-h4-mobile md:text-sub-heading xl:text-h4">
 				{title}
 			</h3>
-			<span className="text-body inline-block text-dark-me truncate text-ellipsis overflow-hidden">
+			<span className="inline-block overflow-hidden truncate text-ellipsis text-body text-dark-me">
 				{link}
 			</span>
-			<div className="xl:flex xl:items-end xl:justify-between md:space-y-6 xl:space-y-0">
-				<ul className="list-disc list-inside">
+			<div className="md:space-y-6 xl:flex xl:items-end xl:justify-between xl:space-y-0">
+				<ul className="list-inside list-disc">
 					{categories.map((category, idx) => (
 						<li key={`cat_${idx}`}>{categoryMap[category]}</li>
 					))}

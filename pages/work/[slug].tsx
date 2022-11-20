@@ -1,13 +1,9 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { RichText } from "@graphcms/rich-text-react-renderer";
 import { gql } from "graphql-request";
 import { getPlaiceholder } from "plaiceholder";
 
 import { hygraph } from "../../lib/hygraph";
-import Image from "next/legacy/image";
 import { CS, HeadMeta, Layout } from "../../components";
-import Link from "next/link";
-import { renderers } from "../../components/richTextRenderers";
 
 const GET_SLUGS = gql`
 	{
@@ -21,8 +17,11 @@ const GET_DATA = gql`
 	query GetData($slug: String!) {
 		caseStudy(where: { slug: $slug }) {
 			title
+			color
 			subtitle
-			intro
+			intro {
+				raw
+			}
 			cover {
 				id
 				url
@@ -42,6 +41,12 @@ const GET_DATA = gql`
 						height
 						alt
 						caption
+						__typename
+					}
+					... on CsOverline {
+						id
+						content
+						__typename
 					}
 				}
 			}
@@ -65,8 +70,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		slug: params?.slug,
 	});
 
-	const images = caseStudy.content.references.filter((asset: any) =>
-		asset.mimeType.includes("image")
+	const images = caseStudy.content.references.filter(
+		(asset: any) =>
+			asset.__typename === "Asset" && asset.mimeType.includes("image")
 	);
 
 	await Promise.all(
@@ -84,6 +90,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 const CaseStudyPage = ({
 	slug,
 	title,
+	color,
 	subtitle,
 	intro,
 	cover,
@@ -100,7 +107,13 @@ const CaseStudyPage = ({
 		<Layout>
 			<HeadMeta metadata={meta} />
 			<CS>
-				<CS.Header title={title} subtitle={subtitle} intro={intro} />
+				<CS.Header
+					title={title}
+					color={color}
+					subtitle={subtitle}
+					intro={intro}
+					cover={cover}
+				/>
 				<CS.Content content={content} />
 			</CS>
 		</Layout>

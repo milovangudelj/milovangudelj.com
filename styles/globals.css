@@ -78,6 +78,6 @@
 
 	/* Handle on hover */
 	::-webkit-scrollbar-thumb:hover {
-		@apply bg-primary;
+		@apply bg-yellow;
 	}
 }

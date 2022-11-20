@@ -18,11 +18,11 @@ export const Content = ({
 	className,
 }: ComponentProps<"div"> & { content: CSContentTypeWithEmbeds }) => {
 	return (
-		<div className={twMerge("col-span-6 grid grid-cols-6", className)}>
+		<div className={twMerge("col-span-5 grid grid-cols-5", className)}>
 			<RichText
 				content={content.json}
 				references={content.references}
-				renderers={renderers("caseStudy")}
+				renderers={renderers("csBody")}
 			/>
 		</div>
 	);

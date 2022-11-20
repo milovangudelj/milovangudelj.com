@@ -18,7 +18,7 @@ const links = [
 		key: "li_03",
 		label: "contact",
 		href: "/contact",
-		color: "bg-blue",
+		color: "bg-lavender",
 	},
 ];
 

@@ -58,7 +58,7 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 				<main className="mx-auto max-w-8xl space-y-16 py-16 px-8 md:py-32 md:px-16">
 					<h1 className="text-d2-mobile md:text-d1-mobile xl:text-d1">
 						Web developer <br />
-						<span className="text-primary">/</span> UI designer
+						<span className="text-yellow">/</span> UI designer
 					</h1>
 					<p className="text-sub-heading-mobile md:text-sub-heading xl:max-w-[36ch]">
 						Hi, I&apos;m Milo. I design and develop engaging websites and

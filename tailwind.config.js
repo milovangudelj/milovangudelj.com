@@ -8,14 +8,15 @@ module.exports = {
 	],
 	theme: {
 		colors: {
-			primary: "#FFC700",
+			yellow: "#FFC700",
 			orange: "#F14E1C",
 			green: "#0FAA58",
-			blue: "#5552FE",
-			lavender: "#C6B9FF",
+			lavender: "#5552FE",
+			lilla: "#C6B9FF",
 			purple: "#A25AFF",
 			salmon: "#FF8575",
-			cyan: "#689BF9",
+			"light-cyan": "#689BF9",
+			"light-green": "#B1EBD3",
 			dark: {
 				he: "rgba(0, 0, 0, .87)",
 				me: "rgba(0, 0, 0, .60)",

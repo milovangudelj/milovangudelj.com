@@ -1,6 +1,7 @@
 import { NodeRendererType } from "@graphcms/rich-text-react-renderer";
 import Image from "next/legacy/image";
 import Link from "next/link";
+import React from "react";
 
 const commonRenderers: NodeRendererType = {
 	a: ({ children, openInNewTab = false, href, ...rest }) => {
@@ -20,47 +21,66 @@ const commonRenderers: NodeRendererType = {
 	},
 };
 
-const caseStudyRenderers: NodeRendererType = {
+const csIntroRenderers: NodeRendererType = {
 	class: ({ children, className }) => (
-		<div className={`col-span-4 col-start-2 ${className}`}>{children}</div>
+		<div className={`col-span-3 col-start-2 ${className}`}>{children}</div>
+	),
+	p: ({ children }) => (
+		<p className="mb-8 whitespace-pre-line text-sub-heading-mobile text-white/80">
+			{children}
+		</p>
+	),
+};
+
+const csBodyRenderers: NodeRendererType = {
+	class: ({ children, className }) => (
+		<>
+			{React.Children.map(children, (child) => {
+				if (React.isValidElement<HTMLElement>(child)) {
+					return React.cloneElement(child, {
+						className: `${child.props.className} ${className}`,
+					});
+				}
+			})}
+		</>
 	),
 	h1: ({ children }) => (
-		<h1 className="col-span-4 col-start-2 text-h1-mobile xl:text-h1">
+		<h1 className="col-span-3 col-start-2 mb-8 text-h1-mobile xl:text-h1">
 			{children}
 		</h1>
 	),
 	h2: ({ children }) => (
-		<h2 className="col-span-4 col-start-2 text-h2-mobile xl:text-h2">
+		<h2 className="col-span-3 col-start-2 mb-8 text-h2-mobile xl:text-h2">
 			{children}
 		</h2>
 	),
 	h3: ({ children }) => (
-		<h3 className="col-span-4 col-start-2 text-h3-mobile xl:text-h3">
+		<h3 className="col-span-3 col-start-2 mb-8 text-h3-mobile xl:text-h3">
 			{children}
 		</h3>
 	),
 	h4: ({ children }) => (
-		<h4 className="col-span-4 col-start-2 text-h4-mobile xl:text-h4">
+		<h4 className="col-span-3 col-start-2 mb-8 text-h4-mobile xl:text-h4">
 			{children}
 		</h4>
 	),
 	h5: ({ children }) => (
-		<h5 className="col-span-4 col-start-2 text-h5-mobile xl:text-h5">
+		<h5 className="col-span-3 col-start-2 mb-8 text-h5-mobile xl:text-h5">
 			{children}
 		</h5>
 	),
 	h6: ({ children }) => (
-		<h6 className="col-span-4 col-start-2 text-h6-mobile xl:text-h6">
+		<h6 className="col-span-3 col-start-2 mb-8 text-h6-mobile xl:text-h6">
 			{children}
 		</h6>
 	),
 	p: ({ children }) => (
-		<p className="col-span-4 col-start-2 text-body">{children}</p>
+		<p className="col-span-3 col-start-2 mb-8 text-body">{children}</p>
 	),
 	Asset: {
 		image: ({ url, alt, caption, width, height, blurDataUrl }) => {
 			return (
-				<div className="h-80 relative col-span-6">
+				<figure className="relative col-span-6 mt-8 mb-16 h-96">
 					<Image
 						src={url}
 						alt={alt}
@@ -71,19 +91,32 @@ const caseStudyRenderers: NodeRendererType = {
 						placeholder={blurDataUrl ? "blur" : "empty"}
 						blurDataURL={blurDataUrl}
 					/>
-					<span>{caption ?? alt}</span>
-				</div>
+					<figcaption className="absolute top-full left-0 text-label-md text-white/60">
+						{caption ?? alt}
+					</figcaption>
+				</figure>
 			);
 		},
 	},
+	embed: {
+		CsOverline: ({ content }) => (
+			<span className="col-span-3 col-start-2 mb-8 inline-block text-sub-heading-mobile text-yellow">
+				{content}
+			</span>
+		),
+	},
 };
 
-export const renderers = (type: "project" | "caseStudy"): NodeRendererType => {
+export const renderers = (
+	type: "project" | "csBody" | "csIntro"
+): NodeRendererType => {
 	switch (type) {
 		case "project":
 			return commonRenderers;
-		case "caseStudy":
-			return { ...commonRenderers, ...caseStudyRenderers };
+		case "csIntro":
+			return { ...commonRenderers, ...csIntroRenderers };
+		case "csBody":
+			return { ...commonRenderers, ...csBodyRenderers };
 		default:
 			return commonRenderers;
 	}
