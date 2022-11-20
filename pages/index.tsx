@@ -9,11 +9,12 @@ import {
 	Layout,
 	ProjectCard,
 	Section,
+	Smiley,
+	Star,
 } from "../components";
 import { hygraph } from "../lib/hygraph";
 
 import me from "../public/images/poly-me.png";
-import smiley from "../public/images/smiley.svg";
 
 import { Project } from "./work";
 import { CTA } from "../components/sections";
@@ -55,8 +56,8 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 		<Layout>
 			<HeadMeta metadata={meta} />
 			<section className="">
-				<main className="mx-auto max-w-8xl space-y-16 py-16 px-8 md:py-32 md:px-16">
-					<h1 className="text-d2-mobile md:text-d1-mobile xl:text-d1">
+				<main className="relative mx-auto max-w-8xl py-16 px-8 md:py-32 md:px-16">
+					<h1 className="mb-16 text-d2-mobile md:text-d1-mobile xl:text-d1">
 						Web developer <br />
 						<span className="text-yellow">/</span> UI designer
 					</h1>
@@ -64,6 +65,24 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 						Hi, I&apos;m Milo. I design and develop engaging websites and
 						delightful digital experiences.
 					</p>
+					<div className="absolute top-0 right-0 mt-16 mr-16 h-[180px] w-[117px] -translate-y-1/3 scale-50 md:top-1/2 md:mt-0 md:-translate-y-1/2 md:scale-75 xl:mr-48 xl:scale-100">
+						<Star
+							delay={0.3}
+							className="absolute top-[99px] left-[99px]"
+						/>
+						<Star
+							width={36}
+							height={60}
+							delay={0.6}
+							animation="inverse"
+							className="absolute top-0 left-[63px]"
+						/>
+						<Star
+							width={54}
+							height={90}
+							className="absolute top-[90px] left-0"
+						/>
+					</div>
 				</main>
 			</section>
 			<Section>
@@ -113,14 +132,7 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 							to work on a few diverse projects and demonstrate my
 							skills. Here are some of them.
 						</p>
-						<span className="absolute -top-16 right-0 h-[64px] w-[65px] md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]">
-							<Image
-								src={smiley}
-								layout={"fill"}
-								objectFit={"cover"}
-								alt="Smile emoji sticker"
-							/>
-						</span>
+						<Smiley className="absolute -top-16 right-0 h-[64px] w-[65px] text-light-cyan md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]" />
 					</div>
 					<div className="relative">
 						<ul className="scrollbar-hidden snap -mx-8 flex snap-x flex-nowrap overflow-x-auto md:-mx-16 xl:mx-0 xl:space-x-16">

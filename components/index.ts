@@ -10,3 +10,5 @@ export * from "./HeadMeta";
 export * from "./Section";
 export * from "./Container";
 export * from "./CS";
+export * from "./Star";
+export * from "./Smiley";
