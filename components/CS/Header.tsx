@@ -1,6 +1,6 @@
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { EmbedReferences, RichTextContent } from "@graphcms/rich-text-types";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 import { renderers } from "../richTextRenderers";
@@ -50,7 +50,7 @@ export const Header = ({
 			>
 				{title}
 			</h1>
-			<span className="mb-8 block font-space text-h1-mobile xl:text-h1">
+			<span className="mb-8 block text-h1-mobile xl:text-h1">
 				{subtitle}
 			</span>
 			<RichText content={intro.raw} renderers={renderers("csIntro")} />
