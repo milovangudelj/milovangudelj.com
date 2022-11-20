@@ -100,7 +100,7 @@ const csBodyRenderers: NodeRendererType = {
 	},
 	embed: {
 		CsOverline: ({ content }) => (
-			<span className="col-span-3 col-start-2 mb-8 inline-block text-sub-heading-mobile text-yellow">
+			<span className="col-span-3 col-start-2 mb-8 inline-block text-sub-heading-mobile text-green">
 				{content}
 			</span>
 		),
