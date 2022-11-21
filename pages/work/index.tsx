@@ -1,11 +1,8 @@
 import { GetStaticProps, NextPage } from "next";
 import { gql } from "graphql-request";
-import Image from "next/legacy/image";
 
 import { hygraph } from "../../lib/hygraph";
-import { HeadMeta, Layout, ProjectShowcase } from "../../components";
-
-import smiley from "../../public/images/smiley.svg";
+import { HeadMeta, Layout, ProjectShowcase, Smiley } from "../../components";
 
 export interface Project {
 	id: string;
@@ -80,14 +77,7 @@ const Work: NextPage<{ projects: Project[] }> = ({ projects }) => {
 							to work on a few diverse projects and demonstrate my
 							skills. Here are some of them.
 						</p>
-						<span className="absolute -top-16 right-0 h-[64px] w-[65px] md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]">
-							<Image
-								src={smiley}
-								layout={"fill"}
-								objectFit={"cover"}
-								alt="Smile emoji sticker"
-							/>
-						</span>
+						<Smiley className="absolute -top-16 right-0 h-[64px] w-[65px] text-light-cyan md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]" />
 					</div>
 					<div className="">
 						<ul className="space-y-32 xl:space-y-40">
