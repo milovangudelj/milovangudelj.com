@@ -1,14 +1,7 @@
 import Image from "next/legacy/image";
 
-import {
-	HeadMeta,
-	Hourglass,
-	Layout,
-	NowPlaying,
-	Tracks as TopTracks,
-} from "../components";
-
-import me from "../public/images/poly-me.png";
+import { HeadMeta, Layout, Tracks as TopTracks } from "../components";
+import { AboutSection } from "../components/sections";
 
 const meta = {
 	title: "Milovan Gudelj - About me",
@@ -22,42 +15,7 @@ const About = () => {
 	return (
 		<Layout>
 			<HeadMeta metadata={meta} />
-			<section className="scroll-mt-[72px] bg-orange text-black md:scroll-mt-[88px]">
-				<main className="mx-auto max-w-8xl space-y-16 py-16 px-8 md:relative md:space-y-0 md:py-32 md:px-16">
-					<div className="flex justify-center md:absolute md:top-32 md:right-16 md:rotate-12 xl:right-32">
-						<Hourglass>
-							<span className="absolute inset-0 left-4 bottom-0.5 overflow-hidden">
-								<Image
-									src={me}
-									layout={"fill"}
-									objectPosition={"top left"}
-									objectFit={"cover"}
-									alt={"My profile picture"}
-								/>
-							</span>
-						</Hourglass>
-					</div>
-					<div className="space-y-8">
-						<h1 className="text-d2-mobile md:text-d1-mobile xl:text-d1">
-							About me
-						</h1>
-						<p className="text-body xl:max-w-[680px]">
-							I&apos;m a computer science student really passionate about
-							web development and UI/UX design. I love seeing a simple
-							yet empowerig User Interface and a great User Experience.
-						</p>
-						<p className="text-body xl:max-w-[680px]">
-							I started building websites about 4 years ago and I fell in
-							love with it. At the same time I also began experimenting
-							with graphic design and making posters.
-						</p>
-						<p className="text-body xl:max-w-[680px]">
-							Slowly but surely I made my way into the wonderful world of
-							web development and UI/UX design.
-						</p>
-					</div>
-				</main>
-			</section>
+			<AboutSection standAlone />
 		</Layout>
 	);
 };

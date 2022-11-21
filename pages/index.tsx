@@ -1,13 +1,10 @@
 import type { GetStaticProps, NextPage } from "next";
 import { gql } from "graphql-request";
-import Image from "next/legacy/image";
 
 import {
 	Container,
 	HeadMeta,
-	Hourglass,
 	Layout,
-	NowPlaying,
 	ProjectCard,
 	Section,
 	Smiley,
@@ -15,10 +12,8 @@ import {
 } from "../components";
 import { hygraph } from "../lib/hygraph";
 
-import me from "../public/images/poly-me.png";
-
 import { Project } from "./work";
-import { CTA } from "../components/sections";
+import { AboutSection, CTA } from "../components/sections";
 
 const QUERY = gql`
 	{
@@ -53,9 +48,6 @@ const meta = {
 const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 	projects,
 }) => {
-	const experienceYears =
-		new Date().getFullYear() - new Date(2018, 10).getFullYear();
-
 	return (
 		<Layout>
 			<HeadMeta metadata={meta} />
@@ -89,47 +81,7 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 					</div>
 				</main>
 			</section>
-			<Section>
-				<Container className="md:relative md:space-y-0">
-					<div className="flex justify-center md:absolute md:-top-16 md:right-16 xl:right-32">
-						<Hourglass>
-							<span className="absolute inset-0 left-4 overflow-hidden border-b-2">
-								<Image
-									src={me}
-									layout={"fill"}
-									objectPosition={"top left"}
-									objectFit={"cover"}
-									alt={"My profile picture"}
-								/>
-							</span>
-						</Hourglass>
-					</div>
-					<div>
-						<div className="mb-16 space-y-8">
-							<h2 className="text-h1-mobile md:text-d2-mobile xl:text-d2">
-								About me
-							</h2>
-							<p className="text-body xl:max-w-[680px]">
-								I&apos;m a computer science student really passionate
-								about web development and UI/UX design. I love seeing a
-								simple yet empowerig User Interface and a great User
-								Experience.
-							</p>
-							<p className="text-body xl:max-w-[680px]">
-								I started building websites about {experienceYears}{" "}
-								years ago and I fell in love with it. At the same time I
-								also began experimenting with graphic design and making
-								posters.
-							</p>
-							<p className="text-body xl:max-w-[680px]">
-								Slowly but surely I made my way into the wonderful world
-								of web development and UI/UX design.
-							</p>
-						</div>
-						<NowPlaying />
-					</div>
-				</Container>
-			</Section>
+			<AboutSection />
 			<Section className="bg-green">
 				<Container className="md:space-y-32">
 					<div className="relative space-y-8 md:space-y-0">
