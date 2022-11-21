@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
 	return (
-		<Html className="h-fill">
+		<Html className="h-fill" lang="en">
 			<Head>
 				{/* Fonts */}
 				<link
