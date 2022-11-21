@@ -13,7 +13,7 @@ export const ProjectCard = ({ title, href, link, image }: ProjectCardProps) => {
 		<div className="space-y-8 md:space-y-[26px]">
 			<Link
 				href={href}
-				className="relative inline-block aspect-video h-[150px] cursor-pointer border-2 bg-black drop-shadow-brutal drop-shadow-brutal-lg md:h-[300px]"
+				className="relative inline-block aspect-video h-[150px] cursor-pointer border-2 bg-black drop-shadow-brutal md:h-[300px] xl:drop-shadow-brutal-lg"
 			>
 				<Image
 					src={image}

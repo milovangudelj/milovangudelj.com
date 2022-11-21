@@ -223,6 +223,7 @@ module.exports = {
 			animation: {
 				wiggle: "wiggle 2.4s ease-in-out infinite",
 				"wiggle-inv": "wiggle-inv 2.4s ease-in-out infinite",
+				stretch: "stretch 2.4s ease-in-out infinite",
 			},
 			keyframes: {
 				wiggle: {
@@ -232,6 +233,10 @@ module.exports = {
 				"wiggle-inv": {
 					"0%, 100%": { transform: "rotate(4deg)" },
 					"50%": { transform: "rotate(-4deg)" },
+				},
+				stretch: {
+					"0%, 100%": { transform: "scaleY(1)" },
+					"50%": { transform: "scaleY(.5)" },
 				},
 			},
 		},

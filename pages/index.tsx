@@ -7,6 +7,7 @@ import {
 	HeadMeta,
 	Hourglass,
 	Layout,
+	NowPlaying,
 	ProjectCard,
 	Section,
 	Smiley,
@@ -52,6 +53,9 @@ const meta = {
 const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 	projects,
 }) => {
+	const experienceYears =
+		new Date().getFullYear() - new Date(2018, 10).getFullYear();
+
 	return (
 		<Layout>
 			<HeadMeta metadata={meta} />
@@ -100,24 +104,29 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 							</span>
 						</Hourglass>
 					</div>
-					<div className="space-y-8">
-						<h2 className="text-h1-mobile md:text-d2-mobile xl:text-d2">
-							About me
-						</h2>
-						<p className="text-body xl:max-w-[680px]">
-							I&apos;m a computer science student really passionate about
-							web development and UI/UX design. I love seeing a simple
-							yet empowerig User Interface and a great User Experience.
-						</p>
-						<p className="text-body xl:max-w-[680px]">
-							I started building websites about 4 years ago and I fell in
-							love with it. At the same time I also began experimenting
-							with graphic design and making posters.
-						</p>
-						<p className="text-body xl:max-w-[680px]">
-							Slowly but surely I made my way into the wonderful world of
-							web development and UI/UX design.
-						</p>
+					<div>
+						<div className="mb-16 space-y-8">
+							<h2 className="text-h1-mobile md:text-d2-mobile xl:text-d2">
+								About me
+							</h2>
+							<p className="text-body xl:max-w-[680px]">
+								I&apos;m a computer science student really passionate
+								about web development and UI/UX design. I love seeing a
+								simple yet empowerig User Interface and a great User
+								Experience.
+							</p>
+							<p className="text-body xl:max-w-[680px]">
+								I started building websites about {experienceYears}{" "}
+								years ago and I fell in love with it. At the same time I
+								also began experimenting with graphic design and making
+								posters.
+							</p>
+							<p className="text-body xl:max-w-[680px]">
+								Slowly but surely I made my way into the wonderful world
+								of web development and UI/UX design.
+							</p>
+						</div>
+						<NowPlaying />
 					</div>
 				</Container>
 			</Section>
