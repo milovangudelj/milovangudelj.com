@@ -12,3 +12,6 @@ export * from "./Container";
 export * from "./CS";
 export * from "./Star";
 export * from "./Smiley";
+export * from "./Track";
+export * from "./TopTracks";
+export * from "./NowPlaying";

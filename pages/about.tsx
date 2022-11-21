@@ -1,6 +1,12 @@
 import Image from "next/legacy/image";
 
-import { HeadMeta, Hourglass, Layout } from "../components";
+import {
+	HeadMeta,
+	Hourglass,
+	Layout,
+	NowPlaying,
+	Tracks as TopTracks,
+} from "../components";
 
 import me from "../public/images/poly-me.png";
 
