@@ -46,7 +46,7 @@ export const NowPlaying = () => {
 				<div className="flex h-14 w-full items-center truncate bg-green py-2 px-4 text-sub-heading-mobile md:text-sub-heading">
 					{data?.songUrl ? (
 						<a
-							className="flex-shrink truncate"
+							className="w-fit max-w-[50%] flex-none truncate"
 							href={data.songUrl}
 							target="_blank"
 							rel="noopener noreferrer"
