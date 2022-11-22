@@ -20,7 +20,6 @@ export const NowPlaying = () => {
 							src={data.albumImageUrl}
 							alt={data.album}
 							className="pointer-events-none absolute inset-0 object-cover"
-							layout="fill"
 						/>
 						<div
 							aria-hidden
