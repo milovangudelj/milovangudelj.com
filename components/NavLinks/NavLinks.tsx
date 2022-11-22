@@ -45,3 +45,4 @@ export const NavLinks = forwardRef<HTMLElement>(
 		);
 	}
 );
+NavLinks.displayName = "NavLinks";
