@@ -19,6 +19,8 @@ export const NowPlaying = () => {
 						<Image
 							src={data.albumImageUrl}
 							alt={data.album}
+							width={56}
+							height={56}
 							className="pointer-events-none absolute inset-0 object-cover"
 						/>
 						<div
