@@ -1,5 +1,11 @@
 import { useRouter } from "next/router";
-import { ComponentProps, useState } from "react";
+import {
+	ComponentProps,
+	LegacyRef,
+	MouseEventHandler,
+	useRef,
+	useState,
+} from "react";
 import { twMerge } from "tailwind-merge";
 
 import { NavLinks } from "../";
@@ -8,10 +14,18 @@ import { useScroll } from "../../lib/scrollContext";
 export const Hamburger = ({ className, ...props }: ComponentProps<"div">) => {
 	const [visible, setVisible] = useState<boolean>(false);
 	const { setScrollable } = useScroll();
+	const linksRef = useRef<HTMLElement>(null);
 
 	const toggleMenu = () => {
 		setVisible((s) => !s);
 		setScrollable((s) => !s);
+	};
+
+	const menuClicked: MouseEventHandler<HTMLDivElement> = (e) => {
+		console.log({ target: e.target, current: linksRef.current });
+
+		if (linksRef.current && !linksRef.current.contains(e.target as Node))
+			toggleMenu();
 	};
 
 	return (
@@ -37,8 +51,9 @@ export const Hamburger = ({ className, ...props }: ComponentProps<"div">) => {
 				className={`${
 					visible ? "block" : "hidden"
 				} absolute top-full right-0 h-[calc(var(--innerHeight)-65.69px)] w-full bg-dark-me`}
+				onClick={menuClicked}
 			>
-				<NavLinks />
+				<NavLinks ref={linksRef} />
 			</div>
 		</div>
 	);
