@@ -1,12 +1,23 @@
+import { useState } from "react";
 import Image from "next/image";
 import useSWR from "swr";
 import { SpotifyLogo } from "phosphor-react";
 
 import fetcher from "../../lib/fetcher";
 import { NowPlayingSong } from "../../lib/types";
+import { useIsomorphicLayoutEffect } from "../../utils/useIsomorphicLayoutEffect";
 
 export const NowPlaying = () => {
 	const { data } = useSWR<NowPlayingSong>("/api/now-playing", fetcher);
+	const [titleWidth, setTitleWidth] = useState(0);
+	const [artistWidth, setArtistWidth] = useState(0);
+
+	useIsomorphicLayoutEffect(() => {
+		if (!data) return;
+
+		setTitleWidth(data.title.length);
+		setArtistWidth(data.artist.length);
+	}, [data?.title, data?.artist]);
 
 	return (
 		<div>
@@ -43,10 +54,14 @@ export const NowPlaying = () => {
 						<SpotifyLogo size={40} />
 					</div>
 				)}
-				<div className="flex h-14 w-full items-center truncate bg-green py-2 px-4 text-sub-heading-mobile md:text-sub-heading">
+				<div className="flex h-14 items-center overflow-hidden bg-green py-2 px-4 text-sub-heading-mobile md:text-sub-heading">
 					{data?.songUrl ? (
 						<a
-							className="w-fit max-w-[50%] flex-none truncate"
+							className={`${
+								titleWidth < artistWidth
+									? "w-fit max-w-[50%] flex-none"
+									: "flex-shrink"
+							} truncate`}
 							href={data.songUrl}
 							target="_blank"
 							rel="noopener noreferrer"
@@ -59,7 +74,11 @@ export const NowPlaying = () => {
 					)}
 					<span className="mx-4 text-black/60">{" - "}</span>
 					<p
-						className="flex-shrink truncate text-black/60"
+						className={`${
+							artistWidth < titleWidth
+								? "w-fit max-w-[50%] flex-none"
+								: "flex-shrink"
+						} truncate text-black/60`}
 						title={data?.artist}
 					>
 						{data?.artist ?? "Spotify"}
