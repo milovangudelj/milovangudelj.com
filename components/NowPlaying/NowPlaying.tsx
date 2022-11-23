@@ -73,16 +73,23 @@ export const NowPlaying = () => {
 						<p>Not playing</p>
 					)}
 					<span className="mx-4 text-black/60">{" - "}</span>
-					<p
-						className={`${
-							artistWidth < titleWidth
-								? "w-fit max-w-[50%] flex-none"
-								: "flex-shrink"
-						} truncate text-black/60`}
-						title={data?.artist}
-					>
-						{data?.artist ?? "Spotify"}
-					</p>
+					{data?.artist ? (
+						<a
+							className={`${
+								artistWidth < titleWidth
+									? "w-fit max-w-[50%] flex-none"
+									: "flex-shrink"
+							} truncate text-black/60`}
+							href={`https://open.spotify.com/artist/${data.artistId}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							title={data.artist}
+						>
+							{data.artist}
+						</a>
+					) : (
+						<p className="text-black/60">Spotify</p>
+					)}
 				</div>
 			</div>
 		</div>

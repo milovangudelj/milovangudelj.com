@@ -33,6 +33,7 @@ export default async function handler(req: NextRequest) {
 	const artist = song.item.artists
 		.map((_artist: any) => _artist.name)
 		.join(", ");
+	const artistId = song.item.artists[0].id;
 	const album = song.item.album.name;
 	const albumImageUrl = song.item.album.images[0].url;
 	const songUrl = song.item.external_urls.spotify;
@@ -42,6 +43,7 @@ export default async function handler(req: NextRequest) {
 			album,
 			albumImageUrl,
 			artist,
+			artistId,
 			isPlaying,
 			songUrl,
 			title,
