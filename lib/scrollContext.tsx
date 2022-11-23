@@ -43,7 +43,7 @@ const useProvideScroll = (): ScrollProviderValue => {
 		return () => {
 			router.events.off("routeChangeComplete", changeHandler);
 		};
-	}, []);
+	}, [router.events]);
 
 	return {
 		scrollable,
