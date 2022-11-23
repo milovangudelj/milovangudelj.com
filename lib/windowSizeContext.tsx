@@ -1,12 +1,5 @@
-import {
-	createContext,
-	ReactNode,
-	useContext,
-	useLayoutEffect,
-	useState,
-} from "react";
-const useBrowserLayoutEffect =
-	typeof window !== "undefined" ? useLayoutEffect : () => {};
+import { createContext, ReactNode, useContext, useState } from "react";
+import { useIsomorphicLayoutEffect } from "../utils/useIsomorphicLayoutEffect";
 
 type WindowSizeProviderValue = {
 	size: {
@@ -46,7 +39,7 @@ const useProvideWindowSize = (): WindowSizeProviderValue => {
 	const [tablet, setTablet] = useState<boolean>(false);
 	const [desktop, setDesktop] = useState<boolean>(true);
 
-	useBrowserLayoutEffect(() => {
+	useIsomorphicLayoutEffect(() => {
 		const resized = () => {
 			let w = window.innerWidth;
 			let h = window.innerHeight;

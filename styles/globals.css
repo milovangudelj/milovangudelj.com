@@ -20,28 +20,22 @@
 
 @layer base {
 	.w-fill {
-		width: -webkit-fill-available;
-		width: -moz-available;
+		width: stretch;
 	}
 	.min-w-fill {
-		min-width: -webkit-fill-available;
-		min-width: -moz-available;
+		min-width: stretch;
 	}
 	.max-w-fill {
-		max-width: -webkit-fill-available;
-		max-width: -moz-available;
+		max-width: stretch;
 	}
 	.h-fill {
-		height: -webkit-fill-available;
-		height: -moz-available;
+		height: stretch;
 	}
 	.min-h-fill {
-		min-height: -webkit-fill-available;
-		min-height: -moz-available;
+		min-height: stretch;
 	}
 	.max-h-fill {
-		max-height: -webkit-fill-available;
-		max-height: -moz-available;
+		max-height: stretch;
 	}
 
 	.text-d1,

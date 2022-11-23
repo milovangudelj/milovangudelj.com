@@ -1,12 +1,8 @@
-import {
-	ComponentPropsWithRef,
-	useEffect,
-	useLayoutEffect,
-	useState,
-} from "react";
+import { ComponentPropsWithRef, useState } from "react";
 
 import { Navbar, Footer } from "../";
 import { useScroll } from "../../lib/scrollContext";
+import { useIsomorphicLayoutEffect } from "../../utils/useIsomorphicLayoutEffect";
 
 interface LayoutProps extends ComponentPropsWithRef<"div"> {}
 
@@ -14,7 +10,7 @@ export const Layout = ({ children, ...props }: LayoutProps) => {
 	const { scrollable } = useScroll();
 	const [height, setHeight] = useState<number>();
 
-	useLayoutEffect(() => {
+	useIsomorphicLayoutEffect(() => {
 		const resized = () => {
 			setHeight(window.innerHeight);
 			document.documentElement.style.setProperty(
