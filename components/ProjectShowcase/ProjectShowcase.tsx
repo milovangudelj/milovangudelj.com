@@ -5,6 +5,7 @@ import { Project } from "../../pages/work";
 import { useWindowSize } from "../../lib/windowSizeContext";
 import Link from "next/link";
 import { RichText } from "@graphcms/rich-text-react-renderer";
+import { Button } from "../Button";
 
 type ProjectShowcaseProps = Omit<Project, "id">;
 
@@ -29,9 +30,9 @@ export const ProjectShowcase = ({
 	const { desktop } = useWindowSize();
 
 	return (
-		<section className="xl:grid xl:grid-cols-8 xl:gap-16 space-y-8 md:space-y-16 xl:space-y-0">
+		<section className="space-y-8 md:space-y-16 xl:grid xl:grid-cols-8 xl:gap-16 xl:space-y-0">
 			{desktop && (
-				<div className="h-full order-last xl:col-span-3">
+				<div className="order-last h-full xl:col-span-3">
 					<ProjectDetails
 						title={title}
 						link={link}
@@ -40,9 +41,9 @@ export const ProjectShowcase = ({
 					/>
 				</div>
 			)}
-			<div className="xl:col-span-5 space-y-12 md:space-y-16">
+			<div className="space-y-12 md:space-y-16 xl:col-span-5">
 				{!desktop ? (
-					<div className="flex flex-col xl:w-full md:space-y-0 xl:space-y-8 md:grid md:grid-cols-5 md:h-max">
+					<div className="flex flex-col md:grid md:h-max md:grid-cols-5 md:space-y-0 xl:w-full xl:space-y-8">
 						<ProjectDetails
 							title={title}
 							link={link}
@@ -107,15 +108,8 @@ const ProjectDetails = ({
 
 const VisitButton = ({ href }: { href: Project["href"] }) => {
 	return (
-		<a
-			href={href}
-			target={"_blank"}
-			rel={"noreferrer"}
-			className="inline-block"
-		>
-			<button className="py-2 px-4 border-2 bg-salmon hover:drop-shadow-brutal transition-all text-body-md font-bold tracking-wide">
-				Visit ↗
-			</button>
+		<a href={href} target={"_blank"} rel={"noreferrer"}>
+			<Button>Visit ↗</Button>
 		</a>
 	);
 };
@@ -135,11 +129,8 @@ const ProjectDescription = ({
 				references={description.references}
 			/>
 			{caseStudy && (
-				<Link
-					href={`/work/${caseStudy.slug}`}
-					className="text-body-md inline-block border-2 bg-salmon py-2 px-4 font-bold tracking-wide text-black no-underline transition-all hover:drop-shadow-brutal"
-				>
-					Read case study ↗
+				<Link href={`/work/${caseStudy.slug}`} className="text-black">
+					<Button>Read case study ↗</Button>
 				</Link>
 			)}
 		</div>

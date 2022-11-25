@@ -195,6 +195,30 @@ module.exports = {
 						lineHeight: "1.75",
 					},
 				],
+				button: [
+					"18px",
+					{
+						fontWeight: "700",
+						letterSpacing: "0.025em",
+						lineHeight: "1.3",
+					},
+				],
+				"button-md": [
+					"15px",
+					{
+						fontWeight: "700",
+						letterSpacing: "0.025em",
+						lineHeight: "1.3",
+					},
+				],
+				"button-sm": [
+					"12.5px",
+					{
+						fontWeight: "700",
+						letterSpacing: "0.025em",
+						lineHeight: "1.3",
+					},
+				],
 				"label-md": [
 					"15px",
 					{
@@ -217,6 +241,7 @@ module.exports = {
 				sans: ["'Inter'", ...defaultTheme.fontFamily.sans],
 			},
 			dropShadow: {
+				behind: "0 0 0 black",
 				brutal: "4px 4px 0 black",
 				"brutal-lg": "8px 8px 0 black",
 			},

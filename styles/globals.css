@@ -61,7 +61,11 @@
 	.text-h6,
 	.text-h6-mobile,
 	.text-sub-heading,
-	.text-sub-heading-mobile {
+	.text-sub-heading-mobile,
+	button,
+	.text-button,
+	.text-button-md,
+	.text-button-sm {
 		@apply font-space;
 	}
 

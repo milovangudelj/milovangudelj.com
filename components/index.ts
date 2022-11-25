@@ -15,3 +15,4 @@ export * from "./Smiley";
 export * from "./Track";
 export * from "./TopTracks";
 export * from "./NowPlaying";
+export * from "./Button";
