@@ -69,7 +69,7 @@ const Work: NextPage<{ projects: Project[] }> = ({ projects }) => {
 			<section className="scroll-mt-[72px] bg-green text-black md:scroll-mt-[88px]">
 				<main className="mx-auto max-w-8xl space-y-16 py-16 px-8 md:space-y-32 md:py-32 md:px-16">
 					<div className="relative space-y-8 md:space-y-0">
-						<h2 className="text-h3-mobile md:mb-8 md:text-h2-mobile xl:text-h2">
+						<h2 className="text-h1-mobile md:mb-8 md:text-d2-mobile xl:text-d2">
 							My work
 						</h2>
 						<p className="text-body xl:max-w-[680px]">
