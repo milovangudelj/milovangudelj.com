@@ -32,7 +32,7 @@ export const NowPlaying = () => {
 							alt={data.album}
 							width={56}
 							height={56}
-							className="pointer-events-none absolute inset-0 object-cover"
+							className="pointer-events-none inset-0 h-14 w-14 object-cover"
 						/>
 						<div
 							aria-hidden
