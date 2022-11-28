@@ -8,3 +8,15 @@ export const hygraph = new GraphQLClient(
 		},
 	}
 );
+
+export const colorMap: { [key: string]: string } = {
+	yellow: "bg-yellow",
+	orange: "bg-orange",
+	green: "bg-green",
+	lavender: "bg-lavender text-white",
+	lilla: "bg-lilla",
+	purple_ish: "bg-purple",
+	sad_orange: "bg-salmon",
+	light_cyan: "bg-light-cyan",
+	light_green: "bg-light-green",
+};

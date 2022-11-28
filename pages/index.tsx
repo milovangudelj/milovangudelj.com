@@ -81,15 +81,15 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 			<HeadMeta metadata={meta} />
 			<section className="">
 				<main className="relative mx-auto max-w-8xl py-16 px-8 md:py-32 md:px-16">
-					<h1 className="mb-16 text-d2-mobile md:text-d1-mobile xl:text-d1">
-						Web developer <br />
+					<h1 className="mb-16 text-h1-mobile md:text-d1-mobile xl:text-d1">
+						Web developer <br className="hidden md:inline" />
 						<span className="text-yellow">/</span> UI designer
 					</h1>
 					<p className="text-sub-heading-mobile md:text-sub-heading xl:max-w-[36ch]">
 						Hi, I&apos;m Milo. I design and develop engaging websites and
 						delightful digital experiences.
 					</p>
-					<div className="absolute top-0 right-0 mt-16 mr-16 h-[180px] w-[117px] -translate-y-1/3 scale-50 md:top-1/2 md:mt-0 md:-translate-y-1/2 md:scale-75 xl:mr-48 xl:scale-100">
+					<div className="absolute top-0 right-0 mt-9 mr-20 h-[180px] w-[117px] -translate-y-1/3 scale-50 md:top-1/2 md:mr-16 md:mt-0 md:-translate-y-1/2 md:scale-75 xl:mr-48 xl:scale-100">
 						<Star
 							delay={0.3}
 							animate={animateS0}
@@ -119,7 +119,7 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 			<Section className="bg-green">
 				<Container className="md:space-y-32">
 					<div className="relative space-y-8 md:space-y-0">
-						<h2 className="text-h1-mobile md:mb-8 md:text-d2-mobile xl:text-d2">
+						<h2 className="text-h2-mobile md:mb-8 md:text-d2-mobile xl:text-d2">
 							My work
 						</h2>
 						<p className="text-body xl:max-w-[680px]">

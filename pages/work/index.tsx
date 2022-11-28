@@ -1,8 +1,15 @@
 import { GetStaticProps, NextPage } from "next";
 import { gql } from "graphql-request";
 
-import { hygraph } from "../../lib/hygraph";
-import { HeadMeta, Layout, ProjectShowcase, Smiley } from "../../components";
+import { hygraph, colorMap } from "../../lib/hygraph";
+import {
+	Container,
+	HeadMeta,
+	Layout,
+	ProjectShowcase,
+	Section,
+	Smiley,
+} from "../../components";
 
 export interface Project {
 	id: string;
@@ -13,7 +20,7 @@ export interface Project {
 	image: string;
 	categories: string[];
 	description: { json: any; [key: string]: any };
-	caseStudy?: { slug: string };
+	caseStudy?: { slug: string; color: string };
 }
 
 const QUERY = gql`
@@ -40,6 +47,7 @@ const QUERY = gql`
 			categories
 			caseStudy {
 				slug
+				color
 			}
 		}
 	}
@@ -79,17 +87,32 @@ const Work: NextPage<{ projects: Project[] }> = ({ projects }) => {
 						</p>
 						<Smiley className="absolute -top-16 right-0 h-[64px] w-[65px] text-light-cyan md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]" />
 					</div>
-					<div className="">
-						<ul className="space-y-32 xl:space-y-40">
-							{projects.map(({ id, ...props }) => (
-								<li key={id} className="">
-									<ProjectShowcase {...props} />
-								</li>
-							))}
-						</ul>
-					</div>
 				</main>
 			</section>
+			<ul>
+				{projects.map(({ id, ...props }) => {
+					const colors = Object.keys(colorMap);
+					let color = colors[Math.floor(Math.random() * colors.length)];
+
+					while (
+						["yellow", "lavender", "lilla", "sad_orange"].includes(color)
+					) {
+						color = colors[Math.floor(Math.random() * colors.length)];
+					}
+
+					return (
+						<li key={id}>
+							<Section
+								className={colorMap[props.caseStudy?.color ?? color]}
+							>
+								<Container>
+									<ProjectShowcase {...props} />
+								</Container>
+							</Section>
+						</li>
+					);
+				})}
+			</ul>
 		</Layout>
 	);
 };

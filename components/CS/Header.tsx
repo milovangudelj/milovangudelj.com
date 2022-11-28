@@ -1,8 +1,9 @@
 import { RichText } from "@graphcms/rich-text-react-renderer";
-import { EmbedReferences, RichTextContent } from "@graphcms/rich-text-types";
+import { RichTextContent } from "@graphcms/rich-text-types";
 import Image from "next/legacy/image";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
+import { colorMap } from "../../lib/hygraph";
 import { renderers } from "../richTextRenderers";
 
 type CSContentTypeWithoutEmbeds = {
@@ -10,18 +11,6 @@ type CSContentTypeWithoutEmbeds = {
 	html: string;
 	markdown: string;
 	text: string;
-};
-
-const colorMap: { [key: string]: string } = {
-	yellow: "bg-yellow",
-	orange: "bg-orange",
-	green: "bg-green",
-	lavender: "bg-lavender text-white",
-	lilla: "bg-lilla",
-	purple_ish: "bg-purple",
-	sad_orange: "bg-salmon",
-	light_cyan: "bg-light-cyan",
-	light_green: "bg-light-green",
 };
 
 export const Header = ({

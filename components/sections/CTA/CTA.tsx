@@ -40,7 +40,7 @@ export const CTA = () => {
 			</div>
 			<Container className="relative">
 				<div className="space-y-8">
-					<h2 className="text-h1-mobile md:text-d2-mobile xl:text-d2">
+					<h2 className="text-h2-mobile md:text-d2-mobile xl:text-d2">
 						Let&apos;s work together
 					</h2>
 					<p className="text-body xl:max-w-[680px]">

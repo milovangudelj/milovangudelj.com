@@ -34,7 +34,13 @@ export const AboutSection = ({
 				</div>
 				<div>
 					<div className="mb-16 space-y-8">
-						<h2 className="text-h1-mobile md:text-d2-mobile xl:text-d2">
+						<h2
+							className={
+								standAlone
+									? "text-h1-mobile md:text-d1-mobile xl:text-d1"
+									: "text-h2-mobile md:text-d2-mobile xl:text-d2"
+							}
+						>
 							About me
 						</h2>
 						<p className="text-body xl:max-w-[680px]">
