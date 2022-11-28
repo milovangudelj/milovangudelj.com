@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@graphcms/rich-text-react-renderer": "^0.6.1",
+    "@headlessui/react": "^1.7.4",
     "@next/font": "^13.0.4",
     "cva": "npm:class-variance-authority",
     "graphql": "16.6.0",
