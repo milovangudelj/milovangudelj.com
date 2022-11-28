@@ -1,11 +1,5 @@
-import { useRouter } from "next/router";
-import {
-	ComponentProps,
-	LegacyRef,
-	MouseEventHandler,
-	useRef,
-	useState,
-} from "react";
+import { ComponentProps, MouseEventHandler, useRef, useState } from "react";
+import { Transition } from "@headlessui/react";
 import { twMerge } from "tailwind-merge";
 
 import { NavLinks } from "../";
@@ -47,14 +41,25 @@ export const Hamburger = ({ className, ...props }: ComponentProps<"div">) => {
 					}`}
 				></span>
 			</div>
-			<div
-				className={`${
-					visible ? "block" : "hidden"
-				} absolute top-full right-0 h-[calc(var(--innerHeight)-65.69px)] w-full bg-dark-me`}
+			<Transition
+				show={visible}
+				enterFrom="bg-dark-me/0"
+				enterTo="bg-dark-me"
+				leaveFrom="bg-dark-me"
+				leaveTo="bg-dark-me/0"
+				className="absolute top-full right-0 h-[calc(var(--innerHeight)-65.69px)] w-full transition"
 				onClick={menuClicked}
 			>
-				<NavLinks ref={linksRef} />
-			</div>
+				<Transition.Child
+					enterFrom="opacity-0"
+					enterTo="opacity-100"
+					leaveFrom="opacity-100"
+					leaveTo="opacity-0"
+					as={NavLinks}
+					ref={linksRef}
+					className="transition"
+				/>
+			</Transition>
 		</div>
 	);
 };
