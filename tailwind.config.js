@@ -246,18 +246,22 @@ module.exports = {
 				"brutal-lg": "8px 8px 0 black",
 			},
 			animation: {
-				wiggle: "wiggle 2.4s ease-in-out infinite",
-				"wiggle-inv": "wiggle-inv 2.4s ease-in-out infinite",
+				wiggle: "wiggle 500ms ease-in-out",
+				"wiggle-inv": "wiggle-inv 500ms ease-in-out",
 				stretch: "stretch 2.4s ease-in-out infinite",
 			},
 			keyframes: {
 				wiggle: {
 					"0%, 100%": { transform: "rotate(-4deg)" },
-					"50%": { transform: "rotate(4deg)" },
+					"25%": { transform: "rotate(4deg)" },
+					"50%": { transform: "rotate(-4deg)" },
+					"75%": { transform: "rotate(4deg)" },
 				},
 				"wiggle-inv": {
 					"0%, 100%": { transform: "rotate(4deg)" },
-					"50%": { transform: "rotate(-4deg)" },
+					"25%": { transform: "rotate(-4deg)" },
+					"50%": { transform: "rotate(4deg)" },
+					"75%": { transform: "rotate(-4deg)" },
 				},
 				stretch: {
 					"0%, 100%": { transform: "scaleY(1)" },

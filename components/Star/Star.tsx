@@ -1,17 +1,18 @@
 import { ComponentProps } from "react";
-import { twMerge } from "tailwind-merge";
 
 export const Star = ({
 	className,
 	width = 20,
 	height = 32,
 	animation = "regular",
+	animate = true,
 	delay = 0,
 	...props
 }: ComponentProps<"span"> & {
 	width?: number;
 	height?: number;
 	animation?: "regular" | "inverse";
+	animate?: boolean;
 	delay?: number;
 }) => {
 	return (
@@ -23,7 +24,10 @@ export const Star = ({
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
 				className={`${
-					animation === "regular" ? "animate-wiggle" : "animate-wiggle-inv"
+					animate &&
+					(animation === "regular"
+						? "animate-wiggle"
+						: "animate-wiggle-inv")
 				} text-salmon will-change-transform`}
 				style={{
 					animationDelay: `${delay}s`,
