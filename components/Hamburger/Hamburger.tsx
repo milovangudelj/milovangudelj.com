@@ -16,8 +16,6 @@ export const Hamburger = ({ className, ...props }: ComponentProps<"div">) => {
 	};
 
 	const menuClicked: MouseEventHandler<HTMLDivElement> = (e) => {
-		console.log({ target: e.target, current: linksRef.current });
-
 		if (linksRef.current && !linksRef.current.contains(e.target as Node))
 			toggleMenu();
 	};
