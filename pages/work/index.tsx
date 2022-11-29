@@ -10,6 +10,8 @@ import {
 	Section,
 	Smiley,
 } from "../../components";
+import { useEffect, useState } from "react";
+import { useIsomorphicLayoutEffect } from "../../utils/useIsomorphicLayoutEffect";
 
 export interface Project {
 	id: string;
@@ -21,6 +23,7 @@ export interface Project {
 	categories: string[];
 	description: { json: any; [key: string]: any };
 	caseStudy?: { slug: string; color: string };
+	color: string;
 }
 
 const QUERY = gql`
@@ -54,7 +57,25 @@ const QUERY = gql`
 `;
 
 export const getStaticProps: GetStaticProps = async () => {
-	const { projects } = await hygraph.request(QUERY);
+	const { projects }: { projects: Project[] } = await hygraph.request(QUERY);
+
+	let avColors = Object.keys(colorMap).filter(
+		(el) => !["yellow", "lavender", "lilla", "sad_orange"].includes(el)
+	);
+
+	await Promise.all(
+		projects.map(async (project) => {
+			if (project.caseStudy?.color) {
+				avColors = avColors.filter((el) => el !== project.caseStudy?.color);
+				project.color = project.caseStudy.color;
+				return;
+			}
+			const color = avColors[Math.floor(Math.random() * avColors.length)];
+			project.color = color;
+
+			avColors = avColors.filter((el) => el !== color);
+		})
+	);
 
 	return {
 		props: {
@@ -90,28 +111,15 @@ const Work: NextPage<{ projects: Project[] }> = ({ projects }) => {
 				</main>
 			</section>
 			<ul>
-				{projects.map(({ id, ...props }) => {
-					const colors = Object.keys(colorMap);
-					let color = colors[Math.floor(Math.random() * colors.length)];
-
-					while (
-						["yellow", "lavender", "lilla", "sad_orange"].includes(color)
-					) {
-						color = colors[Math.floor(Math.random() * colors.length)];
-					}
-
-					return (
-						<li key={id}>
-							<Section
-								className={colorMap[props.caseStudy?.color ?? color]}
-							>
-								<Container>
-									<ProjectShowcase {...props} />
-								</Container>
-							</Section>
-						</li>
-					);
-				})}
+				{projects.map(({ id, ...props }, i) => (
+					<li key={id}>
+						<Section className={colorMap[props.color]}>
+							<Container>
+								<ProjectShowcase {...props} />
+							</Container>
+						</Section>
+					</li>
+				))}
 			</ul>
 		</Layout>
 	);
