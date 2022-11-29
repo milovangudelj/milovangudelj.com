@@ -161,7 +161,7 @@ const ProjectImage = ({
 	const { mobile } = useWindowSize();
 	return (
 		<div className="relative order-first md:order-none md:col-span-3 md:mb-0 md:h-full xl:h-auto xl:w-full">
-			<span className="absolute top-0 left-0 w-min -translate-x-full scale-[-1] bg-black py-2 text-body text-white [writing-mode:vertical-lr]">
+			<span className="absolute top-0 left-0 w-min -translate-y-full bg-black px-2 text-body text-white md:-translate-x-full md:-translate-y-0 md:scale-[-1] md:py-2 md:[writing-mode:vertical-lr]">
 				{year}
 			</span>
 			{mobile && (
