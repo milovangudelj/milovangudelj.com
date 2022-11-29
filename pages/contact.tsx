@@ -26,7 +26,7 @@ const Contact = () => {
 				<main className="mx-auto flex max-w-8xl items-center justify-between py-16 px-8 md:py-32 md:px-16">
 					<div className="space-y-16">
 						<div className="space-y-8">
-							<h1 className="text-d2-mobile md:text-d1-mobile xl:text-d1">
+							<h1 className="text-h1-mobile md:text-d1-mobile xl:text-d1">
 								My @s
 							</h1>
 							<p className="text-body xl:max-w-[680px]">
