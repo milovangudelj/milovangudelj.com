@@ -36,14 +36,18 @@ const useProvideScroll = (): ScrollProviderValue => {
 	const router = useRouter();
 
 	useEffect(() => {
-		const changeHandler = () => setScrollable(true);
+		const changeHandler = (url: string) => {
+			if (url !== router.asPath) {
+				setScrollable(true);
+			}
+		};
 
-		router.events.on("routeChangeComplete", changeHandler);
+		router.events.on("routeChangeStart", changeHandler);
 
 		return () => {
-			router.events.off("routeChangeComplete", changeHandler);
+			router.events.off("routeChangeStart", changeHandler);
 		};
-	}, [router.events]);
+	}, [router.events, router.asPath]);
 
 	return {
 		scrollable,
