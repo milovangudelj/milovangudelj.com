@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { gql } from "graphql-request";
 
 import { hygraph, colorMap } from "../../lib/hygraph";
@@ -54,7 +54,7 @@ const QUERY = gql`
 	}
 `;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	const { projects }: { projects: Project[] } = await hygraph.request(QUERY);
 
 	let avColors = Object.keys(colorMap).filter(
