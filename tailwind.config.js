@@ -14,6 +14,8 @@ module.exports = {
 		"bg-lilla",
 		"bg-purple",
 		"bg-salmon",
+		"bg-light-cyan",
+		"bg-light-green",
 	],
 	theme: {
 		colors: {
