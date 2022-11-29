@@ -10,8 +10,6 @@ import {
 	Section,
 	Smiley,
 } from "../../components";
-import { useEffect, useState } from "react";
-import { useIsomorphicLayoutEffect } from "../../utils/useIsomorphicLayoutEffect";
 
 export interface Project {
 	id: string;
@@ -60,7 +58,15 @@ export const getStaticProps: GetStaticProps = async () => {
 	const { projects }: { projects: Project[] } = await hygraph.request(QUERY);
 
 	let avColors = Object.keys(colorMap).filter(
-		(el) => !["yellow", "lavender", "lilla", "sad_orange"].includes(el)
+		(el) =>
+			![
+				"yellow",
+				"lavender",
+				"lilla",
+				"sad_orange",
+				"orange",
+				"green",
+			].includes(el)
 	);
 
 	await Promise.all(
@@ -95,10 +101,10 @@ const Work: NextPage<{ projects: Project[] }> = ({ projects }) => {
 	return (
 		<Layout>
 			<HeadMeta metadata={meta} />
-			<section className="scroll-mt-[72px] bg-green text-black md:scroll-mt-[88px]">
+			<section className="scroll-mt-[72px] bg-black text-white md:scroll-mt-[88px]">
 				<main className="mx-auto max-w-8xl space-y-16 py-16 px-8 md:space-y-32 md:py-32 md:px-16">
 					<div className="relative space-y-8 md:space-y-0">
-						<h2 className="text-h1-mobile md:mb-8 md:text-d2-mobile xl:text-d2">
+						<h2 className="text-h1-mobile md:mb-8 md:text-d1-mobile xl:text-d1">
 							My work
 						</h2>
 						<p className="text-body xl:max-w-[680px]">
@@ -113,7 +119,7 @@ const Work: NextPage<{ projects: Project[] }> = ({ projects }) => {
 			<ul>
 				{projects.map(({ id, ...props }, i) => (
 					<li key={id}>
-						<Section className={colorMap[props.color]}>
+						<Section className="bg-green">
 							<Container>
 								<ProjectShowcase {...props} />
 							</Container>
