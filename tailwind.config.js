@@ -6,6 +6,15 @@ module.exports = {
 		"./pages/**/*.{js,ts,jsx,tsx}",
 		"./components/**/*.{js,ts,jsx,tsx}",
 	],
+	safelist: [
+		"bg-yellow",
+		"bg-orange",
+		"bg-green",
+		"bg-lavender",
+		"bg-lilla",
+		"bg-purple",
+		"bg-salmon",
+	],
 	theme: {
 		colors: {
 			yellow: "#FFC700",
