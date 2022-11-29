@@ -6,6 +6,7 @@ import { useWindowSize } from "../../lib/windowSizeContext";
 import Link from "next/link";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { Button } from "../Button";
+import { colorMap } from "../../lib/hygraph";
 
 type ProjectShowcaseProps = Omit<Project, "id">;
 
@@ -26,6 +27,7 @@ export const ProjectShowcase = ({
 	title,
 	year,
 	categories,
+	color,
 }: ProjectShowcaseProps) => {
 	const { desktop } = useWindowSize();
 
@@ -38,6 +40,7 @@ export const ProjectShowcase = ({
 						link={link}
 						href={href}
 						categories={categories}
+						color={color}
 					/>
 				</div>
 			)}
@@ -49,6 +52,7 @@ export const ProjectShowcase = ({
 							link={link}
 							href={href}
 							categories={categories}
+							color={color}
 						/>
 						<ProjectImage
 							year={year}
@@ -79,15 +83,19 @@ const ProjectDetails = ({
 	link,
 	href,
 	categories,
+	color,
 }: {
 	title: Project["title"];
 	link: Project["link"];
 	href: Project["href"];
 	categories: Project["categories"];
+	color: Project["color"];
 }) => {
 	const { mobile } = useWindowSize();
 	return (
-		<div className="relative z-[1] space-y-4 border-2 border-t border-dashed bg-lilla p-4 drop-shadow-brutal [border-top:1px_solid_black] md:z-auto md:col-span-2 md:space-y-6 md:border-r md:border-t-2 md:border-dashed md:drop-shadow-brutal-lg xl:sticky xl:top-[152px] xl:border-r-2 xl:p-8">
+		<div
+			className={`relative z-[1] space-y-4 border-2 border-t border-dashed ${colorMap[color]} p-4 drop-shadow-brutal [border-top:1px_solid_black] md:z-auto md:col-span-2 md:space-y-6 md:border-r md:border-t-2 md:border-dashed md:drop-shadow-brutal-lg xl:sticky xl:top-[152px] xl:border-r-2 xl:p-8`}
+		>
 			<h3 className="text-h4-mobile md:text-sub-heading xl:text-h4">
 				{title}
 			</h3>
