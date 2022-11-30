@@ -22,11 +22,8 @@ const commonRenderers: NodeRendererType = {
 };
 
 const csIntroRenderers: NodeRendererType = {
-	class: ({ children, className }) => (
-		<div className={`col-span-3 col-start-2 ${className}`}>{children}</div>
-	),
 	p: ({ children }) => (
-		<p className="mb-8 whitespace-pre-line text-sub-heading-mobile text-white/80">
+		<p className="mb-8 whitespace-pre-line text-sub-heading-mobile text-white/80 xl:text-sub-heading">
 			{children}
 		</p>
 	),
@@ -45,42 +42,44 @@ const csBodyRenderers: NodeRendererType = {
 		</>
 	),
 	h1: ({ children }) => (
-		<h1 className="col-span-3 col-start-2 mb-8 text-h1-mobile xl:text-h1">
+		<h1 className="col-span-5 mb-8 text-h1-mobile xl:col-span-3 xl:col-start-2 xl:text-h1">
 			{children}
 		</h1>
 	),
 	h2: ({ children }) => (
-		<h2 className="col-span-3 col-start-2 mb-8 text-h2-mobile xl:text-h2">
+		<h2 className="col-span-5 mb-8 text-h2-mobile xl:col-span-3 xl:col-start-2 xl:text-h2">
 			{children}
 		</h2>
 	),
 	h3: ({ children }) => (
-		<h3 className="col-span-3 col-start-2 mb-8 text-h3-mobile xl:text-h3">
+		<h3 className="col-span-5 mb-8 text-h3-mobile xl:col-span-3 xl:col-start-2 xl:text-h3">
 			{children}
 		</h3>
 	),
 	h4: ({ children }) => (
-		<h4 className="col-span-3 col-start-2 mb-8 text-h4-mobile xl:text-h4">
+		<h4 className="col-span-5 mb-8 text-h4-mobile xl:col-span-3 xl:col-start-2 xl:text-h4">
 			{children}
 		</h4>
 	),
 	h5: ({ children }) => (
-		<h5 className="col-span-3 col-start-2 mb-8 text-h5-mobile xl:text-h5">
+		<h5 className="col-span-5 mb-8 text-h5-mobile xl:col-span-3 xl:col-start-2 xl:text-h5">
 			{children}
 		</h5>
 	),
 	h6: ({ children }) => (
-		<h6 className="col-span-3 col-start-2 mb-8 text-h6-mobile xl:text-h6">
+		<h6 className="col-span-5 mb-8 text-h6-mobile xl:col-span-3 xl:col-start-2 xl:text-h6">
 			{children}
 		</h6>
 	),
 	p: ({ children }) => (
-		<p className="col-span-3 col-start-2 mb-8 text-body">{children}</p>
+		<p className="col-span-5 mb-8 text-body xl:col-span-3 xl:col-start-2">
+			{children}
+		</p>
 	),
 	Asset: {
 		image: ({ url, alt, caption, width, height, blurDataUrl }) => {
 			return (
-				<figure className="relative col-span-6 mt-8 mb-16 h-96">
+				<figure className="relative col-span-5 -mx-8 mt-8 mb-16 h-60 md:-mx-16 md:mt-16 md:mb-32 md:h-64 xl:col-span-3 xl:col-start-2 xl:-mx-[33.3%] xl:mt-8 xl:mb-16 xl:h-96">
 					<Image
 						src={url}
 						alt={alt}
@@ -88,10 +87,11 @@ const csBodyRenderers: NodeRendererType = {
 						layout="fill"
 						objectFit="cover"
 						quality={100}
+						sizes="1440px"
 						placeholder={blurDataUrl ? "blur" : "empty"}
 						blurDataURL={blurDataUrl}
 					/>
-					<figcaption className="absolute top-full left-0 text-label-md text-white/60">
+					<figcaption className="absolute top-full left-8 text-label-md text-white/60 md:left-16 xl:left-0">
 						{caption ?? alt}
 					</figcaption>
 				</figure>
@@ -100,7 +100,7 @@ const csBodyRenderers: NodeRendererType = {
 	},
 	embed: {
 		CsOverline: ({ content }) => (
-			<span className="col-span-3 col-start-2 mb-8 inline-block text-sub-heading-mobile text-yellow">
+			<span className="col-span-5 mb-8 inline-block text-sub-heading-mobile text-yellow xl:col-span-3 xl:col-start-2">
 				{content}
 			</span>
 		),
