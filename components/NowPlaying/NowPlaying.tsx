@@ -15,8 +15,8 @@ export const NowPlaying = () => {
 	useIsomorphicLayoutEffect(() => {
 		if (!data) return;
 
-		setTitleWidth(data.title.length);
-		setArtistWidth(data.artist.length);
+		setTitleWidth(data.title?.length ?? 0);
+		setArtistWidth(data.artist?.length ?? 0);
 	}, [data?.title, data?.artist]);
 
 	return (
