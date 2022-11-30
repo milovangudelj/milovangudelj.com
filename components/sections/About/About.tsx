@@ -25,6 +25,8 @@ export const AboutSection = ({
 							<Image
 								src={me}
 								layout={"fill"}
+								quality={100}
+								priority
 								objectPosition={"top left"}
 								objectFit={"cover"}
 								alt={"My profile picture"}
