@@ -10,7 +10,7 @@ export const Navbar = () => {
 		<div className="sticky top-0 z-10 bg-yellow">
 			<div className="relative mx-auto flex w-full max-w-8xl items-center justify-between px-8 py-4 text-black md:p-0 md:pl-16 2xl:pl-0">
 				<Link href="/" className="text-sub-heading">
-					milo
+					Milo
 				</Link>
 
 				<Hamburger aria-hidden={!mobile} />
