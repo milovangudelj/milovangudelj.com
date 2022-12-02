@@ -60,7 +60,7 @@ export const AboutSection = ({
 							web development and UI/UX design.
 						</p>
 					</div>
-					<NowPlaying />
+					{!standAlone && <NowPlaying />}
 				</div>
 			</Container>
 		</Section>

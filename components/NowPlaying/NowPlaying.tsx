@@ -21,9 +21,7 @@ export const NowPlaying = () => {
 
 	return (
 		<div>
-			<p className="mb-4 text-sub-heading-mobile text-black">
-				Currently listening to:
-			</p>
+			<p className="mb-4 text-sub-heading-mobile">Currently listening to:</p>
 			<div className="inline-flex max-w-[min(100%,_448px)] bg-black drop-shadow-brutal">
 				{data?.songUrl ? (
 					<div className="relative h-14 w-14 flex-none" title={data.album}>
@@ -54,7 +52,7 @@ export const NowPlaying = () => {
 						<SpotifyLogo size={40} />
 					</div>
 				)}
-				<div className="flex h-14 items-center overflow-hidden bg-green py-2 px-4 text-sub-heading-mobile md:text-sub-heading">
+				<div className="flex h-14 items-center overflow-hidden bg-green py-2 px-4 text-sub-heading-mobile text-black md:text-sub-heading">
 					{data?.songUrl ? (
 						<a
 							className={`${

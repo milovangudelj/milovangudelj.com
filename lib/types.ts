@@ -4,6 +4,17 @@ export type Song = {
 	title: string;
 };
 
+export type Artist = {
+	name: string;
+	artistUrl: string;
+	image: {
+		url: string;
+		width: number;
+		height: number;
+		color: string;
+	};
+};
+
 export type NowPlayingSong = {
 	album: string;
 	albumImageUrl: string;
@@ -16,4 +27,8 @@ export type NowPlayingSong = {
 
 export type TopTracks = {
 	tracks: Song[];
+};
+
+export type TopArtists = {
+	artists: Artist[];
 };
