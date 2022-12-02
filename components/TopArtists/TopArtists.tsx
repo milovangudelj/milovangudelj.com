@@ -26,7 +26,7 @@ export const Artists = () => {
 	return (
 		<div className="max-w-[448px]">
 			<p className="mb-4 text-sub-heading-mobile">My top artists:</p>
-			<ol className="bg-black drop-shadow-brutal-lg">
+			<ol className="bg-black drop-shadow-brutal">
 				{data.artists.map((artist, index) => {
 					let tempColor: number[] = [];
 
