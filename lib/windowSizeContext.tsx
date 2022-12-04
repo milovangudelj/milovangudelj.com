@@ -8,6 +8,7 @@ type WindowSizeProviderValue = {
 	};
 	mobile: boolean;
 	tablet: boolean;
+	desktopSm: boolean;
 	desktop: boolean;
 };
 
@@ -15,6 +16,7 @@ const WindowSizeContext = createContext<WindowSizeProviderValue>({
 	size: { width: 1280, height: 600 },
 	mobile: false,
 	tablet: false,
+	desktopSm: false,
 	desktop: true,
 });
 
@@ -37,6 +39,7 @@ const useProvideWindowSize = (): WindowSizeProviderValue => {
 	const [height, setHeight] = useState<number>(600);
 	const [mobile, setMobile] = useState<boolean>(false);
 	const [tablet, setTablet] = useState<boolean>(false);
+	const [desktopSm, setDesktopSm] = useState<boolean>(false);
 	const [desktop, setDesktop] = useState<boolean>(true);
 
 	useIsomorphicLayoutEffect(() => {
@@ -47,7 +50,8 @@ const useProvideWindowSize = (): WindowSizeProviderValue => {
 			setWidth(w);
 			setHeight(h);
 			setMobile(w < 768);
-			setTablet(w >= 768 && w < 1280);
+			setTablet(w >= 768 && w < 1024);
+			setDesktopSm(w >= 1024 && w < 1280);
 			setDesktop(w >= 1280);
 		};
 		resized();
@@ -59,5 +63,5 @@ const useProvideWindowSize = (): WindowSizeProviderValue => {
 		};
 	}, []);
 
-	return { size: { width, height }, mobile, tablet, desktop };
+	return { size: { width, height }, mobile, tablet, desktopSm, desktop };
 };
