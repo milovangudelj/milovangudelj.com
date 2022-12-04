@@ -97,7 +97,7 @@ const About = () => {
 							<div className="-mr-16 flex h-[624px] w-[624px] items-center justify-center rounded-full border-2 border-black/20 lg:-mr-32 lg:h-[656px] lg:w-[656px]">
 								<div className="flex h-[432px] w-[432px] items-center justify-center rounded-full border-2 border-black bg-spotify-orange lg:h-[496px] lg:w-[496px]">
 									<h3 className="mr-8 max-w-[12ch] -translate-x-1/2 text-right text-sub-heading-mobile text-black">
-										My genres' solar system
+										My genres&apos; solar system
 									</h3>
 								</div>
 								{topGenres.map((genre, idx) => {
