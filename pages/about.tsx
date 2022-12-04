@@ -13,7 +13,7 @@ import {
 import { AboutSection } from "../components/sections";
 import { useWindowSize } from "../lib/windowSizeContext";
 import { hexToRgb } from "../utils/hexToRgb";
-import { spotifyColors } from "./api/top-artists";
+import { spotifyColors } from "../utils/spotifyColors";
 
 const meta = {
 	title: "Milovan Gudelj - About me",
