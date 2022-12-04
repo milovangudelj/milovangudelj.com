@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ComponentProps } from "react";
 import useSWRImmutable from "swr/immutable";
+import { twMerge } from "tailwind-merge";
 
 import fetcher from "../../lib/fetcher";
 import { TopArtists } from "../../lib/types";
@@ -16,7 +18,7 @@ const hexToRgb = (hex: string) => {
 		: [0, 0, 0];
 };
 
-export const Artists = () => {
+export const Artists = ({ className }: ComponentProps<"div">) => {
 	const { data } = useSWRImmutable<TopArtists>("/api/top-artists", fetcher);
 
 	if (!data) {
@@ -24,8 +26,8 @@ export const Artists = () => {
 	}
 
 	return (
-		<div className="max-w-[448px]">
-			<p className="mb-4 text-sub-heading-mobile">My top artists:</p>
+		<div className={twMerge("max-w-[448px]", className)}>
+			<h3 className="mb-4 text-sub-heading-mobile">My top artists:</h3>
 			<ol className="bg-black drop-shadow-brutal">
 				{data.artists.map((artist, index) => {
 					let tempColor: number[] = [];
