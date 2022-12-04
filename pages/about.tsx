@@ -11,6 +11,9 @@ import {
 	Tracks as TopTracks,
 } from "../components";
 import { AboutSection } from "../components/sections";
+import { useWindowSize } from "../lib/windowSizeContext";
+import { hexToRgb } from "../utils/hexToRgb";
+import { spotifyColors } from "./api/top-artists";
 
 const meta = {
 	title: "Milovan Gudelj - About me",
@@ -24,33 +27,35 @@ const topGenres = [
 	{
 		id: "tg_01",
 		label: "Rap",
-		color: "bg-spotify-brand",
+		color: spotifyColors["brand"],
 	},
 	{
 		id: "tg_02",
 		label: "Pop",
-		color: "bg-spotify-orange",
+		color: spotifyColors["orange"],
 	},
 	{
 		id: "tg_03",
 		label: "Italian hip hop",
-		color: "bg-spotify-pink",
+		color: spotifyColors["pink"],
 	},
 	{
 		id: "tg_04",
 		label: "Modern Rock",
-		color: "bg-spotify-yellow",
+		color: spotifyColors["yellow"],
 	},
 	{
 		id: "tg_05",
 		label: "Alternative R&B",
-		color: "bg-spotify-purple",
+		color: spotifyColors["purple"],
 	},
 ];
 
 const About = () => {
+	const { desktopSm, desktop } = useWindowSize();
 	useEffect(() => {
-		const r = 656 / 2;
+		const d = desktopSm || desktop ? 656 : 624;
+		const r = d / 2;
 		const a = Math.PI / 8;
 		const offsetA = (5 * Math.PI) / 8;
 
@@ -58,12 +63,11 @@ const About = () => {
 			const angle = 2 * Math.PI - (offsetA + a * i);
 			const x = r * Math.cos(angle);
 			const y = r * Math.sin(angle);
-			console.log({ a: ((offsetA + a * i) * 180) / Math.PI });
 
 			document.documentElement.style.setProperty(`--planet${i}-x`, `${x}px`);
 			document.documentElement.style.setProperty(`--planet${i}-y`, `${y}px`);
 		}
-	}, []);
+	}, [desktopSm, desktop]);
 
 	return (
 		<Layout>
@@ -89,29 +93,59 @@ const About = () => {
 					<div className="relative">
 						<NowPlaying />
 						<Artists className="mt-16" />
-						<div className="absolute left-full top-1/2 -translate-x-1/2 -translate-y-1/2">
-							<div className="-mr-16 flex h-[656px] w-[656px] items-center justify-center rounded-full border-2 border-black/20 md:-mr-32">
-								<div className="flex h-[496px] w-[496px] items-center justify-center rounded-full border-2 border-black bg-spotify-orange">
+						<div className="relative left-full mt-16 w-min -translate-x-1/2 lg:absolute lg:top-1/2 lg:mt-0 lg:-translate-y-1/2">
+							<div className="-mr-16 flex h-[624px] w-[624px] items-center justify-center rounded-full border-2 border-black/20 lg:-mr-32 lg:h-[656px] lg:w-[656px]">
+								<div className="flex h-[432px] w-[432px] items-center justify-center rounded-full border-2 border-black bg-spotify-orange lg:h-[496px] lg:w-[496px]">
 									<h3 className="mr-8 max-w-[12ch] -translate-x-1/2 text-right text-sub-heading-mobile text-black">
 										My genres' solar system
 									</h3>
 								</div>
-								{topGenres.map((genre, idx) => (
-									<div
-										key={genre.id}
-										className={`absolute h-8 w-8 rounded-full border-2 border-black ${genre.color}`}
-										style={{
-											translate: `var(--planet${
-												idx + 1
-											}-x) var(--planet${idx + 1}-y)`,
-										}}
-									>
-										<span className="absolute right-full top-1/2 mr-6 inline-block w-max -translate-y-1/2 text-sub-heading-mobile">
-											<span className="text-salmon">{idx + 1}.</span>{" "}
-											{genre.label}
-										</span>
-									</div>
-								))}
+								{topGenres.map((genre, idx) => {
+									let tempColor: number[] = [];
+
+									hexToRgb(genre.color).forEach((c, idx) => {
+										c = c / 255.0;
+										if (c <= 0.04045) {
+											c = c / 12.92;
+										} else {
+											c = ((c + 0.055) / 1.055) ** 2.4;
+										}
+
+										tempColor[idx] = c;
+									});
+
+									const colorLuminance =
+										0.2126 * tempColor[0] +
+										0.7152 * tempColor[1] +
+										0.0722 * tempColor[2];
+
+									const lightText = colorLuminance <= 0.179;
+									return (
+										<div
+											key={genre.id}
+											className={`absolute h-8 w-8 rounded-full border-2 border-black`}
+											style={{
+												translate: `var(--planet${
+													idx + 1
+												}-x) var(--planet${idx + 1}-y)`,
+												backgroundColor: genre.color,
+											}}
+										>
+											<span className="absolute right-auto left-1/2 top-full mt-3 inline-block w-max -translate-x-1/2 text-button lg:top-1/2 lg:right-full lg:left-auto lg:mt-0 lg:mr-6 lg:-translate-y-1/2 lg:translate-x-0 lg:text-sub-heading-mobile">
+												<span
+													className={`text-salmon max-lg:absolute max-lg:left-1/2 max-lg:-top-7 max-lg:mt-0.5 max-lg:-translate-x-1/2 max-lg:-translate-y-1/2 max-lg:text-button-md ${
+														lightText
+															? "max-lg:text-white"
+															: "max-lg:text-black"
+													}`}
+												>
+													{idx + 1}.
+												</span>{" "}
+												{genre.label}
+											</span>
+										</div>
+									);
+								})}
 							</div>
 						</div>
 					</div>
