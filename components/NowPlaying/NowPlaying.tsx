@@ -21,7 +21,9 @@ export const NowPlaying = () => {
 
 	return (
 		<div>
-			<p className="mb-4 text-sub-heading-mobile">Currently listening to:</p>
+			<h3 className="mb-4 text-sub-heading-mobile">
+				Currently listening to:
+			</h3>
 			<div className="inline-flex max-w-[min(100%,_448px)] bg-black drop-shadow-brutal">
 				{data?.songUrl ? (
 					<div className="relative h-14 w-14 flex-none" title={data.album}>
