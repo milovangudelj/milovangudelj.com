@@ -2,7 +2,7 @@ import { type NextRequest } from "next/server";
 
 import { getTopArtists } from "../../lib/spotify";
 
-const spotifyColors: { [key: string]: string } = {
+export const spotifyColors: { [key: string]: string } = {
 	brand: "#1ED760",
 	pink: "#F774C4",
 	orange: "#FF8A1E",
