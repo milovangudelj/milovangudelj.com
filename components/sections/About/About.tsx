@@ -35,7 +35,7 @@ export const AboutSection = ({
 					</Hourglass>
 				</div>
 				<div>
-					<div className="mb-16 space-y-8">
+					<div className={`space-y-8 ${standAlone ? "mb-16" : ""}"`}>
 						<h2
 							className={
 								standAlone
