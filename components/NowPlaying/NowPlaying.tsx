@@ -54,7 +54,7 @@ export const NowPlaying = () => {
 						<SpotifyLogo size={40} />
 					</div>
 				)}
-				<div className="flex h-14 items-center overflow-hidden bg-green py-2 px-4 text-sub-heading-mobile text-black md:text-sub-heading">
+				<div className="flex h-14 items-center overflow-hidden bg-spotify-brand py-2 px-4 text-sub-heading-mobile text-black md:text-sub-heading">
 					{data?.songUrl ? (
 						<a
 							className={`${
