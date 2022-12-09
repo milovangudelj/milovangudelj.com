@@ -1,5 +1,5 @@
 import { type NextRequest } from "next/server";
-import { getTopTracks } from "../../lib/spotify";
+import { getTopTracks } from "../../lib/mySpotify";
 
 export const config = {
 	runtime: "experimental-edge",

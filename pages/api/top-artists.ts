@@ -1,6 +1,6 @@
 import { type NextRequest } from "next/server";
 
-import { getTopArtists } from "../../lib/spotify";
+import { getTopArtists } from "../../lib/mySpotify";
 import { spotifyColors } from "../../utils/spotifyColors";
 
 export const config = {
