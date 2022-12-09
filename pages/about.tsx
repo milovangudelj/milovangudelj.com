@@ -1,5 +1,6 @@
 import Image from "next/legacy/image";
 import { useEffect } from "react";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 import {
 	Artists,
@@ -52,6 +53,8 @@ const topGenres = [
 ];
 
 const About = () => {
+	const { data: session } = useSession();
+
 	const { desktopSm, desktop } = useWindowSize();
 	useEffect(() => {
 		const d = desktopSm || desktop ? 656 : 624;
