@@ -79,7 +79,7 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 	return (
 		<Layout>
 			<HeadMeta metadata={meta} />
-			<section className="">
+			<section>
 				<main className="relative mx-auto max-w-8xl py-16 px-8 md:py-32 md:px-16">
 					<h1 className="mb-16 text-h1-mobile md:text-d1-mobile xl:text-d1">
 						Web developer <br className="hidden md:inline" />

@@ -1,9 +1,9 @@
-import Image from "next/legacy/image";
+import Link from "next/link";
 import { useEffect } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
 
 import {
 	Artists,
+	Button,
 	Container,
 	HeadMeta,
 	Layout,
@@ -53,8 +53,6 @@ const topGenres = [
 ];
 
 const About = () => {
-	const { data: session } = useSession();
-
 	const { desktopSm, desktop } = useWindowSize();
 	useEffect(() => {
 		const d = desktopSm || desktop ? 656 : 624;
@@ -92,6 +90,22 @@ const About = () => {
 							I looove music. So if you&apos;re interested here&apos;s a
 							little bit of information about that.
 						</p>
+						<p className="text-body xl:max-w-[680px]">
+							Plus if you want you can get a cool looking poster with
+							your top artists and tracks, kind of like a{" "}
+							<a
+								href="https://www.spotify.com/wrapped"
+								rel="noopener noreferrer"
+								target={"_blank"}
+								className="underline underline-offset-2"
+							>
+								Spotify Wrapped
+							</a>{" "}
+							but in miniature.
+						</p>
+						<Button as={Link} href="/mini-wrapped">
+							Get your Mini-Wrapped
+						</Button>
 					</div>
 					<div className="relative">
 						<NowPlaying />

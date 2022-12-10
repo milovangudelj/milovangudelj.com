@@ -4,7 +4,7 @@ import { JWT } from "next-auth/jwt";
 import SpotifyProvider from "next-auth/providers/spotify";
 import { spotifyApi, SPOTIFY_AUTH_URL } from "../../../lib/spotify";
 
-interface ExtendedToken extends JWT {
+export interface ExtendedToken extends JWT {
 	accessToken?: Account["access_token"];
 	refreshToken?: Account["refresh_token"];
 	username?: Account["providerAccountId"];
@@ -12,7 +12,7 @@ interface ExtendedToken extends JWT {
 	error?: string;
 }
 
-interface ExtendedSession extends Session {
+export interface ExtendedSession extends Session {
 	user?: Session["user"] & {
 		accessToken?: Account["access_token"];
 		refreshToken?: Account["refresh_token"];
@@ -56,9 +56,9 @@ export const authOptions: AuthOptions = {
 		}),
 	],
 	secret: process.env.JWT_SECRET,
-	// pages: {
-	// 	signIn: "/signin",
-	// },
+	pages: {
+		signIn: "/login",
+	},
 	callbacks: {
 		async jwt({ token, account, user }) {
 			if (account && user) {

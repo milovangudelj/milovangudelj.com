@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "cva";
 
 const button = cva(
-	"border-2 transition-all will-change-[filter] hover:drop-shadow-brutal",
+	"border-2 text-black inline-block transition-all will-change-[filter] hover:drop-shadow-brutal",
 	{
 		variants: {
 			intent: {
@@ -25,20 +25,26 @@ const button = cva(
 	}
 );
 
-export interface ButtonProps
+export interface ButtonProps<T extends React.ElementType>
 	extends React.HTMLAttributes<HTMLButtonElement>,
-		VariantProps<typeof button> {}
+		VariantProps<typeof button> {
+	as?: T;
+}
 
-export const Button = ({
+export const Button = <T extends React.ElementType = "button">({
 	children,
 	intent,
 	size,
 	className,
+	as,
 	...props
-}: ButtonProps) => {
+}: ButtonProps<T> &
+	Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) => {
+	const Component = as || "button";
+
 	return (
-		<button className={button({ intent, size, className })} {...props}>
+		<Component className={button({ intent, size, className })} {...props}>
 			{children}
-		</button>
+		</Component>
 	);
 };
