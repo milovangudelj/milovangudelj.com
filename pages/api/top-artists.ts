@@ -1,5 +1,4 @@
 import { type NextRequest } from "next/server";
-import shuffle from "lodash/shuffle";
 
 import { getTopArtists } from "../../lib/mySpotify";
 import { spotifyColors } from "../../utils/spotifyColors";
@@ -12,15 +11,23 @@ export default async function handler(req: NextRequest) {
 	const response = await getTopArtists({ limit: 5, range: "medium" });
 	const { items } = await response.json();
 
-	let colors = shuffle(spotifyColors);
 	const artists = await Promise.all(
-		items.map(async (artist: any, idx: number) => {
+		items.map(async (artist: any) => {
+			const colorKey =
+				Object.keys(spotifyColors)[
+					Math.floor(Math.random() * Object.keys(spotifyColors).length)
+				];
+
+			const color = spotifyColors[colorKey];
+
+			delete spotifyColors[colorKey];
+
 			return {
 				name: artist.name,
 				artistUrl: artist.external_urls.spotify,
 				image: {
 					...artist.images[0],
-					color: colors[idx],
+					color,
 				},
 			};
 		})
