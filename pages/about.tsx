@@ -97,7 +97,7 @@ const About = () => {
 								href="https://www.spotify.com/wrapped"
 								rel="noopener noreferrer"
 								target={"_blank"}
-								className="underline underline-offset-2"
+								className="underline underline-offset-2 hover:no-underline"
 							>
 								Spotify Wrapped
 							</a>{" "}
