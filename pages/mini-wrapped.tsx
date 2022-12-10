@@ -223,8 +223,8 @@ const MiniWrapped = ({
 							Top tracks
 						</h2>
 						<p className="text-body xl:max-w-[680px]">
-							In the same period you couldn't stop listening to these
-							five tracks
+							In the same period you couldn&apos;t stop listening to
+							these five tracks
 						</p>
 						<ol className="mt-16 max-w-[448px] bg-black drop-shadow-brutal">
 							{topTracks.map((track, index) => {
