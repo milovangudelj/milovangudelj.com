@@ -28,13 +28,26 @@ const Login = () => {
 					<h1 className="mb-8 text-sub-heading-mobile md:text-sub-heading xl:text-h5">
 						Login with Spotify
 					</h1>
-					<Button
+					<p className="text-body xl:max-w-[680px]">
+						Hold tight... I'm still working on it. Check back tomorrow or
+						keep an eye on my IG stories (
+						<a
+							className="underline underline-offset-2 hover:no-underline"
+							href="https://instagram.com/milovangudelj"
+							target={"_blank"}
+							rel={"noreferrer noopener"}
+						>
+							@milovangudelj
+						</a>
+						) for when it will be available.
+					</p>
+					{/* <Button
 						onClick={() =>
 							signIn("spotify", { callbackUrl: "/mini-wrapped" })
 						}
 					>
 						Log In
-					</Button>
+					</Button> */}
 				</Container>
 			</Section>
 		</Layout>
