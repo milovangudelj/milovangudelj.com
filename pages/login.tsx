@@ -41,13 +41,13 @@ const Login = () => {
 						</a>
 						) for when it will be available.
 					</p>
-					{/* <Button
+					<Button
 						onClick={() =>
 							signIn("spotify", { callbackUrl: "/mini-wrapped" })
 						}
 					>
 						Log In
-					</Button> */}
+					</Button>
 				</Container>
 			</Section>
 		</Layout>
