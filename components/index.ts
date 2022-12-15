@@ -18,3 +18,4 @@ export * from "./TopArtists";
 export * from "./TopTracks";
 export * from "./Button";
 export * from "./MusicNote";
+export * from "./BigAssStar";

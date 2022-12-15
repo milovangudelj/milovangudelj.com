@@ -218,7 +218,6 @@ module.exports = {
 					"18px",
 					{
 						fontWeight: "700",
-						letterSpacing: "0.025em",
 						lineHeight: "1.3",
 					},
 				],
@@ -226,7 +225,6 @@ module.exports = {
 					"15px",
 					{
 						fontWeight: "700",
-						letterSpacing: "0.025em",
 						lineHeight: "1.3",
 					},
 				],
@@ -234,7 +232,6 @@ module.exports = {
 					"12.5px",
 					{
 						fontWeight: "700",
-						letterSpacing: "0.025em",
 						lineHeight: "1.3",
 					},
 				],
@@ -287,7 +284,10 @@ module.exports = {
 					"50%": { transform: "scaleY(.5)" },
 				},
 			},
+			backgroundImage: {
+				"chevron-down": "url(/images/chevron-down.svg)",
+			},
 		},
 	},
-	plugins: [require("@tailwindcss/typography")],
+	plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
 };
