@@ -14,6 +14,10 @@ const button = cva(
 				md: "py-1.5 px-3 text-button-md",
 				lg: "py-2 px-4 text-button",
 			},
+			fullWidth: {
+				true: "w-full",
+				fslse: "w-fit",
+			},
 		},
 		compoundVariants: [
 			{ intent: "primary", size: "sm", className: "uppercase" },
@@ -35,6 +39,7 @@ export const Button = <T extends React.ElementType = "button">({
 	children,
 	intent,
 	size,
+	fullWidth,
 	className,
 	as,
 	...props
@@ -43,7 +48,10 @@ export const Button = <T extends React.ElementType = "button">({
 	const Component = as || "button";
 
 	return (
-		<Component className={button({ intent, size, className })} {...props}>
+		<Component
+			className={button({ intent, size, fullWidth, className })}
+			{...props}
+		>
 			{children}
 		</Component>
 	);
