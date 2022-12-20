@@ -1,6 +1,6 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import { unstable_getServerSession } from "next-auth";
-import shuffle from "lodash/shuffle";
+import { shuffle } from "../../utils/shuffle";
 
 import { spotifyApi } from "../../lib/spotify";
 import { authOptions, ExtendedSession } from "./auth/[...nextauth]";

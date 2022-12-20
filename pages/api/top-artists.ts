@@ -1,6 +1,7 @@
 import { type NextRequest } from "next/server";
 
 import { getTopArtists } from "../../lib/mySpotify";
+import { shuffle } from "../../utils/shuffle";
 import { spotifyColors } from "../../utils/spotifyColors";
 
 export const config = {
@@ -11,26 +12,16 @@ export default async function handler(req: NextRequest) {
 	const response = await getTopArtists({ limit: 5, range: "medium" });
 	const { items } = await response.json();
 
+	const colors = shuffle(spotifyColors);
 	const artists = await Promise.all(
-		items.map(async (artist: any) => {
-			const colorKey =
-				Object.keys(spotifyColors)[
-					Math.floor(Math.random() * Object.keys(spotifyColors).length)
-				];
-
-			const color = spotifyColors[colorKey];
-
-			delete spotifyColors[colorKey];
-
-			return {
-				name: artist.name,
-				artistUrl: artist.external_urls.spotify,
-				image: {
-					...artist.images[0],
-					color,
-				},
-			};
-		})
+		items.map(async (artist: any, idx: number) => ({
+			name: artist.name,
+			artistUrl: artist.external_urls.spotify,
+			image: {
+				...artist.images[0],
+				color: colors[idx],
+			},
+		}))
 	);
 
 	return new Response(JSON.stringify({ artists }), {
