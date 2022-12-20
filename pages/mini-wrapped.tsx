@@ -17,6 +17,7 @@ import {
 import { Artist, Track } from "../lib/types";
 import { hexToRgb } from "../utils/hexToRgb";
 import { BASE_URL } from "../lib/constants";
+import { useWindowSize } from "../lib/windowSizeContext";
 
 const meta = {
 	title: "Milovan Gudelj - Mini-Wrapped",
@@ -26,7 +27,7 @@ const meta = {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-	const data = await(
+	const data = await (
 		await fetch(`${BASE_URL}/api/getUserStats?period=medium_term`, {
 			method: "GET",
 			headers: {
@@ -63,6 +64,8 @@ const MiniWrapped = ({
 	topArtists: Artist[];
 	topTracks: Track[];
 }) => {
+	const { mobile } = useWindowSize();
+
 	const [artists, setArtists] = useState<Artist[]>(topArtists);
 	const [tracks, setTracks] = useState<Track[]>(topTracks);
 
@@ -96,22 +99,24 @@ const MiniWrapped = ({
 			<HeadMeta metadata={meta} />
 			<Section className="bg-purple">
 				<Container className="space-y-8">
-					<h1 className="text-h1-mobile md:text-d2-mobile xl:text-d2">
+					<h1 className="relative z-[1] text-h1-mobile md:text-d2-mobile xl:text-d2">
 						<span className="text-yellow">Mini</span>-Wrapped
 					</h1>
-					<p className="text-sub-heading-mobile md:text-sub-heading xl:max-w-[30ch]">
+					<p className="relative z-[1] text-sub-heading-mobile md:text-sub-heading xl:max-w-[30ch]">
 						An up to date miniature version of your{" "}
 						<span>{new Date().getFullYear()}</span> Spotify Wrapped.
 					</p>
-					<BigAssStar className="absolute -top-8 right-16 text-lilla" />
+					<BigAssStar className="absolute -top-16 -right-16 z-0 h-64 w-64 text-lilla lg:-top-8 lg:right-16 lg:h-[360px] lg:w-[360px]" />
 				</Container>
 			</Section>
 			<Section className="bg-black text-white">
-				<Container className="flex items-center justify-between space-y-0 py-[30px] md:py-[30px]">
-					<form className="flex items-center space-x-8">
-						<span className="text-label-md text-white/80">Filter:</span>
-						<div className="flex items-center space-x-2">
-							<div>
+				<Container className="flex flex-wrap items-center justify-between gap-[30px] space-y-0 py-[30px] md:py-[30px]">
+					<form className="flex flex-wrap items-center gap-x-8 gap-y-4">
+						<div className="flex items-center">
+							<span className="mr-4 block text-label-md text-white/80 md:inline-block">
+								Filter:
+							</span>
+							<div className="mr-2">
 								<input
 									type={"radio"}
 									id="filter-all"
@@ -127,7 +132,7 @@ const MiniWrapped = ({
 									All
 								</label>
 							</div>
-							<div>
+							<div className="mr-2">
 								<input
 									type={"radio"}
 									id="filter-artists"
@@ -163,7 +168,7 @@ const MiniWrapped = ({
 						<div className="flex items-center space-x-4">
 							<label
 								htmlFor="period"
-								className="text-label-md text-white/80"
+								className="block text-label-md text-white/80 md:inline-block"
 							>
 								Period:
 							</label>
@@ -177,7 +182,7 @@ const MiniWrapped = ({
 							</select>
 						</div>
 					</form>
-					<Button>Download poster</Button>
+					<Button fullWidth={mobile}>Download poster</Button>
 				</Container>
 			</Section>
 			<Section className="bg-purple">
