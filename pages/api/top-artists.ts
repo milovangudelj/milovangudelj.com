@@ -16,7 +16,7 @@ export default async function handler(req: NextRequest) {
 	const artists = await Promise.all(
 		items.map(async (artist: any, idx: number) => ({
 			name: artist.name,
-			artistUrl: artist.external_urls.spotify,
+			url: artist.external_urls.spotify,
 			image: {
 				...artist.images[0],
 				color: colors[idx],

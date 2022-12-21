@@ -41,7 +41,7 @@ export default async function handler(
 		artists.map(async (artist, idx) => {
 			return {
 				name: artist.name,
-				artistUrl: artist.external_urls.spotify,
+				url: artist.external_urls.spotify,
 				image: {
 					...artist.images[0],
 					color: colors[idx],
@@ -64,7 +64,7 @@ export default async function handler(
 				artist: track.artists
 					.map((_artist: any) => _artist.name)
 					.join(", "),
-				trackUrl: track.external_urls.spotify,
+				url: track.external_urls.spotify,
 				image: {
 					...track.album.images[0],
 					color: colors[idx],

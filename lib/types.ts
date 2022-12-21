@@ -1,7 +1,7 @@
 export type Track = {
 	title: string;
 	artist: string;
-	trackUrl: string;
+	url: string;
 	image: {
 		url: string;
 		width: number;
@@ -12,7 +12,7 @@ export type Track = {
 
 export type Artist = {
 	name: string;
-	artistUrl: string;
+	url: string;
 	image: {
 		url: string;
 		width: number;
