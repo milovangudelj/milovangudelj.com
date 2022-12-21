@@ -3,7 +3,7 @@
 		"artists": [
 			{
 				"name": "Eminem",
-				"artistUrl": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR",
+				" url": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR",
 				"image": {
 					"height": 640,
 					"url": "https://i.scdn.co/image/ab6761610000e5eba00b11c129b27a88fc72f36b",
@@ -13,7 +13,7 @@
 			},
 			{
 				"name": "J. Cole",
-				"artistUrl": "https://open.spotify.com/artist/6l3HvQ5sa6mXTsMTB19rO5",
+				" url": "https://open.spotify.com/artist/6l3HvQ5sa6mXTsMTB19rO5",
 				"image": {
 					"height": 640,
 					"url": "https://i.scdn.co/image/ab6761610000e5ebadd503b411a712e277895c8a",
@@ -23,7 +23,7 @@
 			},
 			{
 				"name": "Kanye West",
-				"artistUrl": "https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x",
+				" url": "https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x",
 				"image": {
 					"height": 640,
 					"url": "https://i.scdn.co/image/ab6761610000e5eb867008a971fae0f4d913f63a",
@@ -33,7 +33,7 @@
 			},
 			{
 				"name": "Linkin Park",
-				"artistUrl": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz",
+				" url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz",
 				"image": {
 					"height": 640,
 					"url": "https://i.scdn.co/image/ab6761610000e5eb34e5aa6afc1ba147bfbb0677",
@@ -43,7 +43,7 @@
 			},
 			{
 				"name": "Rino Gaetano",
-				"artistUrl": "https://open.spotify.com/artist/5RRPSRJpISAWEPOeSfYuhV",
+				" url": "https://open.spotify.com/artist/5RRPSRJpISAWEPOeSfYuhV",
 				"image": {
 					"height": 640,
 					"url": "https://i.scdn.co/image/ab6761610000e5eb859f84d00a98878969447347",
@@ -109,7 +109,7 @@
 		"artists": [
 			{
 				"name": "Pinguini Tattici Nucleari",
-				"artistUrl": "https://open.spotify.com/artist/6RdcIWVKYYzNzjQRd3oyHS",
+				" url": "https://open.spotify.com/artist/6RdcIWVKYYzNzjQRd3oyHS",
 				"image": {
 					"height": 640,
 					"url": "https://i.scdn.co/image/ab6761610000e5ebd5d878bd4d4fe8426fcb442d",
@@ -119,7 +119,7 @@
 			},
 			{
 				"name": "Marco Mengoni",
-				"artistUrl": "https://open.spotify.com/artist/3xGlLcG9CUrs5MvFkSLOS5",
+				" url": "https://open.spotify.com/artist/3xGlLcG9CUrs5MvFkSLOS5",
 				"image": {
 					"height": 640,
 					"url": "https://i.scdn.co/image/ab6761610000e5eb931023dd6ee2940cdaa73e35",
@@ -129,7 +129,7 @@
 			},
 			{
 				"name": "thasup",
-				"artistUrl": "https://open.spotify.com/artist/19i93sA0D7yS9dYoVNBqAA",
+				" url": "https://open.spotify.com/artist/19i93sA0D7yS9dYoVNBqAA",
 				"image": {
 					"height": 640,
 					"url": "https://i.scdn.co/image/ab6761610000e5eb71f5f4c80be4cd14bc466ef5",
@@ -139,7 +139,7 @@
 			},
 			{
 				"name": "Joe Hisaishi",
-				"artistUrl": "https://open.spotify.com/artist/7nzSoJISlVJsn7O0yTeMOB",
+				" url": "https://open.spotify.com/artist/7nzSoJISlVJsn7O0yTeMOB",
 				"image": {
 					"height": 640,
 					"url": "https://i.scdn.co/image/ab6761610000e5ebd26d9be0e533942c3e73875b",
@@ -149,7 +149,7 @@
 			},
 			{
 				"name": "Kyle Dixon & Michael Stein",
-				"artistUrl": "https://open.spotify.com/artist/00oL7zWxmWveTsKF7DnIRd",
+				" url": "https://open.spotify.com/artist/00oL7zWxmWveTsKF7DnIRd",
 				"image": {
 					"height": 640,
 					"url": "https://i.scdn.co/image/ab6761610000e5eb88f71e301f3b88aa37dc4c07",
