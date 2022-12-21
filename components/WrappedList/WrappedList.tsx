@@ -56,7 +56,9 @@ const WrappedListItem = ({
 			{...props}
 		>
 			<div
-				className={`h-16 w-16 flex-none ${isFirst ? "p-0" : "p-1"}`}
+				className={`h-16 w-16 flex-none select-none ${
+					isFirst ? "p-0" : "p-1"
+				}`}
 				style={!isFirst ? { backgroundColor: item.image.color } : undefined}
 				title={`${
 					isArtist ? item.name + "'s profile" : item.title + "'s album"
