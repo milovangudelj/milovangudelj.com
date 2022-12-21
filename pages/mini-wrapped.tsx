@@ -1,7 +1,5 @@
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { toPng } from "html-to-image";
 
@@ -12,10 +10,10 @@ import {
 	HeadMeta,
 	Layout,
 	Section,
+	WrappedList,
 } from "../components";
 
 import { Artist, Track } from "../lib/types";
-import { hexToRgb } from "../utils/hexToRgb";
 import { BASE_URL } from "../lib/constants";
 import { useWindowSize } from "../lib/windowSizeContext";
 
@@ -81,6 +79,11 @@ const MiniWrapped = ({
 	});
 	const watchFilter = watch("filter", "all");
 	const watchPeriod = watch("period", "medium_term");
+	const periodStrings: { [K in FormData["period"]]: string } = {
+		long_term: "Since you created your account",
+		medium_term: "In the last 6 months",
+		short_term: "In the last 3 months",
+	};
 
 	useEffect(() => {
 		const refetch = async () => {
@@ -185,121 +188,26 @@ const MiniWrapped = ({
 					<Button fullWidth={mobile}>Download poster</Button>
 				</Container>
 			</Section>
-			<Section className="bg-purple">
+			<Section className="bg-green">
 				<Container>
 					{(watchFilter === "artists" || watchFilter === "all") && (
-						<div className={`${watchFilter === "all" ? "mb-32" : ""}`}>
-							<h2 className="text-h2-mobile md:mb-8 md:text-d2-mobile xl:text-d2">
-								Top artists
+						<div
+							className={`${
+								watchFilter === "all" ? "mb-8 md:mb-16 xl:mb-32" : ""
+							}`}
+						>
+							<h2 className="mb-4 text-h2-mobile md:mb-8 xl:text-h2">
+								Top <span className="text-spotify-purple">artists</span>
 							</h2>
-							<p className="text-body xl:max-w-[680px]">
-								In the last 6 months these have been your most beloved
-								artists
+							<p className="text-body xl:max-w-[448px]">
+								{periodStrings[watchPeriod]} these have been your most
+								beloved artists.
 							</p>
 							{artists ? (
-								<ol className="mt-16 max-w-[448px] bg-black drop-shadow-brutal">
-									{artists.map((artist, index) => {
-										let tempColor: number[] = [];
-
-										hexToRgb(artist.image.color).forEach((c, idx) => {
-											c = c / 255.0;
-											if (c <= 0.04045) {
-												c = c / 12.92;
-											} else {
-												c = ((c + 0.055) / 1.055) ** 2.4;
-											}
-
-											tempColor[idx] = c;
-										});
-
-										const colorLuminance =
-											0.2126 * tempColor[0] +
-											0.7152 * tempColor[1] +
-											0.0722 * tempColor[2];
-
-										const lightText = colorLuminance <= 0.179;
-
-										return (
-											<li
-												key={artist.artistUrl}
-												className="flex"
-												style={
-													index == 0
-														? {
-																backgroundColor:
-																	artist.image.color,
-														  }
-														: undefined
-												}
-											>
-												<div
-													className={`relative h-16 w-16 flex-none ${
-														index == 0 ? "p-0" : "p-1"
-													}`}
-													style={
-														index != 0
-															? {
-																	backgroundColor:
-																		artist.image.color,
-															  }
-															: undefined
-													}
-													title={`${artist.name}'s profile picture`}
-												>
-													<Image
-														className="pointer-events-none aspect-square h-full w-full object-cover"
-														sizes={`${artist.image.width}px`}
-														quality={100}
-														src={artist.image.url}
-														alt={`${artist.name}'s profile picture`}
-														width={artist.image.width}
-														height={artist.image.height}
-													/>
-												</div>
-												<div
-													className={`${
-														index == 0
-															? lightText
-																? "text-white"
-																: "text-black"
-															: "border-b-2 border-r-2 border-white/10 text-white"
-													} w-full`}
-												>
-													<Link
-														href={artist.artistUrl}
-														rel="noreferrer noopener"
-														target="_blank"
-														className={`${
-															index == 0
-																? lightText
-																	? "text-sub-heading"
-																	: "text-sub-heading"
-																: "text-sub-heading-mobile"
-														} group flex h-full max-w-full items-center justify-between truncate px-4`}
-													>
-														<div>
-															<span title={artist.name}>
-																{artist.name}
-															</span>
-															<span className="pointer-events-none ml-4 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100">
-																↗
-															</span>
-														</div>
-														<span
-															className={`${
-																index == 0
-																	? "text-[46.04px]"
-																	: "text-[22.4px]"
-															} text-sub-heading leading-none opacity-40`}
-														>
-															{index + 1}
-														</span>
-													</Link>
-												</div>
-											</li>
-										);
-									})}
-								</ol>
+								<WrappedList
+									items={artists}
+									className="mt-8 max-w-[448px] md:mt-16"
+								/>
 							) : (
 								<span>Loading...</span>
 							)}
@@ -307,117 +215,18 @@ const MiniWrapped = ({
 					)}
 					{(watchFilter === "tracks" || watchFilter === "all") && (
 						<div>
-							<h2 className="text-h2-mobile md:mb-8 md:text-d2-mobile xl:text-d2">
-								Top tracks
+							<h2 className="mb-4 text-h2-mobile md:mb-8 xl:text-h2">
+								Top <span className="text-yellow">tracks</span>
 							</h2>
-							<p className="text-body xl:max-w-[680px]">
-								In the same period you couldn&apos;t stop listening to
-								these five tracks
+							<p className="text-body xl:max-w-[448px]">
+								{periodStrings[watchPeriod]} you couldn&apos;t stop
+								listening to these five tracks.
 							</p>
 							{tracks ? (
-								<ol className="mt-16 max-w-[448px] bg-black drop-shadow-brutal">
-									{tracks.map((track, index) => {
-										let tempColor: number[] = [];
-
-										hexToRgb(track.image.color).forEach((c, idx) => {
-											c = c / 255.0;
-											if (c <= 0.04045) {
-												c = c / 12.92;
-											} else {
-												c = ((c + 0.055) / 1.055) ** 2.4;
-											}
-
-											tempColor[idx] = c;
-										});
-
-										const colorLuminance =
-											0.2126 * tempColor[0] +
-											0.7152 * tempColor[1] +
-											0.0722 * tempColor[2];
-
-										const lightText = colorLuminance <= 0.179;
-
-										return (
-											<li
-												key={track.trackUrl}
-												className="flex"
-												style={
-													index == 0
-														? {
-																backgroundColor:
-																	track.image.color,
-														  }
-														: undefined
-												}
-											>
-												<div
-													className={`relative h-16 w-16 flex-none ${
-														index == 0 ? "p-0" : "p-1"
-													}`}
-													style={
-														index != 0
-															? {
-																	backgroundColor:
-																		track.image.color,
-															  }
-															: undefined
-													}
-													title={`${track.title}'s profile picture`}
-												>
-													<Image
-														className="pointer-events-none aspect-square h-full w-full object-cover"
-														sizes={`${track.image.width}px`}
-														quality={100}
-														src={track.image.url}
-														alt={`${track.title}'s album's cover art`}
-														width={track.image.width}
-														height={track.image.height}
-													/>
-												</div>
-												<div
-													className={`${
-														index == 0
-															? lightText
-																? "text-white"
-																: "text-black"
-															: "border-b-2 border-r-2 border-white/10 text-white"
-													} w-full`}
-												>
-													<Link
-														href={track.trackUrl}
-														rel="noreferrer noopener"
-														target="_blank"
-														className={`${
-															index == 0
-																? lightText
-																	? "text-sub-heading"
-																	: "text-sub-heading"
-																: "text-sub-heading-mobile"
-														} group flex h-full max-w-full items-center justify-between truncate px-4`}
-													>
-														<div>
-															<span title={track.title}>
-																{track.title}
-															</span>
-															<span className="pointer-events-none ml-4 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100">
-																↗
-															</span>
-														</div>
-														<span
-															className={`${
-																index == 0
-																	? "text-[46.04px]"
-																	: "text-[22.4px]"
-															} text-sub-heading leading-none opacity-40`}
-														>
-															{index + 1}
-														</span>
-													</Link>
-												</div>
-											</li>
-										);
-									})}
-								</ol>
+								<WrappedList
+									items={tracks}
+									className="mt-8 max-w-[448px] md:mt-16"
+								/>
 							) : (
 								<span>Loading...</span>
 							)}

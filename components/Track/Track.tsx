@@ -9,7 +9,7 @@ export const Track = (track: TrackType & { ranking: number }) => {
 			<div className="flex flex-col pl-3">
 				<a
 					className="text-gray-900 dark:text-gray-100 w-60 truncate font-medium sm:w-96 md:w-full"
-					href={track.trackUrl}
+					href={track.url}
 					target="_blank"
 					rel="noopener noreferrer"
 				>
