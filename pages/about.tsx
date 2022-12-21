@@ -13,7 +13,7 @@ import {
 } from "../components";
 import { AboutSection } from "../components/sections";
 import { useWindowSize } from "../lib/windowSizeContext";
-import { hexToRgb } from "../utils/hexToRgb";
+import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "../utils/getLuminance";
 import { spotifyColors } from "../utils/spotifyColors";
 
 const meta = {
@@ -118,25 +118,10 @@ const About = () => {
 									</h3>
 								</div>
 								{topGenres.map((genre, idx) => {
-									let tempColor: number[] = [];
+									const lightText =
+										getLuminance(genre.color) <=
+										TEXT_LUMINANCE_TRESHOLD;
 
-									hexToRgb(genre.color).forEach((c, idx) => {
-										c = c / 255.0;
-										if (c <= 0.04045) {
-											c = c / 12.92;
-										} else {
-											c = ((c + 0.055) / 1.055) ** 2.4;
-										}
-
-										tempColor[idx] = c;
-									});
-
-									const colorLuminance =
-										0.2126 * tempColor[0] +
-										0.7152 * tempColor[1] +
-										0.0722 * tempColor[2];
-
-									const lightText = colorLuminance <= 0.179;
 									return (
 										<div
 											key={genre.id}
