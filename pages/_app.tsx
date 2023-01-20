@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/react";
 import { SessionProvider } from "next-auth/react";
 
 import "../styles/globals.css";
@@ -21,6 +22,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 					</style>
 					<div className={`h-fill font-sans`}>
 						<Component {...pageProps} />
+						<Analytics />
 					</div>
 				</ScrollProvider>
 			</WindowSizeProvider>
