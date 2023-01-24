@@ -41,7 +41,7 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 						<Image
 							src={picture}
 							alt={`${username}'s profile picture`}
-							className="mr-4 h-14 w-14 rounded-full"
+							className="mr-4 h-14 w-14 rounded-full object-cover object-center"
 							width={56}
 							height={56}
 							loading="eager"
