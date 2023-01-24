@@ -8,7 +8,7 @@ import {
 } from "react";
 
 const button = cva(
-	"border-2 text-black cursor-pointer inline-block transition-all will-change-[filter] hover:drop-shadow-brutal",
+	"border-2 text-black cursor-pointer text-center inline-block transition-all will-change-[filter] hover:drop-shadow-brutal",
 	{
 		variants: {
 			intent: {
