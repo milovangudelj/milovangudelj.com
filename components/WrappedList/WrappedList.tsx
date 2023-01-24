@@ -11,16 +11,21 @@ import {
 
 export interface WrappedListProps {
 	items: Track[] | Artist[];
+	poster?: boolean;
 }
 
 export const WrappedList = ({
 	className,
 	items,
+	poster = false,
 	...props
 }: ComponentProps<"ol"> & WrappedListProps) => {
 	return (
 		<ol
-			className={twMerge("bg-black drop-shadow-brutal", className)}
+			className={twMerge(
+				`bg-black drop-shadow-brutal`,
+				className
+			)}
 			{...props}
 		>
 			{items.map((item, idx) => (
@@ -28,6 +33,7 @@ export const WrappedList = ({
 					item={item}
 					isFirst={idx === 0}
 					rank={idx + 1}
+					poster={poster}
 					key={item.url}
 				/>
 			))}
@@ -39,12 +45,14 @@ const WrappedListItem = ({
 	item,
 	isFirst,
 	rank,
+	poster,
 	className,
 	...props
 }: ComponentProps<"li"> & {
 	item: Track | Artist;
 	isFirst: boolean;
 	rank: number;
+	poster: boolean;
 }) => {
 	const lightText = getLuminance(item.image.color) <= TEXT_LUMINANCE_TRESHOLD;
 	const isArtist = "name" in item;
@@ -56,8 +64,10 @@ const WrappedListItem = ({
 			{...props}
 		>
 			<div
-				className={`h-16 w-16 flex-none select-none ${
-					isFirst ? "p-0" : "p-1"
+				className={`${
+					poster ? "h-[100.31px] w-[100.31px]" : "h-16 w-16"
+				} flex-none select-none ${
+					isFirst ? "p-0" : poster ? "p-[6.27px]" : "p-1"
 				}`}
 				style={!isFirst ? { backgroundColor: item.image.color } : undefined}
 				title={`${
@@ -74,6 +84,7 @@ const WrappedListItem = ({
 					} picture`}
 					width={item.image.width}
 					height={item.image.height}
+					loading={poster ? "eager" : "lazy"}
 				/>
 			</div>
 			<div
@@ -82,7 +93,11 @@ const WrappedListItem = ({
 						? lightText
 							? "text-white"
 							: "text-black"
-						: "border-b-2 border-r-2 border-white/10 text-white"
+						: `${
+								poster
+									? "border-b-[3.13px] border-r-[3.13px]"
+									: "border-b-2 border-r-2"
+						  } border-white/10 text-white`
 				} min-w-0 flex-1`}
 			>
 				<Link
@@ -91,16 +106,26 @@ const WrappedListItem = ({
 					target="_blank"
 					className={`${
 						isFirst
-							? lightText
-								? "text-sub-heading"
+							? poster
+								? "font-space text-[36.11px] font-medium leading-[1.5]"
 								: "text-sub-heading"
+							: poster
+							? "font-space text-[30.09px] font-medium leading-[1.5]"
 							: "text-sub-heading-mobile"
-					} group flex h-full w-full items-center px-4`}
+					} group flex h-full w-full items-center ${
+						poster ? "px-[25.08px]" : "px-4"
+					}`}
 					title={`${rank}. ${isArtist ? item.name : item.title}`}
 				>
 					<span
 						className={`${
-							isFirst ? "text-[46.04px]" : "text-[22.4px]"
+							isFirst
+								? poster
+									? "text-[71.65px]"
+									: "text-[46.04px]"
+								: poster
+								? "text-[35.12px]"
+								: "text-[22.4px]"
 						} order-last ml-auto flex-none text-sub-heading leading-none opacity-40`}
 					>
 						{rank}

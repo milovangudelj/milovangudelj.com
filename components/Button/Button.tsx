@@ -1,7 +1,14 @@
 import { cva, type VariantProps } from "cva";
+import {
+	ComponentPropsWithoutRef,
+	ComponentPropsWithRef,
+	ElementType,
+	forwardRef,
+	HTMLAttributes,
+} from "react";
 
 const button = cva(
-	"border-2 text-black inline-block transition-all will-change-[filter] hover:drop-shadow-brutal",
+	"border-2 text-black cursor-pointer inline-block transition-all will-change-[filter] hover:drop-shadow-brutal",
 	{
 		variants: {
 			intent: {
@@ -29,30 +36,36 @@ const button = cva(
 	}
 );
 
-export interface ButtonProps<T extends React.ElementType>
-	extends React.HTMLAttributes<HTMLButtonElement>,
+export interface ButtonProps<T extends ElementType>
+	extends HTMLAttributes<HTMLButtonElement>,
 		VariantProps<typeof button> {
 	as?: T;
 }
 
-export const Button = <T extends React.ElementType = "button">({
-	children,
-	intent,
-	size,
-	fullWidth,
-	className,
-	as,
-	...props
-}: ButtonProps<T> &
-	Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) => {
-	const Component = as || "button";
+export const Button = forwardRef(
+	<T extends ElementType = "button">(
+		{
+			children,
+			intent,
+			size,
+			fullWidth,
+			className,
+			as,
+			...props
+		}: ButtonProps<T> &
+			Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>,
+		ref: ComponentPropsWithRef<T>["ref"]
+	) => {
+		const Component = as || "button";
 
-	return (
-		<Component
-			className={button({ intent, size, fullWidth, className })}
-			{...props}
-		>
-			{children}
-		</Component>
-	);
-};
+		return (
+			<Component
+				className={button({ intent, size, fullWidth, className })}
+				ref={ref}
+				{...props}
+			>
+				{children}
+			</Component>
+		);
+	}
+);

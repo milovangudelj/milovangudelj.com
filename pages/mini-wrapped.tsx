@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toPng } from "html-to-image";
 
@@ -9,6 +9,7 @@ import {
 	Container,
 	HeadMeta,
 	Layout,
+	Poster,
 	Section,
 	WrappedList,
 } from "../components";
@@ -16,6 +17,7 @@ import {
 import { Artist, Track } from "../lib/types";
 import { BASE_URL } from "../lib/constants";
 import { useWindowSize } from "../lib/windowSizeContext";
+import html2canvas from "html2canvas";
 
 const meta = {
 	title: "Milovan Gudelj - Mini-Wrapped",
@@ -35,6 +37,16 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 		})
 	).json();
 
+	const userData = await(
+		await fetch(`${BASE_URL}/api/getUser`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				Cookie: req.headers.cookie as string,
+			},
+		})
+	).json();
+
 	if (data.error)
 		return {
 			redirect: {
@@ -46,6 +58,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 	return {
 		props: {
 			...data,
+			user: {
+				displayName: userData.displayName,
+				images: userData.images,
+			},
 		},
 	};
 };
@@ -58,10 +74,19 @@ type FormData = {
 const MiniWrapped = ({
 	topArtists,
 	topTracks,
+	user,
 }: {
 	topArtists: Artist[];
 	topTracks: Track[];
+	user: {
+		displayName: string;
+		images: SpotifyApi.ImageObject[];
+	};
 }) => {
+	const [generatingPoster, setGeneratingPoster] = useState(true);
+	const posterRef = useRef<HTMLDivElement>(null);
+	const downloadRef = useRef<HTMLAnchorElement>(null);
+
 	const { mobile } = useWindowSize();
 
 	const [artists, setArtists] = useState<Artist[]>(topArtists);
@@ -97,9 +122,44 @@ const MiniWrapped = ({
 		refetch();
 	}, [watchPeriod]);
 
+	useEffect(() => {
+		const generatePoster = async () => {
+			setGeneratingPoster(true);
+			console.log("Generating poster...");
+
+			const canvas = await html2canvas(posterRef.current as HTMLDivElement);
+			const dataUrl = canvas
+				.toDataURL("image/png")
+				.replace(/^data:image\/[^;]/, "data:application/octet-stream");
+
+			downloadRef.current?.setAttribute("href", dataUrl);
+
+			setGeneratingPoster(false);
+			console.log("Done!");
+		};
+
+		generatePoster();
+	}, [artists, tracks]);
+
 	return (
 		<Layout>
 			<HeadMeta metadata={meta} />
+			<div
+				className="absolute top-0 left-0 -z-10 h-0 w-0 overflow-hidden [tab-index:-1]"
+				aria-hidden
+			>
+				<Poster
+					primary="bg-light-cyan"
+					accent="text-yellow"
+					artists={artists}
+					picture={user.images[0].url}
+					tracks={tracks}
+					username={user.displayName}
+					year={new Date().getFullYear()}
+					period={watchPeriod}
+					ref={posterRef}
+				/>
+			</div>
 			<Section className="bg-purple">
 				<Container className="space-y-8">
 					<h1 className="relative z-[1] text-h1-mobile md:text-d2-mobile xl:text-d2">
@@ -185,7 +245,18 @@ const MiniWrapped = ({
 							</select>
 						</div>
 					</form>
-					<Button fullWidth={mobile}>Download poster</Button>
+					<Button
+						as="a"
+						ref={downloadRef}
+						download={`@${user.displayName}-Mini-Wrapped.png`}
+						fullWidth={mobile}
+						className={`${
+							generatingPoster ? "pointer-events-none opacity-80" : ""
+						} transition-all`}
+						href="#"
+					>
+						{generatingPoster ? "Generating..." : "Download poster"}
+					</Button>
 				</Container>
 			</Section>
 			<Section className="bg-green">
