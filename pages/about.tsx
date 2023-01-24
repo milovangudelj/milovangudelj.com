@@ -14,7 +14,7 @@ import {
 import { AboutSection } from "../components/sections";
 import { useWindowSize } from "../lib/windowSizeContext";
 import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "../utils/getLuminance";
-import { spotifyColors } from "../utils/getColors";
+import { colors, spotifyColors } from "../utils/getColors";
 
 const meta = {
 	title: "Milovan Gudelj - About me",
@@ -28,27 +28,27 @@ const topGenres = [
 	{
 		id: "tg_01",
 		label: "Rap",
-		color: spotifyColors["brand"],
+		color: colors["sp-brand"],
 	},
 	{
 		id: "tg_02",
 		label: "Pop",
-		color: spotifyColors["orange"],
+		color: colors["sp-orange"],
 	},
 	{
 		id: "tg_03",
 		label: "Italian hip hop",
-		color: spotifyColors["pink"],
+		color: colors["sp-pink"],
 	},
 	{
 		id: "tg_04",
 		label: "Modern Rock",
-		color: spotifyColors["yellow"],
+		color: colors["sp-yellow"],
 	},
 	{
 		id: "tg_05",
 		label: "Alternative R&B",
-		color: spotifyColors["purple"],
+		color: colors["sp-purple"],
 	},
 ];
 
