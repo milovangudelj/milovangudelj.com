@@ -1,7 +1,4 @@
-import {
-	ComponentProps,
-	ComponentPropsWithRef,
-} from "react";
+import { ComponentProps, ComponentPropsWithRef } from "react";
 import { WrappedList } from "..";
 import { Artist, Track } from "../../lib/types";
 import { Palette } from "../../utils/getPalette";
@@ -55,6 +52,7 @@ export const Poster = ({
 					-Wrapped
 				</h1>
 				<div className="flex items-center">
+					{/* eslint-disable-next-line @next/next/no-img-element */}
 					<img
 						src={picture}
 						alt={`${username}'s profile picture`}

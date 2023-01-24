@@ -93,19 +93,22 @@ const WrappedListItem = ({
 				} picture`}
 			>
 				{poster ? (
-					<img
-						className="pointer-events-none aspect-square h-full w-full object-cover"
-						sizes={`${item.image.width}px`}
-						src={item.image.url}
-						alt={`${
-							isArtist
-								? item.name + "'s profile"
-								: item.title + "'s album"
-						} picture`}
-						width={item.image.width}
-						height={item.image.height}
-						loading={poster ? "eager" : "lazy"}
-					/>
+					<>
+						{/* eslint-disable-next-line @next/next/no-img-element */}
+						<img
+							className="pointer-events-none aspect-square h-full w-full object-cover"
+							sizes={`${item.image.width}px`}
+							src={item.image.url}
+							alt={`${
+								isArtist
+									? item.name + "'s profile"
+									: item.title + "'s album"
+							} picture`}
+							width={item.image.width}
+							height={item.image.height}
+							loading={poster ? "eager" : "lazy"}
+						/>
+					</>
 				) : (
 					<Image
 						className="pointer-events-none aspect-square h-full w-full object-cover"
