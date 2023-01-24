@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 					</style>
 					<div className={`h-fill font-sans`}>
 						<Component {...pageProps} />
-						<Analytics />
+						{process.env.NODE_ENV === "production" && <Analytics />}
 					</div>
 				</ScrollProvider>
 			</WindowSizeProvider>
