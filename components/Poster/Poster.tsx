@@ -81,3 +81,5 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 		);
 	}
 );
+
+Poster.displayName = "Poster";
