@@ -1,5 +1,12 @@
 import { GetServerSideProps } from "next";
-import { forwardRef, useEffect, useRef, useState } from "react";
+import {
+	forwardRef,
+	RefCallback,
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
 import { useForm } from "react-hook-form";
 
 import {
@@ -21,6 +28,7 @@ const DynamicPoster = dynamic(
 const Poster = forwardRef<HTMLDivElement, PosterProps>((props, ref) => (
 	<DynamicPoster {...props} forwardedRef={ref} />
 ));
+Poster.displayName = "Poster";
 
 import { Artist, Track } from "../lib/types";
 import { BASE_URL } from "../lib/constants";
@@ -94,7 +102,14 @@ const MiniWrapped = ({
 	};
 }) => {
 	const [generatingPoster, setGeneratingPoster] = useState(true);
-	const posterRef = useRef<HTMLDivElement>(null);
+	const [posterLoaded, setPosterLoaded] = useState(false);
+	const posterRef = useRef<HTMLDivElement | null>(null);
+	const setRef: RefCallback<HTMLDivElement> = useCallback((node) => {
+		if (node !== null) {
+			setPosterLoaded(true);
+			posterRef.current = node;
+		}
+	}, []);
 	const downloadRef = useRef<HTMLAnchorElement>(null);
 
 	const { mobile } = useWindowSize();
@@ -160,7 +175,7 @@ const MiniWrapped = ({
 		};
 
 		generatePoster();
-	}, [palette, posterRef.current]);
+	}, [palette, posterLoaded]);
 
 	return (
 		<Layout>
@@ -179,7 +194,7 @@ const MiniWrapped = ({
 					year={new Date().getFullYear()}
 					period={watchPeriod}
 					palette={palette}
-					ref={posterRef}
+					ref={setRef}
 				/>
 			</div>
 			<Section className="bg-purple">
@@ -330,5 +345,6 @@ const MiniWrapped = ({
 		</Layout>
 	);
 };
+MiniWrapped.displayName = "MiniWrapped";
 
 export default MiniWrapped;
