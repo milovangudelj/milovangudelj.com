@@ -4,7 +4,7 @@ import { shuffle } from "../../utils/shuffle";
 
 import { spotifyApi } from "../../lib/spotify";
 import { authOptions, ExtendedSession } from "./auth/[...nextauth]";
-import { spotifyColors } from "../../utils/spotifyColors";
+import { spotifyColors } from "../../utils/getColors";
 
 export default async function handler(
 	req: NextApiRequest,

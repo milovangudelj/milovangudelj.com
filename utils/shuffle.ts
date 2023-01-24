@@ -1,9 +1,9 @@
-/** A simplified and sped up version of lodash's `_.shuffle` function
+/** A simplified and sped up version of lodash's `_.shuffle()` function
  *
  * @param collection An array or object collection
  * @returns A new array with the values shuffled around
  */
-export const shuffle = (collection: any[] | {}): any[] => {
+export const shuffle = <T = any>(collection: T[] | {}): T[] => {
 	const array = Array.isArray(collection)
 		? collection.map((v) => v)
 		: Object.values(collection);

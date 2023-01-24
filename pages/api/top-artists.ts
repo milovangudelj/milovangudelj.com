@@ -2,7 +2,7 @@ import { type NextRequest } from "next/server";
 
 import { getTopArtists } from "../../lib/mySpotify";
 import { shuffle } from "../../utils/shuffle";
-import { spotifyColors } from "../../utils/spotifyColors";
+import { spotifyColors } from "../../utils/getColors";
 
 export const config = {
 	runtime: "experimental-edge",

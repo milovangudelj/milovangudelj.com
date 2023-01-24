@@ -14,7 +14,7 @@ import {
 import { AboutSection } from "../components/sections";
 import { useWindowSize } from "../lib/windowSizeContext";
 import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "../utils/getLuminance";
-import { spotifyColors } from "../utils/spotifyColors";
+import { spotifyColors } from "../utils/getColors";
 
 const meta = {
 	title: "Milovan Gudelj - About me",

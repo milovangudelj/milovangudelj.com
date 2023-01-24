@@ -1,7 +1,6 @@
 import { GetServerSideProps } from "next";
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { toPng } from "html-to-image";
 
 import {
 	BigAssStar,
@@ -9,15 +8,26 @@ import {
 	Container,
 	HeadMeta,
 	Layout,
-	Poster,
+	PosterProps,
 	Section,
 	WrappedList,
 } from "../components";
+const DynamicPoster = dynamic(
+	() => import("../components").then((mod) => mod.Poster),
+	{
+		ssr: false,
+	}
+);
+const Poster = forwardRef<HTMLDivElement, PosterProps>((props, ref) => (
+	<DynamicPoster {...props} forwardedRef={ref} />
+));
 
 import { Artist, Track } from "../lib/types";
 import { BASE_URL } from "../lib/constants";
 import { useWindowSize } from "../lib/windowSizeContext";
 import html2canvas from "html2canvas";
+import { getPalette, Palette } from "../utils/getPalette";
+import dynamic from "next/dynamic";
 
 const meta = {
 	title: "Milovan Gudelj - Mini-Wrapped",
@@ -91,6 +101,7 @@ const MiniWrapped = ({
 
 	const [artists, setArtists] = useState<Artist[]>(topArtists);
 	const [tracks, setTracks] = useState<Track[]>(topTracks);
+	const [palette, setPalette] = useState<Palette>(getPalette());
 
 	const {
 		register,
@@ -123,11 +134,22 @@ const MiniWrapped = ({
 	}, [watchPeriod]);
 
 	useEffect(() => {
-		const generatePoster = async () => {
-			setGeneratingPoster(true);
-			console.log("Generating poster...");
+		setGeneratingPoster(true);
 
-			const canvas = await html2canvas(posterRef.current as HTMLDivElement);
+		setPalette((current) => {
+			const newPalette = getPalette();
+			return newPalette;
+		});
+	}, [artists, tracks]);
+
+	useEffect(() => {
+		if (!posterRef.current) return;
+
+		const generatePoster = async () => {
+			const canvas = await html2canvas(posterRef.current as HTMLDivElement, {
+				useCORS: true,
+			});
+
 			const dataUrl = canvas
 				.toDataURL("image/png")
 				.replace(/^data:image\/[^;]/, "data:application/octet-stream");
@@ -135,11 +157,10 @@ const MiniWrapped = ({
 			downloadRef.current?.setAttribute("href", dataUrl);
 
 			setGeneratingPoster(false);
-			console.log("Done!");
 		};
 
 		generatePoster();
-	}, [artists, tracks]);
+	}, [palette, posterRef.current]);
 
 	return (
 		<Layout>
@@ -157,6 +178,7 @@ const MiniWrapped = ({
 					username={user.displayName}
 					year={new Date().getFullYear()}
 					period={watchPeriod}
+					palette={palette}
 					ref={posterRef}
 				/>
 			</div>

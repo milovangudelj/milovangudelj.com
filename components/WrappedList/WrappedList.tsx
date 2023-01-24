@@ -8,24 +8,29 @@ import {
 	getLuminance,
 	TEXT_LUMINANCE_TRESHOLD,
 } from "../../utils/getLuminance";
+import { Palette } from "../../utils/getPalette";
 
 export interface WrappedListProps {
 	items: Track[] | Artist[];
 	poster?: boolean;
+	palette?: Palette;
 }
 
 export const WrappedList = ({
 	className,
 	items,
 	poster = false,
+	palette,
+	style,
 	...props
 }: ComponentProps<"ol"> & WrappedListProps) => {
 	return (
 		<ol
-			className={twMerge(
-				`bg-black drop-shadow-brutal`,
-				className
-			)}
+			className={twMerge(`drop-shadow-brutal`, className)}
+			style={{
+				color: palette?.white ?? "#FFFFFF",
+				backgroundColor: palette?.black ?? "#000000",
+			}}
 			{...props}
 		>
 			{items.map((item, idx) => (
@@ -34,6 +39,16 @@ export const WrappedList = ({
 					isFirst={idx === 0}
 					rank={idx + 1}
 					poster={poster}
+					color={
+						palette
+							? "name" in item
+								? palette.artists[idx]
+								: palette.tracks[idx]
+							: item.image.color
+					}
+					style={{
+						color: palette?.white ?? "#FFFFFF",
+					}}
 					key={item.url}
 				/>
 			))}
@@ -47,20 +62,23 @@ const WrappedListItem = ({
 	rank,
 	poster,
 	className,
+	color,
+	style,
 	...props
 }: ComponentProps<"li"> & {
 	item: Track | Artist;
 	isFirst: boolean;
 	rank: number;
 	poster: boolean;
+	color: string;
 }) => {
-	const lightText = getLuminance(item.image.color) <= TEXT_LUMINANCE_TRESHOLD;
+	const lightText = getLuminance(color) <= TEXT_LUMINANCE_TRESHOLD;
 	const isArtist = "name" in item;
 
 	return (
 		<li
 			className={twMerge(`flex`, className)}
-			style={isFirst ? { backgroundColor: item.image.color } : undefined}
+			style={{ ...style, backgroundColor: isFirst ? color : undefined }}
 			{...props}
 		>
 			<div
@@ -69,23 +87,41 @@ const WrappedListItem = ({
 				} flex-none select-none ${
 					isFirst ? "p-0" : poster ? "p-[6.27px]" : "p-1"
 				}`}
-				style={!isFirst ? { backgroundColor: item.image.color } : undefined}
+				style={{ backgroundColor: !isFirst ? color : undefined }}
 				title={`${
 					isArtist ? item.name + "'s profile" : item.title + "'s album"
 				} picture`}
 			>
-				<Image
-					className="pointer-events-none aspect-square h-full w-full object-cover"
-					sizes={`${item.image.width}px`}
-					quality={100}
-					src={item.image.url}
-					alt={`${
-						isArtist ? item.name + "'s profile" : item.title + "'s album"
-					} picture`}
-					width={item.image.width}
-					height={item.image.height}
-					loading={poster ? "eager" : "lazy"}
-				/>
+				{poster ? (
+					<img
+						className="pointer-events-none aspect-square h-full w-full object-cover"
+						sizes={`${item.image.width}px`}
+						src={item.image.url}
+						alt={`${
+							isArtist
+								? item.name + "'s profile"
+								: item.title + "'s album"
+						} picture`}
+						width={item.image.width}
+						height={item.image.height}
+						loading={poster ? "eager" : "lazy"}
+					/>
+				) : (
+					<Image
+						className="pointer-events-none aspect-square h-full w-full object-cover"
+						sizes={`${item.image.width}px`}
+						quality={100}
+						src={item.image.url}
+						alt={`${
+							isArtist
+								? item.name + "'s profile"
+								: item.title + "'s album"
+						} picture`}
+						width={item.image.width}
+						height={item.image.height}
+						loading={poster ? "eager" : "lazy"}
+					/>
+				)}
 			</div>
 			<div
 				className={`${
@@ -97,7 +133,11 @@ const WrappedListItem = ({
 								poster
 									? "border-b-[3.13px] border-r-[3.13px]"
 									: "border-b-2 border-r-2"
-						  } border-white/10 text-white`
+						  } ${
+								style?.color === "#FFFFFF"
+									? "border-white/10 text-white"
+									: "border-black/10 text-black"
+						  }`
 				} min-w-0 flex-1`}
 			>
 				<Link
