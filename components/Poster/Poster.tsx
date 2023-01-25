@@ -2,6 +2,7 @@ import { ComponentProps, ComponentPropsWithRef } from "react";
 import { WrappedList } from "..";
 import { Artist, Track } from "../../lib/types";
 import { Palette } from "../../utils/getPalette";
+import { hexToRgb } from "../../utils/hexToRgb";
 
 export interface PosterProps extends ComponentProps<"div"> {
 	accent: string;
@@ -33,6 +34,8 @@ export const Poster = ({
 	forwardedRef,
 	...props
 }: PosterProps) => {
+	const gradient = hexToRgb(palette.bg);
+
 	return (
 		<div
 			ref={forwardedRef}
@@ -43,6 +46,19 @@ export const Poster = ({
 			}}
 			{...props}
 		>
+			{false && (
+				<div
+					aria-hidden
+					className="pointer-events-none absolute inset-0 bg-[url('/images/notes-tile.png')] bg-repeat opacity-10"
+				>
+					<div
+						className="absolute inset-0"
+						style={{
+							backgroundImage: `linear-gradient(${palette.bg} 0%, ${palette.bg} 22%, rgba(${gradient.r}, ${gradient.g}, ${gradient.b}, 0) 100%)`,
+						}}
+					></div>
+				</div>
+			)}
 			<span className="absolute -top-[164.77px] right-0 origin-bottom-left translate-x-[calc(100%-148.77px)] rotate-90 font-space text-[164.77px] font-bold leading-none opacity-20">
 				{year}
 			</span>
@@ -59,7 +75,7 @@ export const Poster = ({
 						className="mr-4 h-14 w-14 rounded-full object-cover object-center"
 						loading="eager"
 					/>
-					<span className="text-sub-heading">@{username}</span>
+					<span className="text-sub-heading opacity-80">@{username}</span>
 				</div>
 				<div className="relative mt-20">
 					<h2 className="mb-10 text-h2-mobile">
@@ -106,9 +122,12 @@ export const Poster = ({
 					</div>
 				</div>
 			</div>
-			<div className="flex justify-between text-sub-heading opacity-60">
-				<span>Design: @milovangudelj</span>
-				<span>Mini-Wrapped {year}</span>
+			<div className="flex justify-between text-h4-mobile">
+				<p>
+					<span className="opacity-40">Get your own at</span> <br />
+					milovangudelj.com
+					<span style={{ color: palette.fg }}>/mini-wrapped</span>
+				</p>
 			</div>
 		</div>
 	);
