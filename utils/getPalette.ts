@@ -103,10 +103,11 @@ export type Palette = {
 	tracks: string[];
 };
 
-export const getPalette = (
-	combo: ColorCombo = combos[Math.floor(Math.random() * combos.length)],
-	exclude: Color[] = []
-): Palette => {
+export const getPalette = (color?: Color, exclude: Color[] = []): Palette => {
+	const combo =
+		combos.find((c) => c.bg === color) ||
+		combos[Math.floor(Math.random() * combos.length)];
+
 	const artists = shuffleAll([
 		...exclude,
 		combo.bg,
