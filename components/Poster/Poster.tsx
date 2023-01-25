@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ComponentProps, ComponentPropsWithRef } from "react";
 import { WrappedList } from "..";
 import { Artist, Track } from "../../lib/types";
@@ -47,7 +46,8 @@ export const Poster = ({
 			}}
 			{...props}
 		>
-			<Image
+			{/* eslint-disable-next-line @next/next/no-img-element */}
+			<img
 				src={
 					palette.white === "#FFFFFF"
 						? "/images/notes-bg.png"
