@@ -1,4 +1,4 @@
-import { Color, colors, shuffleAll } from "./getColors";
+import { Color, colors, getColorName, shuffleAll } from "./getColors";
 
 export interface ColorCombo {
 	bg: Color;
@@ -103,16 +103,35 @@ export type Palette = {
 	tracks: string[];
 };
 
-export const getPalette = (): Palette => {
-	const combo = combos[Math.floor(Math.random() * combos.length)];
+export const getPalette = (
+	combo: ColorCombo = combos[Math.floor(Math.random() * combos.length)],
+	exclude: Color[] = []
+): Palette => {
+	const artists = shuffleAll([
+		...exclude,
+		combo.bg,
+		combo.fg,
+		"black",
+		"white",
+		"sp-brand",
+	]);
+	const tracks = shuffleAll([
+		...exclude,
+		combo.bg,
+		combo.fg,
+		"black",
+		"white",
+		"sp-brand",
+		getColorName(artists[0]),
+	]);
 
 	const palette = {
 		bg: colors[combo.bg],
 		fg: colors[combo.fg],
 		black: colors[combo.black],
 		white: colors[combo.white],
-		artists: shuffleAll([combo.bg, combo.fg, "black", "white", "sp-brand"]),
-		tracks: shuffleAll([combo.bg, combo.fg, "black", "white", "sp-brand"]),
+		artists,
+		tracks,
 	};
 
 	return palette;
