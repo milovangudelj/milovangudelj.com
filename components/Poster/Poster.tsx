@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ComponentProps, ComponentPropsWithRef } from "react";
 import { WrappedList } from "..";
 import { Artist, Track } from "../../lib/types";
@@ -46,19 +47,21 @@ export const Poster = ({
 			}}
 			{...props}
 		>
-			{false && (
-				<div
-					aria-hidden
-					className="pointer-events-none absolute inset-0 bg-[url('/images/notes-tile.png')] bg-repeat opacity-10"
-				>
-					<div
-						className="absolute inset-0"
-						style={{
-							backgroundImage: `linear-gradient(${palette.bg} 0%, ${palette.bg} 22%, rgba(${gradient.r}, ${gradient.g}, ${gradient.b}, 0) 100%)`,
-						}}
-					></div>
-				</div>
-			)}
+			<Image
+				src={
+					palette.white === "#FFFFFF"
+						? "/images/notes-bg.png"
+						: "/images/notes-bg-light.png"
+				}
+				loading="eager"
+				alt="Notes background"
+				width={1080}
+				height={1920}
+				aria-hidden
+				className={`pointer-events-none absolute inset-0 ${
+					palette.white === "#FFFFFF" ? "opacity-10" : "opacity-5"
+				}`}
+			/>
 			<span className="absolute -top-[164.77px] right-0 origin-bottom-left translate-x-[calc(100%-148.77px)] rotate-90 font-space text-[164.77px] font-bold leading-none opacity-20">
 				{year}
 			</span>
