@@ -80,6 +80,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 				displayName: userData.displayName,
 				images: userData.images,
 			},
+			palette: getPalette({
+				bg: "green",
+				fg: "yellow",
+				black: "black",
+				white: "white",
+			}),
 		},
 	};
 };
@@ -93,6 +99,7 @@ const MiniWrapped = ({
 	topArtists,
 	topTracks,
 	user,
+	palette,
 }: {
 	topArtists: Artist[];
 	topTracks: Track[];
@@ -100,6 +107,7 @@ const MiniWrapped = ({
 		displayName: string;
 		images: SpotifyApi.ImageObject[];
 	};
+	palette: Palette;
 }) => {
 	const [generatingPoster, setGeneratingPoster] = useState(true);
 	const [posterLoaded, setPosterLoaded] = useState(false);
@@ -116,7 +124,7 @@ const MiniWrapped = ({
 
 	const [artists, setArtists] = useState<Artist[]>(topArtists);
 	const [tracks, setTracks] = useState<Track[]>(topTracks);
-	const [palette, setPalette] = useState<Palette>(getPalette());
+	const [posterPalette, setPosterPalette] = useState<Palette>(getPalette());
 
 	const {
 		register,
@@ -151,7 +159,7 @@ const MiniWrapped = ({
 	useEffect(() => {
 		setGeneratingPoster(true);
 
-		setPalette((current) => {
+		setPosterPalette((current) => {
 			const newPalette = getPalette();
 			return newPalette;
 		});
@@ -175,7 +183,7 @@ const MiniWrapped = ({
 		};
 
 		generatePoster();
-	}, [palette, posterLoaded]);
+	}, [posterPalette, posterLoaded]);
 
 	return (
 		<Layout>
@@ -193,7 +201,7 @@ const MiniWrapped = ({
 					username={user.displayName}
 					year={new Date().getFullYear()}
 					period={watchPeriod}
-					palette={palette}
+					palette={posterPalette}
 					ref={setRef}
 				/>
 			</div>
@@ -296,7 +304,13 @@ const MiniWrapped = ({
 					</Button>
 				</Container>
 			</Section>
-			<Section className="bg-green">
+			<Section className="relative bg-green">
+				<div
+					aria-hidden
+					className="pointer-events-none absolute top-0 bottom-0 right-0 left-1/2 bg-[url('/images/notes-tile.png')] bg-repeat opacity-10"
+				>
+					<div className="absolute inset-0 bg-gradient-to-r from-green"></div>
+				</div>
 				<Container>
 					{(watchFilter === "artists" || watchFilter === "all") && (
 						<div
@@ -312,10 +326,29 @@ const MiniWrapped = ({
 								beloved artists.
 							</p>
 							{artists ? (
-								<WrappedList
-									items={artists}
-									className="mt-8 max-w-[448px] md:mt-16"
-								/>
+								<div className="mt-12 md:mt-16 lg:flex lg:gap-16">
+									<WrappedList
+										items={artists}
+										className="max-w-[587px] flex-1 max-md:mb-10"
+										palette={palette}
+									/>
+									<div className="max-w-[587px] flex-1">
+										<h3 className="mb-4 text-sub-heading-mobile md:text-sub-heading">
+											How do you get the data?
+										</h3>
+										<p className="mb-4 text-body opacity-80">
+											Spotify provides a developer API (application
+											programming interface) trough which you can
+											request access to your data as long as you have
+											the right access keys.
+										</p>
+										<p className="text-body opacity-80">
+											Those special keys are being sent over when you
+											log in and are then used to request your data
+											when the page loads.
+										</p>
+									</div>
+								</div>
 							) : (
 								<span>Loading...</span>
 							)}
@@ -331,10 +364,32 @@ const MiniWrapped = ({
 								listening to these five tracks.
 							</p>
 							{tracks ? (
-								<WrappedList
-									items={tracks}
-									className="mt-8 max-w-[448px] md:mt-16"
-								/>
+								<div className="mt-12 md:mt-16 lg:flex lg:gap-16">
+									<WrappedList
+										items={tracks}
+										className="max-w-[587px] flex-1 max-md:mb-10"
+										palette={palette}
+									/>
+									<div className="max-w-[587px] flex-1">
+										<h3 className="mb-4 text-sub-heading-mobile md:text-sub-heading">
+											Why is it different from my Wrapped?
+										</h3>
+										<p className="mb-4 text-body opacity-80">
+											Spotify Wrapped gathers the data that it then
+											shows you throughout the entire year while I am
+											able to query only data relative to the last
+											3/6 months or since the creation of your
+											account.
+										</p>
+										<p className="text-body opacity-80">
+											That&apos;s why you can select only those three
+											options in the filter bar above. Spotify&apos;s
+											API is much more limited but the data it
+											provides is always up to date and you
+											don&apos;t have to wait a full year to get it.
+										</p>
+									</div>
+								</div>
 							) : (
 								<span>Loading...</span>
 							)}
