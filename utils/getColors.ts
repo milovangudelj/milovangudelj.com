@@ -45,6 +45,18 @@ export const shuffleAll = (exclude?: Color[]): string[] => {
 	return result;
 };
 
+export const getColorName = (color: string): Color => {
+	const colorName = Object.keys(colors).find(
+		(key) => colors[key as Color] === color
+	);
+
+	if (!colorName) {
+		throw new Error(`Color ${color} not found`);
+	}
+
+	return colorName as Color;
+};
+
 export const colors: { [K in Color]: string } = {
 	...spotifyColors,
 	...myColors,
