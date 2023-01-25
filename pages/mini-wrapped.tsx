@@ -80,12 +80,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 				displayName: userData.displayName,
 				images: userData.images,
 			},
-			palette: getPalette({
-				bg: "green",
-				fg: "yellow",
-				black: "black",
-				white: "white",
-			}),
+			palette: getPalette("green"),
 		},
 	};
 };
@@ -293,7 +288,7 @@ const MiniWrapped = ({
 					<Button
 						as="a"
 						ref={downloadRef}
-						download={`@${user.displayName}-Mini-Wrapped.png`}
+						download={`Mini-Wrapped-@${user.displayName}.png`}
 						fullWidth={mobile}
 						className={`${
 							generatingPoster ? "pointer-events-none opacity-80" : ""
