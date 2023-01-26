@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 
 import fetcher from "../../lib/fetcher";
 import { TopArtists } from "../../lib/types";
-import { WrappedList } from "../WrappedList";
+import { StatsList } from "../StatsList";
 
 export const Artists = ({ className }: ComponentProps<"div">) => {
 	const { data } = useSWRImmutable<TopArtists>("/api/top-artists", fetcher);
@@ -16,7 +16,7 @@ export const Artists = ({ className }: ComponentProps<"div">) => {
 	return (
 		<div className={twMerge("max-w-[448px]", className)}>
 			<h3 className="mb-4 text-sub-heading-mobile">My top artists:</h3>
-			<WrappedList items={data.artists} />
+			<StatsList of="artists" items={data.artists} />
 		</div>
 	);
 };

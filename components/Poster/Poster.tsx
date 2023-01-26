@@ -1,16 +1,13 @@
 import { ComponentProps, ComponentPropsWithRef } from "react";
-import { WrappedList } from "..";
+import { StatsList } from "..";
 import { Artist, Track } from "../../lib/types";
 import { Palette } from "../../utils/getPalette";
-import { hexToRgb } from "../../utils/hexToRgb";
 
 export interface PosterProps extends ComponentProps<"div"> {
-	accent: string;
-	artists: Artist[];
-	picture: string;
-	primary: string;
-	tracks: Track[];
 	username: string;
+	picture: string;
+	artists: Artist[];
+	tracks: Track[];
 	year: number;
 	period: "long_term" | "medium_term" | "short_term";
 	palette: Palette;
@@ -24,18 +21,16 @@ const periodStrings: { [K in PosterProps["period"]]: string } = {
 };
 
 export const Poster = ({
-	artists,
-	picture,
-	tracks,
 	username,
+	picture,
+	artists,
+	tracks,
 	year,
 	period,
 	palette,
 	forwardedRef,
 	...props
 }: PosterProps) => {
-	const gradient = hexToRgb(palette.bg);
-
 	return (
 		<div
 			ref={forwardedRef}
@@ -67,8 +62,8 @@ export const Poster = ({
 			</span>
 			<div>
 				<h1 className="text-d1-mobile">
-					<span style={{ color: palette.fg }}>Mini</span>
-					-Wrapped
+					<span style={{ color: palette.fg }}>Music</span>
+					-Stats
 				</h1>
 				<div className="flex items-center">
 					{/* eslint-disable-next-line @next/next/no-img-element */}
@@ -94,8 +89,9 @@ export const Poster = ({
 								backgroundColor: palette.black,
 							}}
 						></div>
-						<WrappedList
+						<StatsList
 							items={artists}
+							of="artists"
 							palette={palette}
 							poster
 							className="relative"
@@ -116,8 +112,9 @@ export const Poster = ({
 								backgroundColor: palette.black,
 							}}
 						></div>
-						<WrappedList
+						<StatsList
 							items={tracks}
+							of="tracks"
 							palette={palette}
 							poster
 							className="relative"
@@ -125,12 +122,25 @@ export const Poster = ({
 					</div>
 				</div>
 			</div>
-			<div className="flex justify-between text-h4-mobile">
+			<div className="flex items-end justify-between text-h4-mobile">
 				<p>
 					<span className="opacity-40">Get your own at</span> <br />
 					milovangudelj.com
-					<span style={{ color: palette.fg }}>/mini-wrapped</span>
+					<span style={{ color: palette.fg }}>/music-stats</span>
 				</p>
+				{/* eslint-disable-next-line @next/next/no-img-element */}
+				<img
+					src={
+						palette.white === "#FFFFFF"
+							? "/images/Spotify_Logo_Black.png"
+							: "/images/Spotify_Logo_White.png"
+					}
+					className="inline-block aspect-[2362/708] h-20 w-auto opacity-100"
+					alt="Spotify Logo"
+					width={2362}
+					height={708}
+					loading="eager"
+				/>
 			</div>
 		</div>
 	);

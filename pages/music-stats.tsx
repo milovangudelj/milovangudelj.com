@@ -17,7 +17,7 @@ import {
 	Layout,
 	PosterProps,
 	Section,
-	WrappedList,
+	StatsList,
 } from "../components";
 const DynamicPoster = dynamic(
 	() => import("../components").then((mod) => mod.Poster),
@@ -36,11 +36,12 @@ import { useWindowSize } from "../lib/windowSizeContext";
 import html2canvas from "html2canvas";
 import { getPalette, Palette } from "../utils/getPalette";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 const meta = {
-	title: "Milovan Gudelj - Mini-Wrapped",
-	description: "Get your cool Spotify Mini-Wrapped poster now",
-	url: "https://milovangudelj.com/mini-wrapped",
+	title: "Milovan Gudelj - Music-Stats",
+	description: "Get your cool Spotify Music-Stats poster now",
+	url: "https://milovangudelj.com/music-stats",
 	image: "https://milovangudelj.com/images/og-image.png",
 };
 
@@ -55,7 +56,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 		})
 	).json();
 
-	const userData = await(
+	const userData = await (
 		await fetch(`${BASE_URL}/api/getUser`, {
 			method: "GET",
 			headers: {
@@ -90,7 +91,7 @@ type FormData = {
 	period: "long_term" | "medium_term" | "short_term";
 };
 
-const MiniWrapped = ({
+const MusicStats = ({
 	topArtists,
 	topTracks,
 	user,
@@ -188,12 +189,10 @@ const MiniWrapped = ({
 				aria-hidden
 			>
 				<Poster
-					primary="bg-light-cyan"
-					accent="text-yellow"
-					artists={artists}
-					picture={user.images[0].url}
-					tracks={tracks}
 					username={user.displayName}
+					picture={user.images[0].url}
+					artists={artists}
+					tracks={tracks}
 					year={new Date().getFullYear()}
 					period={watchPeriod}
 					palette={posterPalette}
@@ -203,12 +202,27 @@ const MiniWrapped = ({
 			<Section className="bg-purple">
 				<Container className="space-y-8">
 					<h1 className="relative z-[1] text-h1-mobile md:text-d2-mobile xl:text-d2">
-						<span className="text-yellow">Mini</span>-Wrapped
+						<span className="text-yellow">Music</span>-Stats
 					</h1>
 					<p className="relative z-[1] text-sub-heading-mobile md:text-sub-heading xl:max-w-[30ch]">
 						An up to date miniature version of your{" "}
 						<span>{new Date().getFullYear()}</span> Spotify Wrapped.
 					</p>
+					<div className="text-body">
+						<a href="#data-notice" className="text-dark-me">
+							Data provided
+							<span className="text-yellow">*</span> by{" "}
+						</a>
+						<Image
+							title="Spotify"
+							src="/images/Spotify_Logo_Black.png"
+							alt="Spotify's Black Logo"
+							width={2362}
+							height={708}
+							loading="eager"
+							className="ml-3 inline-block aspect-[2362/708] w-24"
+						/>
+					</div>
 					<BigAssStar className="absolute -top-16 -right-16 z-0 h-64 w-64 text-lilla lg:-top-8 lg:right-16 lg:h-[360px] lg:w-[360px]" />
 				</Container>
 			</Section>
@@ -288,7 +302,7 @@ const MiniWrapped = ({
 					<Button
 						as="a"
 						ref={downloadRef}
-						download={`Mini-Wrapped-@${user.displayName}.png`}
+						download={`Music-Stats-@${user.displayName}.png`}
 						fullWidth={mobile}
 						className={`${
 							generatingPoster ? "pointer-events-none opacity-80" : ""
@@ -322,8 +336,9 @@ const MiniWrapped = ({
 							</p>
 							{artists ? (
 								<div className="mt-12 md:mt-16 lg:flex lg:gap-16">
-									<WrappedList
+									<StatsList
 										items={artists}
+										of="artists"
 										className="max-w-[587px] flex-1 max-md:mb-10"
 										palette={palette}
 									/>
@@ -360,8 +375,9 @@ const MiniWrapped = ({
 							</p>
 							{tracks ? (
 								<div className="mt-12 md:mt-16 lg:flex lg:gap-16">
-									<WrappedList
+									<StatsList
 										items={tracks}
+										of="tracks"
 										className="max-w-[587px] flex-1 max-md:mb-10"
 										palette={palette}
 									/>
@@ -390,11 +406,15 @@ const MiniWrapped = ({
 							)}
 						</div>
 					)}
+					<div id="data-notice" className="text-body text-dark-le">
+						<span className="text-yellow">*</span> I am not endorsed or
+						sponsored by Spotify or any of their associates.
+					</div>
 				</Container>
 			</Section>
 		</Layout>
 	);
 };
-MiniWrapped.displayName = "MiniWrapped";
+MusicStats.displayName = "MusicStats";
 
-export default MiniWrapped;
+export default MusicStats;
