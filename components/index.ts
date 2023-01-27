@@ -20,4 +20,5 @@ export * from "./Button";
 export * from "./MusicNote";
 export * from "./BigAssStar";
 export * from "./WrappedList";
+export * from "./StatsList";
 export * from "./Poster";

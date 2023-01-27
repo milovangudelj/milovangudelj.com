@@ -103,8 +103,8 @@ const About = () => {
 							</a>{" "}
 							but in miniature.
 						</p>
-						<Button as={Link} href="/mini-wrapped">
-							Get your Mini-Wrapped
+						<Button as={Link} href="/music-stats">
+							Get your Music-Stats
 						</Button>
 					</div>
 					<div className="relative">

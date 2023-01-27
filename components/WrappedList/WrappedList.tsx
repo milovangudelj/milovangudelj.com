@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ComponentProps } from "react";
+import { ComponentProps, CSSProperties } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Artist, Track } from "../../lib/types";
@@ -12,18 +12,35 @@ import { Palette } from "../../utils/getPalette";
 
 export interface WrappedListProps {
 	items: Track[] | Artist[];
+	of: "tracks" | "artists";
 	poster?: boolean;
 	palette?: Palette;
+	className?: string;
+	style?: CSSProperties;
 }
 
 export const WrappedList = ({
 	className,
 	items,
+	of,
 	poster = false,
 	palette,
 	style,
 	...props
 }: ComponentProps<"ol"> & WrappedListProps) => {
+	if (items.length === 0)
+		return (
+			<YoungAccount
+				of={of}
+				poster={poster}
+				className={twMerge(`drop-shadow-brutal`, className)}
+				style={{
+					color: palette?.white ?? "#FFFFFF",
+					backgroundColor: palette?.black ?? "#000000",
+				}}
+			/>
+		);
+
 	return (
 		<ol
 			className={twMerge(`drop-shadow-brutal`, className)}
@@ -97,22 +114,22 @@ const WrappedListItem = ({
 						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
 							className="pointer-events-none aspect-square h-full w-full object-cover"
-							sizes={`${item.image.width}px`}
+							sizes={`200.62px`}
 							src={item.image.url}
 							alt={`${
 								isArtist
 									? item.name + "'s profile"
 									: item.title + "'s album"
 							} picture`}
-							width={item.image.width}
-							height={item.image.height}
+							width={200.62}
+							height={200.62}
 							loading={poster ? "eager" : "lazy"}
 						/>
 					</>
 				) : (
 					<Image
 						className="pointer-events-none aspect-square h-full w-full object-cover"
-						sizes={`${item.image.width}px`}
+						sizes={`64px`}
 						quality={100}
 						src={item.image.url}
 						alt={`${
@@ -120,8 +137,8 @@ const WrappedListItem = ({
 								? item.name + "'s profile"
 								: item.title + "'s album"
 						} picture`}
-						width={item.image.width}
-						height={item.image.height}
+						width={64}
+						height={64}
 						loading={poster ? "eager" : "lazy"}
 					/>
 				)}
@@ -169,18 +186,55 @@ const WrappedListItem = ({
 								: poster
 								? "text-[35.12px]"
 								: "text-[22.4px]"
-						} order-last ml-auto flex-none text-sub-heading leading-none opacity-40`}
+						} order-last ml-auto flex-none text-sub-heading leading-none opacity-40 transition group-hover:opacity-80`}
 					>
 						{rank}
 					</span>
 					<div className="max-w-fill flex-shrink overflow-hidden truncate">
-						{isArtist ? item.name : item.title}
+						<span>{isArtist ? item.name : item.title}</span>
+						{poster ? (
+							<span
+								className={`block leading-none opacity-40 ${
+									isFirst ? "text-[23.5px]" : "text-[19.58px]"
+								}`}
+							>
+								{item.url.replace("https://", "")}
+							</span>
+						) : (
+							<span className="block select-none text-label-sm leading-none opacity-40 transition group-hover:opacity-80">
+								{"name" in item
+									? "Open on Spotify"
+									: "Listen on Spotify"}{" "}
+								↗
+							</span>
+						)}
 					</div>
-					<span className="pointer-events-none mx-4 inline-block flex-none select-none opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100">
-						↗
-					</span>
+					{false && (
+						<span className="pointer-events-none mx-4 inline-block flex-none select-none opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100">
+							↗
+						</span>
+					)}
 				</Link>
 			</div>
 		</li>
+	);
+};
+
+const YoungAccount = ({
+	of,
+	poster,
+	className,
+	...props
+}: ComponentProps<"div"> & { of: "tracks" | "artists"; poster: boolean }) => {
+	return (
+		<div
+			className={twMerge(
+				className,
+				`${poster ? "h-[calc(100.31px*5)]" : "h-80"}`
+			)}
+			{...props}
+		>
+			{poster ? "My account is too young" : "Your account is too Young"}
+		</div>
 	);
 };

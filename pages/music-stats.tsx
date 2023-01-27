@@ -1,12 +1,7 @@
 import { GetServerSideProps } from "next";
-import {
-	forwardRef,
-	RefCallback,
-	useCallback,
-	useEffect,
-	useRef,
-	useState,
-} from "react";
+import Image from "next/image";
+import html2canvas from "html2canvas";
+import { RefCallback, useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import {
@@ -15,32 +10,20 @@ import {
 	Container,
 	HeadMeta,
 	Layout,
-	PosterProps,
+	Poster,
 	Section,
 	WrappedList,
 } from "../components";
-const DynamicPoster = dynamic(
-	() => import("../components").then((mod) => mod.Poster),
-	{
-		ssr: false,
-	}
-);
-const Poster = forwardRef<HTMLDivElement, PosterProps>((props, ref) => (
-	<DynamicPoster {...props} forwardedRef={ref} />
-));
-Poster.displayName = "Poster";
 
 import { Artist, Track } from "../lib/types";
 import { BASE_URL } from "../lib/constants";
 import { useWindowSize } from "../lib/windowSizeContext";
-import html2canvas from "html2canvas";
 import { getPalette, Palette } from "../utils/getPalette";
-import dynamic from "next/dynamic";
 
 const meta = {
-	title: "Milovan Gudelj - Mini-Wrapped",
-	description: "Get your cool Spotify Mini-Wrapped poster now",
-	url: "https://milovangudelj.com/mini-wrapped",
+	title: "Milovan Gudelj - Music-Stats",
+	description: "Get your cool Spotify Music-Stats poster now",
+	url: "https://milovangudelj.com/music-stats",
 	image: "https://milovangudelj.com/images/og-image.png",
 };
 
@@ -55,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 		})
 	).json();
 
-	const userData = await(
+	const userData = await (
 		await fetch(`${BASE_URL}/api/getUser`, {
 			method: "GET",
 			headers: {
@@ -90,7 +73,7 @@ type FormData = {
 	period: "long_term" | "medium_term" | "short_term";
 };
 
-const MiniWrapped = ({
+const MusicStats = ({
 	topArtists,
 	topTracks,
 	user,
@@ -188,12 +171,22 @@ const MiniWrapped = ({
 				aria-hidden
 			>
 				<Poster
-					primary="bg-light-cyan"
-					accent="text-yellow"
-					artists={artists}
-					picture={user.images[0].url}
-					tracks={tracks}
 					username={user.displayName}
+					picture={user.images[0].url}
+					artists={artists.map((artist) => {
+						return {
+							name: artist.name,
+							image: artist.image.url,
+							url: artist.url,
+						};
+					})}
+					tracks={tracks.map((track) => {
+						return {
+							name: track.title,
+							image: track.image.url,
+							url: track.url,
+						};
+					})}
 					year={new Date().getFullYear()}
 					period={watchPeriod}
 					palette={posterPalette}
@@ -203,12 +196,26 @@ const MiniWrapped = ({
 			<Section className="bg-purple">
 				<Container className="space-y-8">
 					<h1 className="relative z-[1] text-h1-mobile md:text-d2-mobile xl:text-d2">
-						<span className="text-yellow">Mini</span>-Wrapped
+						<span className="text-yellow">Music</span>-Stats
 					</h1>
 					<p className="relative z-[1] text-sub-heading-mobile md:text-sub-heading xl:max-w-[30ch]">
 						An up to date miniature version of your{" "}
 						<span>{new Date().getFullYear()}</span> Spotify Wrapped.
 					</p>
+					<div className="text-body">
+						<a href="#data-notice" className="text-dark-me">
+							Data provided by <span className="text-yellow">*</span>
+						</a>
+						<Image
+							title="Spotify"
+							src="/images/Spotify_Logo_Black.png"
+							alt="Spotify's Black Logo"
+							width={2362}
+							height={708}
+							loading="eager"
+							className="ml-3 inline-block aspect-[2362/708] w-24"
+						/>
+					</div>
 					<BigAssStar className="absolute -top-16 -right-16 z-0 h-64 w-64 text-lilla lg:-top-8 lg:right-16 lg:h-[360px] lg:w-[360px]" />
 				</Container>
 			</Section>
@@ -288,7 +295,7 @@ const MiniWrapped = ({
 					<Button
 						as="a"
 						ref={downloadRef}
-						download={`Mini-Wrapped-@${user.displayName}.png`}
+						download={`Music-Stats-@${user.displayName}.png`}
 						fullWidth={mobile}
 						className={`${
 							generatingPoster ? "pointer-events-none opacity-80" : ""
@@ -324,6 +331,7 @@ const MiniWrapped = ({
 								<div className="mt-12 md:mt-16 lg:flex lg:gap-16">
 									<WrappedList
 										items={artists}
+										of="artists"
 										className="max-w-[587px] flex-1 max-md:mb-10"
 										palette={palette}
 									/>
@@ -362,6 +370,7 @@ const MiniWrapped = ({
 								<div className="mt-12 md:mt-16 lg:flex lg:gap-16">
 									<WrappedList
 										items={tracks}
+										of="tracks"
 										className="max-w-[587px] flex-1 max-md:mb-10"
 										palette={palette}
 									/>
@@ -391,10 +400,22 @@ const MiniWrapped = ({
 						</div>
 					)}
 				</Container>
+				<Container className="py-4 md:py-8">
+					<div
+						id="data-notice"
+						className="text-body leading-none text-black/80"
+					>
+						<span className="inline-block bg-yellow px-1 py-0.5 font-medium text-black/80">
+							Notice
+						</span>
+						: I am not endorsed or sponsored by Spotify or any of their
+						associates.
+					</div>
+				</Container>
 			</Section>
 		</Layout>
 	);
 };
-MiniWrapped.displayName = "MiniWrapped";
+MusicStats.displayName = "MusicStats";
 
-export default MiniWrapped;
+export default MusicStats;

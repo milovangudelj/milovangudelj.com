@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 	if (session)
 		return {
 			redirect: {
-				destination: "/mini-wrapped",
+				destination: "/music-stats",
 				permanent: false,
 			},
 			props: {},
@@ -43,7 +43,7 @@ const Login = () => {
 					</p>
 					<Button
 						onClick={() =>
-							signIn("spotify", { callbackUrl: "/mini-wrapped" })
+							signIn("spotify", { callbackUrl: "/music-stats" })
 						}
 					>
 						Log In
