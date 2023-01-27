@@ -90,6 +90,11 @@ const StatsListItem = ({
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img
 					className="pointer-events-none aspect-square h-full w-full object-cover"
+					alt={
+						item.url.includes("artist")
+							? item.name + "'s profile picture"
+							: item.name + "'s cover art"
+					}
 					sizes={`200.62px`}
 					src={item.image}
 					width={200.62}
@@ -127,13 +132,15 @@ const StatsListItem = ({
 					</span>
 					<div className="max-w-fill overflow-hidden truncate">
 						<span>{item.name}</span>
-						{false && <span
-							className={`leading-none block opacity-40 ${
-								isFirst ? "text-[23.5px]" : "text-[19.58px]"
-							}`}
-						>
-							{item.url.replace("https://", "")}
-						</span>}
+						{false && (
+							<span
+								className={`block leading-none opacity-40 ${
+									isFirst ? "text-[23.5px]" : "text-[19.58px]"
+								}`}
+							>
+								{item.url.replace("https://", "")}
+							</span>
+						)}
 					</div>
 				</a>
 			</div>
