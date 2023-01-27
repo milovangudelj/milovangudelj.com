@@ -1,12 +1,7 @@
 import { GetServerSideProps } from "next";
-import {
-	forwardRef,
-	RefCallback,
-	useCallback,
-	useEffect,
-	useRef,
-	useState,
-} from "react";
+import Image from "next/image";
+import html2canvas from "html2canvas";
+import { RefCallback, useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import {
@@ -15,28 +10,15 @@ import {
 	Container,
 	HeadMeta,
 	Layout,
-	PosterProps,
+	Poster,
 	Section,
-	StatsList,
+	WrappedList,
 } from "../components";
-const DynamicPoster = dynamic(
-	() => import("../components").then((mod) => mod.Poster),
-	{
-		ssr: false,
-	}
-);
-const Poster = forwardRef<HTMLDivElement, PosterProps>((props, ref) => (
-	<DynamicPoster {...props} forwardedRef={ref} />
-));
-Poster.displayName = "Poster";
 
 import { Artist, Track } from "../lib/types";
 import { BASE_URL } from "../lib/constants";
 import { useWindowSize } from "../lib/windowSizeContext";
-import html2canvas from "html2canvas";
 import { getPalette, Palette } from "../utils/getPalette";
-import dynamic from "next/dynamic";
-import Image from "next/image";
 
 const meta = {
 	title: "Milovan Gudelj - Music-Stats",
@@ -191,8 +173,20 @@ const MusicStats = ({
 				<Poster
 					username={user.displayName}
 					picture={user.images[0].url}
-					artists={artists}
-					tracks={tracks}
+					artists={artists.map((artist) => {
+						return {
+							name: artist.name,
+							image: artist.image.url,
+							url: artist.url,
+						};
+					})}
+					tracks={tracks.map((track) => {
+						return {
+							name: track.title,
+							image: track.image.url,
+							url: track.url,
+						};
+					})}
 					year={new Date().getFullYear()}
 					period={watchPeriod}
 					palette={posterPalette}
@@ -210,8 +204,7 @@ const MusicStats = ({
 					</p>
 					<div className="text-body">
 						<a href="#data-notice" className="text-dark-me">
-							Data provided
-							<span className="text-yellow">*</span> by{" "}
+							Data provided by <span className="text-yellow">*</span>
 						</a>
 						<Image
 							title="Spotify"
@@ -336,7 +329,7 @@ const MusicStats = ({
 							</p>
 							{artists ? (
 								<div className="mt-12 md:mt-16 lg:flex lg:gap-16">
-									<StatsList
+									<WrappedList
 										items={artists}
 										of="artists"
 										className="max-w-[587px] flex-1 max-md:mb-10"
@@ -375,7 +368,7 @@ const MusicStats = ({
 							</p>
 							{tracks ? (
 								<div className="mt-12 md:mt-16 lg:flex lg:gap-16">
-									<StatsList
+									<WrappedList
 										items={tracks}
 										of="tracks"
 										className="max-w-[587px] flex-1 max-md:mb-10"
@@ -406,9 +399,17 @@ const MusicStats = ({
 							)}
 						</div>
 					)}
-					<div id="data-notice" className="text-body text-dark-le">
-						<span className="text-yellow">*</span> I am not endorsed or
-						sponsored by Spotify or any of their associates.
+				</Container>
+				<Container className="py-4 md:py-8">
+					<div
+						id="data-notice"
+						className="text-body leading-none text-black/80"
+					>
+						<span className="inline-block bg-yellow px-1 py-0.5 font-medium text-black/80">
+							Notice
+						</span>
+						: I am not endorsed or sponsored by Spotify or any of their
+						associates.
 					</div>
 				</Container>
 			</Section>
