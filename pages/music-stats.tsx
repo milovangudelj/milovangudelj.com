@@ -403,7 +403,7 @@ const MusicStats = ({
 				<Container className="py-4 md:py-8">
 					<div
 						id="data-notice"
-						className="text-body leading-none text-black/80"
+						className="text-label-md leading-none text-black/60"
 					>
 						<span className="inline-block bg-yellow px-1 py-0.5 font-medium text-black/80">
 							Notice
