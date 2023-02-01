@@ -5,7 +5,7 @@ import { shuffle } from "../../utils/shuffle";
 import { spotifyColors } from "../../utils/getColors";
 
 export const config = {
-	runtime: "experimental-edge",
+	runtime: "edge",
 };
 
 export default async function handler(req: NextRequest) {
