@@ -15,6 +15,7 @@ import { AboutSection } from "../components/sections";
 import { useWindowSize } from "../lib/windowSizeContext";
 import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "../utils/getLuminance";
 import { colors, spotifyColors } from "../utils/getColors";
+import Head from "next/head";
 
 const meta = {
 	title: "Milovan Gudelj - About me",
@@ -72,7 +73,9 @@ const About = () => {
 
 	return (
 		<Layout>
-			<HeadMeta metadata={meta} />
+			<Head>
+				<HeadMeta metadata={meta} />
+			</Head>
 			<AboutSection standAlone />
 			<Section className="relative bg-lavender text-white">
 				<div

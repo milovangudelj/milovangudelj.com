@@ -19,6 +19,7 @@ import { Artist, Track } from "../lib/types";
 import { BASE_URL } from "../lib/constants";
 import { useWindowSize } from "../lib/windowSizeContext";
 import { getPalette, Palette } from "../utils/getPalette";
+import Head from "next/head";
 
 const meta = {
 	title: "Milovan Gudelj - Music-Stats",
@@ -165,7 +166,9 @@ const MusicStats = ({
 
 	return (
 		<Layout>
-			<HeadMeta metadata={meta} />
+			<Head>
+				<HeadMeta metadata={meta} />
+			</Head>
 			<div
 				className="absolute top-0 left-0 -z-10 h-0 w-0 overflow-hidden [tab-index:-1]"
 				aria-hidden

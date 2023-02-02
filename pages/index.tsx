@@ -15,6 +15,7 @@ import { hygraph } from "../lib/hygraph";
 import { Project } from "./work";
 import { AboutSection, CTA } from "../components/sections";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 
 const QUERY = gql`
 	{
@@ -78,7 +79,9 @@ const Home: NextPage<{ projects: Omit<Project, "description">[] }> = ({
 
 	return (
 		<Layout>
-			<HeadMeta metadata={meta} />
+			<Head>
+				<HeadMeta metadata={meta} />
+			</Head>
 			<section>
 				<main className="relative mx-auto max-w-8xl py-16 px-8 md:py-32 md:px-16">
 					<h1 className="mb-16 text-h1-mobile md:text-d1-mobile xl:text-d1">
