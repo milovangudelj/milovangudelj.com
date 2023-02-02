@@ -1,5 +1,3 @@
-import Head from "next/head";
-
 type HeadMetadata = {
 	title: string;
 	description: string;
@@ -9,7 +7,7 @@ type HeadMetadata = {
 
 export const HeadMeta = ({ metadata: meta }: { metadata: HeadMetadata }) => {
 	return (
-		<Head>
+		<>
 			<title>{meta.title}</title>
 			<meta name="title" content={meta.title} />
 			<meta name="description" content={meta.description} />
@@ -25,6 +23,6 @@ export const HeadMeta = ({ metadata: meta }: { metadata: HeadMetadata }) => {
 			<meta property="twitter:title" content={meta.title} />
 			<meta property="twitter:description" content={meta.description} />
 			<meta property="twitter:image" content={meta.image} />
-		</Head>
+		</>
 	);
 };
