@@ -1,5 +1,5 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
-import { unstable_getServerSession } from "next-auth";
+import { getServerSession } from "next-auth";
 import { shuffle } from "../../utils/shuffle";
 
 import { spotifyApi } from "../../lib/spotify";
@@ -10,7 +10,7 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	const session = (await unstable_getServerSession(
+	const session = (await getServerSession(
 		req,
 		res,
 		authOptions

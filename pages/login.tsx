@@ -1,12 +1,12 @@
 import { GetServerSideProps } from "next";
-import { unstable_getServerSession } from "next-auth";
+import { getServerSession } from "next-auth";
 import { signIn } from "next-auth/react";
 
 import { Button, Container, Layout, Section } from "../components";
 import { authOptions } from "./api/auth/[...nextauth]";
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-	const session = await unstable_getServerSession(req, res, authOptions);
+	const session = await getServerSession(req, res, authOptions);
 
 	if (session)
 		return {
