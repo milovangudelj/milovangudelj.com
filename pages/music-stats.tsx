@@ -62,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 			...data,
 			user: {
 				displayName: userData.displayName,
-				images: userData.images,
+				images: userData?.images || [],
 			},
 			palette: getPalette("green"),
 		},
@@ -138,10 +138,7 @@ const MusicStats = ({
 	useEffect(() => {
 		setGeneratingPoster(true);
 
-		setPosterPalette((current) => {
-			const newPalette = getPalette();
-			return newPalette;
-		});
+		setPosterPalette(getPalette());
 	}, [artists, tracks]);
 
 	useEffect(() => {
@@ -175,7 +172,7 @@ const MusicStats = ({
 			>
 				<Poster
 					username={user.displayName}
-					picture={user.images[0].url}
+					picture={user.images[0]?.url || undefined}
 					artists={artists.map((artist) => {
 						return {
 							name: artist.name,

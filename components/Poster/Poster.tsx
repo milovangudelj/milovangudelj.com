@@ -6,11 +6,16 @@ import {
 } from "react";
 import { StatsList } from "..";
 import { Artist, Track } from "../../lib/types";
+import {
+	getLuminance,
+	TEXT_LUMINANCE_TRESHOLD,
+} from "../../utils/getLuminance";
 import { Palette } from "../../utils/getPalette";
+import { hexToRgb } from "../../utils/hexToRgb";
 
 export interface PosterProps extends ComponentPropsWithoutRef<"div"> {
 	username: string;
-	picture: string;
+	picture?: string;
 	artists: { name: string; image: string; url: string }[];
 	tracks: { name: string; image: string; url: string }[];
 	year: number;
@@ -64,12 +69,10 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 						-Stats
 					</h1>
 					<div className="flex items-center">
-						{/* eslint-disable-next-line @next/next/no-img-element */}
-						<img
-							src={picture}
-							alt={`${username}'s profile picture`}
-							className="mr-4 h-14 w-14 rounded-full object-cover object-center"
-							loading="eager"
+						<ProfilePicture
+							picture={picture}
+							name={username}
+							color={palette.black}
 						/>
 						<span className="text-sub-heading opacity-80">
 							@{username}
@@ -143,7 +146,9 @@ Poster.displayName = "Poster";
 const ListenOn = ({ isLight }: { isLight: boolean }) => {
 	return (
 		<div className="flex flex-1 items-center">
-			<span className="mr-5 text-h4-mobile opacity-40">Listen on</span>
+			<span className="mr-5 text-sub-heading font-bold opacity-40">
+				Listen on
+			</span>
 			{/* eslint-disable-next-line @next/next/no-img-element */}
 			<img
 				src={
@@ -157,6 +162,41 @@ const ListenOn = ({ isLight }: { isLight: boolean }) => {
 				height={40}
 				loading="eager"
 			/>
+		</div>
+	);
+};
+
+const ProfilePicture = ({
+	picture,
+	name,
+	color,
+}: {
+	picture?: string;
+	name: string;
+	color: string;
+}) => {
+	const bgColor = hexToRgb(color);
+	const lightText = getLuminance(color) <= TEXT_LUMINANCE_TRESHOLD;
+
+	return picture ? (
+		<>
+			{/* eslint-disable-next-line @next/next/no-img-element */}
+			<img
+				src={picture}
+				alt={`${name}'s profile picture`}
+				className="mr-4 h-14 w-14 rounded-full object-cover object-center"
+				loading="eager"
+			/>
+		</>
+	) : (
+		<div
+			className="mr-4 flex h-14 w-14 items-center justify-center rounded-full text-sub-heading leading-none"
+			style={{
+				backgroundColor: color,
+				color: lightText ? "#FFFFFF" : "#000000",
+			}}
+		>
+			{name.charAt(0)}
 		</div>
 	);
 };
