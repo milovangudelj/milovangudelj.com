@@ -149,9 +149,7 @@ const MusicStats = ({
 				useCORS: true,
 			});
 
-			const dataUrl = canvas
-				.toDataURL("image/png")
-				.replace(/^data:image\/[^;]/, "data:application/octet-stream");
+			const dataUrl = canvas.toDataURL("image/png");
 
 			downloadRef.current?.setAttribute("href", dataUrl);
 
@@ -294,8 +292,10 @@ const MusicStats = ({
 					</form>
 					<Button
 						as="a"
+						type={"image/png"}
 						ref={downloadRef}
 						download={`Music-Stats-@${user.displayName}.png`}
+						title={`Music-Stats-@${user.displayName}.png`}
 						fullWidth={mobile}
 						className={`${
 							generatingPoster ? "pointer-events-none opacity-80" : ""
