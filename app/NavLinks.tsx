@@ -74,6 +74,10 @@ export const NavLinks = ({
 				},
 				closed: {
 					opacity: 1,
+					transition: {
+						type: "tween",
+						duration: 0.2,
+					},
 				},
 		  };
 
