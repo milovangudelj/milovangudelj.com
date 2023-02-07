@@ -113,13 +113,13 @@ export const NavLinks = ({
 		if (menuOpen) {
 			document.body.style.overflow = "hidden";
 		} else {
-			document.body.style.overflow = "unset";
+			document.body.style.overflow = undefined as unknown as string;
 		}
 
 		callbackWhenOpen?.(menuOpen);
 
 		return () => {
-			document.body.style.overflow = "unset";
+			document.body.style.overflow = undefined as unknown as string;
 		};
 	}, [menuOpen, callbackWhenOpen]);
 

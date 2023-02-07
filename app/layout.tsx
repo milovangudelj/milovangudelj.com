@@ -16,7 +16,7 @@ export default async function RootLayout({
 
 	return (
 		<html lang="en">
-			<body className="h-fill scroll-smooth bg-black font-sans text-white">
+			<body className="h-fill overflow-x-hidden scroll-smooth bg-black font-sans text-white">
 				<SessionProvider session={session}>
 					{/* <style jsx global>
 					{`

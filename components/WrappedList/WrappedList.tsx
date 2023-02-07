@@ -238,3 +238,5 @@ const YoungAccount = ({
 		</div>
 	);
 };
+
+export default WrappedList;
