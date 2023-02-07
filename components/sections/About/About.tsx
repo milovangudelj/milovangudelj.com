@@ -1,7 +1,10 @@
 import Image from "next/legacy/image";
 import { ComponentProps } from "react";
 
-import { Section, Container, Hourglass, NowPlaying } from "../../";
+import { Section } from "../../Section";
+import { Container } from "../../Container";
+import { Hourglass } from "../../Hourglass";
+import NowPlaying from "../../NowPlaying/NowPlaying";
 
 import me from "../../../public/images/poly-me.png";
 

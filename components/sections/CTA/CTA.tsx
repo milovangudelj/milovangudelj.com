@@ -1,6 +1,8 @@
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
-import { Section, Container } from "../..";
+
+import { Section } from "../../Section";
+import { Container } from "../../Container";
 
 const Pattern = ({ className }: ComponentProps<"svg">) => {
 	return (

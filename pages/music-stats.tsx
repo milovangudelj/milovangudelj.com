@@ -25,7 +25,7 @@ const meta = {
 	title: "Milovan Gudelj - Music-Stats",
 	description: "Get your cool Spotify Music-Stats poster now",
 	url: "https://milovangudelj.com/music-stats",
-	image: "https://milovangudelj.com/images/og-image.png",
+	image: "https://milovangudelj.com/images/og-image-ms.png",
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {

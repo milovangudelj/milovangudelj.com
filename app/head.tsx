@@ -1,3 +1,13 @@
+import { HeadMeta } from "../components/HeadMeta";
+
+const meta = {
+	title: "Milovan Gudelj - Web developer / UI designer",
+	description:
+		"I design and develop engaging websites and delightful digital experiences.",
+	url: "https://milovangudelj.com/",
+	image: "https://milovangudelj.com/images/og-image.png",
+};
+
 export default function RootHead() {
 	return (
 		<>
@@ -47,6 +57,7 @@ export default function RootHead() {
 				content="/images/favicon/browserconfig.xml"
 			/>
 			<meta name="theme-color" content="#000000"></meta>
+			<HeadMeta metadata={meta} />
 		</>
 	);
 }
