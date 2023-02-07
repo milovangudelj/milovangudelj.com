@@ -46,9 +46,9 @@ export const CTA = () => {
 						Let&apos;s work together
 					</h2>
 					<p className="text-body xl:max-w-[680px]">
-						If you like what I do please feel free to contact me and who
-						knows, we might build the next big thing or just a cool
-						looking website.
+						If you&apos;re impressed by my work and think we&apos;d be a
+						good match, don&apos;t hesitate to reach out. Who knows, we
+						could build something amazing together.
 					</p>
 				</div>
 				<div className="flex items-center space-x-4 py-0.5">
