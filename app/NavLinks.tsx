@@ -72,6 +72,9 @@ export const NavLinks = ({
 				open: {
 					opacity: 1,
 				},
+				closed: {
+					opacity: 1,
+				},
 		  };
 
 	const item: Variants = isMobile
@@ -89,6 +92,10 @@ export const NavLinks = ({
 		  }
 		: {
 				open: {
+					x: 0,
+					opacity: 1,
+				},
+				closed: {
 					x: 0,
 					opacity: 1,
 				},
