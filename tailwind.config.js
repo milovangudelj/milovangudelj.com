@@ -304,6 +304,7 @@ module.exports = {
 				wiggle: "wiggle 500ms ease-in-out",
 				"wiggle-inv": "wiggle-inv 500ms ease-in-out",
 				stretch: "stretch 2.4s ease-in-out infinite",
+				"spin-slow": "spin 2s linear infinite",
 			},
 			keyframes: {
 				wiggle: {
