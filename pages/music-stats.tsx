@@ -125,8 +125,10 @@ const MusicStats = ({
 
 	useEffect(() => {
 		const refetch = async () => {
-			const newData = await (
-				await fetch(`${BASE_URL}/api/getUserStats?period=${watchPeriod}`)
+			const newData = await(
+				await fetch(
+					`${process.env.WEBSITE_URL}/api/getUserStats?period=${watchPeriod}`
+				)
 			).json();
 
 			setArtists(newData.topArtists);
