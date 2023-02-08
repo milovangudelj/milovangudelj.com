@@ -28,9 +28,9 @@ const meta = {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-	const data = await (
+	const data = await(
 		await fetch(
-			`${process.env.WEBSITE_URL}/api/getUserStats?period=medium_term`,
+			`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/getUserStats?period=medium_term`,
 			{
 				method: "GET",
 				headers: {
@@ -41,8 +41,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 		)
 	).json();
 
-	const userData = await (
-		await fetch(`${process.env.WEBSITE_URL}/api/getUser`, {
+	const userData = await(
+		await fetch(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/getUser`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -129,7 +129,7 @@ const MusicStats = ({
 		const refetch = async () => {
 			const newData = await(
 				await fetch(
-					`${process.env.WEBSITE_URL}/api/getUserStats?period=${watchPeriod}`
+					`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/getUserStats?period=${watchPeriod}`
 				)
 			).json();
 
