@@ -138,7 +138,9 @@ const ListenOn = ({ isLight }: { isLight: boolean }) => {
 			{/* eslint-disable-next-line @next/next/no-img-element */}
 			<img
 				src={
-					isLight ? "/images/Spotify_Logo_White.png" : "/images/Black.png"
+					isLight
+						? "/images/Spotify_Logo_White.png"
+						: "/images/Spotify_Logo_Black.png"
 				}
 				className="inline-block aspect-[1181/354] h-10 w-auto opacity-100"
 				alt="Spotify Logo"
