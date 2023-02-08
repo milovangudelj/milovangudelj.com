@@ -1,10 +1,9 @@
 import { getServerSession } from "next-auth";
-import { signIn } from "next-auth/react";
 import { redirect } from "next/navigation";
 
-import { Button } from "../../components/Button";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
+import { LoginButton } from "./LoginButton";
 
 const LoginPage = async () => {
 	const session = await getServerSession();
@@ -31,13 +30,7 @@ const LoginPage = async () => {
 					</a>
 					) for when it will be available.
 				</p>
-				<Button
-					onClick={() =>
-						signIn("spotify", { callbackUrl: "/music-stats" })
-					}
-				>
-					Log In
-				</Button>
+				<LoginButton />
 			</Container>
 		</Section>
 	);
