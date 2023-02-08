@@ -1,27 +1,14 @@
 import Image from "next/image";
 
-import { HeadMeta, Layout } from "../components";
+import { CTA } from "../../components/sections/CTA";
 
-import igLogo from "../public/images/igLogo.png";
-import twLogo from "../public/images/twLogo.svg";
-import drLogo from "../public/images/drLogo.svg";
-import { useWindowSize } from "../lib/windowSizeContext";
-import { CTA } from "../components/sections";
+import igLogo from "../../public/images/igLogo.png";
+import twLogo from "../../public/images/twLogo.svg";
+import drLogo from "../../public/images/drLogo.svg";
 
-const meta = {
-	title: "Milovan Gudelj - Contact me",
-	description:
-		"Let's work together! Feel free to reach out to me for any questions you might have.",
-	url: "https://milovangudelj.com/contact",
-	image: "https://milovangudelj.com/images/og-image.png",
-};
-
-const Contact = () => {
-	const { desktop } = useWindowSize();
-
+const ContactPage = () => {
 	return (
-		<Layout>
-			<HeadMeta metadata={meta} />
+		<>
 			<section className="scroll-mt-[72px] md:scroll-mt-[88px]">
 				<main className="mx-auto flex max-w-8xl items-center justify-between py-16 px-8 md:py-32 md:px-16">
 					<div className="space-y-16">
@@ -62,10 +49,7 @@ const Contact = () => {
 							</a>
 						</div>
 					</div>
-					<div
-						aria-hidden={!desktop}
-						className="mr-8 hidden origin-center rotate-12 flex-col items-center space-y-20 xl:flex"
-					>
+					<div className="mr-8 hidden origin-center rotate-12 flex-col items-center space-y-20 xl:flex">
 						<Image
 							alt="Dribbble logo"
 							className="origin-center -rotate-12"
@@ -93,8 +77,8 @@ const Contact = () => {
 				</main>
 			</section>
 			<CTA />
-		</Layout>
+		</>
 	);
 };
 
-export default Contact;
+export default ContactPage;
