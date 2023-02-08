@@ -3,102 +3,86 @@ import { Color, colors, getColorName, shuffleAll } from "./getColors";
 export interface ColorCombo {
 	bg: Color;
 	fg: Color;
-	black: Color;
-	white: Color;
+	text: Color;
 }
 
 export const combos: ColorCombo[] = [
 	{
 		bg: "purple",
 		fg: "yellow",
-		black: "black",
-		white: "white",
+		text: "black",
 	},
 	{
 		bg: "light-cyan",
 		fg: "yellow",
-		black: "black",
-		white: "white",
+		text: "black",
 	},
 	{
 		bg: "yellow",
 		fg: "sp-purple",
-		black: "black",
-		white: "white",
+		text: "black",
 	},
 	{
 		bg: "orange",
 		fg: "light-green",
-		black: "black",
-		white: "white",
+		text: "black",
 	},
 	{
 		bg: "green",
 		fg: "yellow",
-		black: "black",
-		white: "white",
+		text: "black",
 	},
 	{
 		bg: "lavender",
 		fg: "yellow",
-		black: "black",
-		white: "white",
+		text: "black",
 	},
 	{
 		bg: "lilla",
 		fg: "sp-purple",
-		black: "black",
-		white: "white",
+		text: "black",
 	},
 	{
 		bg: "salmon",
 		fg: "sp-purple",
-		black: "black",
-		white: "white",
+		text: "black",
 	},
 	{
 		bg: "light-green",
 		fg: "green",
-		black: "black",
-		white: "white",
+		text: "black",
 	},
 	{
 		bg: "sp-pink",
 		fg: "sp-purple",
-		black: "black",
-		white: "white",
+		text: "black",
 	},
 	{
 		bg: "sp-orange",
 		fg: "sp-purple",
-		black: "black",
-		white: "white",
+		text: "black",
 	},
 	{
 		bg: "sp-yellow",
 		fg: "sp-purple",
-		black: "black",
-		white: "white",
+		text: "black",
 	},
 	{
 		bg: "sp-black",
 		fg: "green",
-		black: "lilla",
-		white: "black",
+		text: "lilla",
 	},
 	{
 		bg: "sp-purple",
 		fg: "yellow",
-		black: "black",
-		white: "white",
+		text: "white",
 	},
 ];
 
 export type Palette = {
 	bg: string;
 	fg: string;
-	black: string;
-	white: string;
+	text: string;
 	artists: string[];
 	tracks: string[];
 };
@@ -129,8 +113,7 @@ export const getPalette = (color?: Color, exclude: Color[] = []): Palette => {
 	const palette = {
 		bg: colors[combo.bg],
 		fg: colors[combo.fg],
-		black: colors[combo.black],
-		white: colors[combo.white],
+		text: colors[combo.text],
 		artists,
 		tracks,
 	};

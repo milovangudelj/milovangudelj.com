@@ -1,11 +1,7 @@
-import {
-	ComponentProps,
-	ComponentPropsWithoutRef,
-	ComponentPropsWithRef,
-	forwardRef,
-} from "react";
-import { StatsList } from "..";
-import { Artist, Track } from "../../lib/types";
+import { ComponentPropsWithoutRef, forwardRef } from "react";
+
+import { StatsList } from "../StatsList";
+
 import {
 	getLuminance,
 	TEXT_LUMINANCE_TRESHOLD,
@@ -39,7 +35,7 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 				ref={ref}
 				className={`relative top-0 left-0 flex h-[1920px] w-[1080px] origin-top-left flex-col justify-between p-20 pb-10 leading-none`}
 				style={{
-					color: palette.black,
+					color: palette.text,
 					backgroundColor: palette.bg,
 				}}
 				{...props}
@@ -47,7 +43,7 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img
 					src={
-						palette.white === "#FFFFFF"
+						palette.text !== "#000000"
 							? "/images/notes-bg.png"
 							: "/images/notes-bg-light.png"
 					}
@@ -57,7 +53,7 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 					height={1920}
 					aria-hidden
 					className={`pointer-events-none absolute inset-0 ${
-						palette.white === "#FFFFFF" ? "opacity-10" : "opacity-5"
+						palette.text !== "#000000" ? "opacity-10" : "opacity-5"
 					}`}
 				/>
 				<span className="absolute -top-[164.77px] right-0 origin-bottom-left translate-x-[calc(100%-148.77px)] rotate-90 font-space text-[164.77px] font-bold leading-none opacity-20">
@@ -72,7 +68,7 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 						<ProfilePicture
 							picture={picture}
 							name={username}
-							color={palette.black}
+							color={palette.text}
 						/>
 						<span className="text-sub-heading opacity-80">
 							@{username}
@@ -87,12 +83,7 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 						</h2>
 						<div className="flex flex-col items-end">
 							<div className="relative mb-6 w-full flex-1">
-								<div
-									className="absolute top-[6.27px] left-[6.27px] h-full w-full"
-									style={{
-										backgroundColor: palette.black,
-									}}
-								></div>
+								<div className="absolute top-[6.27px] left-[6.27px] h-full w-full bg-black"></div>
 								<StatsList
 									items={artists}
 									of="artists"
@@ -100,7 +91,7 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 									className="relative"
 								/>
 							</div>
-							<ListenOn isLight={palette.white === "#FFFFFF"} />
+							<ListenOn isLight={palette.text !== "#000000"} />
 						</div>
 					</div>
 					<div className="relative mt-20">
@@ -112,12 +103,7 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 						</h2>
 						<div className="flex flex-col items-end">
 							<div className="relative mb-6 w-full flex-1">
-								<div
-									className="absolute top-[6.27px] left-[6.27px] h-full w-full"
-									style={{
-										backgroundColor: palette.black,
-									}}
-								></div>
+								<div className="absolute top-[6.27px] left-[6.27px] h-full w-full bg-black"></div>
 								<StatsList
 									items={tracks}
 									of="tracks"
@@ -125,7 +111,7 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 									className="relative"
 								/>
 							</div>
-							<ListenOn isLight={palette.white === "#FFFFFF"} />
+							<ListenOn isLight={palette.text !== "#000000"} />
 						</div>
 					</div>
 				</div>
@@ -152,9 +138,7 @@ const ListenOn = ({ isLight }: { isLight: boolean }) => {
 			{/* eslint-disable-next-line @next/next/no-img-element */}
 			<img
 				src={
-					isLight
-						? "/images/Spotify_Logo_Black.png"
-						: "/images/Spotify_Logo_White.png"
+					isLight ? "/images/Spotify_Logo_White.png" : "/images/Black.png"
 				}
 				className="inline-block aspect-[1181/354] h-10 w-auto opacity-100"
 				alt="Spotify Logo"
