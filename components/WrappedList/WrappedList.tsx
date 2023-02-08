@@ -43,7 +43,7 @@ export const WrappedList = ({
 
 	return (
 		<ol
-			className={twMerge(`drop-shadow-brutal`, className)}
+			className={twMerge(`h-fit drop-shadow-brutal`, className)}
 			style={{
 				color: palette?.white ?? "#FFFFFF",
 				backgroundColor: palette?.black ?? "#000000",
