@@ -16,7 +16,6 @@ import {
 } from "../components";
 
 import { Artist, Track } from "../lib/types";
-import { BASE_URL } from "../lib/constants";
 import { useWindowSize } from "../lib/windowSizeContext";
 import { getPalette, Palette } from "../utils/getPalette";
 import Head from "next/head";
@@ -30,17 +29,20 @@ const meta = {
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 	const data = await (
-		await fetch(`${BASE_URL}/api/getUserStats?period=medium_term`, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				Cookie: req.headers.cookie as string,
-			},
-		})
+		await fetch(
+			`${process.env.WEBSITE_URL}/api/getUserStats?period=medium_term`,
+			{
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					Cookie: req.headers.cookie as string,
+				},
+			}
+		)
 	).json();
 
 	const userData = await (
-		await fetch(`${BASE_URL}/api/getUser`, {
+		await fetch(`${process.env.WEBSITE_URL}/api/getUser`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
