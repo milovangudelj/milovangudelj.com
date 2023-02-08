@@ -1,4 +1,3 @@
-import { Analytics } from "@vercel/analytics/react";
 import { getServerSession } from "next-auth/next";
 
 import "../styles/globals.css";
@@ -6,6 +5,7 @@ import "../styles/globals.css";
 import { SessionProvider } from "../lib/sessionProvider";
 import { Navbar } from "./Navbar";
 import { Footer } from "../components/Footer";
+import { Analytics } from "./Analytics";
 
 export default async function RootLayout({
 	children,
