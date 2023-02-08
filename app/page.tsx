@@ -1,4 +1,3 @@
-import type { GetStaticProps, NextPage } from "next";
 import { gql } from "graphql-request";
 
 import { WigglyStars } from "./WigglyStars";
