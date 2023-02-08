@@ -1,9 +1,9 @@
-import { GetStaticPaths, GetStaticProps } from "next";
 import { gql } from "graphql-request";
 import { getPlaiceholder } from "plaiceholder";
 
-import { hygraph } from "../../lib/hygraph";
-import { CS, HeadMeta, Layout } from "../../components";
+import { hygraph } from "../../../lib/hygraph";
+
+import { CS } from "../../../components/CS";
 
 const GET_SLUGS = gql`
 	{
@@ -54,20 +54,15 @@ const GET_DATA = gql`
 	}
 `;
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export async function generateStaticParams() {
 	const { caseStudies } = await hygraph.request(GET_SLUGS);
 
-	return {
-		paths: caseStudies.map((caseStudy: any) => ({
-			params: { slug: caseStudy.slug },
-		})),
-		fallback: false,
-	};
-};
+	return caseStudies.map((caseStudy: any) => ({ slug: caseStudy.slug }));
+}
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+const getProjctData = async (slug: string) => {
 	const { caseStudy } = await hygraph.request(GET_DATA, {
-		slug: params?.slug,
+		slug,
 	});
 
 	const images = caseStudy.content.references.filter(
@@ -82,42 +77,26 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		})
 	);
 
-	return {
-		props: { ...caseStudy },
-	};
+	return caseStudy;
 };
 
-const CaseStudyPage = ({
-	slug,
-	title,
-	color,
-	subtitle,
-	intro,
-	cover,
-	content,
-}: any) => {
-	const meta = {
-		title: `${title} | Case Study`,
-		description: `Case study for the project ${title}`,
-		url: `https://milovangudelj.com/work/${slug}`,
-		image: "https://milovangudelj.com/images/og-image.png",
-	};
+const ProjectPage = async ({ params }: { params: { slug: string } }) => {
+	const { title, color, subtitle, intro, cover, content } =
+		await getProjctData(params.slug);
 
 	return (
-		<Layout>
-			<HeadMeta metadata={meta} />
-			<CS>
-				<CS.Header
-					title={title}
-					color={color}
-					subtitle={subtitle}
-					intro={intro}
-					cover={cover}
-				/>
-				<CS.Content content={content} />
-			</CS>
-		</Layout>
+		<CS>
+			<CS.Header
+				title={title}
+				color={color}
+				subtitle={subtitle}
+				intro={intro}
+				cover={cover}
+			/>
+			<CS.Content content={content} />
+		</CS>
 	);
 };
 
-export default CaseStudyPage;
+export const dynamic = "force-static";
+export default ProjectPage;

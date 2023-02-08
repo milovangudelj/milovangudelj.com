@@ -1,15 +1,11 @@
-import { GetStaticProps, NextPage } from "next";
 import { gql } from "graphql-request";
 
-import { hygraph, colorMap } from "../../lib/hygraph";
-import {
-	Container,
-	HeadMeta,
-	Layout,
-	ProjectShowcase,
-	Section,
-	Smiley,
-} from "../../components";
+import { colorMap, hygraph } from "../../lib/hygraph";
+
+import { Section } from "../../components/Section";
+import { Container } from "../../components/Container";
+import ProjectShowcase from "../../components/ProjectShowcase/ProjectShowcase";
+import { Smiley } from "../../components/Smiley";
 
 export interface Project {
 	id: string;
@@ -54,7 +50,7 @@ const QUERY = gql`
 	}
 `;
 
-export const getStaticProps: GetStaticProps = async () => {
+const getProjcts = async () => {
 	const { projects }: { projects: Project[] } = await hygraph.request(QUERY);
 
 	let avColors = Object.keys(colorMap).filter(
@@ -83,24 +79,14 @@ export const getStaticProps: GetStaticProps = async () => {
 		})
 	);
 
-	return {
-		props: {
-			projects,
-		},
-	};
+	return projects;
 };
 
-const meta = {
-	title: "Milovan Gudelj - My work",
-	description: "A collection of past project I've worked on an am proud of.",
-	url: "https://milovangudelj.com/work",
-	image: "https://milovangudelj.com/images/og-image.png",
-};
+const WorkPage = async () => {
+	const projects = await getProjcts();
 
-const Work: NextPage<{ projects: Project[] }> = ({ projects }) => {
 	return (
-		<Layout>
-			<HeadMeta metadata={meta} />
+		<>
 			<section className="scroll-mt-[72px] bg-black text-white md:scroll-mt-[88px]">
 				<main className="mx-auto max-w-8xl space-y-16 py-16 px-8 md:space-y-32 md:py-32 md:px-16">
 					<div className="relative space-y-8 md:space-y-0">
@@ -127,8 +113,8 @@ const Work: NextPage<{ projects: Project[] }> = ({ projects }) => {
 					</li>
 				))}
 			</ul>
-		</Layout>
+		</>
 	);
 };
 
-export default Work;
+export default WorkPage;

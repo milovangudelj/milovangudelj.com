@@ -1,4 +1,3 @@
-import type { GetStaticProps, NextPage } from "next";
 import { gql } from "graphql-request";
 
 import { WigglyStars } from "./WigglyStars";
@@ -7,7 +6,7 @@ import { CTA } from "../components/sections/CTA";
 import { Section } from "../components/Section";
 import { Container } from "../components/Container";
 import { Smiley } from "../components/Smiley";
-import { Project } from "../pages/work";
+import { type Project } from "./work/page";
 import { ProjectCard } from "../components/ProjectCard";
 import { hygraph } from "../lib/hygraph";
 

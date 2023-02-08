@@ -24,21 +24,19 @@ export const StatsList = ({
 		return (
 			<YoungAccount
 				of={of}
-				className={twMerge(`drop-shadow-brutal`, className)}
-				style={{
-					color: palette?.white ?? "#FFFFFF",
-					backgroundColor: palette?.black ?? "#000000",
-				}}
+				className={twMerge(
+					`bg-black text-white drop-shadow-brutal`,
+					className
+				)}
 			/>
 		);
 
 	return (
 		<ol
-			className={twMerge(`drop-shadow-brutal`, className)}
-			style={{
-				color: palette?.white ?? "#FFFFFF",
-				backgroundColor: palette?.black ?? "#000000",
-			}}
+			className={twMerge(
+				`bg-black text-white drop-shadow-brutal`,
+				className
+			)}
 			{...props}
 		>
 			{items.map((item, idx) => (
@@ -49,9 +47,6 @@ export const StatsList = ({
 					color={
 						of === "artists" ? palette.artists[idx] : palette.tracks[idx]
 					}
-					style={{
-						color: palette?.white ?? "#FFFFFF",
-					}}
 					key={item.url}
 				/>
 			))}
@@ -108,11 +103,7 @@ const StatsListItem = ({
 						? lightText
 							? "text-white"
 							: "text-black"
-						: `border-b-[3.13px] border-r-[3.13px] ${
-								style?.color === "#FFFFFF"
-									? "border-white/10 text-white"
-									: "border-black/10 text-black"
-						  }`
+						: `border-b-[3.13px] border-r-[3.13px] border-white/10 text-white`
 				} min-w-0 flex-1`}
 			>
 				<a

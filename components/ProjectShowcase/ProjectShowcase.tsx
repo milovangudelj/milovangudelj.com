@@ -1,7 +1,8 @@
-import Image from "next/legacy/image";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+"use client";
 
-import { Project } from "../../pages/work";
+import Image from "next/legacy/image";
+
+import { Project } from "../../app/work/page";
 import { useWindowSize } from "../../lib/windowSizeContext";
 import Link from "next/link";
 import { RichText } from "@graphcms/rich-text-react-renderer";
@@ -77,6 +78,7 @@ export const ProjectShowcase = ({
 		</section>
 	);
 };
+export default ProjectShowcase;
 
 const ProjectDetails = ({
 	title,
