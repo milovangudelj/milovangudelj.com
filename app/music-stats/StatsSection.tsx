@@ -8,6 +8,7 @@ import { Section } from "../../components/Section";
 import { ControlsBar, FormData } from "./ControlsBar";
 import { UserStats } from "./page";
 import { PosterGenerator } from "./PosterGenerator";
+import { getPalette } from "../../utils/getPalette";
 
 export const StatsSection = ({
 	user,
@@ -112,7 +113,7 @@ export const StatsSection = ({
 										items={periodData[period].stats.topArtists}
 										of="artists"
 										className="max-w-[587px] flex-1 max-md:mb-10"
-										palette={periodData[period].palette}
+										palette={getPalette("green")}
 									/>
 									<div className="max-w-[587px] flex-1">
 										<h3 className="mb-4 text-sub-heading-mobile md:text-sub-heading">
@@ -151,7 +152,7 @@ export const StatsSection = ({
 										items={periodData[period].stats.topTracks}
 										of="tracks"
 										className="max-w-[587px] flex-1 max-md:mb-10"
-										palette={periodData[period].palette}
+										palette={getPalette("green")}
 									/>
 									<div className="max-w-[587px] flex-1">
 										<h3 className="mb-4 text-sub-heading-mobile md:text-sub-heading">
