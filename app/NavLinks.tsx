@@ -143,7 +143,7 @@ export const NavLinks = ({
 								} transition hover:opacity-100`}
 							>
 								{link.label === segment && (
-									<span className="absolute left-0 top-0 bottom-0 -ml-1 flex items-center text-body motion-safe:animate-spin-slow">
+									<span className="-ml-1/2 absolute left-0 top-0 bottom-0 mt-1 flex items-center text-body motion-safe:animate-spin-slow">
 										✦
 									</span>
 								)}
