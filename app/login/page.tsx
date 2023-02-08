@@ -6,13 +6,16 @@ import { Button } from "../../components/Button";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 
-export async function getSession() {
-	const cookie = headers().get('cookie') ?? '';
+const getSession = async () => {
+	const cookie = headers().get("cookie") ?? "";
 
 	try {
-		const response = await fetch(`${process.env.WEBSITE_URL}/api/auth/session`, {
-			headers: { cookie },
-		});
+		const response = await fetch(
+			`${process.env.WEBSITE_URL}/api/auth/session`,
+			{
+				headers: { cookie },
+			}
+		);
 
 		const session = await response.json();
 
@@ -20,7 +23,7 @@ export async function getSession() {
 	} catch (err) {
 		return null;
 	}
-}
+};
 
 const LoginPage = async () => {
 	const session = await getSession();
