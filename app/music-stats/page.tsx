@@ -45,15 +45,15 @@ const getData = async () => {
 	const data = {
 		longTermStats: {
 			stats: userStats.long_term,
-			palette: getPalette("green"),
+			palette: getPalette(),
 		},
 		mediumTermStats: {
 			stats: userStats.medium_term,
-			palette: getPalette("green"),
+			palette: getPalette(),
 		},
 		shortTermStats: {
 			stats: userStats.short_term,
-			palette: getPalette("green"),
+			palette: getPalette(),
 		},
 	};
 
