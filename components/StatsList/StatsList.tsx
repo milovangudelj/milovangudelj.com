@@ -117,7 +117,7 @@ const StatsListItem = ({
 					<span
 						className={`${
 							isFirst ? "text-[71.65px]" : "text-[35.12px]"
-						} order-last ml-auto flex-none text-sub-heading leading-none opacity-40 transition group-hover:opacity-80`}
+						} order-last ml-auto flex-none leading-none opacity-40 transition group-hover:opacity-80`}
 					>
 						{rank}
 					</span>

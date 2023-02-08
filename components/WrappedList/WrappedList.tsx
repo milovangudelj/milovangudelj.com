@@ -127,7 +127,7 @@ const WrappedListItem = ({
 					<span
 						className={`${
 							isFirst ? "text-[46.04px]" : "text-[22.4px]"
-						} order-last ml-auto flex-none text-sub-heading leading-none opacity-40 transition group-hover:opacity-80`}
+						} order-last ml-auto flex-none leading-none opacity-40 transition group-hover:opacity-80`}
 					>
 						{rank}
 					</span>
