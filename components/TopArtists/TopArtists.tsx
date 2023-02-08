@@ -1,12 +1,10 @@
-"use client";
-
 import { ComponentProps } from "react";
 import useSWRImmutable from "swr/immutable";
 import { twMerge } from "tailwind-merge";
 
 import fetcher from "../../lib/fetcher";
 import { TopArtists } from "../../lib/types";
-import WrappedList from "../WrappedList/WrappedList";
+import { WrappedList } from "../";
 
 export const Artists = ({ className }: ComponentProps<"div">) => {
 	const { data } = useSWRImmutable<TopArtists>("/api/top-artists", fetcher);
@@ -22,5 +20,3 @@ export const Artists = ({ className }: ComponentProps<"div">) => {
 		</div>
 	);
 };
-
-export default Artists;

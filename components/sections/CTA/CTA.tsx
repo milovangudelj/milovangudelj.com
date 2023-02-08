@@ -1,8 +1,6 @@
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
-
-import { Section } from "../../Section";
-import { Container } from "../../Container";
+import { Section, Container } from "../..";
 
 const Pattern = ({ className }: ComponentProps<"svg">) => {
 	return (
@@ -46,9 +44,9 @@ export const CTA = () => {
 						Let&apos;s work together
 					</h2>
 					<p className="text-body xl:max-w-[680px]">
-						If you&apos;re impressed by my work and think we&apos;d be a
-						good match, don&apos;t hesitate to reach out. Who knows, we
-						could build something amazing together.
+						If you like what I do please feel free to contact me and who
+						knows, we might build the next big thing or just a cool
+						looking website.
 					</p>
 				</div>
 				<div className="flex items-center space-x-4 py-0.5">

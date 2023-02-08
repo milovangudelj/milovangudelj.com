@@ -1,11 +1,11 @@
 import { Analytics } from "@vercel/analytics/react";
+import { SessionProvider } from "next-auth/react";
 import { getServerSession } from "next-auth/next";
 
 import "../styles/globals.css";
 
-import { SessionProvider } from "../lib/sessionProvider";
-import { Navbar } from "./Navbar";
-import { Footer } from "../components/Footer";
+import { ScrollProvider } from "../lib/scrollContext";
+import { WindowSizeProvider } from "../lib/windowSizeContext";
 
 export default async function RootLayout({
 	children,
@@ -15,23 +15,25 @@ export default async function RootLayout({
 	const session = await getServerSession();
 
 	return (
-		<html lang="en">
-			<body className="h-fill overflow-x-hidden scroll-smooth bg-black font-sans text-white">
+		<html className="h-fill" lang="en">
+			<body className="h-fill">
 				<SessionProvider session={session}>
-					{/* <style jsx global>
-					{`
-						#__next {
-							height: -webkit-fill-available;
-							height: -moz-available;
-						}
-					`}
-				</style> */}
-					<Navbar />
-					<div className="relative z-[1] mb-[58.25px] bg-black">
-						{children}
-					</div>
-					{process.env.NODE_ENV === "production" && <Analytics />}
-					<Footer />
+					<WindowSizeProvider>
+						<ScrollProvider>
+							<style jsx global>
+								{`
+									#__next {
+										height: -webkit-fill-available;
+										height: -moz-available;
+									}
+								`}
+							</style>
+							<div className={`h-fill font-sans`}>
+								{children}
+								{process.env.NODE_ENV === "production" && <Analytics />}
+							</div>
+						</ScrollProvider>
+					</WindowSizeProvider>
 				</SessionProvider>
 			</body>
 		</html>

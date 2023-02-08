@@ -3,7 +3,6 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: [
-		"./app/**/*.{js,ts,jsx,tsx}",
 		"./pages/**/*.{js,ts,jsx,tsx}",
 		"./components/**/*.{js,ts,jsx,tsx}",
 	],
@@ -89,7 +88,6 @@ module.exports = {
 			black: "#000000",
 			white: "#ffffff",
 			transparent: "transparent",
-			current: "currentColor",
 		},
 		extend: {
 			screens: {
@@ -304,7 +302,6 @@ module.exports = {
 				wiggle: "wiggle 500ms ease-in-out",
 				"wiggle-inv": "wiggle-inv 500ms ease-in-out",
 				stretch: "stretch 2.4s ease-in-out infinite",
-				"spin-slow": "spin 2s linear infinite",
 			},
 			keyframes: {
 				wiggle: {

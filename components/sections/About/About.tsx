@@ -1,10 +1,7 @@
 import Image from "next/legacy/image";
 import { ComponentProps } from "react";
 
-import { Section } from "../../Section";
-import { Container } from "../../Container";
-import { Hourglass } from "../../Hourglass";
-import NowPlaying from "../../NowPlaying/NowPlaying";
+import { Section, Container, Hourglass, NowPlaying } from "../../";
 
 import me from "../../../public/images/poly-me.png";
 
@@ -49,18 +46,18 @@ export const AboutSection = ({
 							About me
 						</h2>
 						<p className="text-body xl:max-w-[680px]">
-							As a computer science student, I have a strong passion for
-							web development and UI/UX design. I am driven by the
-							creation of user-centered interfaces and experiences that
-							are both aesthetically pleasing and empowering.
+							I&apos;m a computer science student really passionate about
+							web development and UI/UX design. I love seeing a simple
+							yet empowerig User Interface and a great User Experience.
 						</p>
-
 						<p className="text-body xl:max-w-[680px]">
-							With five years of experience in building websites, I have
-							honed my skills in both the technical and creative aspects
-							of web development. My interest in graphic design and
-							poster-making has also allowed me to bring a unique
-							perspective to my work in UI/UX design.
+							I started building websites about {experienceYears} years
+							ago and I fell in love with it. At the same time I also
+							began experimenting with graphic design and making posters.
+						</p>
+						<p className="text-body xl:max-w-[680px]">
+							Slowly but surely I made my way into the wonderful world of
+							web development and UI/UX design.
 						</p>
 					</div>
 					{!standAlone && <NowPlaying />}
