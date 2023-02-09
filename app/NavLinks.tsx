@@ -2,7 +2,7 @@
 
 import { ComponentProps, useEffect, useState } from "react";
 import Link from "next/link";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import { motion, type Variants } from "framer-motion";
 
@@ -46,7 +46,10 @@ export const NavLinks = ({
 	...props
 }: NavLinksProps) => {
 	const segment = useSelectedLayoutSegment();
+	const pathname = usePathname();
+
 	const isMobile = useIsMobile();
+
 	const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
 	const list: Variants = isMobile
@@ -111,17 +114,21 @@ export const NavLinks = ({
 
 	useEffect(() => {
 		if (menuOpen) {
-			document.body.style.overflow = "hidden";
+			document.body.style.overflowY = "hidden";
 		} else {
-			document.body.style.overflow = undefined as unknown as string;
+			document.body.style.overflowY = "auto";
 		}
 
 		callbackWhenOpen?.(menuOpen);
 
 		return () => {
-			document.body.style.overflow = undefined as unknown as string;
+			document.body.style.overflowY = "auto";
 		};
 	}, [menuOpen, callbackWhenOpen]);
+
+	useEffect(() => {
+		setMenuOpen(false);
+	}, [pathname]);
 
 	return (
 		<div className={twMerge(`flex items-center gap-4`, className)} {...props}>
