@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { NavLinks } from "./NavLinks";
 
@@ -9,7 +9,7 @@ export const Navbar = () => {
 	const [backgroundColor, setBackgroundColor] = useState<string>("bg-yellow");
 	const [textColor, setTextColor] = useState<string>("text-black");
 
-	const invertBackgroundColor = (menuOpen: boolean) => {
+	const invertBackgroundColor = useCallback((menuOpen: boolean) => {
 		if (menuOpen) {
 			setBackgroundColor("bg-black");
 			setTextColor("text-white");
@@ -17,7 +17,7 @@ export const Navbar = () => {
 			setBackgroundColor("bg-yellow");
 			setTextColor("text-black");
 		}
-	};
+	}, []);
 
 	return (
 		<div
