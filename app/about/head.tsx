@@ -9,7 +9,7 @@ const meta = {
 	image: "https://milovangudelj.com/images/og-image.png",
 };
 
-export default function RootHead() {
+export default function AboutHead() {
 	return (
 		<>
 			<DefaultTags />
