@@ -52,9 +52,7 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 					width={1080}
 					height={1920}
 					aria-hidden
-					className={`pointer-events-none absolute inset-0 ${
-						palette.text !== "#000000" ? "opacity-5" : "opacity-10"
-					}`}
+					className={`pointer-events-none absolute inset-0 opacity-[.08]`}
 				/>
 				<span className="absolute -top-[164.77px] right-0 origin-bottom-left translate-x-[calc(100%-148.77px)] rotate-90 font-space text-[164.77px] font-bold leading-none opacity-20">
 					{year}
