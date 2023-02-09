@@ -13,7 +13,7 @@ const AboutPage = () => {
 	return (
 		<>
 			<AboutSection standAlone />
-			<Section className="relative bg-lavender text-white">
+			<Section className="relative overflow-hidden bg-lavender text-white">
 				<div
 					aria-hidden
 					className="pointer-events-none absolute top-0 bottom-0 right-0 left-1/2 bg-[url('/images/notes-tile.png')] bg-repeat opacity-10"
