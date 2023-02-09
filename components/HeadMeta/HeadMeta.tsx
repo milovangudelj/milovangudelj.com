@@ -12,6 +12,8 @@ export const HeadMeta = ({ metadata: meta }: { metadata: HeadMetadata }) => {
 			<meta name="title" content={meta.title} />
 			<meta name="description" content={meta.description} />
 
+			<link rel="canonical" href={meta.url} />
+
 			<meta property="og:type" content="website" />
 			<meta property="og:url" content={meta.url} />
 			<meta property="og:title" content={meta.title} />
