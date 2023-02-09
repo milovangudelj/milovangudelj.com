@@ -9,6 +9,7 @@ import { getPalette, Palette } from "../../utils/getPalette";
 import { Artist, Track } from "../../lib/types";
 import { FormData } from "./ControlsBar";
 import { StatsSection } from "./StatsSection";
+import { getServerSession } from "next-auth";
 
 export interface UserStats {
 	stats: {
@@ -21,14 +22,14 @@ export interface UserStats {
 const getUserStats = async (cookie: string | null) => {
 	const data: { [K in FormData["period"]]: UserStats["stats"] } & {
 		error?: string;
-	} = await (
+	} = await(
 		await fetch(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/getUserStats`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
 				Cookie: cookie as string,
 			},
-			cache: "no-store",
+			next: { revalidate: 60 * 60 * 24 },
 		})
 	).json();
 
@@ -36,6 +37,9 @@ const getUserStats = async (cookie: string | null) => {
 };
 
 const getData = async () => {
+	const session = await getServerSession();
+	if (!session) redirect("/login");
+
 	const cookie = headers().get("cookie");
 
 	const userStats = await getUserStats(cookie);
