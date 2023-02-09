@@ -141,7 +141,7 @@ export const NavLinks = ({
 				className={`${
 					menuOpen
 						? "pointer-events-auto"
-						: "pointer-events-none select-none"
+						: "max-md:pointer-events-none max-md:select-none"
 				} flex bg-yellow text-black max-md:absolute max-md:top-0 max-md:left-0 max-md:right-0 max-md:-z-10 max-md:h-screen max-md:flex-col max-md:items-end max-md:justify-center max-md:space-y-4 max-md:px-4 max-md:py-8`}
 			>
 				{links.map((link) => {
