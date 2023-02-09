@@ -3,11 +3,11 @@
 import Image from "next/legacy/image";
 
 import { Project } from "../../app/work/page";
-import { useWindowSize } from "../../lib/windowSizeContext";
 import Link from "next/link";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { Button } from "../Button";
 import { colorMap } from "../../lib/hygraph";
+import { useIsDesktop, useIsMobile } from "../../lib/useMediaQuery";
 
 type ProjectShowcaseProps = Omit<Project, "id">;
 
@@ -30,11 +30,11 @@ export const ProjectShowcase = ({
 	categories,
 	color,
 }: ProjectShowcaseProps) => {
-	const { desktop } = useWindowSize();
+	const isDesktop = useIsDesktop();
 
 	return (
 		<section className="space-y-8 md:space-y-16 xl:grid xl:grid-cols-8 xl:gap-16 xl:space-y-0">
-			{desktop && (
+			{isDesktop && (
 				<div className="order-last h-full xl:col-span-3">
 					<ProjectDetails
 						title={title}
@@ -46,7 +46,7 @@ export const ProjectShowcase = ({
 				</div>
 			)}
 			<div className="space-y-12 md:space-y-16 xl:col-span-5">
-				{!desktop ? (
+				{!isDesktop ? (
 					<div className="flex flex-col md:grid md:h-max md:grid-cols-5 md:space-y-0 xl:w-full xl:space-y-8">
 						<ProjectDetails
 							title={title}
@@ -93,7 +93,8 @@ const ProjectDetails = ({
 	categories: Project["categories"];
 	color: Project["color"];
 }) => {
-	const { mobile } = useWindowSize();
+	const isMobile = useIsMobile();
+
 	return (
 		<div
 			className={`relative z-[1] space-y-4 border-2 border-t border-dashed ${
@@ -112,7 +113,7 @@ const ProjectDetails = ({
 						<li key={`cat_${idx}`}>{categoryMap[category]}</li>
 					))}
 				</ul>
-				{!mobile && <VisitButton href={href} />}
+				{!isMobile && <VisitButton href={href} />}
 			</div>
 		</div>
 	);
@@ -160,13 +161,14 @@ const ProjectImage = ({
 	title: Project["title"];
 	href: Project["href"];
 }) => {
-	const { mobile } = useWindowSize();
+	const isMobile = useIsMobile();
+
 	return (
 		<div className="relative order-first md:order-none md:col-span-3 md:mb-0 md:h-full xl:h-auto xl:w-full">
-			<span className="absolute top-0 left-0 w-min -translate-y-full bg-black px-2 text-body text-white md:-translate-x-full md:-translate-y-0 md:scale-[-1] md:py-2 md:[writing-mode:vertical-lr]">
+			<span className="absolute top-0 left-0 w-min -translate-y-full bg-black text-body text-white max-md:px-2 md:-translate-x-full md:-translate-y-0 md:scale-[-1] md:py-2 md:[writing-mode:vertical-lr]">
 				{year}
 			</span>
-			{mobile && (
+			{isMobile && (
 				<span className="absolute bottom-0 right-0 z-[1]">
 					<VisitButton href={href} />
 				</span>

@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 import { Hamburger, NavLinks } from "../";
-import { useWindowSize } from "../../lib/windowSizeContext";
+import { useIsMobile } from "../../lib/useMediaQuery";
 
 export const Navbar = () => {
-	const { mobile } = useWindowSize();
+	const isMobile = useIsMobile();
 
 	return (
 		<div className="sticky top-0 z-10 bg-yellow">
@@ -13,8 +13,8 @@ export const Navbar = () => {
 					Milo
 				</Link>
 
-				<Hamburger aria-hidden={!mobile} />
-				<NavLinks className="hidden md:block" aria-hidden={!mobile} />
+				<Hamburger aria-hidden={!isMobile} />
+				<NavLinks className="hidden md:block" aria-hidden={!isMobile} />
 			</div>
 		</div>
 	);

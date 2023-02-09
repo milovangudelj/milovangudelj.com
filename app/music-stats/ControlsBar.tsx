@@ -6,7 +6,7 @@ import { useForm, UseFormRegister } from "react-hook-form";
 import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { Button } from "../../components/Button";
-import { useWindowSize } from "../../lib/windowSizeContext";
+import { useIsMobile } from "../../lib/useMediaQuery";
 
 export interface FormData {
 	filter: "all" | "artists" | "tracks";
@@ -27,7 +27,7 @@ export const ControlsBar = ({
 	filterChangeHandler: (newFilter: FormData["filter"]) => void;
 }) => {
 	const downloadRef = useRef<HTMLAnchorElement>(null);
-	const { mobile } = useWindowSize();
+	const isMobile = useIsMobile();
 
 	const {
 		register,
@@ -134,7 +134,7 @@ export const ControlsBar = ({
 							: undefined
 					}
 					title={`Music-Stats-@${username}.png`}
-					fullWidth={mobile}
+					fullWidth={isMobile}
 					className={`${
 						generatingPoster ? "pointer-events-none opacity-80" : ""
 					} transition-all`}
