@@ -1,10 +1,8 @@
-import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
-import { shuffle } from "../../utils/shuffle";
 
 import { spotifyApi } from "../../lib/spotify";
 import { authOptions, ExtendedSession } from "./auth/[...nextauth]";
-import { spotifyColors } from "../../utils/getColors";
 import { FormData } from "../../app/music-stats/ControlsBar";
 
 export default async function handler(
@@ -26,18 +24,36 @@ export default async function handler(
 	spotifyApi.setAccessToken(session.user.accessToken);
 	spotifyApi.setRefreshToken(session.user.refreshToken);
 
+	const ltArtistsData = getTopArtists("long_term");
+	const mtArtistsData = getTopArtists("medium_term");
+	const stArtistsData = getTopArtists("short_term");
+
+	const ltTracksData = getTopTracks("long_term");
+	const mtTracksData = getTopTracks("medium_term");
+	const stTracksData = getTopTracks("short_term");
+
+	const [ltArtists, mtArtists, stArtists, ltTracks, mtTracks, stTracks] =
+		await Promise.all([
+			ltArtistsData,
+			mtArtistsData,
+			stArtistsData,
+			ltTracksData,
+			mtTracksData,
+			stTracksData,
+		]);
+
 	const userStats = {
 		long_term: {
-			topArtists: await getTopArtists("long_term"),
-			topTracks: await getTopTracks("long_term"),
+			topArtists: ltArtists,
+			topTracks: ltTracks,
 		},
 		medium_term: {
-			topArtists: await getTopArtists("medium_term"),
-			topTracks: await getTopTracks("medium_term"),
+			topArtists: mtArtists,
+			topTracks: mtTracks,
 		},
 		short_term: {
-			topArtists: await getTopArtists("short_term"),
-			topTracks: await getTopTracks("short_term"),
+			topArtists: stArtists,
+			topTracks: stTracks,
 		},
 	};
 
