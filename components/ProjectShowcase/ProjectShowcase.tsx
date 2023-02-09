@@ -99,7 +99,7 @@ const ProjectDetails = ({
 		<div
 			className={`relative z-[1] space-y-4 border-2 border-t border-dashed ${
 				colorMap[color] ?? "bg-lilla"
-			} p-4 drop-shadow-brutal [border-top:1px_solid_black] md:z-auto md:col-span-2 md:space-y-6 md:border-r md:border-t-2 md:border-dashed md:drop-shadow-brutal-lg xl:sticky xl:top-[152px] xl:border-r-2 xl:p-8`}
+			} p-4 drop-shadow-brutal max-md:[border-top:1px_solid_black] md:z-auto md:col-span-2 md:space-y-6 md:border-t-2 md:drop-shadow-brutal-lg md:max-lg:[border-right:1px_solid_black] xl:sticky xl:top-[152px] xl:border-r-2 xl:p-8`}
 		>
 			<h3 className="text-h4-mobile md:text-sub-heading xl:text-h4">
 				{title}
@@ -121,9 +121,9 @@ const ProjectDetails = ({
 
 const VisitButton = ({ href }: { href: Project["href"] }) => {
 	return (
-		<a href={href} target={"_blank"} rel={"noreferrer"}>
-			<Button>Visit ↗</Button>
-		</a>
+		<Button as="a" href={href} target={"_blank"} rel={"noreferrer"}>
+			Visit ↗
+		</Button>
 	);
 };
 
