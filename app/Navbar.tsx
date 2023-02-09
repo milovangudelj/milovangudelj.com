@@ -24,7 +24,7 @@ export const Navbar = () => {
 			className={`sticky top-0 z-10 ${backgroundColor} transition duration-300`}
 		>
 			<div
-				className={`relative mx-auto ${backgroundColor} flex w-full max-w-8xl items-center justify-between px-8 py-4 ${textColor} md:py-1 2xl:px-0`}
+				className={`relative mx-auto ${backgroundColor} flex w-full max-w-8xl items-center justify-between px-8 py-2 ${textColor} md:py-1 2xl:px-0`}
 			>
 				<Link href="/" className="relative text-sub-heading">
 					Milo
