@@ -82,7 +82,7 @@ const MusicStatsPage = async () => {
 
 	return (
 		<>
-			<Section className="bg-purple">
+			<Section className="relative overflow-hidden bg-purple">
 				<Container className="space-y-8">
 					<h1 className="relative z-[1] text-h1-mobile md:text-d2-mobile xl:text-d2">
 						<span className="text-yellow">Music</span>-Stats
