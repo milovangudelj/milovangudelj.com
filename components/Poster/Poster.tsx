@@ -44,8 +44,8 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 				<img
 					src={
 						palette.text !== "#000000"
-							? "/images/notes-bg.png"
-							: "/images/notes-bg-light.png"
+							? "/images/notes-bg-light.png"
+							: "/images/notes-bg.png"
 					}
 					loading="eager"
 					alt="Notes background"
