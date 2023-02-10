@@ -5,8 +5,8 @@ const meta = {
 	title: "Milovan Gudelj - Contact me",
 	description:
 		"Let's work together! Feel free to reach out to me for any questions you might have.",
-	url: "https://milovangudelj.com/contact",
-	image: "https://milovangudelj.com/images/og-image.png",
+	url: "https://www.milovangudelj.com/contact",
+	image: "https://www.milovangudelj.com/images/og-image.png",
 };
 
 const ContactHead = () => {

@@ -4,8 +4,8 @@ import DefaultTags from "../DefaultTags";
 const meta = {
 	title: "Milovan Gudelj - Music-Stats",
 	description: "Get your cool Spotify Music-Stats poster now",
-	url: "https://milovangudelj.com/music-stats",
-	image: "https://milovangudelj.com/images/og-image-ms.png",
+	url: "https://www.milovangudelj.com/music-stats",
+	image: "https://www.milovangudelj.com/images/og-image-ms.png",
 };
 
 const MusicStatsHead = () => {

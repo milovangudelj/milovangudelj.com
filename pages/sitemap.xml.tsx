@@ -10,28 +10,28 @@ const GET_SLUGS = gql`
 	}
 `;
 
-const CASE_STUDIES_BASE_URL = "https://milovangudelj.com/work";
+const CASE_STUDIES_BASE_URL = "https://www.milovangudelj.com/work";
 
 function generateSiteMap(caseStudies: string[]) {
 	return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <url>
-       <loc>https://milovangudelj.com</loc>
+       <loc>https://www.milovangudelj.com</loc>
      </url>
      <url>
-       <loc>https://milovangudelj.com/about</loc>
+       <loc>https://www.milovangudelj.com/about</loc>
      </url>
      <url>
-       <loc>https://milovangudelj.com/contact</loc>
+       <loc>https://www.milovangudelj.com/contact</loc>
      </url>
      <url>
-       <loc>https://milovangudelj.com/login</loc>
+       <loc>https://www.milovangudelj.com/login</loc>
      </url>
      <url>
-       <loc>https://milovangudelj.com/music-stats</loc>
+       <loc>https://www.milovangudelj.com/music-stats</loc>
      </url>
      <url>
-       <loc>https://milovangudelj.com/work</loc>
+       <loc>https://www.milovangudelj.com/work</loc>
      </url>
      ${caseStudies
 			.map((slug) => {

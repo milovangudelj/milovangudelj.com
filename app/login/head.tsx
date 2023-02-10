@@ -5,8 +5,8 @@ const meta = {
 	title: "Milovan Gudelj - Login",
 	description:
 		"Login to your account to see your top artists, tracks and download your Music-Stats poster.",
-	url: "https://milovangudelj.com/login",
-	image: "https://milovangudelj.com/images/og-image.png",
+	url: "https://www.milovangudelj.com/login",
+	image: "https://www.milovangudelj.com/images/og-image.png",
 };
 
 export default function LoginHead() {
