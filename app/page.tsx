@@ -23,13 +23,15 @@ const QUERY = gql`
 `;
 
 async function getProjects() {
-	const { projects } = await hygraph.request(QUERY);
+	const { projects } = await hygraph.request<{
+		projects: Omit<Project, "description">[];
+	}>(QUERY);
 
 	return projects;
 }
 
 const Home = async () => {
-	const projects: Omit<Project, "description">[] = await getProjects();
+	const projects = await getProjects();
 
 	return (
 		<>
