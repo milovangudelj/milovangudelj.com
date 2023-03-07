@@ -51,7 +51,7 @@ const QUERY = gql`
 `;
 
 const getProjcts = async () => {
-	const { projects }: { projects: Project[] } = await hygraph.request(QUERY);
+	const { projects } = await hygraph.request<{ projects: Project[] }>(QUERY);
 
 	let avColors = Object.keys(colorMap).filter(
 		(el) =>

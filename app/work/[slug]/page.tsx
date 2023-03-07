@@ -56,13 +56,15 @@ const GET_DATA = gql`
 `;
 
 export async function generateStaticParams() {
-	const { caseStudies } = await hygraph.request(GET_SLUGS);
+	const { caseStudies } = await hygraph.request<{
+		caseStudies: { slug: string }[];
+	}>(GET_SLUGS);
 
-	return caseStudies.map((caseStudy: any) => ({ slug: caseStudy.slug }));
+	return caseStudies.map((caseStudy) => ({ slug: caseStudy.slug }));
 }
 
 const getProjctData = async (slug: string) => {
-	const { caseStudy } = await hygraph.request(GET_DATA, {
+	const { caseStudy } = await hygraph.request<{ caseStudy: any }>(GET_DATA, {
 		slug,
 	});
 

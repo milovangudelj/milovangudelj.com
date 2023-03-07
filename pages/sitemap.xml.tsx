@@ -49,11 +49,11 @@ function generateSiteMap(caseStudies: string[]) {
 const SiteMap = () => null;
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-	const { caseStudies } = await hygraph.request(GET_SLUGS);
+	const { caseStudies } = await hygraph.request<{
+		caseStudies: { slug: string }[];
+	}>(GET_SLUGS);
 
-	const urls: string[] = caseStudies.map(
-		(caseStudy: { slug: string }) => caseStudy.slug
-	);
+	const urls = caseStudies.map((caseStudy) => caseStudy.slug);
 
 	const sitemap = generateSiteMap(urls);
 
