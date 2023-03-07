@@ -76,6 +76,19 @@ const getData = async () => {
 	};
 };
 
+export const metadata = {
+	title: "Milovan Gudelj - Music-Stats",
+	description: "Get your cool Spotify Music-Stats poster now",
+	alternates: { canonical: "https://www.milovangudelj.com/music-stats" },
+	openGraph: {
+		images: {
+			url: "https://www.milovangudelj.com/images/og-image-ms.png",
+			width: 1280,
+			height: 800,
+		},
+	},
+};
+
 const MusicStatsPage = async () => {
 	const { longTermStats, mediumTermStats, shortTermStats, user } =
 		await getData();

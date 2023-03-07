@@ -9,6 +9,11 @@ import { Section } from "../../components/Section";
 
 import { GenreSolarSystem } from "./GenreSolarSystem";
 
+export const metadata = {
+	title: "Milovan Gudelj - About me",
+	alternates: { canonical: "https://www.milovangudelj.com/about" },
+};
+
 const AboutPage = () => {
 	return (
 		<>

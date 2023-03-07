@@ -4,6 +4,7 @@ import { getPlaiceholder } from "plaiceholder";
 import { hygraph } from "../../../lib/hygraph";
 
 import { CS } from "../../../components/CS";
+import { type Metadata } from "next";
 
 const GET_SLUGS = gql`
 	{
@@ -79,6 +80,30 @@ const getProjctData = async (slug: string) => {
 
 	return caseStudy;
 };
+
+export async function generateMetadata({
+	params,
+}: {
+	params: { slug: string };
+}): Promise<Metadata> {
+	const { title, color, subtitle, cover } = await getProjctData(params.slug);
+
+	return {
+		title: `${title} | Milovan Gudelj`,
+		description: subtitle,
+		alternates: {
+			canonical: `https://www.milovangudelj.com/work/${params.slug}`,
+		},
+		themeColor: color,
+		openGraph: {
+			images: {
+				url: cover.url,
+				width: cover.width,
+				height: cover.height,
+			},
+		},
+	};
+}
 
 const ProjectPage = async ({ params }: { params: { slug: string } }) => {
 	const { title, color, subtitle, intro, cover, content } =

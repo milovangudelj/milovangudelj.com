@@ -5,6 +5,13 @@ import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { LoginButton } from "./LoginButton";
 
+export const metadata = {
+	title: "Milovan Gudelj - Login",
+	description:
+		"Login to your account to see your top artists, tracks and download your Music-Stats poster.",
+	alternates: { canonical: "https://www.milovangudelj.com/login" },
+};
+
 const LoginPage = async () => {
 	const session = await getServerSession();
 	if (session) {

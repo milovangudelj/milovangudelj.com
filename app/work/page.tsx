@@ -82,6 +82,12 @@ const getProjcts = async () => {
 	return projects;
 };
 
+export const metadata = {
+	title: "Milovan Gudelj - My work",
+	description: "A collection of past project I've worked on an am proud of.",
+	alternates: { canonical: "https://www.milovangudelj.com/work" },
+};
+
 const WorkPage = async () => {
 	const projects = await getProjcts();
 
