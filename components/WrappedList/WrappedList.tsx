@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ComponentProps, CSSProperties } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -50,9 +49,8 @@ export const WrappedList = ({
 					item={item}
 					isFirst={idx === 0}
 					rank={idx + 1}
-					color={"name" in item
-								? palette.artists[idx]
-								: palette.tracks[idx]
+					color={
+						"name" in item ? palette.artists[idx] : palette.tracks[idx]
 					}
 					key={item.url}
 				/>
@@ -115,7 +113,7 @@ const WrappedListItem = ({
 						: `border-b-2 border-r-2 border-white/10 text-white`
 				} min-w-0 flex-1`}
 			>
-				<Link
+				<a
 					href={item.url}
 					rel="noreferrer noopener"
 					target="_blank"
@@ -143,7 +141,7 @@ const WrappedListItem = ({
 							↗
 						</span>
 					)}
-				</Link>
+				</a>
 			</div>
 		</li>
 	);
