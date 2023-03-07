@@ -1,6 +1,7 @@
 "use client";
 
 import { ComponentProps, useEffect, useState } from "react";
+import { Route } from "next";
 import Link from "next/link";
 import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import { twMerge } from "tailwind-merge";
@@ -13,7 +14,12 @@ interface NavLinksProps extends ComponentProps<"div"> {
 	callbackWhenOpen?: (menuOpen: boolean) => void;
 }
 
-const links = [
+const links: {
+	id: string;
+	label: string;
+	href: Route<string> | URL;
+	type: "link" | "button";
+}[] = [
 	{
 		id: "about",
 		href: "/about",

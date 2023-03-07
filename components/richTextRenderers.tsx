@@ -1,4 +1,5 @@
 import { NodeRendererType } from "@graphcms/rich-text-react-renderer";
+import { Route } from "next";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import React from "react";
@@ -14,7 +15,7 @@ const commonRenderers: NodeRendererType = {
 		}
 
 		return (
-			<Link href={href ?? ""} {...rest}>
+			<Link href={(href ?? "") as Route} {...rest}>
 				{children}
 			</Link>
 		);
