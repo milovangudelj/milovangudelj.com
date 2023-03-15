@@ -1,4 +1,3 @@
-import { Route } from "next";
 import Image from "next/legacy/image";
 import { Link } from "next-intl";
 
@@ -13,7 +12,7 @@ export const ProjectCard = ({ title, href, link, image }: ProjectCardProps) => {
 	return (
 		<div className="space-y-8 md:space-y-[26px]">
 			<Link
-				href={href as Route}
+				href={href}
 				className="relative inline-block aspect-video h-[150px] cursor-pointer border-2 bg-black drop-shadow-brutal md:h-[300px] xl:drop-shadow-brutal-lg"
 			>
 				<Image
