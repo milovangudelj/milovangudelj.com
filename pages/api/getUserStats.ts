@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 
 import { spotifyApi } from "../../lib/spotify";
 import { authOptions, ExtendedSession } from "./auth/[...nextauth]";
-import { FormData } from "../../app/music-stats/ControlsBar";
+import { FormData } from "../../app/[locale]/music-stats/ControlsBar";
 
 export default async function handler(
 	req: NextApiRequest,
