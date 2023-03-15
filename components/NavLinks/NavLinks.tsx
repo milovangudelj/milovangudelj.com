@@ -1,5 +1,5 @@
 import type { Route } from "next";
-import Link from "next/link";
+import { Link } from "next-intl";
 import { ComponentPropsWithoutRef, forwardRef } from "react";
 
 const links: {

@@ -1,14 +1,15 @@
 import { gql } from "graphql-request";
+import { getTranslations } from "next-intl/server";
 
 import { WigglyStars } from "./WigglyStars";
-import { AboutSection } from "../components/sections/About";
-import { CTA } from "../components/sections/CTA";
-import { Section } from "../components/Section";
-import { Container } from "../components/Container";
-import { Smiley } from "../components/Smiley";
+import { AboutSection } from "../../components/sections/About";
+import { CTA } from "../../components/sections/CTA";
+import { Section } from "../../components/Section";
+import { Container } from "../../components/Container";
+import { Smiley } from "../../components/Smiley";
 import { type Project } from "./work/page";
-import { ProjectCard } from "../components/ProjectCard";
-import { hygraph } from "../lib/hygraph";
+import { ProjectCard } from "../../components/ProjectCard";
+import { hygraph } from "../../lib/hygraph";
 
 const QUERY = gql`
 	{
@@ -31,6 +32,7 @@ async function getProjects() {
 }
 
 const Home = async () => {
+	const t = await getTranslations("Home");
 	const projects = await getProjects();
 
 	return (
@@ -42,8 +44,7 @@ const Home = async () => {
 						<span className="text-yellow">/</span> UI designer
 					</h1>
 					<p className="text-sub-heading-mobile md:text-sub-heading xl:max-w-[36ch]">
-						Hi, I&apos;m Milo. I design and develop engaging websites and
-						delightful digital experiences.
+						{t("heroParagraph")}
 					</p>
 					<WigglyStars />
 				</main>

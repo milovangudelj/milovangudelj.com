@@ -2,13 +2,13 @@
 
 import { useCallback, useState } from "react";
 
-import { WrappedList } from "../../components/WrappedList";
-import { Container } from "../../components/Container";
-import { Section } from "../../components/Section";
+import { WrappedList } from "../../../components/WrappedList";
+import { Container } from "../../../components/Container";
+import { Section } from "../../../components/Section";
 import { ControlsBar, FormData } from "./ControlsBar";
 import { UserStats } from "./page";
 import { PosterGenerator } from "./PosterGenerator";
-import { getPalette } from "../../utils/getPalette";
+import { getPalette } from "../../../utils/getPalette";
 
 export const StatsSection = ({
 	user,

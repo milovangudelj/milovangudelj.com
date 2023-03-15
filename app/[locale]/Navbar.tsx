@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "next-intl";
 import { useCallback, useState } from "react";
 
 import { NavLinks } from "./NavLinks";
