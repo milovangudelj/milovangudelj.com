@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "next-intl";
 
 import { Hamburger, NavLinks } from "../";
 import { useIsMobile } from "../../lib/useMediaQuery";

@@ -2,12 +2,12 @@
 
 import { useEffect } from "react";
 
-import { useIsDesktop } from "../../lib/useMediaQuery";
-import { colors } from "../../utils/getColors";
+import { useIsDesktop } from "../../../lib/useMediaQuery";
+import { colors } from "../../../utils/getColors";
 import {
 	getLuminance,
 	TEXT_LUMINANCE_TRESHOLD,
-} from "../../utils/getLuminance";
+} from "../../../utils/getLuminance";
 
 const topGenres = [
 	{

@@ -1,14 +1,13 @@
 "use client";
 
 import { ComponentProps, useEffect, useState } from "react";
-import { Route } from "next";
-import Link from "next/link";
+import { Link } from "next-intl";
 import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import { motion, type Variants } from "framer-motion";
 
-import { Button } from "../components";
-import { useIsMobile } from "../lib/useMediaQuery";
+import { Button } from "../../components";
+import { useIsMobile } from "../../lib/useMediaQuery";
 
 interface NavLinksProps extends ComponentProps<"div"> {
 	callbackWhenOpen?: (menuOpen: boolean) => void;
@@ -17,7 +16,7 @@ interface NavLinksProps extends ComponentProps<"div"> {
 const links: {
 	id: string;
 	label: string;
-	href: Route<string> | URL;
+	href: string | URL;
 	type: "link" | "button";
 }[] = [
 	{

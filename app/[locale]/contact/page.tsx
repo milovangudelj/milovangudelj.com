@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-import { CTA } from "../../components/sections/CTA";
+import { CTA } from "../../../components/sections/CTA";
 
-import igLogo from "../../public/images/igLogo.png";
-import twLogo from "../../public/images/twLogo.svg";
-import drLogo from "../../public/images/drLogo.svg";
+import igLogo from "../../../public/images/igLogo.png";
+import twLogo from "../../../public/images/twLogo.svg";
+import drLogo from "../../../public/images/drLogo.svg";
 
 export const metadata = {
 	title: "Milovan Gudelj - Contact me",

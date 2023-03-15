@@ -1,11 +1,13 @@
+import { notFound } from "next/navigation";
+import { getLocale } from "next-intl/server";
 import { getServerSession } from "next-auth/next";
 import { Inter, Space_Grotesk } from "next/font/google";
 
-import "../styles/globals.css";
+import "../../styles/globals.css";
 
-import { SessionProvider } from "../lib/sessionProvider";
+import { SessionProvider } from "../../lib/sessionProvider";
 import { Navbar } from "./Navbar";
-import { Footer } from "../components/Footer";
+import { Footer } from "../../components/Footer";
 import { Analytics } from "./Analytics";
 
 const inter = Inter({
@@ -66,26 +68,29 @@ export const metadata = {
 
 export default async function RootLayout({
 	children,
+	params,
 }: {
 	children: React.ReactNode;
+	params: {
+		locale: string;
+	};
 }) {
 	const session = await getServerSession();
 
+	const locale = await getLocale();
+
+	// Show a 404 error if the user requests an unknown locale
+	if (params.locale !== locale) {
+		notFound();
+	}
+
 	return (
 		<html
-			lang="en"
+			lang={locale}
 			className={`${inter.className} ${spaceGrotesk.className}`}
 		>
 			<body className="h-fill scroll-smooth bg-black font-sans text-white">
 				<SessionProvider session={session}>
-					{/* <style jsx global>
-					{`
-						#__next {
-							height: -webkit-fill-available;
-							height: -moz-available;
-						}
-					`}
-				</style> */}
 					<Navbar />
 					<div className="relative z-[1] mb-[58.25px] bg-black">
 						{children}

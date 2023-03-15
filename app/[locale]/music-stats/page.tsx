@@ -2,11 +2,11 @@ import Image from "next/image";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { BigAssStar } from "../../components/BigAssStar";
-import { Container } from "../../components/Container";
-import { Section } from "../../components/Section";
-import { getPalette, Palette } from "../../utils/getPalette";
-import { Artist, Track } from "../../lib/types";
+import { BigAssStar } from "../../../components/BigAssStar";
+import { Container } from "../../../components/Container";
+import { Section } from "../../../components/Section";
+import { getPalette, Palette } from "../../../utils/getPalette";
+import { Artist, Track } from "../../../lib/types";
 import { FormData } from "./ControlsBar";
 import { StatsSection } from "./StatsSection";
 
