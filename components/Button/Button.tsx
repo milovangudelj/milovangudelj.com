@@ -37,7 +37,7 @@ const button = cva(
 );
 
 export interface ButtonProps<T extends ElementType>
-	extends HTMLAttributes<HTMLButtonElement>,
+	extends HTMLAttributes<T>,
 		VariantProps<typeof button> {
 	as?: T;
 }
