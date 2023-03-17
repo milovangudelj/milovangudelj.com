@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import useSWR from "swr";
-import { SpotifyLogo } from "phosphor-react";
+import { SpotifyLogo } from "@phosphor-icons/react";
 
 import fetcher from "../../lib/fetcher";
 import { NowPlayingSong } from "../../lib/types";

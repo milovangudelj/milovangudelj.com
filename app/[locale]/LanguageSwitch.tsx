@@ -8,6 +8,7 @@ import {
 } from "next/navigation";
 import { Link } from "next-intl";
 import { usePathname as useCleanPathname } from "next-intl/client";
+import { GlobeSimple } from "@phosphor-icons/react";
 
 interface Locale {
 	value: "en" | "it";
@@ -57,9 +58,12 @@ export const LanguageSwitch = () => {
 								? "Passa all'Italiano"
 								: "Switch to English"
 						}
-						className={`relative inline-block px-4 py-2 text-button opacity-60 transition hover:opacity-100`}
+						className={`relative inline-flex items-center gap-1 px-4 py-2 text-button opacity-60 transition hover:opacity-100`}
 					>
-						{locale.label}
+						<span>{locale.label}</span>
+						<span>
+							<GlobeSimple weight="bold" />
+						</span>
 					</Link>
 				) : null
 			)}
