@@ -3,11 +3,14 @@
 import { Link } from "next-intl";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { motion, type Variants } from "framer-motion";
+
 import { Button } from "../../components";
 import { NavLink } from "./NavLink";
 
 export const MobileNav = ({
 	links,
+	navRect,
 	className,
 }: {
 	links: {
@@ -15,21 +18,20 @@ export const MobileNav = ({
 		label: string;
 		href: string | URL;
 	}[];
+	navRect: DOMRect | undefined;
 	className?: string;
 }) => {
 	const [menuOpen, setMenuOpen] = useState<boolean>(false);
 	const [navHeight, setNavHeight] = useState<number>(0);
 	const [navWidth, setNavWidth] = useState<number>(0);
-	const [windowHeight, setWindowHeight] = useState<number>(window.innerHeight);
+	const [windowHeight, setWindowHeight] = useState<number>(
+		window?.innerHeight ?? 0
+	);
 
 	useEffect(() => {
-		const nav = document.getElementById("navbar");
-
-		if (nav) {
-			setNavWidth(nav.clientWidth);
-			setNavHeight(nav.clientHeight);
-		}
-	}, []);
+		setNavWidth(navRect?.width ?? 0);
+		setNavHeight(navRect?.height ?? 0);
+	}, [navRect]);
 
 	useEffect(() => {
 		const onResize = () => {
@@ -58,6 +60,38 @@ export const MobileNav = ({
 		setMenuOpen((s) => !s);
 	};
 
+	const list: Variants = {
+		open: {
+			opacity: 1,
+			transition: {
+				type: "tween",
+				duration: 0.2,
+				staggerChildren: 0.1,
+				delayChildren: 0.2,
+			},
+		},
+		closed: {
+			opacity: 0,
+			transition: {
+				type: "tween",
+				duration: 0.2,
+			},
+		},
+	};
+
+	const item: Variants = {
+		open: {
+			x: 0,
+			opacity: 1,
+			transition: { duration: 0.3, ease: "easeInOut" },
+		},
+		closed: {
+			x: -24,
+			opacity: 0,
+			transition: { duration: 0.1, ease: "easeOut" },
+		},
+	};
+
 	return (
 		<div className="md:pointer-events-none md:invisible md:hidden md:select-none">
 			<div
@@ -80,7 +114,12 @@ export const MobileNav = ({
 					}`}
 				></span>
 			</div>
-			<ul
+			<motion.ul
+				initial={{
+					opacity: 0,
+				}}
+				animate={menuOpen ? "open" : "closed"}
+				variants={list}
 				className={twMerge(
 					`absolute ${
 						menuOpen ? "flex" : "hidden"
@@ -89,11 +128,11 @@ export const MobileNav = ({
 				)}
 			>
 				{links.map((link) => (
-					<li key={link.id}>
+					<motion.li variants={item} key={link.id}>
 						<NavLink href={link.href} label={link.label} />
-					</li>
+					</motion.li>
 				))}
-				<li>
+				<motion.li variants={item}>
 					<Button
 						as={Link}
 						href={"/music-stats"}
@@ -101,8 +140,8 @@ export const MobileNav = ({
 					>
 						Music-Stats ↗
 					</Button>
-				</li>
-			</ul>
+				</motion.li>
+			</motion.ul>
 		</div>
 	);
 };

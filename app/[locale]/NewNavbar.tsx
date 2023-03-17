@@ -1,4 +1,7 @@
+"use client";
+
 import { Link } from "next-intl";
+import { RefCallback, useCallback, useRef, useState } from "react";
 import { Button } from "../../components/Button";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { MobileNav } from "./MobileNav";
@@ -27,9 +30,11 @@ const links: {
 ];
 
 export const NewNavbar = () => {
+	const [rect, navRef] = useClientRect();
+
 	return (
 		<div
-			id="navbar"
+			ref={navRef}
 			className="sticky top-0 z-10 bg-yellow transition duration-300"
 		>
 			<div className="relative mx-auto flex w-full max-w-8xl items-center justify-between bg-yellow px-8 py-2 text-black md:py-1 2xl:px-0">
@@ -49,9 +54,24 @@ export const NewNavbar = () => {
 						Music-Stats ↗
 					</Button>
 					<LanguageSwitch />
-					<MobileNav links={links} />
+					<MobileNav navRect={rect} links={links} />
 				</div>
 			</div>
 		</div>
 	);
 };
+
+function useClientRect(): [
+	DOMRect | undefined,
+	(instance: HTMLElement | null) => void
+] {
+	const [rect, setRect] = useState<DOMRect>();
+
+	const ref: RefCallback<HTMLElement> = useCallback((node) => {
+		if (node !== null) {
+			setRect(node.getBoundingClientRect());
+		}
+	}, []);
+
+	return [rect, ref];
+}
