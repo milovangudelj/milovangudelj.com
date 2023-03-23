@@ -1,4 +1,5 @@
 import { Link } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import { AboutSection } from "../../../components/sections/About";
 import Artists from "../../../components/TopArtists/TopArtists";
@@ -14,7 +15,10 @@ export const metadata = {
 	alternates: { canonical: "https://www.milovangudelj.com/about" },
 };
 
-const AboutPage = () => {
+const AboutPage = async () => {
+	const t = await getTranslations("About");
+	const artistsListT = await getTranslations("WrappedList");
+
 	return (
 		<>
 			<AboutSection standAlone />
@@ -28,36 +32,40 @@ const AboutPage = () => {
 				<Container className="relative">
 					<div className="space-y-8">
 						<h2 className="text-h2-mobile md:text-d2-mobile xl:text-d2">
-							Oh, btw...
+							{t("music.title")}
 						</h2>
+						<p className="text-body xl:max-w-[680px]">{t("music.p1")}</p>
 						<p className="text-body xl:max-w-[680px]">
-							I looove music. So if you&apos;re interested here&apos;s a
-							little bit of information about that.
-						</p>
-						<p className="text-body xl:max-w-[680px]">
-							Plus if you want you can get a cool looking poster with
-							your top artists and tracks, kind of like a{" "}
-							<a
-								href="https://www.spotify.com/wrapped"
-								rel="noopener noreferrer"
-								target={"_blank"}
-								className="underline underline-offset-2 hover:no-underline"
-							>
-								Spotify Wrapped
-							</a>{" "}
-							but in miniature.
+							{t.rich("music.p2", {
+								link: (chunks) =>
+									(
+										<a
+											href="https://www.spotify.com/wrapped"
+											rel="noopener noreferrer"
+											target={"_blank"}
+											className="underline underline-offset-2 hover:no-underline"
+										>
+											{chunks}
+										</a>
+									) as unknown as string,
+							})}
 						</p>
 						<Button as={Link} href="/music-stats">
-							Get your Music-Stats
+							{t("music.cta")}
 						</Button>
 					</div>
 					<div className="relative">
 						<NowPlaying
-							title="Currently listening to:"
-							notPlayingMessage="Not playing"
+							title={t("nowPlaying.title")}
+							notPlayingMessage={t("nowPlaying.notPlaying")}
 						/>
-						<Artists className="mt-16" />
-						<GenreSolarSystem />
+						<Artists
+							className="mt-16"
+							title={t("topArtists.title")}
+							itemOpenText={artistsListT("open")}
+							itemListenText={artistsListT("listen")}
+						/>
+						<GenreSolarSystem title={t("genreSolarSystem.title")} />
 					</div>
 				</Container>
 			</Section>

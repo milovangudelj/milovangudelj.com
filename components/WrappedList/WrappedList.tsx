@@ -9,9 +9,11 @@ import {
 } from "../../utils/getLuminance";
 import { Palette } from "../../utils/getPalette";
 
-export interface WrappedListProps {
+export interface WrappedListProps extends ComponentProps<"ol"> {
 	items: Track[] | Artist[];
 	of: "tracks" | "artists";
+	openText?: string;
+	listenText?: string;
 	palette: Palette;
 	className?: string;
 	style?: CSSProperties;
@@ -21,10 +23,12 @@ export const WrappedList = ({
 	className,
 	items,
 	of,
+	openText,
+	listenText,
 	palette,
 	style,
 	...props
-}: ComponentProps<"ol"> & WrappedListProps) => {
+}: WrappedListProps) => {
 	if (items.length === 0)
 		return (
 			<YoungAccount
@@ -49,6 +53,8 @@ export const WrappedList = ({
 					item={item}
 					isFirst={idx === 0}
 					rank={idx + 1}
+					openText={openText}
+					listenText={listenText}
 					color={
 						"name" in item ? palette.artists[idx] : palette.tracks[idx]
 					}
@@ -63,6 +69,8 @@ const WrappedListItem = ({
 	item,
 	isFirst,
 	rank,
+	openText = "Open on Spotify",
+	listenText = "Listen on Spotify",
 	className,
 	color,
 	style,
@@ -71,6 +79,8 @@ const WrappedListItem = ({
 	item: Track | Artist;
 	isFirst: boolean;
 	rank: number;
+	openText?: string;
+	listenText?: string;
 	color: string;
 }) => {
 	const lightText = getLuminance(color) <= TEXT_LUMINANCE_TRESHOLD;
@@ -132,8 +142,7 @@ const WrappedListItem = ({
 					<div className="max-w-fill flex-shrink overflow-hidden truncate">
 						<span>{isArtist ? item.name : item.title}</span>
 						<span className="block select-none text-label-sm leading-none opacity-40 transition group-hover:opacity-80">
-							{"name" in item ? "Open on Spotify" : "Listen on Spotify"}{" "}
-							↗
+							{"name" in item ? openText : listenText} ↗
 						</span>
 					</div>
 					{false && (

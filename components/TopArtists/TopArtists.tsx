@@ -9,7 +9,18 @@ import { TopArtists } from "../../lib/types";
 import { getPalette } from "../../utils/getPalette";
 import WrappedList from "../WrappedList/WrappedList";
 
-export const Artists = ({ className }: ComponentProps<"div">) => {
+interface ArtistsProps extends ComponentProps<"div"> {
+	title: string;
+	itemOpenText?: string;
+	itemListenText?: string;
+}
+
+export const Artists = ({
+	title,
+	itemOpenText,
+	itemListenText,
+	className,
+}: ArtistsProps) => {
 	const { data } = useSWRImmutable<TopArtists>("/api/top-artists", fetcher);
 
 	if (!data) {
@@ -18,10 +29,12 @@ export const Artists = ({ className }: ComponentProps<"div">) => {
 
 	return (
 		<div className={twMerge("max-w-[448px]", className)}>
-			<h3 className="mb-4 text-sub-heading-mobile">My top artists:</h3>
+			<h3 className="mb-4 text-sub-heading-mobile">{title}</h3>
 			<WrappedList
 				of="artists"
 				items={data.artists}
+				openText={itemOpenText}
+				listenText={itemListenText}
 				palette={getPalette("lavender")}
 			/>
 		</div>

@@ -16,13 +16,31 @@
 		"description": "Negli ultimi anni ho avuto l'opportunità di lavorare su vari progetti e dimostrare le mie competenze. Qui di seguito troverai alcuni dei miei lavori più recenti."
 	},
 	"About": {
-		"title": "Su di me",
-		"p1": "Come studente di informatica, ho una forte passione per lo sviluppo web e il design UI/UX. Sono mosso dalla creazione di interfacce ed esperienze orientate all'utente, che siano esteticamente piacevoli ed efficaci.",
-		"p2": "Con cinque anni di esperienza nella costruzione di siti web, ho affinato le mie competenze sia dal punto di vista tecnico che creativo dello sviluppo web. Il mio interesse per il design grafico e la creazione di poster mi ha inoltre permesso di portare una prospettiva unica nel mio lavoro di design UI/UX."
+		"main": {
+			"title": "Su di me",
+			"p1": "Come studente di informatica, ho una forte passione per lo sviluppo web e il design UI/UX. Sono mosso dalla creazione di interfacce ed esperienze orientate all'utente, che siano esteticamente piacevoli ed efficaci.",
+			"p2": "Con cinque anni di esperienza nella costruzione di siti web, ho affinato le mie competenze sia dal punto di vista tecnico che creativo dello sviluppo web. Il mio interesse per il design grafico e la creazione di poster mi ha inoltre permesso di portare una prospettiva unica nel mio lavoro di design UI/UX."
+		},
+		"music": {
+			"title": "Ah, a proposito...",
+			"p1": "Adoro la musica. Quindi se sei interessato/a qua trovi un po' di informazioni su quello che ascolto.",
+			"p2": "In più se vuoi puoi scaricare un poster molto bello con i tuoi artisti e brani più ascoltati, un po' come <link>Spotify Wrapped</link> ma in miniatura.",
+			"cta": "Scarica le tue Music-Stats"
+		},
+		"nowPlaying": {
+			"title": "Sto ascoltando:",
+			"notPlaying": "Niente al momento"
+		},
+		"topArtists": {
+			"title": "I miei artisti più ascoltati:"
+		},
+		"genreSolarSystem": {
+			"title": "I miei generi"
+		}
 	},
-	"NowPlaying": {
-		"title": "Sto ascoltando:",
-		"notPlaying": "Niente al momento"
+	"WrappedList": {
+		"open": "Apri su Spotify",
+		"listen": "Ascolta su Spotify"
 	},
 	"CTA": {
 		"title": "Lavoriamo insieme",

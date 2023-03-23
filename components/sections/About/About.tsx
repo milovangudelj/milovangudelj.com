@@ -16,7 +16,6 @@ export const AboutSection = asyncComponent(
 		...props
 	}: ComponentProps<typeof Section> & { standAlone?: boolean }) => {
 		const t = await getTranslations("About");
-		const nowPlayingT = await getTranslations("NowPlaying");
 
 		const experienceYears =
 			new Date().getFullYear() - new Date(2018, 10).getFullYear();
@@ -52,16 +51,20 @@ export const AboutSection = asyncComponent(
 										: "text-h2-mobile md:text-d2-mobile xl:text-d2"
 								}
 							>
-								{t("title")}
+								{t("main.title")}
 							</h2>
-							<p className="text-body xl:max-w-[680px]">{t("p1")}</p>
+							<p className="text-body xl:max-w-[680px]">
+								{t("main.p1")}
+							</p>
 
-							<p className="text-body xl:max-w-[680px]">{t("p2")}</p>
+							<p className="text-body xl:max-w-[680px]">
+								{t("main.p2")}
+							</p>
 						</div>
 						{!standAlone && (
 							<NowPlaying
-								title={nowPlayingT("title")}
-								notPlayingMessage={nowPlayingT("notPlaying")}
+								title={t("nowPlaying.title")}
+								notPlayingMessage={t("nowPlaying.notPlaying")}
 							/>
 						)}
 					</div>

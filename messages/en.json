@@ -16,13 +16,31 @@
 		"description": "In the last few years I've had the opportunity to work on a few diverse projects and demonstrate my skills. Here are some of them."
 	},
 	"About": {
-		"title": "About me",
-		"p1": "As a computer science student, I have a strong passion for web development and UI/UX design. I am driven by the creation of user-centered interfaces and experiences that are both aesthetically pleasing and empowering.",
-		"p2": "With five years of experience in building websites, I have honed my skills in both the technical and creative aspects of web development. My interest in graphic design and poster-making has also allowed me to bring a unique perspective to my work in UI/UX design."
+		"main": {
+			"title": "About me",
+			"p1": "As a computer science student, I have a strong passion for web development and UI/UX design. I am driven by the creation of user-centered interfaces and experiences that are both aesthetically pleasing and empowering.",
+			"p2": "With five years of experience in building websites, I have honed my skills in both the technical and creative aspects of web development. My interest in graphic design and poster-making has also allowed me to bring a unique perspective to my work in UI/UX design."
+		},
+		"music": {
+			"title": "Oh, btw...",
+			"p1": "I looove music. So if you're interested here's a little bit of information about that.",
+			"p2": "Plus if you want you can get a cool looking poster with your top artists and tracks, kind of like a <link>Spotify Wrapped</link> but in miniature.",
+			"cta": "Get your Music-Stats"
+		},
+		"nowPlaying": {
+			"title": "Currently listening to:",
+			"notPlaying": "Not playing"
+		},
+		"topArtists": {
+			"title": "My top artists:"
+		},
+		"genreSolarSystem": {
+			"title": "My top genres"
+		}
 	},
-	"NowPlaying": {
-		"title": "Currently listening to:",
-		"notPlaying": "Not playing"
+	"WrappedList": {
+		"open": "Open on Spotify",
+		"listen": "Listen on Spotify"
 	},
 	"CTA": {
 		"title": "Let's work together",
