@@ -7,29 +7,15 @@ import { LanguageSwitch } from "./LanguageSwitch";
 import { MobileNav } from "./MobileNav";
 import { NewNavLinks } from "./NewNavLinks";
 
-const links: {
-	id: string;
-	label: string;
-	href: string | URL;
-}[] = [
-	{
-		id: "about",
-		href: "/about",
-		label: "about",
-	},
-	{
-		id: "work",
-		href: "/work",
-		label: "work",
-	},
-	{
-		id: "contact",
-		href: "/contact",
-		label: "contact",
-	},
-];
-
-export const NewNavbar = () => {
+export const NewNavbar = ({
+	links,
+}: {
+	links: {
+		id: string;
+		label: string;
+		href: string | URL;
+	}[];
+}) => {
 	const [rect, navRef] = useClientRect();
 
 	return (

@@ -1,5 +1,31 @@
 {
+	"Navbar": {
+		"about": "info",
+		"work": "lavoro",
+		"contact": "contatti"
+	},
 	"Home": {
+		"heroTitle": {
+			"webDev": "Sviluppatore web",
+			"designer": "UI designer"
+		},
 		"heroParagraph": "Ciao, sono Milo. Sviluppo e progetto siti web coinvolgenti ed esperienze digitali piacevoli."
+	},
+	"Work": {
+		"title": "I miei progetti",
+		"description": "Negli ultimi anni ho avuto l'opportunità di lavorare su vari progetti e dimostrare le mie competenze. Qui di seguito troverai alcuni dei miei lavori più recenti."
+	},
+	"About": {
+		"title": "Su di me",
+		"p1": "Come studente di informatica, ho una forte passione per lo sviluppo web e il design UI/UX. Sono mosso dalla creazione di interfacce ed esperienze orientate all'utente, che siano esteticamente piacevoli ed efficaci.",
+		"p2": "Con cinque anni di esperienza nella costruzione di siti web, ho affinato le mie competenze sia dal punto di vista tecnico che creativo dello sviluppo web. Il mio interesse per il design grafico e la creazione di poster mi ha inoltre permesso di portare una prospettiva unica nel mio lavoro di design UI/UX."
+	},
+	"NowPlaying": {
+		"title": "Sto ascoltando:",
+		"notPlaying": "Niente al momento"
+	},
+	"CTA": {
+		"title": "Lavoriamo insieme",
+		"description": "Se sei interessato/a al mio lavoro e pensi che potremmo fare un buon team, non esitare a contattarmi. Chissà, potremmo costruire qualcosa di incredibile."
 	}
 }

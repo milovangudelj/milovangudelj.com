@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { getServerSession } from "next-auth/next";
 import { Inter, Space_Grotesk } from "next/font/google";
 
@@ -85,6 +85,30 @@ export default async function RootLayout({
 		notFound();
 	}
 
+	const t = await getTranslations("Navbar");
+
+	const links: {
+		id: string;
+		label: string;
+		href: string | URL;
+	}[] = [
+		{
+			id: "about",
+			href: "/about",
+			label: t("about"),
+		},
+		{
+			id: "work",
+			href: "/work",
+			label: t("work"),
+		},
+		{
+			id: "contact",
+			href: "/contact",
+			label: t("contact"),
+		},
+	];
+
 	return (
 		<html
 			lang={locale}
@@ -92,7 +116,7 @@ export default async function RootLayout({
 		>
 			<body className="h-fill scroll-smooth bg-black font-sans text-white">
 				<SessionProvider session={session}>
-					<NewNavbar />
+					<NewNavbar links={links} />
 					<div className="relative z-[1] mb-[58.25px] bg-black">
 						{children}
 					</div>

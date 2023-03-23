@@ -52,7 +52,10 @@ const AboutPage = () => {
 						</Button>
 					</div>
 					<div className="relative">
-						<NowPlaying />
+						<NowPlaying
+							title="Currently listening to:"
+							notPlayingMessage="Not playing"
+						/>
 						<Artists className="mt-16" />
 						<GenreSolarSystem />
 					</div>

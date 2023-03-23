@@ -25,7 +25,7 @@ export const MobileNav = ({
 	const [navHeight, setNavHeight] = useState<number>(0);
 	const [navWidth, setNavWidth] = useState<number>(0);
 	const [windowHeight, setWindowHeight] = useState<number>(
-		window?.innerHeight ?? 0
+		typeof window !== "undefined" ? window.innerHeight : 0
 	);
 
 	useEffect(() => {
