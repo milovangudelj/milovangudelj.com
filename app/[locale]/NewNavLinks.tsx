@@ -17,7 +17,7 @@ export const NewNavLinks = ({
 		<ul className={twMerge("flex bg-yellow text-black", className)}>
 			{links.map((link) => (
 				<li key={link.id}>
-					<NavLink href={link.href} label={link.label} />
+					<NavLink id={link.id} href={link.href} label={link.label} />
 				</li>
 			))}
 		</ul>
