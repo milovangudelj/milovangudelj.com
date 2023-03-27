@@ -10,7 +10,10 @@ export const metadata = {
 	title: "Milovan Gudelj - Contact me",
 	description:
 		"Let's work together! Feel free to reach out to me for any questions you might have.",
-	alternates: { canonical: "https://www.milovangudelj.com/contact" },
+	alternates: {
+		canonical: "https://www.milovangudelj.com/contact",
+		languages: { "it-IT": "https://www.milovangudelj.com/it/contact" },
+	},
 };
 
 const ContactPage = () => {

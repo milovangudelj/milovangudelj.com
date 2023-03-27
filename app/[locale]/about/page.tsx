@@ -12,7 +12,10 @@ import { GenreSolarSystem } from "./GenreSolarSystem";
 
 export const metadata = {
 	title: "Milovan Gudelj - About me",
-	alternates: { canonical: "https://www.milovangudelj.com/about" },
+	alternates: {
+		canonical: "https://www.milovangudelj.com/about",
+		languages: { "it-IT": "https://www.milovangudelj.com/it/about" },
+	},
 };
 
 const AboutPage = async () => {

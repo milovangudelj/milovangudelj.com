@@ -95,6 +95,9 @@ export async function generateMetadata({
 		description: subtitle,
 		alternates: {
 			canonical: `https://www.milovangudelj.com/work/${params.slug}`,
+			languages: {
+				"it-IT": `https://www.milovangudelj.com/it/work/${params.slug}`,
+			},
 		},
 		themeColor: color,
 		openGraph: {

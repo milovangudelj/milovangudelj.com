@@ -24,7 +24,10 @@ export const metadata = {
 	title: "Milovan Gudelj - Web developer / UI designer",
 	description:
 		"I design and develop engaging websites and delightful digital experiences.",
-	alternates: { canonical: "https://www.milovangudelj.com" },
+	alternates: {
+		canonical: "https://www.milovangudelj.com",
+		languages: { "it-IT": "https://www.milovangudelj.com/it" },
+	},
 	openGraph: {
 		images: {
 			url: "https://www.milovangudelj.com/images/og-image.png",

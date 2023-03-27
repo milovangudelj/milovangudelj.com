@@ -9,7 +9,10 @@ export const metadata = {
 	title: "Milovan Gudelj - Login",
 	description:
 		"Login to your account to see your top artists, tracks and download your Music-Stats poster.",
-	alternates: { canonical: "https://www.milovangudelj.com/login" },
+	alternates: {
+		canonical: "https://www.milovangudelj.com/login",
+		languages: { "it-IT": "https://www.milovangudelj.com/it/login" },
+	},
 };
 
 const LoginPage = async () => {
