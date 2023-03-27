@@ -3,10 +3,10 @@
 import { useEffect, useRef } from "react";
 import { useForm, UseFormRegister } from "react-hook-form";
 
-import { Section } from "../../../components/Section";
-import { Container } from "../../../components/Container";
-import { Button } from "../../../components/Button";
-import { useIsMobile } from "../../../lib/useMediaQuery";
+import { Section } from "@components/Section";
+import { Container } from "@components/Container";
+import { Button } from "@components/Button";
+import { useIsMobile } from "@lib/useMediaQuery";
 
 export interface FormData {
 	filter: "all" | "artists" | "tracks";

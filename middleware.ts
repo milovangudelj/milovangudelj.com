@@ -1,15 +1,35 @@
+import { NextRequest, NextResponse } from "next/server";
 import createIntlMiddleware from "next-intl/middleware";
 
-export default createIntlMiddleware({
-	// A list of all locales that are supported
-	locales: ["en", "it"],
+import { generateSiteMap } from "@lib/sitemap";
 
-	// If this locale is matched, pathnames work without a prefix (e.g. `/about`)
-	defaultLocale: "en",
-	alternateLinks: false,
-});
+export const middleware = async (
+	request: NextRequest
+): Promise<NextResponse> => {
+	// Generates sitemap.xml if path is /sitemap.xml
+	if (request.nextUrl.pathname.startsWith("/sitemap.xml")) {
+		const sitemap = await generateSiteMap();
+
+		return new NextResponse(sitemap, {
+			status: 200,
+			headers: { "Content-Type": "text/xml" },
+		});
+	}
+
+	// Returns the intl middleware
+	const intlMiddleware = createIntlMiddleware({
+		// A list of all locales that are supported
+		locales: ["en", "it"],
+
+		// If this locale is matched, pathnames work without a prefix (e.g. `/about`)
+		defaultLocale: "en",
+		alternateLinks: false,
+	});
+
+	return intlMiddleware(request);
+};
 
 export const config = {
 	// Skip all paths that aren't pages that you'd like to internationalize
-	matcher: ["/((?!api|sitemap.xml|_next|favicon.ico|fonts|images).*)"],
+	matcher: ["/((?!api|_next|favicon.ico|fonts|images).*)"],
 };

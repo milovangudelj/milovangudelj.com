@@ -2,14 +2,14 @@ import { gql } from "graphql-request";
 import { getTranslations } from "next-intl/server";
 
 import { WigglyStars } from "./WigglyStars";
-import { AboutSection } from "../../components/sections/About";
-import { CTA } from "../../components/sections/CTA";
-import { Section } from "../../components/Section";
-import { Container } from "../../components/Container";
-import { Smiley } from "../../components/Smiley";
+import { AboutSection } from "@components/sections/About";
+import { CTA } from "@components/sections/CTA";
+import { Section } from "@components/Section";
+import { Container } from "@components/Container";
+import { Smiley } from "@components/Smiley";
 import { type Project } from "./work/page";
-import { ProjectCard } from "../../components/ProjectCard";
-import { hygraph } from "../../lib/hygraph";
+import { ProjectCard } from "@components/ProjectCard";
+import { hygraph } from "@lib/hygraph";
 
 const QUERY = gql`
 	{

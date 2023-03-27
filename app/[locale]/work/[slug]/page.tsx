@@ -1,9 +1,9 @@
 import { gql } from "graphql-request";
 import { getPlaiceholder } from "plaiceholder";
 
-import { hygraph } from "../../../../lib/hygraph";
+import { hygraph } from "@lib/hygraph";
 
-import { CS } from "../../../../components/CS";
+import { CS } from "@components/CS";
 import { type Metadata } from "next";
 
 const GET_SLUGS = gql`

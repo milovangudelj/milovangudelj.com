@@ -1,16 +1,8 @@
-import { GetServerSideProps } from "next";
-import { gql } from "graphql-request";
-import { hygraph } from "../lib/hygraph";
+export async function generateSiteMap() {
+	const { csUrls } = (await (
+		await fetch(`${process.env.NEXT_PUBLIC_WEBSITE_URL!}/api/getCSUrls`)
+	).json()) as { csUrls: string[] };
 
-const GET_SLUGS = gql`
-	{
-		caseStudies {
-			slug
-		}
-	}
-`;
-
-function generateSiteMap(caseStudies: string[]) {
 	return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	<url>
@@ -43,7 +35,7 @@ function generateSiteMap(caseStudies: string[]) {
 		<xhtml:link rel="alternate" hreflang="en" href="https://www.milovangudelj.com/work"/>
 		<xhtml:link rel="alternate" hreflang="it" href="https://www.milovangudelj.com/it/work"/>
 	</url>
-	${caseStudies
+	${csUrls
 		.map((slug) => {
 			return `<url>
 		<loc>${`https://www.milovangudelj.com/work/${slug}`}</loc>
@@ -55,26 +47,3 @@ function generateSiteMap(caseStudies: string[]) {
 </urlset>
 `;
 }
-
-const SiteMap = () => null;
-
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-	const { caseStudies } = await hygraph.request<{
-		caseStudies: { slug: string }[];
-	}>(GET_SLUGS);
-
-	const urls = caseStudies.map((caseStudy) => caseStudy.slug);
-
-	const sitemap = generateSiteMap(urls);
-
-	res.setHeader("Content-Type", "text/xml");
-
-	res.write(sitemap);
-	res.end();
-
-	return {
-		props: {},
-	};
-};
-
-export default SiteMap;

@@ -6,8 +6,8 @@ import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import { motion, type Variants } from "framer-motion";
 
-import { Button } from "../../components";
-import { useIsMobile } from "../../lib/useMediaQuery";
+import { Button } from "@components";
+import { useIsMobile } from "@lib/useMediaQuery";
 
 interface NavLinksProps extends ComponentProps<"div"> {
 	callbackWhenOpen?: (menuOpen: boolean) => void;
