@@ -12,6 +12,10 @@ import { Palette } from "../../utils/getPalette";
 export interface WrappedListProps extends ComponentProps<"ol"> {
 	items: Track[] | Artist[];
 	of: "tracks" | "artists";
+	altText?: {
+		artist: string;
+		track: string;
+	};
 	openText?: string;
 	listenText?: string;
 	palette: Palette;
@@ -23,6 +27,7 @@ export const WrappedList = ({
 	className,
 	items,
 	of,
+	altText,
 	openText,
 	listenText,
 	palette,
@@ -53,6 +58,7 @@ export const WrappedList = ({
 					item={item}
 					isFirst={idx === 0}
 					rank={idx + 1}
+					altText={altText}
 					openText={openText}
 					listenText={listenText}
 					color={
@@ -69,6 +75,7 @@ const WrappedListItem = ({
 	item,
 	isFirst,
 	rank,
+	altText = { artist: "'s profile picture", track: "'s album picture" },
 	openText = "Open on Spotify",
 	listenText = "Listen on Spotify",
 	className,
@@ -79,6 +86,10 @@ const WrappedListItem = ({
 	item: Track | Artist;
 	isFirst: boolean;
 	rank: number;
+	altText?: {
+		artist: string;
+		track: string;
+	};
 	openText?: string;
 	listenText?: string;
 	color: string;
@@ -97,9 +108,23 @@ const WrappedListItem = ({
 					isFirst ? "p-0" : "p-1"
 				}`}
 				style={{ backgroundColor: !isFirst ? color : undefined }}
-				title={`${
-					isArtist ? item.name + "'s profile" : item.title + "'s album"
-				} picture`}
+				title={
+					isArtist
+						? altText.artist.startsWith("'")
+							? `${item.name}${
+									item.name.endsWith("s")
+										? altText.artist.replace("'s", "'")
+										: altText.artist
+							  }`
+							: `${altText.artist} ${item.name}`
+						: altText.track.startsWith("'")
+						? `${item.title}${
+								item.title.endsWith("s")
+									? altText.track.replace("'s", "'")
+									: altText.track
+						  }`
+						: `${altText.track} ${item.title}`
+				}
 			>
 				<Image
 					className="pointer-events-none aspect-square h-full w-full object-cover"

@@ -11,12 +11,17 @@ import WrappedList from "../WrappedList/WrappedList";
 
 interface ArtistsProps extends ComponentProps<"div"> {
 	title: string;
+	itemAltText?: {
+		artist: string;
+		track: string;
+	};
 	itemOpenText?: string;
 	itemListenText?: string;
 }
 
 export const Artists = ({
 	title,
+	itemAltText,
 	itemOpenText,
 	itemListenText,
 	className,
@@ -33,6 +38,7 @@ export const Artists = ({
 			<WrappedList
 				of="artists"
 				items={data.artists}
+				altText={itemAltText}
 				openText={itemOpenText}
 				listenText={itemListenText}
 				palette={getPalette("lavender")}

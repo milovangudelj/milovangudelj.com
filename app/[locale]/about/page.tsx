@@ -62,6 +62,10 @@ const AboutPage = async () => {
 						<Artists
 							className="mt-16"
 							title={t("topArtists.title")}
+							itemAltText={{
+								artist: artistsListT("alt.artist"),
+								track: artistsListT("alt.track"),
+							}}
 							itemOpenText={artistsListT("open")}
 							itemListenText={artistsListT("listen")}
 						/>

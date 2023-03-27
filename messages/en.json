@@ -40,7 +40,11 @@
 	},
 	"WrappedList": {
 		"open": "Open on Spotify",
-		"listen": "Listen on Spotify"
+		"listen": "Listen on Spotify",
+		"alt": {
+			"artist": "''s profile picture",
+			"track": "''s album picture"
+		}
 	},
 	"CTA": {
 		"title": "Let's work together",
