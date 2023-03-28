@@ -2,7 +2,7 @@ export const Footer = () => {
 	return (
 		<footer className="fixed bottom-0 w-full">
 			<div className="mx-auto flex w-full max-w-[1440px] items-center justify-between p-4 text-label-md md:px-16">
-				<span>Milovan Gudelj &copy; 2022</span>
+				<span>Milovan Gudelj &copy; 2023</span>
 				<ul className="flex space-x-4">
 					<li>
 						<a
