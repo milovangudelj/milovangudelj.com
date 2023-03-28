@@ -2,7 +2,6 @@ import NextAuth, { AuthOptions, Account, Session, User } from "next-auth";
 import { AdapterUser } from "next-auth/adapters";
 import { JWT } from "next-auth/jwt";
 import SpotifyProvider from "next-auth/providers/spotify";
-import InstagramProvider from "next-auth/providers/instagram";
 import { spotifyApi, SPOTIFY_AUTH_URL } from "../../../lib/spotify";
 
 export interface ExtendedToken extends JWT {
@@ -55,10 +54,6 @@ export const authOptions: AuthOptions = {
 			clientSecret: process.env.SPOTIFY_CLIENT_SECRET as string,
 			authorization: SPOTIFY_AUTH_URL,
 		}),
-		// InstagramProvider({
-		// 	clientId: process.env.INSTAGRAM_CLIENT_ID as string,
-		// 	clientSecret: process.env.INSTAGRAM_CLIENT_SECRET as string,
-		// }),
 	],
 	secret: process.env.NEXTAUTH_SECRET,
 	pages: {
