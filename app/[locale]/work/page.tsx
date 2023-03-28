@@ -94,6 +94,7 @@ export const metadata = {
 
 const WorkPage = async () => {
 	const t = await getTranslations("Work");
+	const showcaseTranslations = await getTranslations("ProjectShowcase");
 
 	const projects = await getProjcts();
 
@@ -117,7 +118,26 @@ const WorkPage = async () => {
 					<li key={id}>
 						<Section className="bg-green">
 							<Container>
-								<ProjectShowcase {...props} />
+								<ProjectShowcase
+									messages={{
+										brief: showcaseTranslations("brief"),
+										visit: showcaseTranslations("visit"),
+										readCS: showcaseTranslations("readCS"),
+										category: {
+											uiDesign:
+												showcaseTranslations("category.uiDesign"),
+											webDesign:
+												showcaseTranslations("category.webDesign"),
+											webDev:
+												showcaseTranslations("category.webDev"),
+											frontEnd:
+												showcaseTranslations("category.frontEnd"),
+											fullStack:
+												showcaseTranslations("category.fullStack"),
+										},
+									}}
+									{...props}
+								/>
 							</Container>
 						</Section>
 					</li>

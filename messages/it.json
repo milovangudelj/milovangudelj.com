@@ -49,5 +49,17 @@
 	"CTA": {
 		"title": "Lavoriamo insieme",
 		"description": "Se sei interessato/a al mio lavoro e pensi che potremmo fare un buon team, non esitare a contattarmi. Chissà, potremmo costruire qualcosa di incredibile."
+	},
+	"ProjectShowcase": {
+		"brief": "Riassunto",
+		"visit": "Visita",
+		"readCS": "Leggi il Case Study",
+		"category": {
+			"uiDesign": "UI Design",
+			"webDesign": "Web Design",
+			"webDev": "Sviluppo Web",
+			"frontEnd": "Sviluppo FrotEnd",
+			"fullStack": "Sviluppo FullStack"
+		}
 	}
 }

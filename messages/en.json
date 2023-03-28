@@ -49,5 +49,17 @@
 	"CTA": {
 		"title": "Let's work together",
 		"description": "If you're interested in my work and think we'd be a good match, don't hesitate to reach out. Who knows, we could build something amazing together."
+	},
+	"ProjectShowcase": {
+		"brief": "Brief",
+		"visit": "Visit",
+		"readCS": "Read Case Study",
+		"category": {
+			"uiDesign": "UI Design",
+			"webDesign": "Web Design",
+			"webDev": "Web Development",
+			"frontEnd": "FrotEnd Development",
+			"fullStack": "FullStack Development"
+		}
 	}
 }
