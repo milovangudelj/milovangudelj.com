@@ -60,7 +60,7 @@ export const authOptions: AuthOptions = {
 		// 	clientSecret: process.env.INSTAGRAM_CLIENT_SECRET as string,
 		// }),
 	],
-	secret: process.env.JWT_SECRET,
+	secret: process.env.NEXTAUTH_SECRET,
 	pages: {
 		signIn: "/login",
 	},
