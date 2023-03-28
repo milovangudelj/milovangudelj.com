@@ -61,5 +61,9 @@
 			"frontEnd": "FrotEnd Development",
 			"fullStack": "FullStack Development"
 		}
+	},
+	"Contact": {
+		"title": "My @s",
+		"description": "You can find me pretty much anywhere by typing in my name. But just in case here you can find a few links to my social platforms."
 	}
 }

@@ -61,5 +61,9 @@
 			"frontEnd": "Sviluppo FrotEnd",
 			"fullStack": "Sviluppo FullStack"
 		}
+	},
+	"Contact": {
+		"title": "I miei tag",
+		"description": "Mi trovi quasi ovunque scrivendo il mio nome. Nel caso in cui non funzionasse qua trovi alcuni link alle mie piattaforme social."
 	}
 }
