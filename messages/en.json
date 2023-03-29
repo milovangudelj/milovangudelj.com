@@ -65,5 +65,63 @@
 	"Contact": {
 		"title": "My @s",
 		"description": "You can find me pretty much anywhere by typing in my name. But just in case here you can find a few links to my social platforms."
+	},
+	"Music-Stats": {
+		"p1": "An up to date miniature version of your {number} Spotify Wrapped.",
+		"data": "Data provided by",
+		"filters": {
+			"title": "Filter by",
+			"all": "All",
+			"artists": "Artists",
+			"tracks": "Tracks"
+		},
+		"period": {
+			"title": "Period",
+			"short": "Last 3 mo",
+			"medium": "Last 6 mo",
+			"long": "All time"
+		},
+		"download": {
+			"action": "Download poster",
+			"generating": "Generating..."
+		},
+		"artists": {
+			"title": {
+				"top": "Top",
+				"artists": "artists"
+			},
+			"subtitle": {
+				"short": "In the last 3 months these have been your top five artists.",
+				"medium": "In the last 6 months these have been your top five artists.",
+				"long": "Since you created your account these have been your top five artists."
+			},
+			"description": {
+				"loading": "Loading...",
+				"title": "How do you get the data?",
+				"p1": "Spotify provides a developer API (application programming interface) trough which you can request access to your data as long as you have the right access keys.",
+				"p2": "Those special keys are being sent over when you log in and are then used to request your data when the page loads."
+			}
+		},
+		"tracks": {
+			"title": {
+				"top": "Top",
+				"tracks": "tracks"
+			},
+			"subtitle": {
+				"short": "In the last 3 months you couldn't stop listening to these five tracks.",
+				"medium": "In the last 6 months you couldn't stop listening to these five tracks.",
+				"long": "Since you created your account these have been your top five tracks."
+			},
+			"description": {
+				"loading": "Loading...",
+				"title": "Why is it different from my Wrapped?",
+				"p1": "Spotify Wrapped gathers the data that it then shows you throughout the entire year while I am able to query only data relative to the last 3/6 months or since the creation of your account.",
+				"p2": "That's why you can select only those three options in the filter bar above. Spotify's API is much more limited but the data it provides is always up to date and you don't have to wait a full year to get it."
+			}
+		},
+		"notice": {
+			"label": "Notice",
+			"text": "I am not endorsed or sponsored by Spotify or any of their associates."
+		}
 	}
 }
