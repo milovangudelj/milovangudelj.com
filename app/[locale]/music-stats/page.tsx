@@ -2,13 +2,14 @@ import Image from "next/image";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { BigAssStar } from "../../../components/BigAssStar";
-import { Container } from "../../../components/Container";
-import { Section } from "../../../components/Section";
-import { getPalette, Palette } from "../../../utils/getPalette";
-import { Artist, Track } from "../../../lib/types";
+import { BigAssStar } from "@components/BigAssStar";
+import { Container } from "@components/Container";
+import { Section } from "@components/Section";
+import { getPalette, Palette } from "@utils/getPalette";
+import { Artist, Track } from "@lib/types";
 import { FormData } from "./ControlsBar";
 import { StatsSection } from "./StatsSection";
+import { getTranslations } from "next-intl/server";
 
 export interface UserStats {
 	stats: {
@@ -79,7 +80,10 @@ const getData = async () => {
 export const metadata = {
 	title: "Milovan Gudelj - Music-Stats",
 	description: "Get your cool Spotify Music-Stats poster now",
-	alternates: { canonical: "https://www.milovangudelj.com/music-stats" },
+	alternates: {
+		canonical: "https://www.milovangudelj.com/music-stats",
+		languages: { "it-IT": "https://www.milovangudelj.com/it/music-stats" },
+	},
 	openGraph: {
 		images: {
 			url: "https://www.milovangudelj.com/images/og-image-ms.png",
@@ -90,6 +94,9 @@ export const metadata = {
 };
 
 const MusicStatsPage = async () => {
+	const t = await getTranslations("Music-Stats");
+	const wrapepdListT = await getTranslations("WrappedList");
+
 	const { longTermStats, mediumTermStats, shortTermStats, user } =
 		await getData();
 
@@ -101,12 +108,11 @@ const MusicStatsPage = async () => {
 						<span className="text-yellow">Music</span>-Stats
 					</h1>
 					<p className="relative z-[1] text-sub-heading-mobile md:text-sub-heading xl:max-w-[30ch]">
-						An up to date miniature version of your{" "}
-						<span>{new Date().getFullYear()}</span> Spotify Wrapped.
+						{t("p1", { number: new Date().getFullYear() })}
 					</p>
 					<div className="text-body">
 						<a href="#data-notice" className="text-dark-me">
-							Data provided by <span className="text-yellow">*</span>
+							{t("data")} <span className="text-yellow">*</span>
 						</a>
 						<Image
 							title="Spotify"
@@ -127,6 +133,68 @@ const MusicStatsPage = async () => {
 					long_term: longTermStats,
 					medium_term: mediumTermStats,
 					short_term: shortTermStats,
+				}}
+				messages={{
+					filters: {
+						title: t("filters.title"),
+						all: t("filters.all"),
+						artists: t("filters.artists"),
+						tracks: t("filters.tracks"),
+					},
+					period: {
+						title: t("period.title"),
+						short: t("period.short"),
+						medium: t("period.medium"),
+						long: t("period.long"),
+					},
+					download: {
+						action: t("download.action"),
+						generating: t("download.generating"),
+					},
+					artists: {
+						title: {
+							top: t("artists.title.top"),
+							artists: t("artists.title.artists"),
+						},
+						subtitle: {
+							short: t("artists.subtitle.short"),
+							medium: t("artists.subtitle.medium"),
+							long: t("artists.subtitle.long"),
+						},
+						description: {
+							title: t("artists.description.title"),
+							p1: t("artists.description.p1"),
+							p2: t("artists.description.p2"),
+						},
+					},
+					tracks: {
+						title: {
+							top: t("tracks.title.top"),
+							tracks: t("tracks.title.tracks"),
+						},
+						subtitle: {
+							short: t("tracks.subtitle.short"),
+							medium: t("tracks.subtitle.medium"),
+							long: t("tracks.subtitle.long"),
+						},
+						description: {
+							title: t("tracks.description.title"),
+							p1: t("tracks.description.p1"),
+							p2: t("tracks.description.p2"),
+						},
+					},
+					list: {
+						alt: {
+							artist: wrapepdListT("alt.artist"),
+							track: wrapepdListT("alt.track"),
+						},
+						open: wrapepdListT("open"),
+						listen: wrapepdListT("listen"),
+					},
+					notice: {
+						label: t("notice.label"),
+						text: t("notice.text"),
+					},
 				}}
 			/>
 		</>

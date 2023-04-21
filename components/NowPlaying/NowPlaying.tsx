@@ -3,13 +3,19 @@
 import { useState } from "react";
 import Image from "next/image";
 import useSWR from "swr";
-import { SpotifyLogo } from "phosphor-react";
+import { SpotifyLogo } from "@phosphor-icons/react";
 
 import fetcher from "../../lib/fetcher";
 import { NowPlayingSong } from "../../lib/types";
 import { useIsomorphicLayoutEffect } from "../../utils/useIsomorphicLayoutEffect";
 
-export const NowPlaying = () => {
+export const NowPlaying = ({
+	title,
+	notPlayingMessage,
+}: {
+	title: string;
+	notPlayingMessage: string;
+}) => {
 	const { data } = useSWR<NowPlayingSong>("/api/now-playing", fetcher);
 	const [titleWidth, setTitleWidth] = useState(0);
 	const [artistWidth, setArtistWidth] = useState(0);
@@ -23,9 +29,7 @@ export const NowPlaying = () => {
 
 	return (
 		<div>
-			<h3 className="mb-4 text-sub-heading-mobile">
-				Currently listening to:
-			</h3>
+			<h3 className="mb-4 text-sub-heading-mobile">{title}</h3>
 			<div className="inline-flex max-w-[min(100%,_448px)] bg-black drop-shadow-brutal">
 				{data?.songUrl ? (
 					<div className="relative h-14 w-14 flex-none" title={data.album}>
@@ -72,7 +76,7 @@ export const NowPlaying = () => {
 							{data.title}
 						</a>
 					) : (
-						<p>Not playing</p>
+						<p>{notPlayingMessage}</p>
 					)}
 					<span className="mx-4 text-black/60">{" - "}</span>
 					{data?.artist ? (

@@ -2,24 +2,38 @@
 
 import Image from "next/legacy/image";
 
-import { Project } from "../../app/work/page";
+import { Project } from "../../app/[locale]/work/page";
 import { Link } from "next-intl";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { Button } from "../Button";
 import { colorMap } from "../../lib/hygraph";
 import { useIsDesktop, useIsMobile } from "../../lib/useMediaQuery";
 
-type ProjectShowcaseProps = Omit<Project, "id">;
+interface ProjectShowcaseProps extends Omit<Project, "id"> {
+	messages: {
+		brief: string;
+		visit: string;
+		readCS: string;
+		category: {
+			uiDesign: string;
+			webDesign: string;
+			webDev: string;
+			frontEnd: string;
+			fullStack: string;
+		};
+	};
+}
 
 const categoryMap: { [key: string]: string } = {
-	ui_design: "UI Design",
-	web_design: "Web Design",
-	frontend_development: "FrotEnd Development",
-	full_stack_development: "FullStack Development",
-	web_development: "Web Development",
+	ui_design: "uiDesign",
+	web_design: "webDesign",
+	frontend_development: "webDev",
+	full_stack_development: "frontEnd",
+	web_development: "fullStack",
 };
 
 export const ProjectShowcase = ({
+	messages,
 	description,
 	href,
 	caseStudy,
@@ -41,6 +55,8 @@ export const ProjectShowcase = ({
 						link={link}
 						href={href}
 						categories={categories}
+						catNames={messages.category}
+						visitText={messages.visit}
 						color={color}
 					/>
 				</div>
@@ -53,6 +69,8 @@ export const ProjectShowcase = ({
 							link={link}
 							href={href}
 							categories={categories}
+							catNames={messages.category}
+							visitText={messages.visit}
 							color={color}
 						/>
 						<ProjectImage
@@ -60,6 +78,7 @@ export const ProjectShowcase = ({
 							image={image}
 							title={title}
 							href={href}
+							visitText={messages.visit}
 						/>
 					</div>
 				) : (
@@ -68,11 +87,14 @@ export const ProjectShowcase = ({
 						image={image}
 						title={title}
 						href={href}
+						visitText={messages.visit}
 					/>
 				)}
 				<ProjectDescription
 					description={description}
 					caseStudy={caseStudy}
+					briefText={messages.brief}
+					readCSText={messages.readCS}
 				/>
 			</div>
 		</section>
@@ -85,12 +107,16 @@ const ProjectDetails = ({
 	link,
 	href,
 	categories,
+	catNames,
+	visitText,
 	color,
 }: {
 	title: Project["title"];
 	link: Project["link"];
 	href: Project["href"];
 	categories: Project["categories"];
+	catNames: { [key: string]: string };
+	visitText: string;
 	color: Project["color"];
 }) => {
 	const isMobile = useIsMobile();
@@ -110,19 +136,25 @@ const ProjectDetails = ({
 			<div className="md:space-y-6 xl:flex xl:items-end xl:justify-between xl:space-y-0">
 				<ul className="list-inside list-disc">
 					{categories.map((category, idx) => (
-						<li key={`cat_${idx}`}>{categoryMap[category]}</li>
+						<li key={`cat_${idx}`}>{catNames[categoryMap[category]]}</li>
 					))}
 				</ul>
-				{!isMobile && <VisitButton href={href} />}
+				{!isMobile && <VisitButton href={href} text={visitText} />}
 			</div>
 		</div>
 	);
 };
 
-const VisitButton = ({ href }: { href: Project["href"] }) => {
+const VisitButton = ({
+	href,
+	text,
+}: {
+	href: Project["href"];
+	text: string;
+}) => {
 	return (
 		<Button as="a" href={href} target={"_blank"} rel={"noreferrer"}>
-			Visit ↗
+			{text} ↗
 		</Button>
 	);
 };
@@ -130,20 +162,24 @@ const VisitButton = ({ href }: { href: Project["href"] }) => {
 const ProjectDescription = ({
 	description,
 	caseStudy,
+	briefText,
+	readCSText,
 }: {
 	description: Project["description"];
 	caseStudy: Project["caseStudy"];
+	briefText: string;
+	readCSText: string;
 }) => {
 	return (
 		<div className="prose prose-lg prose-p:text-black">
-			<h4 className="text-h5-mobile text-black">Brief</h4>
+			<h4 className="text-h5-mobile text-black">{briefText}</h4>
 			<RichText
 				content={description.json}
 				references={description.references}
 			/>
 			{caseStudy && (
 				<Link href={`/work/${caseStudy.slug}`} className="text-black">
-					<Button>Read case study ↗</Button>
+					<Button>{readCSText} ↗</Button>
 				</Link>
 			)}
 		</div>
@@ -155,11 +191,13 @@ const ProjectImage = ({
 	image,
 	title,
 	href,
+	visitText,
 }: {
 	year: Project["year"];
 	image: Project["image"];
 	title: Project["title"];
 	href: Project["href"];
+	visitText: string;
 }) => {
 	const isMobile = useIsMobile();
 
@@ -170,7 +208,7 @@ const ProjectImage = ({
 			</span>
 			{isMobile && (
 				<span className="absolute bottom-0 right-0 z-[1]">
-					<VisitButton href={href} />
+					<VisitButton href={href} text={visitText} />
 				</span>
 			)}
 			<span className="md:aspect-none relative flex aspect-video w-full items-center justify-center border-2 border-b bg-black drop-shadow-brutal md:h-full md:border-b-2 md:border-l md:drop-shadow-brutal-lg xl:aspect-video xl:h-auto xl:border-l-2">

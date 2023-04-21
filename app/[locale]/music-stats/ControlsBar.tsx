@@ -3,10 +3,10 @@
 import { useEffect, useRef } from "react";
 import { useForm, UseFormRegister } from "react-hook-form";
 
-import { Section } from "../../../components/Section";
-import { Container } from "../../../components/Container";
-import { Button } from "../../../components/Button";
-import { useIsMobile } from "../../../lib/useMediaQuery";
+import { Section } from "@components/Section";
+import { Container } from "@components/Container";
+import { Button } from "@components/Button";
+import { useIsMobile } from "@lib/useMediaQuery";
 
 export interface FormData {
 	filter: "all" | "artists" | "tracks";
@@ -19,12 +19,18 @@ export const ControlsBar = ({
 	downloadableData,
 	periodChangeHandler,
 	filterChangeHandler,
+	messages,
 }: {
 	username: string;
 	generatingPoster: boolean;
 	downloadableData: string | null;
 	periodChangeHandler: (newPeriod: FormData["period"]) => void;
 	filterChangeHandler: (newFilter: FormData["filter"]) => void;
+	messages: {
+		filters: any;
+		period: any;
+		download: any;
+	};
 }) => {
 	const downloadRef = useRef<HTMLAnchorElement>(null);
 	const isMobile = useIsMobile();
@@ -56,7 +62,7 @@ export const ControlsBar = ({
 				<form className="flex flex-wrap items-center gap-x-8 gap-y-4">
 					<div className="flex items-center">
 						<span className="mr-4 block text-label-md text-white/80 md:inline-block">
-							Filter:
+							{messages.filters.title}:
 						</span>
 						<div className="mr-2">
 							<input
@@ -71,7 +77,7 @@ export const ControlsBar = ({
 								htmlFor="filter-all"
 								className="cursor-pointer select-none border-2 bg-transparent py-1 px-2.5 text-button-md text-green transition peer-checked:border-0 peer-checked:bg-green peer-checked:py-1.5 peer-checked:px-3 peer-checked:text-black"
 							>
-								All
+								{messages.filters.all}
 							</label>
 						</div>
 						<div className="mr-2">
@@ -87,7 +93,7 @@ export const ControlsBar = ({
 								htmlFor="filter-artists"
 								className="cursor-pointer select-none border-2 bg-transparent py-1 px-2.5 text-button-md text-green transition peer-checked:border-0 peer-checked:bg-green peer-checked:py-1.5 peer-checked:px-3 peer-checked:text-black"
 							>
-								Artists
+								{messages.filters.artists}
 							</label>
 						</div>
 						<div>
@@ -103,7 +109,7 @@ export const ControlsBar = ({
 								htmlFor="filter-tracks"
 								className="cursor-pointer select-none border-2 bg-transparent py-1 px-2.5 text-button-md text-green transition peer-checked:border-0 peer-checked:bg-green peer-checked:py-1.5 peer-checked:px-3 peer-checked:text-black"
 							>
-								Tracks
+								{messages.filters.tracks}
 							</label>
 						</div>
 					</div>
@@ -112,15 +118,17 @@ export const ControlsBar = ({
 							htmlFor="period"
 							className="block text-label-md text-white/80 md:inline-block"
 						>
-							Period:
+							{messages.period.title}:
 						</label>
 						<select
 							{...register("period")}
 							className="form-select border-transparent bg-green bg-chevron-down px-3 py-1.5 pr-[34px] text-button-md text-black [background-size:_18px_18px] focus:border-transparent focus:ring-0"
 						>
-							<option value="medium_term">Last 6 mo</option>
-							<option value="short_term">Last 3 mo</option>
-							<option value="long_term">All time</option>
+							<option value="medium_term">
+								{messages.period.medium}
+							</option>
+							<option value="short_term">{messages.period.short}</option>
+							<option value="long_term">{messages.period.long}</option>
 						</select>
 					</div>
 				</form>
@@ -144,7 +152,9 @@ export const ControlsBar = ({
 							: undefined
 					}
 				>
-					{generatingPoster ? "Generating..." : "Download poster"}
+					{generatingPoster
+						? messages.download.generating
+						: messages.download.action}
 				</Button>
 			</Container>
 		</Section>

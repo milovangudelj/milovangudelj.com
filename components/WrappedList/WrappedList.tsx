@@ -9,9 +9,15 @@ import {
 } from "../../utils/getLuminance";
 import { Palette } from "../../utils/getPalette";
 
-export interface WrappedListProps {
+export interface WrappedListProps extends ComponentProps<"ol"> {
 	items: Track[] | Artist[];
 	of: "tracks" | "artists";
+	altText?: {
+		artist: string;
+		track: string;
+	};
+	openText?: string;
+	listenText?: string;
 	palette: Palette;
 	className?: string;
 	style?: CSSProperties;
@@ -21,10 +27,13 @@ export const WrappedList = ({
 	className,
 	items,
 	of,
+	altText,
+	openText,
+	listenText,
 	palette,
 	style,
 	...props
-}: ComponentProps<"ol"> & WrappedListProps) => {
+}: WrappedListProps) => {
 	if (items.length === 0)
 		return (
 			<YoungAccount
@@ -49,6 +58,9 @@ export const WrappedList = ({
 					item={item}
 					isFirst={idx === 0}
 					rank={idx + 1}
+					altText={altText}
+					openText={openText}
+					listenText={listenText}
 					color={
 						"name" in item ? palette.artists[idx] : palette.tracks[idx]
 					}
@@ -63,6 +75,9 @@ const WrappedListItem = ({
 	item,
 	isFirst,
 	rank,
+	altText = { artist: "'s profile picture", track: "'s album picture" },
+	openText = "Open on Spotify",
+	listenText = "Listen on Spotify",
 	className,
 	color,
 	style,
@@ -71,6 +86,12 @@ const WrappedListItem = ({
 	item: Track | Artist;
 	isFirst: boolean;
 	rank: number;
+	altText?: {
+		artist: string;
+		track: string;
+	};
+	openText?: string;
+	listenText?: string;
 	color: string;
 }) => {
 	const lightText = getLuminance(color) <= TEXT_LUMINANCE_TRESHOLD;
@@ -87,9 +108,23 @@ const WrappedListItem = ({
 					isFirst ? "p-0" : "p-1"
 				}`}
 				style={{ backgroundColor: !isFirst ? color : undefined }}
-				title={`${
-					isArtist ? item.name + "'s profile" : item.title + "'s album"
-				} picture`}
+				title={
+					isArtist
+						? altText.artist.startsWith("'")
+							? `${item.name}${
+									item.name.endsWith("s")
+										? altText.artist.replace("'s", "'")
+										: altText.artist
+							  }`
+							: `${altText.artist} ${item.name}`
+						: altText.track.startsWith("'")
+						? `${item.title}${
+								item.title.endsWith("s")
+									? altText.track.replace("'s", "'")
+									: altText.track
+						  }`
+						: `${altText.track} ${item.title}`
+				}
 			>
 				<Image
 					className="pointer-events-none aspect-square h-full w-full object-cover"
@@ -132,8 +167,7 @@ const WrappedListItem = ({
 					<div className="max-w-fill flex-shrink overflow-hidden truncate">
 						<span>{isArtist ? item.name : item.title}</span>
 						<span className="block select-none text-label-sm leading-none opacity-40 transition group-hover:opacity-80">
-							{"name" in item ? "Open on Spotify" : "Listen on Spotify"}{" "}
-							↗
+							{"name" in item ? openText : listenText} ↗
 						</span>
 					</div>
 					{false && (

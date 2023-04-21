@@ -1,11 +1,10 @@
-import type { Route } from "next";
 import { Link } from "next-intl";
 import { ComponentPropsWithoutRef, forwardRef } from "react";
 
 const links: {
 	key: string;
 	label: string;
-	href: Route<string> | URL;
+	href: string | URL;
 	color: string;
 }[] = [
 	{

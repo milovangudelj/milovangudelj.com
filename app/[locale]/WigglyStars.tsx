@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { Star } from "../../components/Star";
+import { Star } from "@components/Star";
 
 export const WigglyStars = () => {
 	const [animateS0, setAnimateS0] = useState(false);

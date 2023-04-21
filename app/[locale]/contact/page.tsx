@@ -1,19 +1,25 @@
 import Image from "next/image";
 
-import { CTA } from "../../../components/sections/CTA";
+import { CTA } from "@components/sections/CTA";
 
-import igLogo from "../../../public/images/igLogo.png";
-import twLogo from "../../../public/images/twLogo.svg";
-import drLogo from "../../../public/images/drLogo.svg";
+import igLogo from "@images/igLogo.png";
+import twLogo from "@images/twLogo.svg";
+import drLogo from "@images/drLogo.svg";
+import { getTranslations } from "next-intl/server";
 
 export const metadata = {
 	title: "Milovan Gudelj - Contact me",
 	description:
 		"Let's work together! Feel free to reach out to me for any questions you might have.",
-	alternates: { canonical: "https://www.milovangudelj.com/contact" },
+	alternates: {
+		canonical: "https://www.milovangudelj.com/contact",
+		languages: { "it-IT": "https://www.milovangudelj.com/it/contact" },
+	},
 };
 
-const ContactPage = () => {
+const ContactPage = async () => {
+	const t = await getTranslations("Contact");
+
 	return (
 		<>
 			<section className="scroll-mt-[72px] md:scroll-mt-[88px]">
@@ -21,12 +27,10 @@ const ContactPage = () => {
 					<div className="space-y-16">
 						<div className="space-y-8">
 							<h1 className="text-h1-mobile md:text-d1-mobile xl:text-d1">
-								My @s
+								{t("title")}
 							</h1>
 							<p className="text-body xl:max-w-[680px]">
-								You can find me pretty much anywhere by typing in my
-								name. But just in case here you can find a few links to
-								my social platforms.
+								{t("description")}
 							</p>
 						</div>
 						<div className="flex items-center space-x-6 py-0.5 font-space md:space-x-12">

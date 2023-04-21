@@ -1,5 +1,127 @@
 {
+	"Navbar": {
+		"about": "about",
+		"work": "work",
+		"contact": "contact"
+	},
 	"Home": {
+		"heroTitle": {
+			"webDev": "Web Developer",
+			"designer": "UI designer"
+		},
 		"heroParagraph": "Hi, I'm Milo. I design and develop engaging websites and delightful digital experiences."
+	},
+	"Work": {
+		"title": "My work",
+		"description": "In the last few years I've had the opportunity to work on a few diverse projects and demonstrate my skills. Here are some of them."
+	},
+	"About": {
+		"main": {
+			"title": "About me",
+			"p1": "As a computer science student, I have a strong passion for web development and UI/UX design. I am driven by the creation of user-centered interfaces and experiences that are both aesthetically pleasing and empowering.",
+			"p2": "With five years of experience in building websites, I have honed my skills in both the technical and creative aspects of web development. My interest in graphic design and poster-making has also allowed me to bring a unique perspective to my work in UI/UX design."
+		},
+		"music": {
+			"title": "Oh, btw...",
+			"p1": "I looove music. So if you're interested here's a little bit of information about that.",
+			"p2": "Plus if you want you can get a cool looking poster with your top artists and tracks, kind of like a <link>Spotify Wrapped</link> but in miniature.",
+			"cta": "Get your Music-Stats"
+		},
+		"nowPlaying": {
+			"title": "Currently listening to:",
+			"notPlaying": "Not playing"
+		},
+		"topArtists": {
+			"title": "My top artists:"
+		},
+		"genreSolarSystem": {
+			"title": "My top genres"
+		}
+	},
+	"WrappedList": {
+		"open": "Open on Spotify",
+		"listen": "Listen on Spotify",
+		"alt": {
+			"artist": "''s profile picture",
+			"track": "''s album picture"
+		}
+	},
+	"CTA": {
+		"title": "Let's work together",
+		"description": "If you're interested in my work and think we'd be a good match, don't hesitate to reach out. Who knows, we could build something amazing together."
+	},
+	"ProjectShowcase": {
+		"brief": "Brief",
+		"visit": "Visit",
+		"readCS": "Read Case Study",
+		"category": {
+			"uiDesign": "UI Design",
+			"webDesign": "Web Design",
+			"webDev": "Web Development",
+			"frontEnd": "FrotEnd Development",
+			"fullStack": "FullStack Development"
+		}
+	},
+	"Contact": {
+		"title": "My @s",
+		"description": "You can find me pretty much anywhere by typing in my name. But just in case here you can find a few links to my social platforms."
+	},
+	"Music-Stats": {
+		"p1": "An up to date miniature version of your {number} Spotify Wrapped.",
+		"data": "Data provided by",
+		"filters": {
+			"title": "Filter by",
+			"all": "All",
+			"artists": "Artists",
+			"tracks": "Tracks"
+		},
+		"period": {
+			"title": "Period",
+			"short": "Last 3 mo",
+			"medium": "Last 6 mo",
+			"long": "All time"
+		},
+		"download": {
+			"action": "Download poster",
+			"generating": "Generating..."
+		},
+		"artists": {
+			"title": {
+				"top": "Top",
+				"artists": "artists"
+			},
+			"subtitle": {
+				"short": "In the last 3 months these have been your top five artists.",
+				"medium": "In the last 6 months these have been your top five artists.",
+				"long": "Since you created your account these have been your top five artists."
+			},
+			"description": {
+				"loading": "Loading...",
+				"title": "How do you get the data?",
+				"p1": "Spotify provides a developer API (application programming interface) trough which you can request access to your data as long as you have the right access keys.",
+				"p2": "Those special keys are being sent over when you log in and are then used to request your data when the page loads."
+			}
+		},
+		"tracks": {
+			"title": {
+				"top": "Top",
+				"tracks": "tracks"
+			},
+			"subtitle": {
+				"short": "In the last 3 months you couldn't stop listening to these five tracks.",
+				"medium": "In the last 6 months you couldn't stop listening to these five tracks.",
+				"long": "Since you created your account these have been your top five tracks."
+			},
+			"description": {
+				"loading": "Loading...",
+				"title": "Why is it different from my Wrapped?",
+				"p1": "Spotify Wrapped gathers the data that it then shows you throughout the entire year while I am able to query only data relative to the last 3/6 months or since the creation of your account.",
+				"p2": "That's why you can select only those three options in the filter bar above. Spotify's API is much more limited but the data it provides is always up to date and you don't have to wait a full year to get it."
+			}
+		},
+		"notice": {
+			"label": "Notice",
+			"text": "I am not endorsed or sponsored by Spotify or any of their associates."
+		}
 	}
 }

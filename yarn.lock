@@ -294,6 +294,11 @@
   resolved "https://registry.yarnpkg.com/@panva/hkdf/-/hkdf-1.0.4.tgz#4e02bb248402ff6c5c024e23a68438e2b0e69d67"
   integrity sha512-003xWiCuvePbLaPHT+CRuaV4GlyCAVm6XYSbBZDHoWZGn1mNkVKFaDbGJjjxmEFvizUwlCoM6O18FCBMMky2zQ==
 
+"@phosphor-icons/react@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@phosphor-icons/react/-/react-2.0.5.tgz#3c07191a4489ed5a8c35f4bc228938990d13b1a4"
+  integrity sha512-Ghohi+Dk+Y0RoI1vra3jH2QC3sO6C16a/Km0gfy05ONIsC62Vwn1SK2Qaim77VPyn1FS7qjMxocdi9kx6btvXg==
+
 "@pkgr/utils@^2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@pkgr/utils/-/utils-2.3.1.tgz#0a9b06ffddee364d6642b3cd562ca76f55b34a03"
@@ -3058,11 +3063,6 @@ periscopic@^3.0.0:
     "@types/estree" "^1.0.0"
     estree-walker "^3.0.0"
     is-reference "^3.0.0"
-
-phosphor-react@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/phosphor-react/-/phosphor-react-1.4.1.tgz#97b0e034d9937db9b97fe53b186e9646464fd4e7"
-  integrity sha512-gO5j7U0xZrdglTAYDYPACU4xDOFBTJmptrrB/GeR+tHhCZF3nUMyGmV/0hnloKjuTrOmpSFlbfOY78H39rgjUQ==
 
 picocolors@^1.0.0:
   version "1.0.0"

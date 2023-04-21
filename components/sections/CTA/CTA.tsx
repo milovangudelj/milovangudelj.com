@@ -3,6 +3,8 @@ import { twMerge } from "tailwind-merge";
 
 import { Section } from "../../Section";
 import { Container } from "../../Container";
+import { getTranslations } from "next-intl/server";
+import { asyncComponent } from "../../../lib/asyncComponent";
 
 const Pattern = ({ className }: ComponentProps<"svg">) => {
 	return (
@@ -28,7 +30,9 @@ const Pattern = ({ className }: ComponentProps<"svg">) => {
 	);
 };
 
-export const CTA = () => {
+export const CTA = asyncComponent(async () => {
+	const t = await getTranslations("CTA");
+
 	return (
 		<Section className="relative overflow-hidden bg-lavender text-white">
 			<div className="absolute top-0 right-0 left-0 xl:left-auto xl:h-[640px] xl:w-[640px]">
@@ -43,13 +47,9 @@ export const CTA = () => {
 			<Container className="relative">
 				<div className="space-y-8">
 					<h2 className="text-h2-mobile md:text-d2-mobile xl:text-d2">
-						Let&apos;s work together
+						{t("title")}
 					</h2>
-					<p className="text-body xl:max-w-[680px]">
-						If you&apos;re impressed by my work and think we&apos;d be a
-						good match, don&apos;t hesitate to reach out. Who knows, we
-						could build something amazing together.
-					</p>
+					<p className="text-body xl:max-w-[680px]">{t("description")}</p>
 				</div>
 				<div className="flex items-center space-x-4 py-0.5">
 					<a
@@ -78,4 +78,4 @@ export const CTA = () => {
 			</Container>
 		</Section>
 	);
-};
+});
