@@ -22,8 +22,10 @@ export const MobileNav = ({
 	className?: string;
 }) => {
 	const [menuOpen, setMenuOpen] = useState<boolean>(false);
+
 	const [navHeight, setNavHeight] = useState<number>(0);
 	const [navWidth, setNavWidth] = useState<number>(0);
+
 	const [windowHeight, setWindowHeight] = useState<number>(
 		typeof window !== "undefined" ? window.innerHeight : 0
 	);
@@ -62,19 +64,24 @@ export const MobileNav = ({
 
 	const list: Variants = {
 		open: {
+			display: "flex",
 			opacity: 1,
 			transition: {
+				when: "beforeChildren",
 				type: "tween",
 				duration: 0.2,
 				staggerChildren: 0.1,
-				delayChildren: 0.2,
 			},
 		},
 		closed: {
 			opacity: 0,
 			transition: {
+				when: "afterChildren",
 				type: "tween",
 				duration: 0.2,
+			},
+			transitionEnd: {
+				display: "none",
 			},
 		},
 	};
@@ -88,7 +95,7 @@ export const MobileNav = ({
 		closed: {
 			x: -24,
 			opacity: 0,
-			transition: { duration: 0.1, ease: "easeOut" },
+			transition: { duration: 0.2, ease: "easeOut" },
 		},
 	};
 
@@ -115,15 +122,11 @@ export const MobileNav = ({
 				></span>
 			</div>
 			<motion.ul
-				initial={{
-					opacity: 0,
-				}}
+				initial={"closed"}
 				animate={menuOpen ? "open" : "closed"}
 				variants={list}
 				className={twMerge(
-					`absolute ${
-						menuOpen ? "flex" : "hidden"
-					} top-full left-0 h-[var(--nav-height)] w-[var(--nav-width)] flex-col items-end justify-center bg-yellow px-8 py-2 text-black`,
+					`absolute top-full left-0 h-[var(--nav-height)] w-[var(--nav-width)] flex-col items-end justify-center bg-yellow px-8 py-2 text-black`,
 					className
 				)}
 			>
