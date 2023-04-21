@@ -129,7 +129,14 @@ export const MobileNav = ({
 			>
 				{links.map((link) => (
 					<motion.li variants={item} key={link.id}>
-						<NavLink id={link.id} href={link.href} label={link.label} />
+						<NavLink
+							id={link.id}
+							href={link.href}
+							label={link.label}
+							onClick={() => {
+								setMenuOpen(false);
+							}}
+						/>
 					</motion.li>
 				))}
 				<motion.li variants={item}>

@@ -7,10 +7,12 @@ export const NavLink = ({
 	id,
 	href,
 	label,
+	onClick,
 }: {
 	id: string;
 	href: string | URL;
 	label: string;
+	onClick?: () => void;
 }) => {
 	const segment = useSelectedLayoutSegment();
 
@@ -20,6 +22,7 @@ export const NavLink = ({
 			className={`relative inline-block px-4 py-2 text-sub-heading ${
 				id === segment ? "opacity-100" : "opacity-60"
 			} transition hover:opacity-100`}
+			onClick={onClick}
 		>
 			{id === segment && (
 				<span className="absolute left-0 top-0 bottom-0 -ml-1 mt-1 flex items-center motion-safe:animate-spin-slow md:-ml-0.5">
