@@ -3,7 +3,7 @@
 import { Link } from "next-intl";
 import { RefCallback, useCallback, useRef, useState } from "react";
 import { Button } from "@components/Button";
-import { LanguageSwitch } from "./LanguageSwitch";
+import { LanguageSwitch } from "@components/LanguageSwitch";
 import { MobileNav } from "./MobileNav";
 import { NewNavLinks } from "./NewNavLinks";
 

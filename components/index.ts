@@ -20,3 +20,4 @@ export * from "./BigAssStar";
 export * from "./WrappedList";
 export * from "./StatsList";
 export * from "./Poster";
+export * from "./LanguageSwitch";
