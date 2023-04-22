@@ -7,7 +7,6 @@ export const Footer = () => {
 					<li>
 						<a
 							target="_blank"
-							rel="noreferrer"
 							href="https://dribbble.com/milovangudelj"
 						>
 							Dr
@@ -16,7 +15,6 @@ export const Footer = () => {
 					<li>
 						<a
 							target="_blank"
-							rel="noreferrer"
 							href="https://twitter.com/milovangudelj"
 						>
 							Tw
@@ -25,10 +23,18 @@ export const Footer = () => {
 					<li>
 						<a
 							target="_blank"
-							rel="noreferrer"
 							href="https://instagram.com/milovangudelj"
 						>
 							Ig
+						</a>
+					</li>
+					<li>
+						<a
+							target="_blank"
+							rel="me"
+							href="https://mastodon.social/@ilikemartians"
+						>
+							Ma
 						</a>
 					</li>
 				</ul>
