@@ -7,8 +7,8 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "@styles/globals.css";
 
 import { SessionProvider } from "@lib/sessionProvider";
+import { Navbar } from "@components/Navbar";
 import { Footer } from "@components/Footer";
-import { NewNavbar } from "./NewNavbar";
 
 const inter = Inter({
 	preload: true,
@@ -118,7 +118,7 @@ export default async function RootLayout({
 		>
 			<body className="h-fill scroll-smooth bg-black font-sans text-white">
 				<SessionProvider session={session}>
-					<NewNavbar links={links} />
+					<Navbar links={links} />
 					<div className="relative z-[1] mb-[58.25px] bg-black">
 						{children}
 					</div>

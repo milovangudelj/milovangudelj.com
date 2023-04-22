@@ -1,54 +1,25 @@
-import { Link } from "next-intl";
-import { ComponentPropsWithoutRef, forwardRef } from "react";
+import { twMerge } from "tailwind-merge";
 
-const links: {
-	key: string;
-	label: string;
-	href: string | URL;
-	color: string;
-}[] = [
-	{
-		key: "li_01",
-		label: "about",
-		href: "/about",
-		color: "bg-orange",
-	},
-	{
-		key: "li_02",
-		label: "work",
-		href: "/work",
-		color: "bg-green",
-	},
-	{
-		key: "li_03",
-		label: "contact",
-		href: "/contact",
-		color: "bg-lavender",
-	},
-];
+import { NavLink } from "../NavLink/NavLink";
 
-export const NavLinks = forwardRef<
-	HTMLElement,
-	ComponentPropsWithoutRef<"nav">
->(({ className, ...props }, ref) => {
+export const NavLinks = ({
+	links,
+	className,
+}: {
+	links: {
+		id: string;
+		label: string;
+		href: string | URL;
+	}[];
+	className?: string;
+}) => {
 	return (
-		<nav className={className} {...props} ref={ref}>
-			<ul className="md:flex">
-				{links.map((link) => (
-					<li
-						key={link.key}
-						className="border-t-2 border-black bg-black last:border-b-2 md:border-t-0 md:border-l-2 md:last:border-b-0 md:last:border-r-0 xl:last:border-r-2"
-					>
-						<Link
-							href={link.href}
-							className={`${link.color} inline-block w-full px-8 py-6 text-sub-heading text-white transition-all will-change-transform hover:-translate-x-1 hover:-translate-y-1 md:w-max`}
-						>
-							{link.label}
-						</Link>
-					</li>
-				))}
-			</ul>
-		</nav>
+		<ul className={twMerge("flex bg-yellow text-black", className)}>
+			{links.map((link) => (
+				<li key={link.id}>
+					<NavLink id={link.id} href={link.href} label={link.label} />
+				</li>
+			))}
+		</ul>
 	);
-});
-NavLinks.displayName = "NavLinks";
+};

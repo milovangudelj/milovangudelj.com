@@ -6,7 +6,7 @@ import { twMerge } from "tailwind-merge";
 import { motion, type Variants } from "framer-motion";
 
 import { Button } from "@components";
-import { NavLink } from "./NavLink";
+import { NavLink } from "../NavLink/NavLink";
 
 export const MobileNav = ({
 	links,
