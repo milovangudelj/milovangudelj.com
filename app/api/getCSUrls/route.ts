@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { gql } from "graphql-request";
 
 import { hygraph } from "@lib/hygraph";
@@ -11,17 +11,17 @@ const GET_SLUGS = gql`
 	}
 `;
 
-export default async function handler(
-	req: NextApiRequest,
-	res: NextApiResponse
-) {
+export async function GET(req: NextRequest) {
 	const { caseStudies } = await hygraph.request<{
 		caseStudies: { slug: string }[];
 	}>(GET_SLUGS);
 
 	const csUrls = caseStudies.map((caseStudy) => caseStudy.slug);
 
-	res.status(200);
-	res.setHeader("Content-Type", "application/json");
-	res.send({ csUrls });
+	return new NextResponse(JSON.stringify({ csUrls }), {
+		status: 200,
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
 }

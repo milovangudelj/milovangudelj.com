@@ -1,11 +1,12 @@
 import { type NextRequest } from "next/server";
-import { getTopTracks } from "../../lib/mySpotify";
+
+import { getTopTracks } from "@lib/mySpotify";
 
 export const config = {
 	runtime: "edge",
 };
 
-export default async function handler(req: NextRequest) {
+export async function GET(req: NextRequest) {
 	const response = await getTopTracks();
 	const { items } = await response.json();
 

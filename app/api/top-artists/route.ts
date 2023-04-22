@@ -1,14 +1,14 @@
 import { type NextRequest } from "next/server";
 
-import { getTopArtists } from "../../lib/mySpotify";
-import { shuffle } from "../../utils/shuffle";
-import { spotifyColors } from "../../utils/getColors";
+import { getTopArtists } from "@lib/mySpotify";
+import { shuffle } from "@utils/shuffle";
+import { spotifyColors } from "@utils/getColors";
 
 export const config = {
 	runtime: "edge",
 };
 
-export default async function handler(req: NextRequest) {
+export async function GET(req: NextRequest) {
 	const response = await getTopArtists({ limit: 5, range: "medium" });
 	const { items } = await response.json();
 
