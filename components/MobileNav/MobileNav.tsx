@@ -146,6 +146,9 @@ export const MobileNav = ({
 					<Button
 						as={Link}
 						href={"/music-stats"}
+						onClick={() => {
+							setMenuOpen(false);
+						}}
 						className="mr-4 mt-4 md:pointer-events-none md:invisible md:hidden md:select-none"
 					>
 						Music-Stats ↗
