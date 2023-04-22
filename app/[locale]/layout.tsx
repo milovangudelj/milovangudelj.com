@@ -1,14 +1,13 @@
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getServerSession } from "next-auth/next";
+import { Analytics } from "@vercel/analytics/react";
 import { Inter, Space_Grotesk } from "next/font/google";
 
 import "@styles/globals.css";
 
 import { SessionProvider } from "@lib/sessionProvider";
-// import { Navbar } from "./Navbar";
 import { Footer } from "@components/Footer";
-import { Analytics } from "./Analytics";
 import { NewNavbar } from "./NewNavbar";
 
 const inter = Inter({
