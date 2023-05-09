@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { ComponentProps } from "react";
 import { getTranslations } from "next-intl/server";
 
@@ -28,16 +28,18 @@ export const AboutSection = asyncComponent(
 							standAlone ? " md:top-32 md:rotate-12" : "md:-top-16"
 						}`}
 					>
-						<Hourglass>
-							<span className="absolute inset-0 left-4 overflow-hidden border-b-2">
+						<Hourglass standAlone={standAlone}>
+							<span
+								className={`absolute inset-0 left-4 overflow-hidden border-b-2 ${
+									standAlone ? "border-lilla" : "border-black"
+								}`}
+							>
 								<Image
 									src={me}
-									layout={"fill"}
 									quality={100}
 									priority
-									objectPosition={"top left"}
-									objectFit={"cover"}
 									alt={"My profile picture"}
+									className={`relative inset-0 object-cover object-left-top`}
 								/>
 							</span>
 						</Hourglass>
