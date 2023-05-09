@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ComponentProps } from "react";
 import { getTranslations } from "next-intl/server";
+import { twMerge } from "tailwind-merge";
 
 import { Section } from "../../Section";
 import { Container } from "../../Container";
@@ -12,6 +13,7 @@ import { asyncComponent } from "../../../lib/asyncComponent";
 
 export const AboutSection = asyncComponent(
 	async ({
+		className,
 		standAlone = false,
 		...props
 	}: ComponentProps<typeof Section> & { standAlone?: boolean }) => {
@@ -21,7 +23,13 @@ export const AboutSection = asyncComponent(
 			new Date().getFullYear() - new Date(2018, 10).getFullYear();
 
 		return (
-			<Section {...props}>
+			<Section
+				className={twMerge(
+					standAlone ? "bg-black text-white" : "",
+					className
+				)}
+				{...props}
+			>
 				<Container className="md:relative md:space-y-0">
 					<div
 						className={`flex justify-center md:absolute md:right-16 xl:right-32 ${
