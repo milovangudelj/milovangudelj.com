@@ -23,7 +23,7 @@ export const Navbar = ({
 			ref={navRef}
 			className="sticky top-0 z-10 bg-yellow transition duration-300"
 		>
-			<div className="relative mx-auto flex w-full max-w-8xl items-center justify-between bg-yellow px-8 py-2 text-black md:py-1 2xl:px-0">
+			<div className="relative mx-auto flex w-full max-w-7xl items-center justify-between bg-yellow px-8 py-2 text-black md:py-1 2xl:px-0">
 				<Link href="/" className="relative text-sub-heading">
 					Milo
 				</Link>
