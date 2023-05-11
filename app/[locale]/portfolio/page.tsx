@@ -44,7 +44,7 @@ const PortfolioPage = async () => {
 							a little bit of information about my past experiences.
 						</p>
 					</div>
-					<div className="absolute -top-2 -right-96 md:-right-64 xl:-right-16">
+					<div className="absolute -bottom-20 -right-[360px] sm:-top-2 md:-right-64 xl:-right-16">
 						<Image
 							src={squiggle}
 							alt="Black squiggly line"
@@ -53,7 +53,7 @@ const PortfolioPage = async () => {
 						/>
 					</div>
 				</main>
-				<div className="absolute bottom-0 left-1/2 aspect-square w-[96px] translate-y-1/2 -translate-x-1/2 rounded-full border-[16px] border-black md:w-[182px]"></div>
+				<div className="absolute -right-12 aspect-square w-[96px] rounded-full border-[16px] border-black max-sm:top-8 sm:bottom-0 sm:left-1/2 sm:translate-y-1/2 sm:-translate-x-1/2 md:w-[182px]"></div>
 			</Section>
 			<Section className="bg-black py-16 text-white md:py-32 md:px-16">
 				<Container>
@@ -106,7 +106,7 @@ const PortfolioPage = async () => {
 						<h3 className="text-sub-heading-mobile text-yellow md:text-sub-heading">
 							Design
 						</h3>
-						<div className="items-center gap-32 space-y-8 xl:flex xl:space-y-0">
+						<div className="items-center gap-32 space-y-16 xl:flex xl:space-y-0">
 							<div className="flex-1 space-y-8">
 								<p className="text-body">
 									I used extensively Photoshop, Illustrator and
@@ -158,7 +158,7 @@ const PortfolioPage = async () => {
 						<h3 className="text-sub-heading-mobile text-yellow md:text-sub-heading">
 							Web
 						</h3>
-						<div className="items-center gap-32 space-y-8 xl:flex xl:space-y-0">
+						<div className="items-center gap-32 space-y-16 xl:flex xl:space-y-0">
 							<div className="flex-1 space-y-8">
 								<p className="text-body">
 									When developing websites I use primarily Next.js
