@@ -101,4 +101,9 @@
 	::-webkit-scrollbar-thumb:hover {
 		@apply bg-yellow;
 	}
+
+	/* Corner */
+	::-webkit-scrollbar-corner {
+		@apply hidden;
+	}
 }
