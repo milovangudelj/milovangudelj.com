@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 
 import { Container } from "@components/Container";
 import { Section } from "@components/Section";
+import { PosterGallery } from "@components/PosterGallery";
 
 import squiggle from "@images/squiggle.svg";
 import arrow from "@images/arrow.svg";
@@ -38,12 +39,12 @@ const PortfolioPage = async () => {
 				<main className="relative mx-auto flex max-w-7xl items-center justify-between px-8 2xl:px-0">
 					<div className="space-y-8">
 						<h1 className="text-d2-mobile xl:text-d2">Portfolio</h1>
-						<p className="text-sub-heading xl:max-w-[468px]">
+						<p className="text-sub-heading sm:max-w-[468px]">
 							This is mainly a collection of poster designs I made, with
 							a little bit of information about my past experiences.
 						</p>
 					</div>
-					<div className="absolute -top-2 -right-16">
+					<div className="absolute -top-2 -right-96 md:-right-64 xl:-right-16">
 						<Image
 							src={squiggle}
 							alt="Black squiggly line"
@@ -52,12 +53,12 @@ const PortfolioPage = async () => {
 						/>
 					</div>
 				</main>
-				<div className="absolute bottom-0 left-1/2 aspect-square w-[182px] translate-y-1/2 -translate-x-1/2 rounded-full border-[16px] border-black"></div>
+				<div className="absolute bottom-0 left-1/2 aspect-square w-[96px] translate-y-1/2 -translate-x-1/2 rounded-full border-[16px] border-black md:w-[182px]"></div>
 			</Section>
 			<Section className="bg-black py-16 text-white md:py-32 md:px-16">
 				<Container>
 					<h2 className="text-h2-mobile md:text-h2">Experience</h2>
-					<div className="relative flex text-body">
+					<div className="relative space-y-8 text-body md:flex md:space-y-0">
 						<div className="flex-1 space-y-8 md:mr-32">
 							<p>
 								I&apos;m a computer science student at the University of
@@ -105,7 +106,7 @@ const PortfolioPage = async () => {
 						<h3 className="text-sub-heading-mobile text-yellow md:text-sub-heading">
 							Design
 						</h3>
-						<div className="flex items-center gap-32">
+						<div className="items-center gap-32 space-y-8 xl:flex xl:space-y-0">
 							<div className="flex-1 space-y-8">
 								<p className="text-body">
 									I used extensively Photoshop, Illustrator and
@@ -113,14 +114,14 @@ const PortfolioPage = async () => {
 									say I have an advanced level of skill with it.
 								</p>
 							</div>
-							<ul className="flex flex-1 items-center justify-center space-x-16">
+							<ul className="flex flex-1 items-center justify-center gap-8 md:gap-16">
 								<li>
 									<Image
 										src={figma}
 										alt="Figma logo"
 										width={53.34}
 										height={80}
-										className="object-contain"
+										className="aspect-[5.334/8] h-[40px] object-contain sm:h-[60px] md:h-[70px] xl:h-[80px]"
 									/>
 								</li>
 								<li>
@@ -129,7 +130,7 @@ const PortfolioPage = async () => {
 										alt="Photoshop logo"
 										width={96}
 										height={96}
-										className="object-contain"
+										className="aspect-square w-[48px] object-contain sm:w-[68px] md:w-[80px] xl:w-[96px]"
 									/>
 								</li>
 								<li>
@@ -138,7 +139,7 @@ const PortfolioPage = async () => {
 										alt="Illustrator logo"
 										width={96}
 										height={96}
-										className="object-contain"
+										className="aspect-square w-[48px] object-contain sm:w-[68px] md:w-[80px] xl:w-[96px]"
 									/>
 								</li>
 								<li>
@@ -147,7 +148,7 @@ const PortfolioPage = async () => {
 										alt="Lightroom logo"
 										width={96}
 										height={96}
-										className="object-contain"
+										className="aspect-square w-[48px] object-contain sm:w-[68px] md:w-[80px] xl:w-[96px]"
 									/>
 								</li>
 							</ul>
@@ -157,7 +158,7 @@ const PortfolioPage = async () => {
 						<h3 className="text-sub-heading-mobile text-yellow md:text-sub-heading">
 							Web
 						</h3>
-						<div className="flex items-center gap-32">
+						<div className="items-center gap-32 space-y-8 xl:flex xl:space-y-0">
 							<div className="flex-1 space-y-8">
 								<p className="text-body">
 									When developing websites I use primarily Next.js
@@ -171,14 +172,14 @@ const PortfolioPage = async () => {
 									product.
 								</p>
 							</div>
-							<ul className="flex flex-1 items-center justify-center space-x-16">
+							<ul className="flex flex-1 items-center justify-center gap-8 md:gap-16">
 								<li>
 									<Image
 										src={nextjs}
 										alt="Next.js logo"
 										width={96}
 										height={96}
-										className="object-contain"
+										className="aspect-square w-[48px] object-contain sm:w-[68px] md:w-[80px] xl:w-[96px]"
 									/>
 								</li>
 								<li>
@@ -187,7 +188,7 @@ const PortfolioPage = async () => {
 										alt="TailwindCSS logo"
 										width={96}
 										height={57.25}
-										className="object-contain"
+										className="aspect-[9.6/5.725] w-[48px] object-contain sm:w-[68px] md:w-[80px] xl:w-[96px]"
 									/>
 								</li>
 								<li>
@@ -196,7 +197,7 @@ const PortfolioPage = async () => {
 										alt="Vercel logo"
 										width={76}
 										height={65}
-										className="object-contain"
+										className="aspect-[7.6/6.5] w-[28px] object-contain sm:w-[48px] md:w-[60px] xl:w-[76px]"
 									/>
 								</li>
 								<li>
@@ -205,7 +206,7 @@ const PortfolioPage = async () => {
 										alt="Webflow logo"
 										width={96}
 										height={96}
-										className="object-contain"
+										className="aspect-square w-[38px] object-contain sm:w-[58px] md:w-[70px] xl:w-[80px]"
 									/>
 								</li>
 							</ul>
@@ -221,38 +222,50 @@ const PortfolioPage = async () => {
 						<span className="text-yellow">#postereveryday</span>{" "}
 						challenge. Here are some of the best ones
 					</p>
-					<div className="relative flex text-body">
-						<ul className="flex gap-16">
-							<li>
-								<Image src="" alt="" width={400} height={533} />
-							</li>
-							<li>
-								<Image src="" alt="" width={400} height={533} />
-							</li>
-							<li>
-								<Image src="" alt="" width={400} height={533} />
-							</li>
-							<li>
-								<Image src="" alt="" width={400} height={533} />
-							</li>
-						</ul>
-					</div>
-					<div className="relative flex text-body">
-						<ul className="flex gap-16">
-							<li>
-								<Image src="" alt="" width={400} height={533} />
-							</li>
-							<li>
-								<Image src="" alt="" width={400} height={533} />
-							</li>
-							<li>
-								<Image src="" alt="" width={400} height={533} />
-							</li>
-							<li>
-								<Image src="" alt="" width={400} height={533} />
-							</li>
-						</ul>
-					</div>
+					<PosterGallery
+						images={[
+							{
+								src: "/images/posters/poster_01.png",
+								alt: "poster1",
+							},
+							{
+								src: "/images/posters/poster_02.png",
+								alt: "poster2",
+							},
+							{
+								src: "/images/posters/poster_03.png",
+								alt: "poster3",
+							},
+							{
+								src: "/images/posters/poster_04.png",
+								alt: "poster4",
+							},
+						]}
+						imageWidth={400}
+						imageHeight={533}
+					/>
+					<PosterGallery
+						images={[
+							{
+								src: "/images/posters/poster_05.png",
+								alt: "poster5",
+							},
+							{
+								src: "/images/posters/poster_06.png",
+								alt: "poster6",
+							},
+							{
+								src: "/images/posters/poster_07.png",
+								alt: "poster7",
+							},
+							{
+								src: "/images/posters/poster_08.png",
+								alt: "poster8",
+							},
+						]}
+						imageWidth={400}
+						imageHeight={533}
+					/>
 				</Container>
 			</Section>
 			<CTA
