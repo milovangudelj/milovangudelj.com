@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { Section } from "@components/Section";
 import { CTA } from "@components/sections/CTA";
 
 import igLogo from "@images/igLogo.png";
@@ -22,8 +23,8 @@ const ContactPage = async () => {
 
 	return (
 		<>
-			<section className="scroll-mt-[72px] md:scroll-mt-[88px]">
-				<main className="mx-auto flex max-w-8xl items-center justify-between py-16 px-8 md:py-32 md:px-16">
+			<Section className="relative scroll-mt-[72px] overflow-hidden bg-black text-white md:scroll-mt-[88px]">
+				<main className="mx-auto flex max-w-7xl items-center justify-between px-8 2xl:px-0">
 					<div className="space-y-16">
 						<div className="space-y-8">
 							<h1 className="text-h1-mobile md:text-d1-mobile xl:text-d1">
@@ -86,7 +87,7 @@ const ContactPage = async () => {
 						</div>
 					</div>
 				</main>
-			</section>
+			</Section>
 			<CTA />
 		</>
 	);

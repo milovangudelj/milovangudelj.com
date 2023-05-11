@@ -1,14 +1,13 @@
 export const Footer = () => {
 	return (
 		<footer className="fixed bottom-0 w-full">
-			<div className="mx-auto flex w-full max-w-[1440px] items-center justify-between p-4 text-label-md md:px-16">
+			<div className="mx-auto flex w-full max-w-7xl items-center justify-between p-4 px-8 text-label-md 2xl:px-0">
 				<span>Milovan Gudelj &copy; 2023</span>
 				<ul className="flex space-x-4">
 					<li>
 						<a
 							target="_blank"
 							rel="noreferrer"
-
 							href="https://dribbble.com/milovangudelj"
 						>
 							Dr

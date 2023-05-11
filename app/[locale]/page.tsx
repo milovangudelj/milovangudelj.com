@@ -40,8 +40,8 @@ const Home = async () => {
 
 	return (
 		<>
-			<section>
-				<main className="relative mx-auto max-w-8xl py-16 px-8 md:py-32 md:px-16">
+			<Section className="bg-black text-white">
+				<main className="relative mx-auto max-w-7xl px-8 2xl:px-0">
 					<h1 className="mb-16 text-h1-mobile md:text-d1-mobile xl:text-d1">
 						{t("heroTitle.webDev")} <br className="hidden md:inline" />
 						<span className="text-yellow">/</span>{" "}
@@ -52,7 +52,7 @@ const Home = async () => {
 					</p>
 					<WigglyStars />
 				</main>
-			</section>
+			</Section>
 			<AboutSection />
 			<Section className="bg-green">
 				<Container className="md:space-y-32">
