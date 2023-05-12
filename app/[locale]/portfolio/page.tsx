@@ -205,19 +205,19 @@ const PortfolioPage = async () => {
 						images={[
 							{
 								src: "/images/posters/poster_01.png",
-								alt: "poster1",
+								alt: "#postereveryday design - Day 50",
 							},
 							{
 								src: "/images/posters/poster_02.png",
-								alt: "poster2",
+								alt: "#postereveryday design - Day 49",
 							},
 							{
 								src: "/images/posters/poster_03.png",
-								alt: "poster3",
+								alt: "#postereveryday design - Day 47",
 							},
 							{
 								src: "/images/posters/poster_04.png",
-								alt: "poster4",
+								alt: "#postereveryday design - Day 25",
 							},
 						]}
 						imageWidth={400}
@@ -228,19 +228,19 @@ const PortfolioPage = async () => {
 						images={[
 							{
 								src: "/images/posters/poster_05.png",
-								alt: "poster5",
+								alt: "#postereveryday design - Day 46",
 							},
 							{
 								src: "/images/posters/poster_06.png",
-								alt: "poster6",
+								alt: "#postereveryday design - Day 21",
 							},
 							{
 								src: "/images/posters/poster_07.png",
-								alt: "poster7",
+								alt: "#postereveryday design - Day 45",
 							},
 							{
 								src: "/images/posters/poster_08.png",
-								alt: "poster8",
+								alt: "#postereveryday design - Day 30",
 							},
 						]}
 						imageWidth={400}
