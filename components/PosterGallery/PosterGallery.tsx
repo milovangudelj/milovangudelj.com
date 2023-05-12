@@ -37,13 +37,24 @@ export const PosterGallery = ({
 				{images.map((image, index) => (
 					<li
 						key={`gallery_image_${index}`}
-						style={{ width: imageWidth, height: imageHeight }}
+						style={{
+							width: imageWidth,
+							height: imageHeight,
+							position: "relative",
+						}}
 					>
+						<span
+							aria-hidden
+							className="absolute inset-0 flex items-center justify-center bg-purple text-sub-heading-mobile text-black"
+						>
+							Loading...
+						</span>
 						<Image
 							src={image.src}
 							alt={image.alt}
 							width={imageWidth}
 							height={imageHeight}
+							className="relative"
 						/>
 					</li>
 				))}
