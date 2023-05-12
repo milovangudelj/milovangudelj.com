@@ -47,7 +47,9 @@ export const middleware = async (
 	}
 
 	const privatePathnameRegex = RegExp(
-		`^(/(${locales.join("|")}))?(${privatePages.join("|")})?/?$`,
+		`^((${locales
+			.map((locale) => `/${locale}`)
+			.join("|")}))?(${privatePages.join("|")})/?.*$`,
 		"i"
 	);
 	const isPrivatePage = privatePathnameRegex.test(request.nextUrl.pathname);
