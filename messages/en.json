@@ -92,7 +92,8 @@
 		},
 		"poster": {
 			"title": "Poster",
-			"description": "In 2020 I started the <em>#postereveryday</em> challenge. Here are some of the best ones."
+			"description": "In 2021 I started the <em>#postereveryday</em> challenge. Here are some of the best ones.",
+			"drag": "Drag or scroll"
 		},
 		"cta": {
 			"title": "Got a question?",

@@ -69,34 +69,35 @@
 	},
 	"Portfolio": {
 		"title": "Portfolio",
-		"description": "This is mainly a collection of poster designs I made, with a little bit of information about my past experiences.",
+		"description": "Questa è principalmente una collezione di poster che ho fatto, con un po' di informazioni sulle mie passate esperienze.",
 		"experience": {
-			"title": "Experience",
-			"p1": "I'm a computer science student at the University of Padua. In the past five years I gathered experience as a web developer and designer through various projects.",
-			"p2": "I did everything going from a handful of different websites, to logo designs and some sick posters.",
-			"p3": "My most successful endeavor so far has been my swimming club's website which regularly gets anywhere between 700 to 500 monthly visits.",
-			"p4": "And of course there's the website you're staring at right now. This one was particularly fun to make."
+			"title": "Esperienze",
+			"p1": "Sono uno studente di ingegneria informatica all'Università di Padova. Negli ultimi cinque anni ho raccolto esperienza come designer e sviluppatore web grazie a vari progetti.",
+			"p2": "Ho fatto un po' di tutto: da una serie di siti web, a logo design e dei poster super carini.",
+			"p3": "Ad oggi il mio progetto più di successo è stato il sito web della piscina comunale del mio paese che accumula regolarmente dalle 700 alle 500 visite mensili.",
+			"p4": "E poi ovviamente c'è il sito che stai guardando ora. Questo è stato particolarmente divertente da fare."
 		},
 		"software": {
 			"title": "Software",
-			"description": "I'm proficient with a range of different applications and tools.",
+			"description": "Sono competente nell'uso di una vasta gamma di applicazioni e strumenti.",
 			"design": {
 				"title": "Design",
-				"p1": "I used extensively Photoshop, Illustrator and Lightroom. I use Figma on a daily basis and I would say I have an advanced level of skill with it."
+				"p1": "Ho usato in modo esteso Photoshop, Illustrator e Lightroom. Utilizzo Figma giornalmente e oserei dire che ho un livello avanzato di conoscenza del software."
 			},
 			"web": {
 				"title": "Web",
-				"p1": "When developing websites I use primarily Next.js paired with TailwindCSS for styling and the Vercel platform for deployment.",
-				"p2": "In the past I&apos;ve used website builders like Wix, but I focused on Webflow since it gave me a deeper level of customization and control over the final product."
+				"p1": "Per lo sviluppo di siti e applicazioni web uso principalmente Next.js abbinato a TailwindCSS per gli stili e la piattaforma Vercel per l'hosting e la pubblicazione.",
+				"p2": "In passato ho usato anche website builders come Wix, ma mi sono concentrato più su Webflow visto il livello di personalizzazione e controllo più approfondito che mi consentiva di ottenere."
 			}
 		},
 		"poster": {
 			"title": "Poster",
-			"description": "In 2020 I started the <em>#postereveryday</em> challenge. Here are some of the best ones."
+			"description": "Nel 2021 ho iniziato la <em>#postereveryday</em> challenge. Questa è la selezione dei poster più belli.",
+			"drag": "Trascina"
 		},
 		"cta": {
-			"title": "Got a question?",
-			"description": "Don't hesitate to reach out if you have questions about anything you just read."
+			"title": "Hai domanade?",
+			"description": "Non esitare a contattarmi se sei incuriosito/a o hai domande su qualsiasi cosa."
 		}
 	},
 	"Music-Stats": {
