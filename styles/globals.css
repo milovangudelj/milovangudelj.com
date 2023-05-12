@@ -60,6 +60,10 @@
 		@apply font-space;
 	}
 
+	p {
+		@apply max-w-[500px];
+	}
+
 	.scrollbar-hidden::-webkit-scrollbar {
 		@apply hidden;
 	}

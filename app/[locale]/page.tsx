@@ -47,7 +47,7 @@ const Home = async () => {
 						<span className="text-yellow">/</span>{" "}
 						{t("heroTitle.designer")}
 					</h1>
-					<p className="text-sub-heading-mobile md:text-sub-heading xl:max-w-[36ch]">
+					<p className="text-sub-heading-mobile md:text-sub-heading">
 						{t("heroParagraph")}
 					</p>
 					<WigglyStars />
@@ -60,9 +60,7 @@ const Home = async () => {
 						<h2 className="text-h2-mobile md:mb-8 md:text-d2-mobile xl:text-d2">
 							{workT("title")}
 						</h2>
-						<p className="text-body xl:max-w-[680px]">
-							{workT("description")}
-						</p>
+						<p className="text-body">{workT("description")}</p>
 						<Smiley className="absolute -top-16 right-0 h-[64px] w-[65px] text-light-cyan md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]" />
 					</div>
 					<div className="relative">

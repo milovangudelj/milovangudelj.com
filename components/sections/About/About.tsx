@@ -33,7 +33,7 @@ export const AboutSection = asyncComponent(
 				<Container className="md:relative md:space-y-0">
 					<div
 						className={`flex justify-center md:absolute md:right-16 xl:right-32 ${
-							standAlone ? " md:top-32 md:rotate-12" : "md:-top-16"
+							standAlone ? " md:top-16 md:rotate-12" : "md:-top-16"
 						}`}
 					>
 						<Hourglass standAlone={standAlone}>
@@ -63,13 +63,9 @@ export const AboutSection = asyncComponent(
 							>
 								{t("main.title")}
 							</h2>
-							<p className="text-body xl:max-w-[680px]">
-								{t("main.p1")}
-							</p>
+							<p className="text-body">{t("main.p1")}</p>
 
-							<p className="text-body xl:max-w-[680px]">
-								{t("main.p2")}
-							</p>
+							<p className="text-body">{t("main.p2")}</p>
 						</div>
 						{!standAlone && (
 							<NowPlaying

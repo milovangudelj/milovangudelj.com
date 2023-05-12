@@ -37,8 +37,8 @@ const AboutPage = async () => {
 						<h2 className="text-h2-mobile md:text-d2-mobile xl:text-d2">
 							{t("music.title")}
 						</h2>
-						<p className="text-body xl:max-w-[680px]">{t("music.p1")}</p>
-						<p className="text-body xl:max-w-[680px]">
+						<p className="text-body">{t("music.p1")}</p>
+						<p className="text-body">
 							{t.rich("music.p2", {
 								link: (chunks) =>
 									(

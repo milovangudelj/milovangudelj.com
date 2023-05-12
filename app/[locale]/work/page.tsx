@@ -106,9 +106,7 @@ const WorkPage = async () => {
 						<h2 className="text-h1-mobile md:mb-8 md:text-d1-mobile xl:text-d1">
 							{t("title")}
 						</h2>
-						<p className="text-body xl:max-w-[680px]">
-							{t("description")}
-						</p>
+						<p className="text-body">{t("description")}</p>
 						<Smiley className="absolute -top-16 right-0 h-[64px] w-[65px] text-light-cyan md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]" />
 					</div>
 				</main>
