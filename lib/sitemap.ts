@@ -16,6 +16,16 @@ export async function generateSiteMap() {
 		<xhtml:link rel="alternate" hreflang="it" href="https://www.milovangudelj.com/it/about"/>
 	</url>
 	<url>
+		<loc>https://www.milovangudelj.com/work</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.milovangudelj.com/work"/>
+		<xhtml:link rel="alternate" hreflang="it" href="https://www.milovangudelj.com/it/work"/>
+	</url>
+	<url>
+		<loc>https://www.milovangudelj.com/portfolio</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.milovangudelj.com/portfolio"/>
+		<xhtml:link rel="alternate" hreflang="it" href="https://www.milovangudelj.com/it/portfolio"/>
+	</url>
+	<url>
 		<loc>https://www.milovangudelj.com/contact</loc>
 		<xhtml:link rel="alternate" hreflang="en" href="https://www.milovangudelj.com/contact"/>
 		<xhtml:link rel="alternate" hreflang="it" href="https://www.milovangudelj.com/it/contact"/>
@@ -29,11 +39,6 @@ export async function generateSiteMap() {
 		<loc>https://www.milovangudelj.com/music-stats</loc>
 		<xhtml:link rel="alternate" hreflang="en" href="https://www.milovangudelj.com/music-stats"/>
 		<xhtml:link rel="alternate" hreflang="it" href="https://www.milovangudelj.com/it/music-stats"/>
-	</url>
-	<url>
-		<loc>https://www.milovangudelj.com/work</loc>
-		<xhtml:link rel="alternate" hreflang="en" href="https://www.milovangudelj.com/work"/>
-		<xhtml:link rel="alternate" hreflang="it" href="https://www.milovangudelj.com/it/work"/>
 	</url>
 	${csUrls
 		.map((slug) => {
