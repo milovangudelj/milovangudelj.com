@@ -1,6 +1,7 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { ComponentProps } from "react";
 import { getTranslations } from "next-intl/server";
+import { twMerge } from "tailwind-merge";
 
 import { Section } from "../../Section";
 import { Container } from "../../Container";
@@ -12,6 +13,7 @@ import { asyncComponent } from "../../../lib/asyncComponent";
 
 export const AboutSection = asyncComponent(
 	async ({
+		className,
 		standAlone = false,
 		...props
 	}: ComponentProps<typeof Section> & { standAlone?: boolean }) => {
@@ -21,23 +23,31 @@ export const AboutSection = asyncComponent(
 			new Date().getFullYear() - new Date(2018, 10).getFullYear();
 
 		return (
-			<Section {...props}>
+			<Section
+				className={twMerge(
+					standAlone ? "bg-black text-white" : "",
+					className
+				)}
+				{...props}
+			>
 				<Container className="md:relative md:space-y-0">
 					<div
 						className={`flex justify-center md:absolute md:right-16 xl:right-32 ${
 							standAlone ? " md:top-32 md:rotate-12" : "md:-top-16"
 						}`}
 					>
-						<Hourglass>
-							<span className="absolute inset-0 left-4 overflow-hidden border-b-2">
+						<Hourglass standAlone={standAlone}>
+							<span
+								className={`absolute inset-0 left-4 overflow-hidden border-b-2 ${
+									standAlone ? "border-lilla" : "border-black"
+								}`}
+							>
 								<Image
 									src={me}
-									layout={"fill"}
 									quality={100}
 									priority
-									objectPosition={"top left"}
-									objectFit={"cover"}
 									alt={"My profile picture"}
+									className={`relative inset-0 object-cover object-left-top`}
 								/>
 							</span>
 						</Hourglass>

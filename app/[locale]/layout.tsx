@@ -105,6 +105,11 @@ export default async function RootLayout({
 			label: t("work"),
 		},
 		{
+			id: "portfolio",
+			href: "/portfolio",
+			label: t("portfolio"),
+		},
+		{
 			id: "contact",
 			href: "/contact",
 			label: t("contact"),

@@ -2,6 +2,7 @@
 	"Navbar": {
 		"about": "info",
 		"work": "lavoro",
+		"portfolio": "portfolio",
 		"contact": "contatti"
 	},
 	"Home": {
@@ -65,6 +66,39 @@
 	"Contact": {
 		"title": "I miei tag",
 		"description": "Mi trovi quasi ovunque scrivendo il mio nome. Nel caso in cui non funzionasse qua trovi alcuni link alle mie piattaforme social."
+	},
+	"Portfolio": {
+		"title": "Portfolio",
+		"description": "Questa è principalmente una collezione di poster che ho fatto, con un po' di informazioni sulle mie passate esperienze.",
+		"experience": {
+			"title": "Esperienze",
+			"p1": "Sono uno studente di ingegneria informatica all'Università di Padova. Negli ultimi cinque anni ho raccolto esperienza come designer e sviluppatore web grazie a vari progetti.",
+			"p2": "Ho fatto un po' di tutto: da una serie di siti web, a logo design e dei poster super carini.",
+			"p3": "Ad oggi il mio progetto più di successo è stato il sito web della piscina comunale del mio paese che accumula regolarmente dalle 700 alle 500 visite mensili.",
+			"p4": "E poi ovviamente c'è il sito che stai guardando ora. Questo è stato particolarmente divertente da fare."
+		},
+		"software": {
+			"title": "Software",
+			"description": "Sono competente nell'uso di una vasta gamma di applicazioni e strumenti.",
+			"design": {
+				"title": "Design",
+				"p1": "Ho usato in modo esteso Photoshop, Illustrator e Lightroom. Utilizzo Figma giornalmente e oserei dire che ho un livello avanzato di conoscenza del software."
+			},
+			"web": {
+				"title": "Web",
+				"p1": "Per lo sviluppo di siti e applicazioni web uso principalmente Next.js abbinato a TailwindCSS per gli stili e la piattaforma Vercel per l'hosting e la pubblicazione.",
+				"p2": "In passato ho usato anche website builders come Wix, ma mi sono concentrato più su Webflow visto il livello di personalizzazione e controllo più approfondito che mi consentiva di ottenere."
+			}
+		},
+		"poster": {
+			"title": "Poster",
+			"description": "Nel 2021 ho iniziato la <em>#postereveryday</em> challenge. Questa è la selezione dei poster più belli.",
+			"drag": "Trascina"
+		},
+		"cta": {
+			"title": "Hai domanade?",
+			"description": "Non esitare a contattarmi se sei incuriosito/a o hai domande su qualsiasi cosa."
+		}
 	},
 	"Music-Stats": {
 		"p1": "Una versione aggiornata del tuo Spotify Wrapped {number}.",

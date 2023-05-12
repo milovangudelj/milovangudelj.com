@@ -100,8 +100,8 @@ const WorkPage = async () => {
 
 	return (
 		<>
-			<section className="scroll-mt-[72px] bg-black text-white md:scroll-mt-[88px]">
-				<main className="mx-auto max-w-8xl space-y-16 py-16 px-8 md:space-y-32 md:py-32 md:px-16">
+			<Section className="relative scroll-mt-[72px] overflow-hidden bg-black text-white md:scroll-mt-[88px]">
+				<main className="mx-auto max-w-7xl space-y-16 px-8 md:space-y-32 2xl:px-0">
 					<div className="relative space-y-8 md:space-y-0">
 						<h2 className="text-h1-mobile md:mb-8 md:text-d1-mobile xl:text-d1">
 							{t("title")}
@@ -112,7 +112,7 @@ const WorkPage = async () => {
 						<Smiley className="absolute -top-16 right-0 h-[64px] w-[65px] text-light-cyan md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]" />
 					</div>
 				</main>
-			</section>
+			</Section>
 			<ul>
 				{projects.map(({ id, ...props }, i) => (
 					<li key={id}>

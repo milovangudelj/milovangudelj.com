@@ -2,6 +2,7 @@
 	"Navbar": {
 		"about": "about",
 		"work": "work",
+		"portfolio": "portfolio",
 		"contact": "contact"
 	},
 	"Home": {
@@ -65,6 +66,39 @@
 	"Contact": {
 		"title": "My @s",
 		"description": "You can find me pretty much anywhere by typing in my name. But just in case here you can find a few links to my social platforms."
+	},
+	"Portfolio": {
+		"title": "Portfolio",
+		"description": "This is mainly a collection of poster designs I made, with a little bit of information about my past experiences.",
+		"experience": {
+			"title": "Experience",
+			"p1": "I'm a computer science student at the University of Padua. In the past five years I gathered experience as a web developer and designer through various projects.",
+			"p2": "I did everything going from a handful of different websites, to logo designs and some sick posters.",
+			"p3": "My most successful endeavor so far has been my swimming club's website which regularly gets anywhere between 700 to 500 monthly visits.",
+			"p4": "And of course there's the website you're staring at right now. This one was particularly fun to make."
+		},
+		"software": {
+			"title": "Software",
+			"description": "I'm proficient with a range of different applications and tools.",
+			"design": {
+				"title": "Design",
+				"p1": "I used extensively Photoshop, Illustrator and Lightroom. I use Figma on a daily basis and I would say I have an advanced level of skill with it."
+			},
+			"web": {
+				"title": "Web",
+				"p1": "When developing websites I use primarily Next.js paired with TailwindCSS for styling and the Vercel platform for deployment.",
+				"p2": "In the past I&apos;ve used website builders like Wix, but I focused on Webflow since it gave me a deeper level of customization and control over the final product."
+			}
+		},
+		"poster": {
+			"title": "Poster",
+			"description": "In 2021 I started the <em>#postereveryday</em> challenge. Here are some of the best ones.",
+			"drag": "Drag or scroll"
+		},
+		"cta": {
+			"title": "Got a question?",
+			"description": "Don't hesitate to reach out if you have questions about anything you just read."
+		}
 	},
 	"Music-Stats": {
 		"p1": "An up to date miniature version of your {number} Spotify Wrapped.",
