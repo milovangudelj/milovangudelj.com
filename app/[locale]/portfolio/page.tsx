@@ -31,17 +31,16 @@ export const metadata = {
 };
 
 const PortfolioPage = async () => {
-	const t = await getTranslations("Contact");
+	const t = await getTranslations("Portfolio");
 
 	return (
 		<>
 			<Section className="relative scroll-mt-[72px] overflow-hidden bg-salmon md:scroll-mt-[88px]">
 				<main className="relative mx-auto flex max-w-7xl items-center justify-between px-8 2xl:px-0">
 					<div className="space-y-8">
-						<h1 className="text-d2-mobile xl:text-d2">Portfolio</h1>
+						<h1 className="text-d2-mobile xl:text-d2">{t("title")}</h1>
 						<p className="text-sub-heading sm:max-w-[468px]">
-							This is mainly a collection of poster designs I made, with
-							a little bit of information about my past experiences.
+							{t("description")}
 						</p>
 					</div>
 					<div className="absolute -bottom-20 -right-[360px] sm:-top-2 md:-right-64 xl:-right-16">
@@ -57,18 +56,13 @@ const PortfolioPage = async () => {
 			</Section>
 			<Section className="bg-black py-16 text-white md:py-32 md:px-16">
 				<Container>
-					<h2 className="text-h2-mobile md:text-h2">Experience</h2>
+					<h2 className="text-h2-mobile md:text-h2">
+						{t("experience.title")}
+					</h2>
 					<div className="relative space-y-8 text-body md:flex md:space-y-0">
 						<div className="flex-1 space-y-8 md:mr-32">
-							<p>
-								I&apos;m a computer science student at the University of
-								Padua. In the past five years I gathered experience as a
-								web developer and designer through various projects.
-							</p>
-							<p>
-								I did everything going from a handful of different
-								websites, to logo designs and some sick posters.
-							</p>
+							<p>{t("experience.p1")}</p>
+							<p>{t("experience.p2")}</p>
 						</div>
 						<div className="absolute top-1/2 left-1/2 mt-[18px] hidden flex-none -translate-x-1/2 -translate-y-1/2 md:block">
 							<Image
@@ -81,38 +75,27 @@ const PortfolioPage = async () => {
 							/>
 						</div>
 						<div className="flex-1 space-y-8 md:ml-32">
-							<p>
-								My most successful endeavor so far has been my swimming
-								club&apos;s website which regularly gets anywhere
-								between 700 to 500 monthly visits.
-							</p>
-							<p>
-								And of course there&apos;s the website you&apos;re
-								staring at right now. This one was particularly fun to
-								make.
-							</p>
+							<p>{t("experience.p3")}</p>
+							<p>{t("experience.p4")}</p>
 						</div>
 					</div>
 				</Container>
 			</Section>
 			<Section className="bg-black py-16 text-white md:py-32 md:px-16">
 				<Container>
-					<h2 className="text-h2-mobile md:text-h2">Software</h2>
+					<h2 className="text-h2-mobile md:text-h2">
+						{t("software.title")}
+					</h2>
 					<p className="mt-16 max-w-[468px] text-sub-heading-mobile md:text-sub-heading">
-						I&apos;m proficient with a range of different applications and
-						tools.
+						{t("software.description")}
 					</p>
 					<div className="space-y-8">
 						<h3 className="text-sub-heading-mobile text-yellow md:text-sub-heading">
-							Design
+							{t("software.design.title")}
 						</h3>
 						<div className="items-center gap-32 space-y-16 xl:flex xl:space-y-0">
 							<div className="flex-1 space-y-8">
-								<p className="text-body">
-									I used extensively Photoshop, Illustrator and
-									Lightroom. I use Figma on a daily basis and I would
-									say I have an advanced level of skill with it.
-								</p>
+								<p className="text-body">{t("software.design.p1")}</p>
 							</div>
 							<ul className="flex flex-1 items-center justify-center gap-8 md:gap-16">
 								<li>
@@ -156,21 +139,12 @@ const PortfolioPage = async () => {
 					</div>
 					<div className="space-y-8">
 						<h3 className="text-sub-heading-mobile text-yellow md:text-sub-heading">
-							Web
+							{t("software.web.title")}
 						</h3>
 						<div className="items-center gap-32 space-y-16 xl:flex xl:space-y-0">
 							<div className="flex-1 space-y-8">
-								<p className="text-body">
-									When developing websites I use primarily Next.js
-									paired with TailwindCSS for styling and the Vercel
-									platform for deployment.
-								</p>
-								<p className="text-body">
-									In the past I&apos;ve used website builders like Wix,
-									but I focused on Webflow since it gave me a deeper
-									level of customization and control over the final
-									product.
-								</p>
+								<p className="text-body">{t("software.web.p1")}</p>
+								<p className="text-body">{t("software.web.p2")}</p>
 							</div>
 							<ul className="flex flex-1 items-center justify-center gap-8 md:gap-16">
 								<li>
@@ -216,11 +190,16 @@ const PortfolioPage = async () => {
 			</Section>
 			<Section className="overflow-hidden bg-black py-16 text-white md:py-32 md:px-16">
 				<Container>
-					<h2 className="text-h2-mobile md:text-h2">Poster</h2>
+					<h2 className="text-h2-mobile md:text-h2">
+						{t("poster.title")}
+					</h2>
 					<p className="mt-16 max-w-[468px] text-sub-heading-mobile md:text-sub-heading">
-						In 2020 I started the{" "}
-						<span className="text-yellow">#postereveryday</span>{" "}
-						challenge. Here are some of the best ones
+						{t.rich("poster.description", {
+							em: (chunks) =>
+								(
+									<span className="text-yellow">{chunks}</span>
+								) as unknown as string,
+						})}
 					</p>
 					<PosterGallery
 						images={[
@@ -268,12 +247,7 @@ const PortfolioPage = async () => {
 					/>
 				</Container>
 			</Section>
-			<CTA
-				title={"Got a question?"}
-				description={
-					"Don’t hesitate to reach out if you have questions about anything you just read."
-				}
-			/>
+			<CTA title={t("cta.title")} description={t("cta.description")} />
 		</>
 	);
 };
