@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getServerSession } from "next-auth/next";
 import { Analytics } from "@vercel/analytics/react";
-import { Inter, Space_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 
 import "@styles/globals.css";
 
@@ -10,26 +10,35 @@ import { SessionProvider } from "@lib/sessionProvider";
 import { Navbar } from "@components/Navbar";
 import { Footer } from "@components/Footer";
 
-const inter = Inter({
+const inter = localFont({
+	src: "../../public/fonts/Inter-Var.woff2",
+	display: "swap",
 	preload: true,
-	subsets: ["latin"],
+	weight: "100 900",
+	style: "oblique -10deg 0deg",
+	variable: "--font-inter",
 });
-const spaceGrotesk = Space_Grotesk({
+const spaceGrotesk = localFont({
+	src: "../../public/fonts/SpaceGrotesk-Var.woff2",
+	display: "swap",
 	preload: true,
-	subsets: ["latin"],
+	weight: "300 700",
+	style: "normal",
+	variable: "--font-space",
 });
 
 export const metadata = {
 	title: "Milovan Gudelj - Web developer / UI designer",
 	description:
 		"I design and develop engaging websites and delightful digital experiences.",
+	metadataBase: new URL("https://www.milovangudelj.com"),
 	alternates: {
-		canonical: "https://www.milovangudelj.com",
-		languages: { "it-IT": "https://www.milovangudelj.com/it" },
+		canonical: "/",
+		languages: { "it-IT": "/it" },
 	},
 	openGraph: {
 		images: {
-			url: "https://www.milovangudelj.com/images/og-image.png",
+			url: "/images/og-image.png",
 			width: 1280,
 			height: 800,
 		},
@@ -119,7 +128,7 @@ export default async function RootLayout({
 	return (
 		<html
 			lang={locale}
-			className={`${inter.className} ${spaceGrotesk.className}`}
+			className={`${inter.variable} ${spaceGrotesk.variable}`}
 		>
 			<body className="h-fill scroll-smooth bg-black font-sans text-white">
 				<SessionProvider session={session}>
