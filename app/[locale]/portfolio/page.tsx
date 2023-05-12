@@ -222,6 +222,7 @@ const PortfolioPage = async () => {
 						]}
 						imageWidth={400}
 						imageHeight={533}
+						dragText={t("poster.drag")}
 					/>
 					<PosterGallery
 						images={[
@@ -244,6 +245,7 @@ const PortfolioPage = async () => {
 						]}
 						imageWidth={400}
 						imageHeight={533}
+						dragText={t("poster.drag")}
 					/>
 				</Container>
 			</Section>

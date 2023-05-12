@@ -8,12 +8,14 @@ interface GalleryProps extends ComponentProps<"div"> {
 	images: { src: string | StaticImageData; alt: string }[];
 	imageWidth?: number;
 	imageHeight?: number;
+	dragText?: string;
 }
 
 export const PosterGallery = ({
 	images,
 	imageWidth,
 	imageHeight,
+	dragText = "Drag or scroll",
 	...porps
 }: GalleryProps) => {
 	const imagesRef = useRef<HTMLUListElement>(null);
@@ -60,7 +62,7 @@ export const PosterGallery = ({
 				))}
 			</ul>
 			<span className="mt-8 inline-block text-button">
-				Drag or Scroll <span className="text-yellow">→</span>
+				{dragText} <span className="text-yellow">→</span>
 			</span>
 		</div>
 	);
