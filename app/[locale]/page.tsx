@@ -57,7 +57,7 @@ const Home = async () => {
 			<Section className="bg-green">
 				<Container className="md:space-y-32">
 					<div className="relative space-y-8 md:space-y-0">
-						<h2 className="text-h2-mobile md:mb-8 md:text-d2-mobile xl:text-d2">
+						<h2 className="text-h2-mobile md:mb-8 md:text-h2">
 							{workT("title")}
 						</h2>
 						<p className="text-body">{workT("description")}</p>

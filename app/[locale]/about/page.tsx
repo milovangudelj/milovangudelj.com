@@ -34,7 +34,7 @@ const AboutPage = async () => {
 				</div>
 				<Container className="relative">
 					<div className="space-y-8">
-						<h2 className="text-h2-mobile md:text-d2-mobile xl:text-d2">
+						<h2 className="text-h2-mobile md:text-h2">
 							{t("music.title")}
 						</h2>
 						<p className="text-body">{t("music.p1")}</p>

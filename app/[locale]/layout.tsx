@@ -89,7 +89,7 @@ export default async function RootLayout({
 }) {
 	const session = await getServerSession();
 
-	const locale = await getLocale();
+	const locale = getLocale();
 
 	// Show a 404 error if the user requests an unknown locale
 	if (params.locale !== locale) {

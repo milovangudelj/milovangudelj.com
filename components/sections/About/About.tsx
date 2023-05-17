@@ -57,8 +57,8 @@ export const AboutSection = asyncComponent(
 							<h2
 								className={
 									standAlone
-										? "text-h1-mobile md:text-d1-mobile xl:text-d1"
-										: "text-h2-mobile md:text-d2-mobile xl:text-d2"
+										? "text-d2-mobile xl:text-d2"
+										: "text-h2-mobile md:text-h2"
 								}
 							>
 								{t("main.title")}

@@ -178,9 +178,13 @@ const ProjectDescription = ({
 				references={description.references}
 			/>
 			{caseStudy && (
-				<Link href={`/work/${caseStudy.slug}`} className="text-black">
-					<Button>{readCSText} ↗</Button>
-				</Link>
+				<Button
+					as={Link}
+					href={`/work/${caseStudy.slug}`}
+					className="text-black"
+				>
+					{readCSText} ↗
+				</Button>
 			)}
 		</div>
 	);
