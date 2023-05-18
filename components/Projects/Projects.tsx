@@ -46,7 +46,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
 			<ul
 				onScroll={handleScroll}
 				ref={scrollContainer.ref}
-				className="scrollbar-hidden relative flex cursor-move overflow-x-scroll max-md:opacity-0"
+				className="scrollbar-hidden relative flex cursor-move overflow-x-scroll bg-green max-md:opacity-0"
 			>
 				{projects.map(({ id, ...props }) => (
 					<li
