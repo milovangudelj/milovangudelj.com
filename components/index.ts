@@ -5,6 +5,7 @@ export * from "./Navbar";
 export * from "./Footer";
 export * from "./WigglyStars";
 export * from "./Hourglass";
+export * from "./Projects";
 export * from "./ProjectCard";
 export * from "./ProjectShowcase";
 export * from "./Section";

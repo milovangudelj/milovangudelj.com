@@ -19,7 +19,12 @@ export const PosterGallery = ({
 	...porps
 }: GalleryProps) => {
 	const imagesRef = useRef<HTMLUListElement>(null);
-	const scrollContainer = useScrollContainer();
+	const scrollContainer = useScrollContainer({
+		mouseScroll: {
+			rubberBand: false,
+			inertia: false,
+		},
+	});
 
 	const handleScroll: React.UIEventHandler<HTMLUListElement> = (e) => {
 		const scrollOffset = e.currentTarget.scrollLeft;
@@ -71,6 +76,8 @@ export const PosterGallery = ({
 						className="flex-none bg-[#fefefe]/0"
 					></li>
 				))}
+				<span className="absolute top-0 -left-[calc((100vw-min(1280px,_100vw))/2)] bottom-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] bg-gradient-to-l from-black/0 to-black xl:block"></span>
+				<span className="absolute top-0 left-full bottom-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] bg-gradient-to-r from-black/0 to-black xl:block"></span>
 			</ul>
 			<span className="mt-8 inline-block text-button">
 				{dragText} <span className="text-yellow">→</span>
