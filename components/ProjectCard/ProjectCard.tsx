@@ -22,7 +22,7 @@ export const ProjectCard = ({ title, href, link, image }: ProjectCardProps) => {
 					alt="Dummy project card image"
 				/>
 			</Link>
-			<div className="flex flex-col bg-green">
+			<div className="flex flex-col">
 				<Link
 					href={href}
 					className="group w-fit text-sub-heading-mobile font-medium md:text-sub-heading"
