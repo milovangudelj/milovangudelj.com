@@ -60,20 +60,18 @@ export const CTA = asyncComponent(
 						<h2 className="text-h2-mobile md:text-h2">
 							{title ?? t("title")}
 						</h2>
-						<p className="text-body xl:max-w-[468px]">
-							{description ?? t("description")}
-						</p>
+						<p className="text-body">{description ?? t("description")}</p>
 					</div>
-					<div className="flex items-center space-x-4 py-0.5">
+					<div className="flex w-fit items-center space-x-4 py-0.5">
 						<a
 							href="mailto:milovan.gudelj@gmail.com"
 							target="_blank"
 							rel="noreferrer"
-							className="text-body font-semibold md:text-sub-heading-mobile xl:text-sub-heading"
+							className="peer text-body font-semibold md:text-sub-heading-mobile xl:text-sub-heading"
 						>
 							milovan.gudelj@gmail.com
 						</a>
-						<span className="text-yellow drop-shadow-brutal">
+						<span className="text-yellow drop-shadow-brutal transition will-change-transform peer-hover:translate-x-2 peer-hover:-translate-y-2">
 							<svg
 								width="48"
 								height="48"

@@ -106,10 +106,10 @@ const MusicStatsPage = async () => {
 		<>
 			<Section className="relative overflow-hidden bg-purple">
 				<Container className="space-y-8">
-					<h1 className="relative z-[1] text-h1-mobile md:text-d2-mobile xl:text-d2">
+					<h1 className="relative z-[1] text-d2-mobile md:text-d2">
 						<span className="text-yellow">Music</span>-Stats
 					</h1>
-					<p className="relative z-[1] text-sub-heading-mobile md:text-sub-heading xl:max-w-[30ch]">
+					<p className="relative z-[1] text-sub-heading-mobile md:text-sub-heading">
 						{t("p1", { number: new Date().getFullYear() })}
 					</p>
 					<div className="text-body">

@@ -57,8 +57,8 @@ export const ControlsBar = ({
 	}, [watchFilter, filterChangeHandler]);
 
 	return (
-		<Section className="bg-black text-white">
-			<Container className="flex flex-wrap items-center justify-between gap-[30px] space-y-0 py-[30px] md:py-[30px]">
+		<section className="bg-black text-white ">
+			<Container className="flex flex-wrap items-center justify-between gap-8 space-y-0 py-4">
 				<form className="flex flex-wrap items-center gap-x-8 gap-y-4">
 					<div className="flex items-center">
 						<span className="mr-4 block text-label-md text-white/80 md:inline-block">
@@ -157,6 +157,6 @@ export const ControlsBar = ({
 						: messages.download.action}
 				</Button>
 			</Container>
-		</Section>
+		</section>
 	);
 };

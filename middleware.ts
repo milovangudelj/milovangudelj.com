@@ -1,7 +1,37 @@
 import { NextRequest, NextResponse } from "next/server";
+import { withAuth } from "next-auth/middleware";
 import createIntlMiddleware from "next-intl/middleware";
 
 import { generateSiteMap } from "@lib/sitemap";
+
+const locales = ["en", "it"];
+const privatePages = ["/music-stats"];
+
+const intlMiddleware = createIntlMiddleware({
+	// A list of all locales that are supported
+	locales,
+
+	// If this locale is matched, pathnames work without a prefix (e.g. `/about`)
+	defaultLocale: "en",
+	alternateLinks: false,
+});
+
+const authMiddleware = withAuth(
+	// Note that this callback is only invoked if
+	// the `authorized` callback has returned `true`
+	// and not for pages listed in `pages`.
+	function onSuccess(req) {
+		return intlMiddleware(req);
+	},
+	{
+		callbacks: {
+			authorized: ({ token }) => token != null,
+		},
+		pages: {
+			signIn: "/login",
+		},
+	}
+);
 
 export const middleware = async (
 	request: NextRequest
@@ -16,17 +46,19 @@ export const middleware = async (
 		});
 	}
 
-	// Returns the intl middleware
-	const intlMiddleware = createIntlMiddleware({
-		// A list of all locales that are supported
-		locales: ["en", "it"],
+	const privatePathnameRegex = RegExp(
+		`^((${locales
+			.map((locale) => `/${locale}`)
+			.join("|")}))?(${privatePages.join("|")})/?.*$`,
+		"i"
+	);
+	const isPrivatePage = privatePathnameRegex.test(request.nextUrl.pathname);
 
-		// If this locale is matched, pathnames work without a prefix (e.g. `/about`)
-		defaultLocale: "en",
-		alternateLinks: false,
-	});
-
-	return intlMiddleware(request);
+	if (isPrivatePage) {
+		return (authMiddleware as any)(request);
+	} else {
+		return intlMiddleware(request);
+	}
 };
 
 export const config = {

@@ -4,9 +4,7 @@ import { getTopArtists } from "@lib/mySpotify";
 import { shuffle } from "@utils/shuffle";
 import { spotifyColors } from "@utils/getColors";
 
-export const config = {
-	runtime: "edge",
-};
+export const runtime = "edge";
 
 export async function GET(req: NextRequest) {
 	const response = await getTopArtists({ limit: 5, range: "medium" });

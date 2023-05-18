@@ -114,7 +114,7 @@ export const Poster = forwardRef<HTMLDivElement, PosterProps>(
 					</div>
 				</div>
 				<div className="flex items-end justify-between text-h4-mobile">
-					<p>
+					<p className="max-w-none">
 						<span className="opacity-40">Get your own at</span> <br />
 						milovangudelj.com
 						<span style={{ color: palette.fg }}>/music-stats</span>

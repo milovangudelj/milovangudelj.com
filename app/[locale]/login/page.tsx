@@ -27,7 +27,7 @@ const LoginPage = async () => {
 				<h1 className="mb-8 text-sub-heading-mobile md:text-sub-heading xl:text-h5">
 					Login with Spotify
 				</h1>
-				<p className="text-body xl:max-w-[680px]">
+				<p className="text-body">
 					Hold tight... I&apos;m still working on it. Check back tomorrow
 					or keep an eye on my IG stories (
 					<a

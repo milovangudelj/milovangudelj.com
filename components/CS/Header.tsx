@@ -42,7 +42,7 @@ export const Header = ({
 			>
 				{title}
 			</h1>
-			<span className="mb-8 block text-h1-mobile xl:text-h1">
+			<span className="mb-8 block text-d2-mobile md:text-d2">
 				{subtitle}
 			</span>
 			<RichText content={intro.raw} renderers={renderers("csIntro")} />

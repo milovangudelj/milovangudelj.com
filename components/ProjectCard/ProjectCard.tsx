@@ -23,9 +23,15 @@ export const ProjectCard = ({ title, href, link, image }: ProjectCardProps) => {
 				/>
 			</Link>
 			<div className="flex flex-col">
-				<span className="text-sub-heading-mobile font-medium md:text-sub-heading">
-					{title} →
-				</span>
+				<Link
+					href={href}
+					className="group w-fit text-sub-heading-mobile font-medium md:text-sub-heading"
+				>
+					{title}{" "}
+					<span className="inline-block transition will-change-transform group-hover:translate-x-1">
+						→
+					</span>
+				</Link>
 				<span className="text-label-md text-dark-me">{link}</span>
 			</div>
 		</div>

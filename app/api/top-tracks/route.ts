@@ -2,9 +2,7 @@ import { type NextRequest } from "next/server";
 
 import { getTopTracks } from "@lib/mySpotify";
 
-export const config = {
-	runtime: "edge",
-};
+export const runtime = "edge";
 
 export async function GET(req: NextRequest) {
 	const response = await getTopTracks();

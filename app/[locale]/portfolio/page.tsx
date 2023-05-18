@@ -39,9 +39,7 @@ const PortfolioPage = async () => {
 				<main className="relative mx-auto flex max-w-7xl items-center justify-between px-8 2xl:px-0">
 					<div className="space-y-8">
 						<h1 className="text-d2-mobile xl:text-d2">{t("title")}</h1>
-						<p className="text-sub-heading sm:max-w-[468px]">
-							{t("description")}
-						</p>
+						<p className="text-sub-heading">{t("description")}</p>
 					</div>
 					<div className="absolute -bottom-20 -right-[360px] sm:-top-2 md:-right-64 xl:-right-16">
 						<Image
@@ -86,7 +84,7 @@ const PortfolioPage = async () => {
 					<h2 className="text-h2-mobile md:text-h2">
 						{t("software.title")}
 					</h2>
-					<p className="mt-16 max-w-[468px] text-sub-heading-mobile md:text-sub-heading">
+					<p className="mt-16 text-sub-heading-mobile md:text-sub-heading">
 						{t("software.description")}
 					</p>
 					<div className="space-y-8">
@@ -193,7 +191,7 @@ const PortfolioPage = async () => {
 					<h2 className="text-h2-mobile md:text-h2">
 						{t("poster.title")}
 					</h2>
-					<p className="mt-16 max-w-[468px] text-sub-heading-mobile md:text-sub-heading">
+					<p className="mt-16 text-sub-heading-mobile md:text-sub-heading">
 						{t.rich("poster.description", {
 							em: (chunks) =>
 								(

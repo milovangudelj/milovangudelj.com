@@ -1,19 +1,3 @@
-@font-face {
-	font-family: "Space Grotesk";
-	font-display: swap;
-	src: url("/fonts/SpaceGrotesk-Var.woff2") format("woff2");
-	font-weight: 300 700;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: "Inter";
-	font-display: swap;
-	src: url("/fonts/Inter-Var.woff2") format("woff2");
-	font-weight: 100 900;
-	font-style: oblique -10deg 0deg;
-}
-
 @tailwind base;
 
 @layer base {
@@ -74,6 +58,10 @@
 	.text-button-md,
 	.text-button-sm {
 		@apply font-space;
+	}
+
+	p {
+		@apply max-w-[500px];
 	}
 
 	.scrollbar-hidden::-webkit-scrollbar {

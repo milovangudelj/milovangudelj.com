@@ -103,12 +103,10 @@ const WorkPage = async () => {
 			<Section className="relative scroll-mt-[72px] overflow-hidden bg-black text-white md:scroll-mt-[88px]">
 				<main className="mx-auto max-w-7xl space-y-16 px-8 md:space-y-32 2xl:px-0">
 					<div className="relative space-y-8 md:space-y-0">
-						<h2 className="text-h1-mobile md:mb-8 md:text-d1-mobile xl:text-d1">
+						<h1 className="text-d2-mobile md:mb-8 xl:text-d2">
 							{t("title")}
-						</h2>
-						<p className="text-body xl:max-w-[680px]">
-							{t("description")}
-						</p>
+						</h1>
+						<p className="text-body">{t("description")}</p>
 						<Smiley className="absolute -top-16 right-0 h-[64px] w-[65px] text-light-cyan md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]" />
 					</div>
 				</main>

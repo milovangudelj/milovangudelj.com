@@ -27,12 +27,8 @@ const ContactPage = async () => {
 				<main className="mx-auto flex max-w-7xl items-center justify-between px-8 2xl:px-0">
 					<div className="space-y-16">
 						<div className="space-y-8">
-							<h1 className="text-h1-mobile md:text-d1-mobile xl:text-d1">
-								{t("title")}
-							</h1>
-							<p className="text-body xl:max-w-[680px]">
-								{t("description")}
-							</p>
+							<h1 className="text-d2-mobile xl:text-d2">{t("title")}</h1>
+							<p className="text-body">{t("description")}</p>
 						</div>
 						<div className="flex items-center space-x-6 py-0.5 font-space md:space-x-12">
 							<a
