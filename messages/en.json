@@ -87,7 +87,7 @@
 			"web": {
 				"title": "Web",
 				"p1": "When developing websites I use primarily Next.js paired with TailwindCSS for styling and the Vercel platform for deployment.",
-				"p2": "In the past I&apos;ve used website builders like Wix, but I focused on Webflow since it gave me a deeper level of customization and control over the final product."
+				"p2": "In the past I've used website builders like Wix, but I focused on Webflow since it gave me a deeper level of customization and control over the final product."
 			}
 		},
 		"poster": {
