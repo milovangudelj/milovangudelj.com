@@ -20,16 +20,17 @@
 			}
 		],
 		"paths": {
-			"@components": ["./components"],
-			"@components/*": ["./components/*"],
-			"@lib": ["./lib"],
-			"@lib/*": ["./lib/*"],
-			"@utils": ["./utils"],
-			"@utils/*": ["./utils/*"],
-			"@styles": ["./styles"],
-			"@styles/*": ["./styles/*"],
-			"@images": ["./public/images"],
-			"@images/*": ["./public/images/*"]
+			"~/*": ["./*"],
+			"~components": ["./components"],
+			"~components/*": ["./components/*"],
+			"~lib": ["./lib"],
+			"~lib/*": ["./lib/*"],
+			"~utils": ["./utils"],
+			"~utils/*": ["./utils/*"],
+			"~styles": ["./styles"],
+			"~styles/*": ["./styles/*"],
+			"~images": ["./public/images"],
+			"~images/*": ["./public/images/*"]
 		}
   },
   "include": [

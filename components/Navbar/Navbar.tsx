@@ -2,10 +2,10 @@
 
 import { Link } from "next-intl";
 import { RefCallback, useCallback, useState } from "react";
-import { Button } from "@components/Button";
-import { LanguageSwitch } from "@components/LanguageSwitch";
-import { MobileNav } from "@components/MobileNav";
-import { NavLinks } from "@components/NavLinks";
+import { Button } from "~components/Button";
+import { LanguageSwitch } from "~components/LanguageSwitch";
+import { MobileNav } from "~components/MobileNav";
+import { NavLinks } from "~components/NavLinks";
 
 export const Navbar = ({
 	links,

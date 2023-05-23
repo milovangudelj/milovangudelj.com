@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "next-auth/middleware";
 import createIntlMiddleware from "next-intl/middleware";
 
-import { generateSiteMap } from "@lib/sitemap";
+import { generateSiteMap } from "~lib/sitemap";
 
 const locales = ["en", "it"];
 const privatePages = ["/music-stats"];

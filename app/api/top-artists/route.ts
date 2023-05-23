@@ -1,8 +1,8 @@
 import { type NextRequest } from "next/server";
 
-import { getTopArtists } from "@lib/mySpotify";
-import { shuffle } from "@utils/shuffle";
-import { spotifyColors } from "@utils/getColors";
+import { getTopArtists } from "~lib/mySpotify";
+import { shuffle } from "~utils/shuffle";
+import { spotifyColors } from "~utils/getColors";
 
 export const runtime = "edge";
 

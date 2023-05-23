@@ -3,12 +3,12 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
-import { Artist, Track } from "@lib/types";
-import { getPalette, Palette } from "@utils/getPalette";
+import { Artist, Track } from "~lib/types";
+import { getPalette, Palette } from "~utils/getPalette";
 
-import { BigAssStar } from "@components/BigAssStar";
-import { Container } from "@components/Container";
-import { Section } from "@components/Section";
+import { BigAssStar } from "~components/BigAssStar";
+import { Container } from "~components/Container";
+import { Section } from "~components/Section";
 
 import { FormData } from "./ControlsBar";
 import { StatsSection } from "./StatsSection";

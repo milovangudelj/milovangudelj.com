@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { gql } from "graphql-request";
 
-import { hygraph } from "@lib/hygraph";
+import { hygraph } from "~lib/hygraph";
 
 const GET_SLUGS = gql`
 	{

@@ -4,11 +4,11 @@ import { getServerSession } from "next-auth/next";
 import { Analytics } from "@vercel/analytics/react";
 import localFont from "next/font/local";
 
-import "@styles/globals.css";
+import "~styles/globals.css";
 
-import { SessionProvider } from "@lib/sessionProvider";
-import { Navbar } from "@components/Navbar";
-import { Footer } from "@components/Footer";
+import { SessionProvider } from "~lib/sessionProvider";
+import { Navbar } from "~components/Navbar";
+import { Footer } from "~components/Footer";
 
 const inter = localFont({
 	src: "../../public/fonts/Inter-Var.woff2",

@@ -1,11 +1,11 @@
 import { gql } from "graphql-request";
 
-import { colorMap, hygraph } from "@lib/hygraph";
+import { colorMap, hygraph } from "~lib/hygraph";
 
-import { Section } from "@components/Section";
-import { Container } from "@components/Container";
-import ProjectShowcase from "@components/ProjectShowcase/ProjectShowcase";
-import { Smiley } from "@components/Smiley";
+import { Section } from "~components/Section";
+import { Container } from "~components/Container";
+import ProjectShowcase from "~components/ProjectShowcase/ProjectShowcase";
+import { Smiley } from "~components/Smiley";
 import { getTranslations } from "next-intl/server";
 
 export interface Project {

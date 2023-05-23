@@ -1,12 +1,12 @@
 import { Link } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
-import { AboutSection } from "@components/sections/About";
-import Artists from "@components/TopArtists/TopArtists";
-import { Button } from "@components/Button";
-import { Container } from "@components/Container";
-import NowPlaying from "@components/NowPlaying/NowPlaying";
-import { Section } from "@components/Section";
+import { AboutSection } from "~components/sections/About";
+import Artists from "~components/TopArtists/TopArtists";
+import { Button } from "~components/Button";
+import { Container } from "~components/Container";
+import NowPlaying from "~components/NowPlaying/NowPlaying";
+import { Section } from "~components/Section";
 
 import { GenreSolarSystem } from "./GenreSolarSystem";
 

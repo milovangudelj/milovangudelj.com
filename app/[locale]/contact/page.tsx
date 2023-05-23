@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-import { Section } from "@components/Section";
-import { CTA } from "@components/sections/CTA";
+import { Section } from "~components/Section";
+import { CTA } from "~components/sections/CTA";
 
-import igLogo from "@images/igLogo.png";
-import twLogo from "@images/twLogo.svg";
-import drLogo from "@images/drLogo.svg";
+import igLogo from "~images/igLogo.png";
+import twLogo from "~images/twLogo.svg";
+import drLogo from "~images/drLogo.svg";
 import { getTranslations } from "next-intl/server";
 
 export const metadata = {
