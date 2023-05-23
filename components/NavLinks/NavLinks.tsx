@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-import { NavLink } from "../NavLink/NavLink";
+import { NavLink } from "@components/NavLink/NavLink";
 
 export const NavLinks = ({
 	links,

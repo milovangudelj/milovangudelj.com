@@ -1,7 +1,7 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 
-import { spotifyApi } from "../../lib/spotify";
+import { spotifyApi } from "@lib/spotify";
 import { authOptions, ExtendedSession } from "./auth/[...nextauth]";
 
 export default async function handler(

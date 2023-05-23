@@ -2,15 +2,15 @@ import Image from "next/image";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import messages from "../../../messages/en.json";
+import messages from "@/messages/en.json";
 
-import { Section } from "../../Section";
-import { Container } from "../../Container";
-import { Hourglass } from "../../Hourglass";
-import NowPlaying from "../../NowPlaying/NowPlaying";
+import { Section } from "@components/Section";
+import { Container } from "@components/Container";
+import { Hourglass } from "@components/Hourglass";
+import NowPlaying from "@components/NowPlaying/NowPlaying";
 
-import me from "../../../public/images/poly-me.png";
-import { asyncComponent } from "../../../lib/asyncComponent";
+import me from "@images/poly-me.png";
+import { asyncComponent } from "@lib/asyncComponent";
 
 export const AboutSection = asyncComponent(
 	async ({

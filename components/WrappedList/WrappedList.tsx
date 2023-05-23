@@ -2,12 +2,9 @@ import Image from "next/image";
 import { ComponentProps, CSSProperties } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Artist, Track } from "../../lib/types";
-import {
-	getLuminance,
-	TEXT_LUMINANCE_TRESHOLD,
-} from "../../utils/getLuminance";
-import { Palette } from "../../utils/getPalette";
+import { Artist, Track } from "@lib/types";
+import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "@utils/getLuminance";
+import { Palette } from "@utils/getPalette";
 
 export interface WrappedListProps extends ComponentProps<"ol"> {
 	items: Track[] | Artist[];

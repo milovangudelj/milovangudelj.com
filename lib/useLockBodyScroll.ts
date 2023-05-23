@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect } from "../utils/useIsomorphicLayoutEffect";
+import { useIsomorphicLayoutEffect } from "@utils/useIsomorphicLayoutEffect";
 
 export const useLockBodyScroll = () => {
 	useIsomorphicLayoutEffect(() => {
