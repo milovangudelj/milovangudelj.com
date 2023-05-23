@@ -4,10 +4,10 @@ import { ComponentProps } from "react";
 import useSWRImmutable from "swr/immutable";
 import { twMerge } from "tailwind-merge";
 
-import fetcher from "../../lib/fetcher";
-import { TopArtists } from "../../lib/types";
-import { getPalette } from "../../utils/getPalette";
-import WrappedList from "../WrappedList/WrappedList";
+import fetcher from "@lib/fetcher";
+import { TopArtists } from "@lib/types";
+import { getPalette } from "@utils/getPalette";
+import WrappedList from "@components/WrappedList/WrappedList";
 
 interface ArtistsProps extends ComponentProps<"div"> {
 	title: string;

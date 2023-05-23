@@ -11,7 +11,7 @@ import { Projects } from "@components/Projects";
 import { Smiley } from "@components/Smiley";
 import { type Project } from "./work/page";
 
-import messages from "../messages/en.json";
+import messages from "@/messages/en.json";
 
 const QUERY = gql`
 	{

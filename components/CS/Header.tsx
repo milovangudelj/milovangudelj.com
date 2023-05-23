@@ -3,8 +3,8 @@ import { RichTextContent } from "@graphcms/rich-text-types";
 import Image from "next/legacy/image";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
-import { colorMap } from "../../lib/hygraph";
-import { renderers } from "../richTextRenderers";
+import { colorMap } from "@lib/hygraph";
+import { renderers } from "@components/richTextRenderers";
 
 type CSContentTypeWithoutEmbeds = {
 	raw: RichTextContent;

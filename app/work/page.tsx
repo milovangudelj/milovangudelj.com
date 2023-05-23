@@ -7,7 +7,7 @@ import { Container } from "@components/Container";
 import ProjectShowcase from "@components/ProjectShowcase/ProjectShowcase";
 import { Smiley } from "@components/Smiley";
 
-import messages from "../../messages/en.json";
+import messages from "@/messages/en.json";
 
 export interface Project {
 	id: string;

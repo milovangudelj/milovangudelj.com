@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth/next";
 import { Analytics } from "@vercel/analytics/react";
 import localFont from "next/font/local";
 
-import messages from "../messages/en.json";
+import messages from "@/messages/en.json";
 
 import "@styles/globals.css";
 

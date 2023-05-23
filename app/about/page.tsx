@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import messages from "../../messages/en.json";
+import messages from "@/messages/en.json";
 
 import { AboutSection } from "@components/sections/About";
 import Artists from "@components/TopArtists/TopArtists";

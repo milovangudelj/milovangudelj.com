@@ -1,13 +1,10 @@
 import { ComponentPropsWithoutRef, forwardRef } from "react";
 
-import { StatsList } from "../StatsList";
+import { StatsList } from "@components/StatsList";
 
-import {
-	getLuminance,
-	TEXT_LUMINANCE_TRESHOLD,
-} from "../../utils/getLuminance";
-import { Palette } from "../../utils/getPalette";
-import { hexToRgb } from "../../utils/hexToRgb";
+import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "@utils/getLuminance";
+import { Palette } from "@utils/getPalette";
+import { hexToRgb } from "@utils/hexToRgb";
 
 export interface PosterProps extends ComponentPropsWithoutRef<"div"> {
 	username: string;

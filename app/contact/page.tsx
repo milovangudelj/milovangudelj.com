@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import messages from "../../messages/en.json";
+import messages from "@/messages/en.json";
 
 import { Section } from "@components/Section";
 import { CTA } from "@components/sections/CTA";
