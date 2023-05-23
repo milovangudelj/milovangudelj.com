@@ -19,16 +19,16 @@ export const metadata = {
 };
 
 const ContactPage = async () => {
-	const t = await getTranslations("Contact");
-
 	return (
 		<>
 			<Section className="relative scroll-mt-[72px] overflow-hidden bg-black text-white md:scroll-mt-[88px]">
 				<main className="mx-auto flex max-w-7xl items-center justify-between px-8 2xl:px-0">
 					<div className="space-y-16">
 						<div className="space-y-8">
-							<h1 className="text-d2-mobile xl:text-d2">{t("title")}</h1>
-							<p className="text-body">{t("description")}</p>
+							<h1 className="text-d2-mobile xl:text-d2">
+								{messages.Contact.title}
+							</h1>
+							<p className="text-body">{messages.Contact.description}</p>
 						</div>
 						<div className="flex items-center space-x-6 py-0.5 font-space md:space-x-12">
 							<a

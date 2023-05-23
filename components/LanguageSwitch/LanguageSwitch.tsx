@@ -6,7 +6,7 @@ import {
 	useSearchParams,
 	useSelectedLayoutSegments,
 } from "next/navigation";
-import { Link } from "next-intl";
+import Link from "next/link";
 import { usePathname as useCleanPathname } from "next-intl/client";
 import { GlobeSimple } from "@phosphor-icons/react";
 

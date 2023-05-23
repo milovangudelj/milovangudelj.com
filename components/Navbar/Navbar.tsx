@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "next-intl";
+import Link from "next/link";
 import { RefCallback, useCallback, useState } from "react";
 import { Button } from "~components/Button";
 import { LanguageSwitch } from "~components/LanguageSwitch";
@@ -39,7 +39,8 @@ export const Navbar = ({
 					>
 						Music-Stats ↗
 					</Button>
-					<LanguageSwitch />
+					{/* TODO: Add back the switch once i18n is all set up */}
+					{/* <LanguageSwitch /> */}
 					<MobileNav navRect={rect} links={links} />
 				</div>
 			</div>

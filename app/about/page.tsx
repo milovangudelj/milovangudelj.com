@@ -1,5 +1,6 @@
-import { Link } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import Link from "next/link";
+
+import messages from "../../messages/en.json";
 
 import { AboutSection } from "~components/sections/About";
 import Artists from "~components/TopArtists/TopArtists";
@@ -19,9 +20,6 @@ export const metadata = {
 };
 
 const AboutPage = async () => {
-	const t = await getTranslations("About");
-	const artistsListT = await getTranslations("WrappedList");
-
 	return (
 		<>
 			<AboutSection standAlone />
@@ -35,44 +33,35 @@ const AboutPage = async () => {
 				<Container className="relative">
 					<div className="space-y-8">
 						<h2 className="text-h2-mobile md:text-h2">
-							{t("music.title")}
+							{messages.About.music.title}
 						</h2>
-						<p className="text-body">{t("music.p1")}</p>
+						<p className="text-body">{messages.About.music.p1}</p>
 						<p className="text-body">
-							{t.rich("music.p2", {
-								link: (chunks) =>
-									(
-										<a
-											href="https://www.spotify.com/wrapped"
-											rel="noopener noreferrer"
-											target={"_blank"}
-											className="underline underline-offset-2 hover:no-underline"
-										>
-											{chunks}
-										</a>
-									) as unknown as string,
-							})}
+							{/* TODO: Replace link with actual element */}
+							{messages.About.music.p2}
 						</p>
 						<Button as={Link} href="/music-stats">
-							{t("music.cta")}
+							{messages.About.music.cta}
 						</Button>
 					</div>
 					<div className="relative">
 						<NowPlaying
-							title={t("nowPlaying.title")}
-							notPlayingMessage={t("nowPlaying.notPlaying")}
+							title={messages.About.nowPlaying.title}
+							notPlayingMessage={messages.About.nowPlaying.notPlaying}
 						/>
 						<Artists
 							className="mt-16"
-							title={t("topArtists.title")}
+							title={messages.About.topArtists.title}
 							itemAltText={{
-								artist: artistsListT("alt.artist"),
-								track: artistsListT("alt.track"),
+								artist: messages.WrappedList.alt.artist,
+								track: messages.WrappedList.alt.track,
 							}}
-							itemOpenText={artistsListT("open")}
-							itemListenText={artistsListT("listen")}
+							itemOpenText={messages.WrappedList.open}
+							itemListenText={messages.WrappedList.listen}
 						/>
-						<GenreSolarSystem title={t("genreSolarSystem.title")} />
+						<GenreSolarSystem
+							title={messages.About.genreSolarSystem.title}
+						/>
 					</div>
 				</Container>
 			</Section>

@@ -3,7 +3,7 @@
 import Image from "next/legacy/image";
 
 import { Project } from "../../app/[locale]/work/page";
-import { Link } from "next-intl";
+import Link from "next/link";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { Button } from "../Button";
 import { colorMap } from "../../lib/hygraph";

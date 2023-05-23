@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "next-intl";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { motion, type Variants } from "framer-motion";

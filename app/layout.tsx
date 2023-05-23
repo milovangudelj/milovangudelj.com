@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { getLocale, getTranslations } from "next-intl/server";
 import { getServerSession } from "next-auth/next";
 import { Analytics } from "@vercel/analytics/react";
 import localFont from "next/font/local";
@@ -11,7 +10,7 @@ import { Navbar } from "~components/Navbar";
 import { Footer } from "~components/Footer";
 
 const inter = localFont({
-	src: "../../public/fonts/Inter-Var.woff2",
+	src: "../public/fonts/Inter-Var.woff2",
 	display: "swap",
 	preload: true,
 	weight: "100 900",
@@ -19,7 +18,7 @@ const inter = localFont({
 	variable: "--font-inter",
 });
 const spaceGrotesk = localFont({
-	src: "../../public/fonts/SpaceGrotesk-Var.woff2",
+	src: "../public/fonts/SpaceGrotesk-Var.woff2",
 	display: "swap",
 	preload: true,
 	weight: "300 700",
@@ -89,15 +88,6 @@ export default async function RootLayout({
 }) {
 	const session = await getServerSession();
 
-	const locale = getLocale();
-
-	// Show a 404 error if the user requests an unknown locale
-	if (params.locale !== locale) {
-		notFound();
-	}
-
-	const t = await getTranslations("Navbar");
-
 	const links: {
 		id: string;
 		label: string;
@@ -106,28 +96,28 @@ export default async function RootLayout({
 		{
 			id: "about",
 			href: "/about",
-			label: t("about"),
+			label: messages.Navbar.about,
 		},
 		{
 			id: "work",
 			href: "/work",
-			label: t("work"),
+			label: messages.Navbar.work,
 		},
 		{
 			id: "portfolio",
 			href: "/portfolio",
-			label: t("portfolio"),
+			label: messages.Navbar.portfolio,
 		},
 		{
 			id: "contact",
 			href: "/contact",
-			label: t("contact"),
+			label: messages.Navbar.contact,
 		},
 	];
 
 	return (
 		<html
-			lang={locale}
+			lang={"en"}
 			className={`${inter.variable} ${spaceGrotesk.variable}`}
 		>
 			<body className="h-fill scroll-smooth bg-black font-sans text-white">

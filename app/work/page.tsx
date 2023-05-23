@@ -93,9 +93,6 @@ export const metadata = {
 };
 
 const WorkPage = async () => {
-	const t = await getTranslations("Work");
-	const showcaseTranslations = await getTranslations("ProjectShowcase");
-
 	const projects = await getProjcts();
 
 	return (
@@ -104,9 +101,9 @@ const WorkPage = async () => {
 				<main className="mx-auto max-w-7xl space-y-16 px-8 md:space-y-32 2xl:px-0">
 					<div className="relative space-y-8 md:space-y-0">
 						<h1 className="text-d2-mobile md:mb-8 xl:text-d2">
-							{t("title")}
+							{messages.Work.title}
 						</h1>
-						<p className="text-body">{t("description")}</p>
+						<p className="text-body">{messages.Work.description}</p>
 						<Smiley className="absolute -top-16 right-0 h-[64px] w-[65px] text-light-cyan md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]" />
 					</div>
 				</main>
@@ -118,20 +115,20 @@ const WorkPage = async () => {
 							<Container>
 								<ProjectShowcase
 									messages={{
-										brief: showcaseTranslations("brief"),
-										visit: showcaseTranslations("visit"),
-										readCS: showcaseTranslations("readCS"),
+										brief: messages.ProjectShowcase.brief,
+										visit: messages.ProjectShowcase.visit,
+										readCS: messages.ProjectShowcase.readCS,
 										category: {
 											uiDesign:
-												showcaseTranslations("category.uiDesign"),
+												messages.ProjectShowcase.category.uiDesign,
 											webDesign:
-												showcaseTranslations("category.webDesign"),
+												messages.ProjectShowcase.category.webDesign,
 											webDev:
-												showcaseTranslations("category.webDev"),
+												messages.ProjectShowcase.category.webDev,
 											frontEnd:
-												showcaseTranslations("category.frontEnd"),
+												messages.ProjectShowcase.category.frontEnd,
 											fullStack:
-												showcaseTranslations("category.fullStack"),
+												messages.ProjectShowcase.category.fullStack,
 										},
 									}}
 									{...props}

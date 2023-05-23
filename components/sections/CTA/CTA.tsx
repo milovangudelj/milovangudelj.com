@@ -1,9 +1,10 @@
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
+import messages from "../../../messages/en.json";
+
 import { Section } from "../../Section";
 import { Container } from "../../Container";
-import { getTranslations } from "next-intl/server";
 import { asyncComponent } from "../../../lib/asyncComponent";
 
 const Pattern = ({ className }: ComponentProps<"svg">) => {
@@ -39,8 +40,6 @@ export const CTA = asyncComponent(
 		title?: string;
 		description?: string;
 	}) => {
-		const t = await getTranslations("CTA");
-
 		return (
 			<Section
 				className="relative overflow-hidden bg-lavender text-white"
@@ -58,9 +57,11 @@ export const CTA = asyncComponent(
 				<Container className="relative">
 					<div className="space-y-8">
 						<h2 className="text-h2-mobile md:text-h2">
-							{title ?? t("title")}
+							{title ?? messages.CTA.title}
 						</h2>
-						<p className="text-body">{description ?? t("description")}</p>
+						<p className="text-body">
+							{description ?? messages.CTA.description}
+						</p>
 					</div>
 					<div className="flex w-fit items-center space-x-4 py-0.5">
 						<a
