@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "next-intl";
+import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 
 export const NavLink = ({

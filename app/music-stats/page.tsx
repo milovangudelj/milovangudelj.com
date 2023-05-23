@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { getTranslations } from "next-intl/server";
 
 import { Artist, Track } from "@lib/types";
 import { getPalette, Palette } from "@utils/getPalette";
+
+import messages from "../../messages/en.json";
 
 import { BigAssStar } from "@components/BigAssStar";
 import { Container } from "@components/Container";
@@ -96,9 +97,6 @@ export const metadata = {
 };
 
 const MusicStatsPage = async () => {
-	const t = await getTranslations("Music-Stats");
-	const wrapepdListT = await getTranslations("WrappedList");
-
 	const { longTermStats, mediumTermStats, shortTermStats, user } =
 		await getData();
 
@@ -110,11 +108,13 @@ const MusicStatsPage = async () => {
 						<span className="text-yellow">Music</span>-Stats
 					</h1>
 					<p className="relative z-[1] text-sub-heading-mobile md:text-sub-heading">
-						{t("p1", { number: new Date().getFullYear() })}
+						{/* TODO: Replace number with updated value */}
+						{messages["Music-Stats"].p1}
 					</p>
 					<div className="text-body">
 						<a href="#data-notice" className="text-dark-me">
-							{t("data")} <span className="text-yellow">*</span>
+							{messages["Music-Stats"].data}{" "}
+							<span className="text-yellow">*</span>
 						</a>
 						<Image
 							title="Spotify"
@@ -138,64 +138,64 @@ const MusicStatsPage = async () => {
 				}}
 				messages={{
 					filters: {
-						title: t("filters.title"),
-						all: t("filters.all"),
-						artists: t("filters.artists"),
-						tracks: t("filters.tracks"),
+						title: messages["Music-Stats"].filters.title,
+						all: messages["Music-Stats"].filters.all,
+						artists: messages["Music-Stats"].filters.artists,
+						tracks: messages["Music-Stats"].filters.tracks,
 					},
 					period: {
-						title: t("period.title"),
-						short: t("period.short"),
-						medium: t("period.medium"),
-						long: t("period.long"),
+						title: messages["Music-Stats"].period.title,
+						short: messages["Music-Stats"].period.short,
+						medium: messages["Music-Stats"].period.medium,
+						long: messages["Music-Stats"].period.long,
 					},
 					download: {
-						action: t("download.action"),
-						generating: t("download.generating"),
+						action: messages["Music-Stats"].download.action,
+						generating: messages["Music-Stats"].download.generating,
 					},
 					artists: {
 						title: {
-							top: t("artists.title.top"),
-							artists: t("artists.title.artists"),
+							top: messages["Music-Stats"].artists.title.top,
+							artists: messages["Music-Stats"].artists.title.artists,
 						},
 						subtitle: {
-							short: t("artists.subtitle.short"),
-							medium: t("artists.subtitle.medium"),
-							long: t("artists.subtitle.long"),
+							short: messages["Music-Stats"].artists.subtitle.short,
+							medium: messages["Music-Stats"].artists.subtitle.medium,
+							long: messages["Music-Stats"].artists.subtitle.long,
 						},
 						description: {
-							title: t("artists.description.title"),
-							p1: t("artists.description.p1"),
-							p2: t("artists.description.p2"),
+							title: messages["Music-Stats"].artists.description.title,
+							p1: messages["Music-Stats"].artists.description.p1,
+							p2: messages["Music-Stats"].artists.description.p2,
 						},
 					},
 					tracks: {
 						title: {
-							top: t("tracks.title.top"),
-							tracks: t("tracks.title.tracks"),
+							top: messages["Music-Stats"].tracks.title.top,
+							tracks: messages["Music-Stats"].tracks.title.tracks,
 						},
 						subtitle: {
-							short: t("tracks.subtitle.short"),
-							medium: t("tracks.subtitle.medium"),
-							long: t("tracks.subtitle.long"),
+							short: messages["Music-Stats"].tracks.subtitle.short,
+							medium: messages["Music-Stats"].tracks.subtitle.medium,
+							long: messages["Music-Stats"].tracks.subtitle.long,
 						},
 						description: {
-							title: t("tracks.description.title"),
-							p1: t("tracks.description.p1"),
-							p2: t("tracks.description.p2"),
+							title: messages["Music-Stats"].tracks.description.title,
+							p1: messages["Music-Stats"].tracks.description.p1,
+							p2: messages["Music-Stats"].tracks.description.p2,
 						},
 					},
 					list: {
 						alt: {
-							artist: wrapepdListT("alt.artist"),
-							track: wrapepdListT("alt.track"),
+							artist: messages.WrappedList.alt.artist,
+							track: messages.WrappedList.alt.track,
 						},
-						open: wrapepdListT("open"),
-						listen: wrapepdListT("listen"),
+						open: messages.WrappedList.open,
+						listen: messages.WrappedList.listen,
 					},
 					notice: {
-						label: t("notice.label"),
-						text: t("notice.text"),
+						label: messages["Music-Stats"].notice.label,
+						text: messages["Music-Stats"].notice.text,
 					},
 				}}
 			/>

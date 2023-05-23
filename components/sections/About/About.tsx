@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { ComponentProps } from "react";
-import { getTranslations } from "next-intl/server";
 import { twMerge } from "tailwind-merge";
+
+import messages from "../../../messages/en.json";
 
 import { Section } from "../../Section";
 import { Container } from "../../Container";
@@ -17,8 +18,6 @@ export const AboutSection = asyncComponent(
 		standAlone = false,
 		...props
 	}: ComponentProps<typeof Section> & { standAlone?: boolean }) => {
-		const t = await getTranslations("About");
-
 		const experienceYears =
 			new Date().getFullYear() - new Date(2018, 10).getFullYear();
 
@@ -61,16 +60,16 @@ export const AboutSection = asyncComponent(
 										: "text-h2-mobile md:text-h2"
 								}
 							>
-								{t("main.title")}
+								{messages.About.main.title}
 							</h2>
-							<p className="text-body">{t("main.p1")}</p>
+							<p className="text-body">{messages.About.main.p1}</p>
 
-							<p className="text-body">{t("main.p2")}</p>
+							<p className="text-body">{messages.About.main.p2}</p>
 						</div>
 						{!standAlone && (
 							<NowPlaying
-								title={t("nowPlaying.title")}
-								notPlayingMessage={t("nowPlaying.notPlaying")}
+								title={messages.About.nowPlaying.title}
+								notPlayingMessage={messages.About.nowPlaying.notPlaying}
 							/>
 						)}
 					</div>
