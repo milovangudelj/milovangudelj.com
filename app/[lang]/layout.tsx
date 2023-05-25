@@ -1,8 +1,8 @@
 import { Analytics } from "@vercel/analytics/react";
 import localFont from "next/font/local";
 
-import { i18n } from "@/i18n.config";
-import messages from "@/dictionaries/en.json";
+import { i18n, Locale } from "@/i18n.config";
+import { getDictionary } from "@/utils/getDictionary";
 
 import "@styles/globals.css";
 
@@ -88,9 +88,11 @@ export default async function RootLayout({
 }: {
 	children: React.ReactNode;
 	params: {
-		lang: string;
+		lang: Locale;
 	};
 }) {
+	const dictionary = await getDictionary(params.lang);
+
 	const links: {
 		id: string;
 		label: string;
@@ -99,22 +101,22 @@ export default async function RootLayout({
 		{
 			id: "about",
 			href: "/about",
-			label: messages.Navbar.about,
+			label: dictionary.Navbar.about,
 		},
 		{
 			id: "work",
 			href: "/work",
-			label: messages.Navbar.work,
+			label: dictionary.Navbar.work,
 		},
 		{
 			id: "portfolio",
 			href: "/portfolio",
-			label: messages.Navbar.portfolio,
+			label: dictionary.Navbar.portfolio,
 		},
 		{
 			id: "contact",
 			href: "/contact",
-			label: messages.Navbar.contact,
+			label: dictionary.Navbar.contact,
 		},
 	];
 
@@ -125,7 +127,7 @@ export default async function RootLayout({
 		>
 			<body className="h-fill scroll-smooth bg-black font-sans text-white">
 				<NextSession>
-					<Navbar links={links} />
+					<Navbar lang={params.lang} links={links} />
 					<div className="relative z-[1] mb-[58.25px] bg-black">
 						{children}
 					</div>

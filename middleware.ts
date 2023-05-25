@@ -33,7 +33,8 @@ export const middleware = async (request: NextRequest) => {
 
 	// `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
 	// If you have one
-	if (["/fonts", "/images"].includes(pathname)) return;
+	if (["/fonts", "/images"].some((value) => pathname.includes(value)))
+		return NextResponse.next();
 
 	// Check if the default locale is in the pathname
 	if (
@@ -81,5 +82,5 @@ export const middleware = async (request: NextRequest) => {
 
 export const config = {
 	// Matcher ignoring `/_next/` and `/api/`
-	matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+	matcher: ["/((?!api|_next/static|_next/image|images|fonts).*)"],
 };
