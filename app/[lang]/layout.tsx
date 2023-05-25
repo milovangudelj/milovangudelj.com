@@ -30,7 +30,7 @@ export const metadata = {
 		"I design and develop engaging websites and delightful digital experiences.",
 	metadataBase: new URL("https://www.milovangudelj.com"),
 	alternates: {
-		canonical: "/",
+		canonical: "/en",
 		languages: { "it-IT": "/it" },
 	},
 	openGraph: {

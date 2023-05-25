@@ -13,7 +13,7 @@ export const metadata = {
 	description:
 		"Login to your account to see your top artists, tracks and download your Music-Stats poster.",
 	alternates: {
-		canonical: "https://www.milovangudelj.com/login",
+		canonical: "https://www.milovangudelj.com/en/login",
 		languages: { "it-IT": "https://www.milovangudelj.com/it/login" },
 	},
 };

@@ -87,7 +87,7 @@ export const metadata = {
 	title: "Milovan Gudelj - My work",
 	description: "A collection of past project I've worked on an am proud of.",
 	alternates: {
-		canonical: "https://www.milovangudelj.com/work",
+		canonical: "https://www.milovangudelj.com/en/work",
 		languages: { "it-IT": "https://www.milovangudelj.com/it/work" },
 	},
 };
