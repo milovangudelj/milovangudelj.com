@@ -2,7 +2,7 @@
 
 import Image from "next/legacy/image";
 
-import { Project } from "@/app/work/page";
+import { Project } from "@/app/[lang]/work/page";
 import Link from "next/link";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { Button } from "@components/Button";
