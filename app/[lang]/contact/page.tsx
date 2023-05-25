@@ -15,7 +15,7 @@ export const metadata = {
 	description:
 		"Let's work together! Feel free to reach out to me for any questions you might have.",
 	alternates: {
-		canonical: "https://www.milovangudelj.com/contact",
+		canonical: "https://www.milovangudelj.com/en/contact",
 		languages: { "it-IT": "https://www.milovangudelj.com/it/contact" },
 	},
 };

@@ -14,7 +14,7 @@ import { getDictionary } from "@/utils/getDictionary";
 export const metadata = {
 	title: "Milovan Gudelj - About me",
 	alternates: {
-		canonical: "https://www.milovangudelj.com/about",
+		canonical: "https://www.milovangudelj.com/en/about",
 		languages: { "it-IT": "https://www.milovangudelj.com/it/about" },
 	},
 };

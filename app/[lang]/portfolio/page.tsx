@@ -27,7 +27,7 @@ export const metadata = {
 	description:
 		"My portfolio! Feel free to reach out to me for any questions you might have.",
 	alternates: {
-		canonical: "https://www.milovangudelj.com/portfolio",
+		canonical: "https://www.milovangudelj.com/en/portfolio",
 		languages: { "it-IT": "https://www.milovangudelj.com/it/portfolio" },
 	},
 };
