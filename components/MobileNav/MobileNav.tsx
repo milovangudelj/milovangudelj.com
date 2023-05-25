@@ -12,6 +12,7 @@ export const MobileNav = ({
 	links,
 	navRect,
 	className,
+	lang,
 }: {
 	links: {
 		id: string;
@@ -20,6 +21,7 @@ export const MobileNav = ({
 	}[];
 	navRect: DOMRect | undefined;
 	className?: string;
+	lang: Locale;
 }) => {
 	const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
@@ -134,7 +136,7 @@ export const MobileNav = ({
 					<motion.li variants={item} key={link.id}>
 						<NavLink
 							id={link.id}
-							href={link.href}
+							href={`${lang}${link.href}`}
 							label={link.label}
 							onClick={() => {
 								setMenuOpen(false);
@@ -145,7 +147,7 @@ export const MobileNav = ({
 				<motion.li variants={item}>
 					<Button
 						as={Link}
-						href={"/music-stats"}
+						href={`/${lang}/music-stats`}
 						onClick={() => {
 							setMenuOpen(false);
 						}}

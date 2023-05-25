@@ -5,6 +5,9 @@ import { Container } from "~components/Container";
 import { Section } from "~components/Section";
 import { LoginButton } from "./LoginButton";
 
+import { Locale } from "@/i18n.config";
+import { getDictionary } from "@/utils/getDictionary";
+
 export const metadata = {
 	title: "Milovan Gudelj - Login",
 	description:
@@ -15,11 +18,17 @@ export const metadata = {
 	},
 };
 
-const LoginPage = async () => {
+const LoginPage = async ({
+	params: { lang = "en" },
+}: {
+	params: { lang: Locale };
+}) => {
 	const session = await getServerSession();
 	if (session) {
-		redirect("/music-stats");
+		redirect(`/${lang}/music-stats`);
 	}
+
+	const dictionary = await getDictionary(lang);
 
 	return (
 		<Section className="bg-green">

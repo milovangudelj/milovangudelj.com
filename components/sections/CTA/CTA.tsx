@@ -1,11 +1,11 @@
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import messages from "@/dictionaries/en.json";
-
 import { Section } from "@components/Section";
 import { Container } from "@components/Container";
 import { asyncComponent } from "@lib/asyncComponent";
+import { getDictionary } from "@/utils/getDictionary";
+import { Locale } from "@/i18n.config";
 
 const Pattern = ({ className }: ComponentProps<"svg">) => {
 	return (
@@ -35,11 +35,14 @@ export const CTA = asyncComponent(
 	async ({
 		title,
 		description,
+		lang,
 		...props
 	}: ComponentProps<"section"> & {
 		title?: string;
 		description?: string;
 	}) => {
+		const dictionary = await getDictionary(lang as Locale);
+
 		return (
 			<Section
 				className="relative overflow-hidden bg-lavender text-white"
@@ -57,10 +60,10 @@ export const CTA = asyncComponent(
 				<Container className="relative">
 					<div className="space-y-8">
 						<h2 className="text-h2-mobile md:text-h2">
-							{title ?? messages.CTA.title}
+							{title ?? dictionary.CTA.title}
 						</h2>
 						<p className="text-body">
-							{description ?? messages.CTA.description}
+							{description ?? dictionary.CTA.description}
 						</p>
 					</div>
 					<div className="flex w-fit items-center space-x-4 py-0.5">

@@ -8,6 +8,9 @@ import twLogo from "~images/twLogo.svg";
 import drLogo from "~images/drLogo.svg";
 import { getTranslations } from "next-intl/server";
 
+import { Locale } from "@/i18n.config";
+import { getDictionary } from "@/utils/getDictionary";
+
 export const metadata = {
 	title: "Milovan Gudelj - Contact me",
 	description:
@@ -18,7 +21,13 @@ export const metadata = {
 	},
 };
 
-const ContactPage = async () => {
+const ContactPage = async ({
+	params: { lang = "en" },
+}: {
+	params: { lang: Locale };
+}) => {
+	const dictionary = await getDictionary(lang);
+
 	return (
 		<>
 			<Section className="relative scroll-mt-[72px] overflow-hidden bg-black text-white md:scroll-mt-[88px]">
@@ -26,9 +35,11 @@ const ContactPage = async () => {
 					<div className="space-y-16">
 						<div className="space-y-8">
 							<h1 className="text-d2-mobile xl:text-d2">
-								{messages.Contact.title}
+								{dictionary.Contact.title}
 							</h1>
-							<p className="text-body">{messages.Contact.description}</p>
+							<p className="text-body">
+								{dictionary.Contact.description}
+							</p>
 						</div>
 						<div className="flex items-center space-x-6 py-0.5 font-space md:space-x-12">
 							<a
@@ -84,7 +95,7 @@ const ContactPage = async () => {
 					</div>
 				</main>
 			</Section>
-			<CTA />
+			<CTA lang={lang as Locale} />
 		</>
 	);
 };

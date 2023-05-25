@@ -11,6 +11,9 @@ import { Section } from "~components/Section";
 
 import { GenreSolarSystem } from "./GenreSolarSystem";
 
+import { Locale } from "@/i18n.config";
+import { getDictionary } from "@/utils/getDictionary";
+
 export const metadata = {
 	title: "Milovan Gudelj - About me",
 	alternates: {
@@ -19,10 +22,16 @@ export const metadata = {
 	},
 };
 
-const AboutPage = async () => {
+const AboutPage = async ({
+	params: { lang = "en" },
+}: {
+	params: { lang: Locale };
+}) => {
+	const dictionary = await getDictionary(lang);
+
 	return (
 		<>
-			<AboutSection standAlone />
+			<AboutSection standAlone lang={lang} />
 			<Section className="relative overflow-hidden bg-lavender text-white">
 				<div
 					aria-hidden
@@ -33,34 +42,34 @@ const AboutPage = async () => {
 				<Container className="relative">
 					<div className="space-y-8">
 						<h2 className="text-h2-mobile md:text-h2">
-							{messages.About.music.title}
+							{dictionary.About.music.title}
 						</h2>
-						<p className="text-body">{messages.About.music.p1}</p>
+						<p className="text-body">{dictionary.About.music.p1}</p>
 						<p className="text-body">
 							{/* TODO: Replace link with actual element */}
-							{messages.About.music.p2}
+							{dictionary.About.music.p2}
 						</p>
-						<Button as={Link} href="/music-stats">
-							{messages.About.music.cta}
+						<Button as={Link} href={`/${lang}/music-stats`}>
+							{dictionary.About.music.cta}
 						</Button>
 					</div>
 					<div className="relative">
 						<NowPlaying
-							title={messages.About.nowPlaying.title}
-							notPlayingMessage={messages.About.nowPlaying.notPlaying}
+							title={dictionary.About.nowPlaying.title}
+							notPlayingMessage={dictionary.About.nowPlaying.notPlaying}
 						/>
 						<Artists
 							className="mt-16"
-							title={messages.About.topArtists.title}
+							title={dictionary.About.topArtists.title}
 							itemAltText={{
-								artist: messages.WrappedList.alt.artist,
-								track: messages.WrappedList.alt.track,
+								artist: dictionary.WrappedList.alt.artist,
+								track: dictionary.WrappedList.alt.track,
 							}}
-							itemOpenText={messages.WrappedList.open}
-							itemListenText={messages.WrappedList.listen}
+							itemOpenText={dictionary.WrappedList.open}
+							itemListenText={dictionary.WrappedList.listen}
 						/>
 						<GenreSolarSystem
-							title={messages.About.genreSolarSystem.title}
+							title={dictionary.About.genreSolarSystem.title}
 						/>
 					</div>
 				</Container>

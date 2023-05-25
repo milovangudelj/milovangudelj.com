@@ -92,7 +92,13 @@ export const metadata = {
 	},
 };
 
-const WorkPage = async () => {
+const WorkPage = async ({
+	params: { lang = "en" },
+}: {
+	params: { lang: Locale };
+}) => {
+	const dictionary = await getDictionary(lang);
+
 	const projects = await getProjcts();
 
 	return (
@@ -101,9 +107,9 @@ const WorkPage = async () => {
 				<main className="mx-auto max-w-7xl space-y-16 px-8 md:space-y-32 2xl:px-0">
 					<div className="relative space-y-8 md:space-y-0">
 						<h1 className="text-d2-mobile md:mb-8 xl:text-d2">
-							{messages.Work.title}
+							{dictionary.Work.title}
 						</h1>
-						<p className="text-body">{messages.Work.description}</p>
+						<p className="text-body">{dictionary.Work.description}</p>
 						<Smiley className="absolute -top-16 right-0 h-[64px] w-[65px] text-light-cyan md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]" />
 					</div>
 				</main>
@@ -115,20 +121,24 @@ const WorkPage = async () => {
 							<Container>
 								<ProjectShowcase
 									messages={{
-										brief: messages.ProjectShowcase.brief,
-										visit: messages.ProjectShowcase.visit,
-										readCS: messages.ProjectShowcase.readCS,
+										brief: dictionary.ProjectShowcase.brief,
+										visit: dictionary.ProjectShowcase.visit,
+										readCS: dictionary.ProjectShowcase.readCS,
 										category: {
 											uiDesign:
-												messages.ProjectShowcase.category.uiDesign,
+												dictionary.ProjectShowcase.category
+													.uiDesign,
 											webDesign:
-												messages.ProjectShowcase.category.webDesign,
+												dictionary.ProjectShowcase.category
+													.webDesign,
 											webDev:
-												messages.ProjectShowcase.category.webDev,
+												dictionary.ProjectShowcase.category.webDev,
 											frontEnd:
-												messages.ProjectShowcase.category.frontEnd,
+												dictionary.ProjectShowcase.category
+													.frontEnd,
 											fullStack:
-												messages.ProjectShowcase.category.fullStack,
+												dictionary.ProjectShowcase.category
+													.fullStack,
 										},
 									}}
 									{...props}

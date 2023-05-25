@@ -2,8 +2,6 @@ import Image from "next/image";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import messages from "@/dictionaries/en.json";
-
 import { Section } from "@components/Section";
 import { Container } from "@components/Container";
 import { Hourglass } from "@components/Hourglass";
@@ -11,13 +9,18 @@ import NowPlaying from "@components/NowPlaying/NowPlaying";
 
 import me from "@images/poly-me.png";
 import { asyncComponent } from "@lib/asyncComponent";
+import { getDictionary } from "@/utils/getDictionary";
+import { Locale } from "@/i18n.config";
 
 export const AboutSection = asyncComponent(
 	async ({
 		className,
 		standAlone = false,
+		lang,
 		...props
 	}: ComponentProps<typeof Section> & { standAlone?: boolean }) => {
+		const dictionary = await getDictionary(lang as Locale);
+
 		const experienceYears =
 			new Date().getFullYear() - new Date(2018, 10).getFullYear();
 
@@ -60,16 +63,18 @@ export const AboutSection = asyncComponent(
 										: "text-h2-mobile md:text-h2"
 								}
 							>
-								{messages.About.main.title}
+								{dictionary.About.main.title}
 							</h2>
-							<p className="text-body">{messages.About.main.p1}</p>
+							<p className="text-body">{dictionary.About.main.p1}</p>
 
-							<p className="text-body">{messages.About.main.p2}</p>
+							<p className="text-body">{dictionary.About.main.p2}</p>
 						</div>
 						{!standAlone && (
 							<NowPlaying
-								title={messages.About.nowPlaying.title}
-								notPlayingMessage={messages.About.nowPlaying.notPlaying}
+								title={dictionary.About.nowPlaying.title}
+								notPlayingMessage={
+									dictionary.About.nowPlaying.notPlaying
+								}
 							/>
 						)}
 					</div>

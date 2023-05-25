@@ -94,7 +94,13 @@ export const metadata = {
 	},
 };
 
-const MusicStatsPage = async () => {
+const MusicStatsPage = async ({
+	params: { lang = "en" },
+}: {
+	params: { lang: Locale };
+}) => {
+	const dictionary = await getDictionary(lang);
+
 	const { longTermStats, mediumTermStats, shortTermStats, user } =
 		await getData();
 
@@ -107,11 +113,11 @@ const MusicStatsPage = async () => {
 					</h1>
 					<p className="relative z-[1] text-sub-heading-mobile md:text-sub-heading">
 						{/* TODO: Replace number with updated value */}
-						{messages["Music-Stats"].p1}
+						{dictionary["Music-Stats"].p1}
 					</p>
 					<div className="text-body">
 						<a href="#data-notice" className="text-dark-me">
-							{messages["Music-Stats"].data}{" "}
+							{dictionary["Music-Stats"].data}{" "}
 							<span className="text-yellow">*</span>
 						</a>
 						<Image
@@ -136,64 +142,64 @@ const MusicStatsPage = async () => {
 				}}
 				messages={{
 					filters: {
-						title: messages["Music-Stats"].filters.title,
-						all: messages["Music-Stats"].filters.all,
-						artists: messages["Music-Stats"].filters.artists,
-						tracks: messages["Music-Stats"].filters.tracks,
+						title: dictionary["Music-Stats"].filters.title,
+						all: dictionary["Music-Stats"].filters.all,
+						artists: dictionary["Music-Stats"].filters.artists,
+						tracks: dictionary["Music-Stats"].filters.tracks,
 					},
 					period: {
-						title: messages["Music-Stats"].period.title,
-						short: messages["Music-Stats"].period.short,
-						medium: messages["Music-Stats"].period.medium,
-						long: messages["Music-Stats"].period.long,
+						title: dictionary["Music-Stats"].period.title,
+						short: dictionary["Music-Stats"].period.short,
+						medium: dictionary["Music-Stats"].period.medium,
+						long: dictionary["Music-Stats"].period.long,
 					},
 					download: {
-						action: messages["Music-Stats"].download.action,
-						generating: messages["Music-Stats"].download.generating,
+						action: dictionary["Music-Stats"].download.action,
+						generating: dictionary["Music-Stats"].download.generating,
 					},
 					artists: {
 						title: {
-							top: messages["Music-Stats"].artists.title.top,
-							artists: messages["Music-Stats"].artists.title.artists,
+							top: dictionary["Music-Stats"].artists.title.top,
+							artists: dictionary["Music-Stats"].artists.title.artists,
 						},
 						subtitle: {
-							short: messages["Music-Stats"].artists.subtitle.short,
-							medium: messages["Music-Stats"].artists.subtitle.medium,
-							long: messages["Music-Stats"].artists.subtitle.long,
+							short: dictionary["Music-Stats"].artists.subtitle.short,
+							medium: dictionary["Music-Stats"].artists.subtitle.medium,
+							long: dictionary["Music-Stats"].artists.subtitle.long,
 						},
 						description: {
-							title: messages["Music-Stats"].artists.description.title,
-							p1: messages["Music-Stats"].artists.description.p1,
-							p2: messages["Music-Stats"].artists.description.p2,
+							title: dictionary["Music-Stats"].artists.description.title,
+							p1: dictionary["Music-Stats"].artists.description.p1,
+							p2: dictionary["Music-Stats"].artists.description.p2,
 						},
 					},
 					tracks: {
 						title: {
-							top: messages["Music-Stats"].tracks.title.top,
-							tracks: messages["Music-Stats"].tracks.title.tracks,
+							top: dictionary["Music-Stats"].tracks.title.top,
+							tracks: dictionary["Music-Stats"].tracks.title.tracks,
 						},
 						subtitle: {
-							short: messages["Music-Stats"].tracks.subtitle.short,
-							medium: messages["Music-Stats"].tracks.subtitle.medium,
-							long: messages["Music-Stats"].tracks.subtitle.long,
+							short: dictionary["Music-Stats"].tracks.subtitle.short,
+							medium: dictionary["Music-Stats"].tracks.subtitle.medium,
+							long: dictionary["Music-Stats"].tracks.subtitle.long,
 						},
 						description: {
-							title: messages["Music-Stats"].tracks.description.title,
-							p1: messages["Music-Stats"].tracks.description.p1,
-							p2: messages["Music-Stats"].tracks.description.p2,
+							title: dictionary["Music-Stats"].tracks.description.title,
+							p1: dictionary["Music-Stats"].tracks.description.p1,
+							p2: dictionary["Music-Stats"].tracks.description.p2,
 						},
 					},
 					list: {
 						alt: {
-							artist: messages.WrappedList.alt.artist,
-							track: messages.WrappedList.alt.track,
+							artist: dictionary.WrappedList.alt.artist,
+							track: dictionary.WrappedList.alt.track,
 						},
-						open: messages.WrappedList.open,
-						listen: messages.WrappedList.listen,
+						open: dictionary.WrappedList.open,
+						listen: dictionary.WrappedList.listen,
 					},
 					notice: {
-						label: messages["Music-Stats"].notice.label,
-						text: messages["Music-Stats"].notice.text,
+						label: dictionary["Music-Stats"].notice.label,
+						text: dictionary["Music-Stats"].notice.text,
 					},
 				}}
 			/>

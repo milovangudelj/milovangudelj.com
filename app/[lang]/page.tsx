@@ -55,7 +55,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 					<WigglyStars />
 				</main>
 			</Section>
-			<AboutSection />
+			<AboutSection lang={lang} />
 			<Section className="overflow-hidden bg-green">
 				<Container className="md:space-y-32">
 					<div className="relative space-y-8 md:space-y-0">
@@ -68,7 +68,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 					<Projects projects={projects} />
 				</Container>
 			</Section>
-			<CTA />
+			<CTA lang={lang} />
 		</>
 	);
 };
