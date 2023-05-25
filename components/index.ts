@@ -25,3 +25,4 @@ export * from "./StatsList";
 export * from "./Poster";
 export * from "./LanguageSwitch";
 export * from "./PosterGallery";
+export * from "./NextSession";

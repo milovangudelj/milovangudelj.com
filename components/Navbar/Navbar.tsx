@@ -5,6 +5,7 @@ import { RefCallback, useCallback, useState } from "react";
 import { Button } from "@components/Button";
 import { MobileNav } from "@components/MobileNav";
 import { NavLinks } from "@components/NavLinks";
+import { LanguageSwitch } from "@components/LanguageSwitch";
 
 export const Navbar = ({
 	links,
@@ -39,7 +40,7 @@ export const Navbar = ({
 						Music-Stats ↗
 					</Button>
 					{/* TODO: Add back the switch once i18n is all set up */}
-					{/* <LanguageSwitch /> */}
+					<LanguageSwitch />
 					<MobileNav navRect={rect} links={links} />
 				</div>
 			</div>

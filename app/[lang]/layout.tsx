@@ -1,18 +1,17 @@
-import { notFound } from "next/navigation";
-import { getServerSession } from "next-auth/next";
 import { Analytics } from "@vercel/analytics/react";
 import localFont from "next/font/local";
 
-import messages from "@/messages/en.json";
+import { i18n } from "@/i18n.config";
+import messages from "@/dictionaries/en.json";
 
 import "@styles/globals.css";
 
-import { SessionProvider } from "@lib/sessionProvider";
 import { Navbar } from "@components/Navbar";
 import { Footer } from "@components/Footer";
+import { NextSession } from "@/components/NextSession";
 
 const inter = localFont({
-	src: "../public/fonts/Inter-Var.woff2",
+	src: "../../public/fonts/Inter-Var.woff2",
 	display: "swap",
 	preload: true,
 	weight: "100 900",
@@ -20,7 +19,7 @@ const inter = localFont({
 	variable: "--font-inter",
 });
 const spaceGrotesk = localFont({
-	src: "../public/fonts/SpaceGrotesk-Var.woff2",
+	src: "../../public/fonts/SpaceGrotesk-Var.woff2",
 	display: "swap",
 	preload: true,
 	weight: "300 700",
@@ -79,17 +78,19 @@ export const metadata = {
 	},
 };
 
+export async function generateStaticParams() {
+	return i18n.locales.map((locale) => ({ lang: locale }));
+}
+
 export default async function RootLayout({
 	children,
 	params,
 }: {
 	children: React.ReactNode;
 	params: {
-		locale: string;
+		lang: string;
 	};
 }) {
-	const session = await getServerSession();
-
 	const links: {
 		id: string;
 		label: string;
@@ -119,17 +120,17 @@ export default async function RootLayout({
 
 	return (
 		<html
-			lang={"en"}
+			lang={params.lang}
 			className={`${inter.variable} ${spaceGrotesk.variable}`}
 		>
 			<body className="h-fill scroll-smooth bg-black font-sans text-white">
-				<SessionProvider session={session}>
+				<NextSession>
 					<Navbar links={links} />
 					<div className="relative z-[1] mb-[58.25px] bg-black">
 						{children}
 					</div>
 					<Footer />
-				</SessionProvider>
+				</NextSession>
 				{process.env.NODE_ENV === "production" && <Analytics />}
 			</body>
 		</html>

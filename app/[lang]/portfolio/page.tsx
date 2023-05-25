@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import messages from "@/messages/en.json";
+import messages from "@/dictionaries/en.json";
 
 import { CTA } from "@components/sections/CTA";
 

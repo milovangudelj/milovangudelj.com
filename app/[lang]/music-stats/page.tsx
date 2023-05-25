@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { Artist, Track } from "@lib/types";
 import { getPalette, Palette } from "@utils/getPalette";
 
-import messages from "@/messages/en.json";
+import messages from "@/dictionaries/en.json";
 
 import { BigAssStar } from "@components/BigAssStar";
 import { Container } from "@components/Container";

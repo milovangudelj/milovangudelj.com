@@ -11,7 +11,8 @@ import { Projects } from "@components/Projects";
 import { Smiley } from "@components/Smiley";
 import { type Project } from "./work/page";
 
-import messages from "@/messages/en.json";
+import { getDictionary } from "@utils/getDictionary";
+import { Locale } from "@/i18n.config";
 
 const QUERY = gql`
 	{
@@ -33,21 +34,23 @@ async function getProjects() {
 	return projects;
 }
 
-const Home = async () => {
+const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 	const projects = await getProjects();
+
+	const dictionary = await getDictionary(lang);
 
 	return (
 		<>
 			<Section className="bg-black text-white">
 				<main className="relative mx-auto max-w-7xl px-8 2xl:px-0">
 					<h1 className="mb-16 text-h1-mobile md:text-d1-mobile xl:text-d1">
-						{messages.Home.heroTitle.webDev}{" "}
+						{dictionary.Home.heroTitle.webDev}{" "}
 						<br className="hidden md:inline" />
 						<span className="text-yellow">/</span>{" "}
-						{messages.Home.heroTitle.designer}
+						{dictionary.Home.heroTitle.designer}
 					</h1>
 					<p className="text-sub-heading-mobile md:text-sub-heading">
-						{messages.Home.heroParagraph}
+						{dictionary.Home.heroParagraph}
 					</p>
 					<WigglyStars />
 				</main>
@@ -57,9 +60,9 @@ const Home = async () => {
 				<Container className="md:space-y-32">
 					<div className="relative space-y-8 md:space-y-0">
 						<h2 className="text-h2-mobile md:mb-8 md:text-h2">
-							{messages.Work.title}
+							{dictionary.Work.title}
 						</h2>
-						<p className="text-body">{messages.Work.description}</p>
+						<p className="text-body">{dictionary.Work.description}</p>
 						<Smiley className="absolute -top-16 right-0 h-[64px] w-[65px] text-light-cyan md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]" />
 					</div>
 					<Projects projects={projects} />
