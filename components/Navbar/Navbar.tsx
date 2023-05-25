@@ -40,7 +40,7 @@ export const Navbar = ({
 						Music-Stats ↗
 					</Button>
 					{/* TODO: Add back the switch once i18n is all set up */}
-					{/* <LanguageSwitch /> */}
+					<LanguageSwitch />
 					<MobileNav navRect={rect} links={links} />
 				</div>
 			</div>

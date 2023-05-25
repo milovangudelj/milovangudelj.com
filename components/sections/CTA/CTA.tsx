@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import messages from "@/messages/en.json";
+import messages from "@/dictionaries/en.json";
 
 import { Section } from "@components/Section";
 import { Container } from "@components/Container";
