@@ -21,28 +21,35 @@ export interface UserStats {
 }
 
 const getUserStats = async (cookie: string | null) => {
-	const data: { [K in FormData["period"]]: UserStats["stats"] } & {
-		error?: string;
-	} = await (
-		await fetch(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/getUserStats`, {
+	const userRes = await fetch(
+		`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/getUserStats`,
+		{
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
-				Cookie: cookie as string,
+				Cookie: cookie ?? "",
 			},
 			next: { revalidate: 60 * 60 * 24 },
-		})
-	).json();
+		}
+	);
+
+	const data: { [K in FormData["period"]]: UserStats["stats"] } & {
+		error?: string;
+	} = await userRes.json();
 
 	return data;
 };
 
 const getData = async () => {
-	const cookie = headers().get("cookie");
+	const cookie = await headers().get("cookie");
 
 	const userStats = await getUserStats(cookie);
 
-	if (userStats.error) redirect("/login");
+	if (userStats.error) {
+		console.error("Unable to fetch user stats.");
+
+		return { error: userStats.error };
+	}
 
 	const data = {
 		longTermStats: {
@@ -59,15 +66,18 @@ const getData = async () => {
 		},
 	};
 
-	const userData = await (
-		await fetch(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/getUser`, {
+	const userRes = await fetch(
+		`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/getUser`,
+		{
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
 				Cookie: cookie as string,
 			},
-		})
-	).json();
+		}
+	);
+
+	const userData = await userRes.json();
 
 	return {
 		...data,
@@ -94,15 +104,18 @@ export const metadata = {
 	},
 };
 
-const MusicStatsPage = async ({
+export default async function MusicStatsPage({
 	params: { lang = "en" },
 }: {
 	params: { lang: Locale };
-}) => {
+}) {
 	const dictionary = await getDictionary(lang);
 
-	const { longTermStats, mediumTermStats, shortTermStats, user } =
-		await getData();
+	const data = await getData();
+
+	if (true) {
+		redirect(`/${lang}/login`);
+	}
 
 	return (
 		<>
@@ -133,12 +146,12 @@ const MusicStatsPage = async ({
 					<BigAssStar className="absolute -top-16 -right-16 z-0 h-64 w-64 text-lilla lg:-top-8 lg:right-16 lg:h-[360px] lg:w-[360px]" />
 				</Container>
 			</Section>
-			<StatsSection
-				user={user}
+			{/* <StatsSection
+				user={data.user}
 				periodData={{
-					long_term: longTermStats,
-					medium_term: mediumTermStats,
-					short_term: shortTermStats,
+					long_term: data.longTermStats,
+					medium_term: data.mediumTermStats,
+					short_term: data.shortTermStats,
 				}}
 				messages={{
 					filters: {
@@ -202,9 +215,7 @@ const MusicStatsPage = async ({
 						text: dictionary["Music-Stats"].notice.text,
 					},
 				}}
-			/>
+			/> */}
 		</>
 	);
 };
-
-export default MusicStatsPage;
