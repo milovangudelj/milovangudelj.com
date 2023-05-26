@@ -42,7 +42,6 @@ export const Navbar = ({
 					>
 						Music-Stats ↗
 					</Button>
-					{/* TODO: Add back the switch once i18n is all set up */}
 					<LanguageSwitch />
 					<MobileNav navRect={rect} lang={lang as Locale} links={links} />
 				</div>
