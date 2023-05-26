@@ -104,16 +104,16 @@ export const metadata = {
 	},
 };
 
-export default async function MusicStatsPage({
+const MusicStatsPage = async ({
 	params: { lang = "en" },
 }: {
 	params: { lang: Locale };
-}) {
+}) => {
 	const dictionary = await getDictionary(lang);
 
 	const data = await getData();
 
-	if (true) {
+	if ("error" in data) {
 		redirect(`/${lang}/login`);
 	}
 
@@ -146,7 +146,7 @@ export default async function MusicStatsPage({
 					<BigAssStar className="absolute -top-16 -right-16 z-0 h-64 w-64 text-lilla lg:-top-8 lg:right-16 lg:h-[360px] lg:w-[360px]" />
 				</Container>
 			</Section>
-			{/* <StatsSection
+			<StatsSection
 				user={data.user}
 				periodData={{
 					long_term: data.longTermStats,
@@ -215,7 +215,9 @@ export default async function MusicStatsPage({
 						text: dictionary["Music-Stats"].notice.text,
 					},
 				}}
-			/> */}
+			/>
 		</>
 	);
 };
+
+export default MusicStatsPage;
