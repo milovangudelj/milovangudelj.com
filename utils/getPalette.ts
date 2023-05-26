@@ -1,4 +1,4 @@
-import { Color, colors, getColorName, shuffleAll } from "./getColors";
+import { Color, colors, getColorName, shuffleAll } from "@utils/getColors";
 
 export interface ColorCombo {
 	bg: Color;
