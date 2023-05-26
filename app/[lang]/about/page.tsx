@@ -46,8 +46,16 @@ const AboutPage = async ({
 						</h2>
 						<p className="text-body">{dictionary.About.music.p1}</p>
 						<p className="text-body">
-							{/* TODO: Replace link with actual element */}
-							{dictionary.About.music.p2}
+							{dictionary.About.music.p2.pre}
+							<a
+								href="https://www.spotify.com/wrapped"
+								rel="noopener noreferrer"
+								target={"_blank"}
+								className="underline underline-offset-2 hover:no-underline"
+							>
+								{dictionary.About.music.p2.link}
+							</a>
+							{dictionary.About.music.p2.post}
 						</p>
 						<Button as={Link} href={`/${lang}/music-stats`}>
 							{dictionary.About.music.cta}

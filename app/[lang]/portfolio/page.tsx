@@ -206,8 +206,11 @@ const PortfolioPage = async ({
 						{dictionary.Portfolio.poster.title}
 					</h2>
 					<p className="mt-16 text-sub-heading-mobile md:text-sub-heading">
-						{/* TODO: Emphasize hashtag */}
-						{dictionary.Portfolio.poster.description}
+						{dictionary.Portfolio.poster.description.pre}
+						<span className="text-yellow">
+							{dictionary.Portfolio.poster.description.hashtag}
+						</span>
+						{dictionary.Portfolio.poster.description.post}
 					</p>
 					<PosterGallery
 						images={[

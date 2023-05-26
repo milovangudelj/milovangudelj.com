@@ -25,7 +25,11 @@
 		"music": {
 			"title": "Ah, a proposito...",
 			"p1": "Adoro la musica. Quindi se sei interessato/a qua trovi un po' di informazioni su quello che ascolto.",
-			"p2": "In più se vuoi puoi scaricare un poster molto bello con i tuoi artisti e brani più ascoltati, un po' come <link>Spotify Wrapped</link> ma in miniatura.",
+			"p2": {
+				"pre": "In più se vuoi puoi scaricare un poster molto bello con i tuoi artisti e brani più ascoltati, un po' come ",
+				"link": "Spotify Wrapped",
+				"post": " ma in miniatura."
+			},
 			"cta": "Scarica le tue Music-Stats"
 		},
 		"nowPlaying": {
@@ -92,7 +96,11 @@
 		},
 		"poster": {
 			"title": "Poster",
-			"description": "Nel 2021 ho iniziato la <em>#postereveryday</em> challenge. Questa è la selezione dei poster più belli.",
+			"description": {
+				"pre": "Nel 2021 ho iniziato la ",
+				"hashtag": "#postereveryday",
+				"post": " challenge. Questa è la selezione dei poster più belli."
+			},
 			"drag": "Trascina"
 		},
 		"cta": {
@@ -101,7 +109,10 @@
 		}
 	},
 	"Music-Stats": {
-		"p1": "Una versione aggiornata del tuo Spotify Wrapped {number}.",
+		"p1": {
+			"pre": "Una versione aggiornata del tuo Spotify Wrapped ",
+			"post": "."
+		},
 		"data": "Dati forniti da",
 		"filters": {
 			"title": "Filtra per",

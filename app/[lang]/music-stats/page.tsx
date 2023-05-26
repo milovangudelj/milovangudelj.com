@@ -125,8 +125,9 @@ const MusicStatsPage = async ({
 						<span className="text-yellow">Music</span>-Stats
 					</h1>
 					<p className="relative z-[1] text-sub-heading-mobile md:text-sub-heading">
-						{/* TODO: Replace number with updated value */}
-						{dictionary["Music-Stats"].p1}
+						{dictionary["Music-Stats"].p1.pre}
+						{new Date().getFullYear()}
+						{dictionary["Music-Stats"].p1.post}
 					</p>
 					<div className="text-body">
 						<a href="#data-notice" className="text-dark-me">
