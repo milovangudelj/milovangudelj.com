@@ -1,7 +1,9 @@
 import Image from "next/image";
 
+import { Locale } from "@/i18n.config";
+import { getDictionary } from "@/utils/getDictionary";
+
 import { CTA } from "@components/sections/CTA";
-import { getTranslations } from "next-intl/server";
 
 import { Container } from "@components/Container";
 import { Section } from "@components/Section";
@@ -25,21 +27,29 @@ export const metadata = {
 	description:
 		"My portfolio! Feel free to reach out to me for any questions you might have.",
 	alternates: {
-		canonical: "https://www.milovangudelj.com/portfolio",
+		canonical: "https://www.milovangudelj.com/en/portfolio",
 		languages: { "it-IT": "https://www.milovangudelj.com/it/portfolio" },
 	},
 };
 
-const PortfolioPage = async () => {
-	const t = await getTranslations("Portfolio");
+const PortfolioPage = async ({
+	params: { lang = "en" },
+}: {
+	params: { lang: Locale };
+}) => {
+	const dictionary = await getDictionary(lang);
 
 	return (
 		<>
 			<Section className="relative scroll-mt-[72px] overflow-hidden bg-salmon md:scroll-mt-[88px]">
 				<main className="relative mx-auto flex max-w-7xl items-center justify-between px-8 2xl:px-0">
 					<div className="space-y-8">
-						<h1 className="text-d2-mobile xl:text-d2">{t("title")}</h1>
-						<p className="text-sub-heading">{t("description")}</p>
+						<h1 className="text-d2-mobile xl:text-d2">
+							{dictionary.Portfolio.title}
+						</h1>
+						<p className="text-sub-heading">
+							{dictionary.Portfolio.description}
+						</p>
 					</div>
 					<div className="absolute -bottom-20 -right-[360px] sm:-top-2 md:-right-64 xl:-right-16">
 						<Image
@@ -55,12 +65,12 @@ const PortfolioPage = async () => {
 			<Section className="bg-black py-16 text-white md:py-32 md:px-16">
 				<Container>
 					<h2 className="text-h2-mobile md:text-h2">
-						{t("experience.title")}
+						{dictionary.Portfolio.experience.title}
 					</h2>
 					<div className="relative space-y-8 text-body md:flex md:space-y-0">
 						<div className="flex-1 space-y-8 md:mr-32">
-							<p>{t("experience.p1")}</p>
-							<p>{t("experience.p2")}</p>
+							<p>{dictionary.Portfolio.experience.p1}</p>
+							<p>{dictionary.Portfolio.experience.p2}</p>
 						</div>
 						<div className="absolute top-1/2 left-1/2 mt-[18px] hidden flex-none -translate-x-1/2 -translate-y-1/2 md:block">
 							<Image
@@ -73,8 +83,8 @@ const PortfolioPage = async () => {
 							/>
 						</div>
 						<div className="flex-1 space-y-8 md:ml-32">
-							<p>{t("experience.p3")}</p>
-							<p>{t("experience.p4")}</p>
+							<p>{dictionary.Portfolio.experience.p3}</p>
+							<p>{dictionary.Portfolio.experience.p4}</p>
 						</div>
 					</div>
 				</Container>
@@ -82,18 +92,20 @@ const PortfolioPage = async () => {
 			<Section className="bg-black py-16 text-white md:py-32 md:px-16">
 				<Container>
 					<h2 className="text-h2-mobile md:text-h2">
-						{t("software.title")}
+						{dictionary.Portfolio.software.title}
 					</h2>
 					<p className="mt-16 text-sub-heading-mobile md:text-sub-heading">
-						{t("software.description")}
+						{dictionary.Portfolio.software.description}
 					</p>
 					<div className="space-y-8">
 						<h3 className="text-sub-heading-mobile text-yellow md:text-sub-heading">
-							{t("software.design.title")}
+							{dictionary.Portfolio.software.design.title}
 						</h3>
 						<div className="items-center gap-32 space-y-16 xl:flex xl:space-y-0">
 							<div className="flex-1 space-y-8">
-								<p className="text-body">{t("software.design.p1")}</p>
+								<p className="text-body">
+									{dictionary.Portfolio.software.design.p1}
+								</p>
 							</div>
 							<ul className="flex flex-1 items-center justify-center gap-8 md:gap-16">
 								<li>
@@ -137,12 +149,16 @@ const PortfolioPage = async () => {
 					</div>
 					<div className="space-y-8">
 						<h3 className="text-sub-heading-mobile text-yellow md:text-sub-heading">
-							{t("software.web.title")}
+							{dictionary.Portfolio.software.web.title}
 						</h3>
 						<div className="items-center gap-32 space-y-16 xl:flex xl:space-y-0">
 							<div className="flex-1 space-y-8">
-								<p className="text-body">{t("software.web.p1")}</p>
-								<p className="text-body">{t("software.web.p2")}</p>
+								<p className="text-body">
+									{dictionary.Portfolio.software.web.p1}
+								</p>
+								<p className="text-body">
+									{dictionary.Portfolio.software.web.p2}
+								</p>
 							</div>
 							<ul className="flex flex-1 items-center justify-center gap-8 md:gap-16">
 								<li>
@@ -189,15 +205,14 @@ const PortfolioPage = async () => {
 			<Section className="overflow-hidden bg-black py-16 text-white md:py-32 md:px-16">
 				<Container>
 					<h2 className="text-h2-mobile md:text-h2">
-						{t("poster.title")}
+						{dictionary.Portfolio.poster.title}
 					</h2>
 					<p className="mt-16 text-sub-heading-mobile md:text-sub-heading">
-						{t.rich("poster.description", {
-							em: (chunks) =>
-								(
-									<span className="text-yellow">{chunks}</span>
-								) as unknown as string,
-						})}
+						{dictionary.Portfolio.poster.description.pre}
+						<span className="text-yellow">
+							{dictionary.Portfolio.poster.description.hashtag}
+						</span>
+						{dictionary.Portfolio.poster.description.post}
 					</p>
 					<PosterGallery
 						images={[
@@ -220,7 +235,7 @@ const PortfolioPage = async () => {
 						]}
 						imageWidth={400}
 						imageHeight={533}
-						dragText={t("poster.drag")}
+						dragText={dictionary.Portfolio.poster.drag}
 					/>
 					<PosterGallery
 						images={[
@@ -243,11 +258,14 @@ const PortfolioPage = async () => {
 						]}
 						imageWidth={400}
 						imageHeight={533}
-						dragText={t("poster.drag")}
+						dragText={dictionary.Portfolio.poster.drag}
 					/>
 				</Container>
 			</Section>
-			<CTA title={t("cta.title")} description={t("cta.description")} />
+			<CTA
+				title={dictionary.Portfolio.cta.title}
+				description={dictionary.Portfolio.cta.description}
+			/>
 		</>
 	);
 };

@@ -1,6 +1,6 @@
 import { NodeRendererType } from "@graphcms/rich-text-react-renderer";
 import Image from "next/legacy/image";
-import { Link } from "next-intl";
+import Link from "next/link";
 import React from "react";
 
 const commonRenderers: NodeRendererType = {

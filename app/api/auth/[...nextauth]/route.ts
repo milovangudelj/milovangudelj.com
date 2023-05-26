@@ -2,7 +2,7 @@ import NextAuth, { AuthOptions, Account, Session, User } from "next-auth";
 import { AdapterUser } from "next-auth/adapters";
 import { JWT } from "next-auth/jwt";
 import SpotifyProvider from "next-auth/providers/spotify";
-import { spotifyApi, SPOTIFY_AUTH_URL } from "../../../lib/spotify";
+import { spotifyApi, SPOTIFY_AUTH_URL } from "@lib/spotify";
 
 export interface ExtendedToken extends JWT {
 	accessToken?: Account["access_token"];
@@ -101,4 +101,6 @@ export const authOptions: AuthOptions = {
 	},
 };
 
-export default NextAuth(authOptions);
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };

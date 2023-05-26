@@ -1,23 +1,25 @@
 import Image from "next/image";
 import { ComponentProps } from "react";
-import { getTranslations } from "next-intl/server";
 import { twMerge } from "tailwind-merge";
 
-import { Section } from "../../Section";
-import { Container } from "../../Container";
-import { Hourglass } from "../../Hourglass";
-import NowPlaying from "../../NowPlaying/NowPlaying";
+import { Section } from "@components/Section";
+import { Container } from "@components/Container";
+import { Hourglass } from "@components/Hourglass";
+import NowPlaying from "@components/NowPlaying/NowPlaying";
 
-import me from "../../../public/images/poly-me.png";
-import { asyncComponent } from "../../../lib/asyncComponent";
+import me from "@images/poly-me.png";
+import { asyncComponent } from "@lib/asyncComponent";
+import { getDictionary } from "@/utils/getDictionary";
+import { Locale } from "@/i18n.config";
 
 export const AboutSection = asyncComponent(
 	async ({
 		className,
 		standAlone = false,
+		lang,
 		...props
 	}: ComponentProps<typeof Section> & { standAlone?: boolean }) => {
-		const t = await getTranslations("About");
+		const dictionary = await getDictionary(lang as Locale);
 
 		const experienceYears =
 			new Date().getFullYear() - new Date(2018, 10).getFullYear();
@@ -61,16 +63,18 @@ export const AboutSection = asyncComponent(
 										: "text-h2-mobile md:text-h2"
 								}
 							>
-								{t("main.title")}
+								{dictionary.About.main.title}
 							</h2>
-							<p className="text-body">{t("main.p1")}</p>
+							<p className="text-body">{dictionary.About.main.p1}</p>
 
-							<p className="text-body">{t("main.p2")}</p>
+							<p className="text-body">{dictionary.About.main.p2}</p>
 						</div>
 						{!standAlone && (
 							<NowPlaying
-								title={t("nowPlaying.title")}
-								notPlayingMessage={t("nowPlaying.notPlaying")}
+								title={dictionary.About.nowPlaying.title}
+								notPlayingMessage={
+									dictionary.About.nowPlaying.notPlaying
+								}
 							/>
 						)}
 					</div>

@@ -6,8 +6,7 @@ import {
 	useSearchParams,
 	useSelectedLayoutSegments,
 } from "next/navigation";
-import { Link } from "next-intl";
-import { usePathname as useCleanPathname } from "next-intl/client";
+import Link from "next/link";
 import { GlobeSimple } from "@phosphor-icons/react";
 
 interface Locale {
@@ -22,7 +21,6 @@ const locales: Locale[] = [
 
 export const LanguageSwitch = () => {
 	const pathname = usePathname()!;
-	const cleanPathname = useCleanPathname()!;
 	const searchParams = useSearchParams()!;
 	const segments = useSelectedLayoutSegments();
 
@@ -45,14 +43,30 @@ export const LanguageSwitch = () => {
 		return res;
 	}, [pathname]);
 
+	const cleanPathname = (pathname: string): string => {
+		const locale = pathname.substring(1, 3);
+
+		const res =
+			locale.length === 0 ||
+			locale !== "it" ||
+			(locale === "it" && pathname.charAt(3) !== "/" && pathname.length > 3)
+				? pathname
+				: pathname.substring(3);
+
+		return res;
+	};
+
 	return (
 		<>
 			{locales.map((locale) =>
 				getCurrentLocale() !== locale.value ? (
 					<Link
 						key={locale.value}
-						href={cleanPathname + getQueryString()}
-						locale={locale.value}
+						href={
+							`/${locale.value}` +
+							cleanPathname(pathname) +
+							getQueryString()
+						}
 						title={
 							locale.value === "it"
 								? "Passa all'Italiano"

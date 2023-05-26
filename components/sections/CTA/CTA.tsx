@@ -1,10 +1,11 @@
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Section } from "../../Section";
-import { Container } from "../../Container";
-import { getTranslations } from "next-intl/server";
-import { asyncComponent } from "../../../lib/asyncComponent";
+import { Section } from "@components/Section";
+import { Container } from "@components/Container";
+import { asyncComponent } from "@lib/asyncComponent";
+import { getDictionary } from "@/utils/getDictionary";
+import { Locale } from "@/i18n.config";
 
 const Pattern = ({ className }: ComponentProps<"svg">) => {
 	return (
@@ -34,12 +35,13 @@ export const CTA = asyncComponent(
 	async ({
 		title,
 		description,
+		lang,
 		...props
 	}: ComponentProps<"section"> & {
 		title?: string;
 		description?: string;
 	}) => {
-		const t = await getTranslations("CTA");
+		const dictionary = await getDictionary(lang as Locale);
 
 		return (
 			<Section
@@ -58,9 +60,11 @@ export const CTA = asyncComponent(
 				<Container className="relative">
 					<div className="space-y-8">
 						<h2 className="text-h2-mobile md:text-h2">
-							{title ?? t("title")}
+							{title ?? dictionary.CTA.title}
 						</h2>
-						<p className="text-body">{description ?? t("description")}</p>
+						<p className="text-body">
+							{description ?? dictionary.CTA.description}
+						</p>
 					</div>
 					<div className="flex w-fit items-center space-x-4 py-0.5">
 						<a

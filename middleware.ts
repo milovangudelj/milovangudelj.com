@@ -1,41 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
-import { withAuth } from "next-auth/middleware";
-import createIntlMiddleware from "next-intl/middleware";
+import { match as matchLocale } from "@formatjs/intl-localematcher";
+import Negotiator from "negotiator";
 
 import { generateSiteMap } from "@lib/sitemap";
 
-const locales = ["en", "it"];
-const privatePages = ["/music-stats"];
+import { i18n } from "@/i18n.config";
 
-const intlMiddleware = createIntlMiddleware({
-	// A list of all locales that are supported
-	locales,
+function getLocale(request: NextRequest): string | undefined {
+	// Negotiator expects plain object so we need to transform headers
+	const negotiatorHeaders: Record<string, string> = {};
+	request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-	// If this locale is matched, pathnames work without a prefix (e.g. `/about`)
-	defaultLocale: "en",
-	alternateLinks: false,
-});
+	// Use negotiator and intl-localematcher to get best locale
+	let languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+	// @ts-ignore locales are readonly
+	const locales: string[] = i18n.locales;
+	return matchLocale(languages, locales, i18n.defaultLocale);
+}
 
-const authMiddleware = withAuth(
-	// Note that this callback is only invoked if
-	// the `authorized` callback has returned `true`
-	// and not for pages listed in `pages`.
-	function onSuccess(req) {
-		return intlMiddleware(req);
-	},
-	{
-		callbacks: {
-			authorized: ({ token }) => token != null,
-		},
-		pages: {
-			signIn: "/login",
-		},
-	}
-);
+export const middleware = async (request: NextRequest) => {
+	const pathname = request.nextUrl.pathname;
 
-export const middleware = async (
-	request: NextRequest
-): Promise<NextResponse> => {
 	// Generates sitemap.xml if path is /sitemap.xml
 	if (request.nextUrl.pathname.startsWith("/sitemap.xml")) {
 		const sitemap = await generateSiteMap();
@@ -46,22 +31,56 @@ export const middleware = async (
 		});
 	}
 
-	const privatePathnameRegex = RegExp(
-		`^((${locales
-			.map((locale) => `/${locale}`)
-			.join("|")}))?(${privatePages.join("|")})/?.*$`,
-		"i"
-	);
-	const isPrivatePage = privatePathnameRegex.test(request.nextUrl.pathname);
+	// `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
+	// If you have one
+	if (["/fonts", "/images"].some((value) => pathname.includes(value)))
+		return NextResponse.next();
 
-	if (isPrivatePage) {
-		return (authMiddleware as any)(request);
-	} else {
-		return intlMiddleware(request);
+	// Check if the default locale is in the pathname
+	if (
+		pathname.startsWith(`/${i18n.defaultLocale}/`) ||
+		pathname === `/${i18n.defaultLocale}`
+	) {
+		// e.g. incoming request is /en/products
+		// The new URL is now /products
+		return NextResponse.redirect(
+			new URL(
+				pathname.replace(
+					`/${i18n.defaultLocale}`,
+					pathname === `/${i18n.defaultLocale}` ? "/" : ""
+				),
+				request.url
+			)
+		);
 	}
+
+	// Check if there is any supported locale in the pathname
+	const pathnameIsMissingLocale = i18n.locales.every(
+		(locale) =>
+			!pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+	);
+
+	// Redirect if there is no locale
+	if (pathnameIsMissingLocale) {
+		const locale = getLocale(request);
+
+		// e.g. incoming request is /products
+		// The new URL is now /en-US/products
+		if (locale === i18n.defaultLocale) {
+			return NextResponse.rewrite(
+				new URL(`/${locale}${pathname}`, request.url)
+			);
+		}
+
+		return NextResponse.redirect(
+			new URL(`/${locale}/${pathname}`, request.url)
+		);
+	}
+
+	return NextResponse.next();
 };
 
 export const config = {
-	// Skip all paths that aren't pages that you'd like to internationalize
-	matcher: ["/((?!api|_next|favicon.ico|fonts|images).*)"],
+	// Matcher ignoring `/_next/` and `/api/`
+	matcher: ["/((?!api|_next/static|_next/image|images|fonts).*)"],
 };

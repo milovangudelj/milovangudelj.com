@@ -5,21 +5,30 @@ import { Container } from "@components/Container";
 import { Section } from "@components/Section";
 import { LoginButton } from "./LoginButton";
 
+import { Locale } from "@/i18n.config";
+import { getDictionary } from "@/utils/getDictionary";
+
 export const metadata = {
 	title: "Milovan Gudelj - Login",
 	description:
 		"Login to your account to see your top artists, tracks and download your Music-Stats poster.",
 	alternates: {
-		canonical: "https://www.milovangudelj.com/login",
+		canonical: "https://www.milovangudelj.com/en/login",
 		languages: { "it-IT": "https://www.milovangudelj.com/it/login" },
 	},
 };
 
-const LoginPage = async () => {
+const LoginPage = async ({
+	params: { lang = "en" },
+}: {
+	params: { lang: Locale };
+}) => {
 	const session = await getServerSession();
 	if (session) {
-		redirect("/music-stats");
+		redirect(`/${lang}/music-stats`);
 	}
+
+	const dictionary = await getDictionary(lang);
 
 	return (
 		<Section className="bg-green">

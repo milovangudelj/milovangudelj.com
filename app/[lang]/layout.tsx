@@ -1,14 +1,14 @@
-import { notFound } from "next/navigation";
-import { getLocale, getTranslations } from "next-intl/server";
-import { getServerSession } from "next-auth/next";
 import { Analytics } from "@vercel/analytics/react";
 import localFont from "next/font/local";
 
+import { i18n, Locale } from "@/i18n.config";
+import { getDictionary } from "@/utils/getDictionary";
+
 import "@styles/globals.css";
 
-import { SessionProvider } from "@lib/sessionProvider";
 import { Navbar } from "@components/Navbar";
 import { Footer } from "@components/Footer";
+import { NextSession } from "@/components/NextSession";
 
 const inter = localFont({
 	src: "../../public/fonts/Inter-Var.woff2",
@@ -33,7 +33,7 @@ export const metadata = {
 		"I design and develop engaging websites and delightful digital experiences.",
 	metadataBase: new URL("https://www.milovangudelj.com"),
 	alternates: {
-		canonical: "/",
+		canonical: "/en",
 		languages: { "it-IT": "/it" },
 	},
 	openGraph: {
@@ -78,25 +78,20 @@ export const metadata = {
 	},
 };
 
+export async function generateStaticParams() {
+	return i18n.locales.map((locale) => ({ lang: locale }));
+}
+
 export default async function RootLayout({
 	children,
 	params,
 }: {
 	children: React.ReactNode;
 	params: {
-		locale: string;
+		lang: Locale;
 	};
 }) {
-	const session = await getServerSession();
-
-	const locale = getLocale();
-
-	// Show a 404 error if the user requests an unknown locale
-	if (params.locale !== locale) {
-		notFound();
-	}
-
-	const t = await getTranslations("Navbar");
+	const dictionary = await getDictionary(params.lang);
 
 	const links: {
 		id: string;
@@ -106,38 +101,38 @@ export default async function RootLayout({
 		{
 			id: "about",
 			href: "/about",
-			label: t("about"),
+			label: dictionary.Navbar.about,
 		},
 		{
 			id: "work",
 			href: "/work",
-			label: t("work"),
+			label: dictionary.Navbar.work,
 		},
 		{
 			id: "portfolio",
 			href: "/portfolio",
-			label: t("portfolio"),
+			label: dictionary.Navbar.portfolio,
 		},
 		{
 			id: "contact",
 			href: "/contact",
-			label: t("contact"),
+			label: dictionary.Navbar.contact,
 		},
 	];
 
 	return (
 		<html
-			lang={locale}
+			lang={params.lang}
 			className={`${inter.variable} ${spaceGrotesk.variable}`}
 		>
 			<body className="h-fill scroll-smooth bg-black font-sans text-white">
-				<SessionProvider session={session}>
-					<Navbar links={links} />
+				<NextSession>
+					<Navbar lang={params.lang} links={links} />
 					<div className="relative z-[1] mb-[58.25px] bg-black">
 						{children}
 					</div>
 					<Footer />
-				</SessionProvider>
+				</NextSession>
 				{process.env.NODE_ENV === "production" && <Analytics />}
 			</body>
 		</html>

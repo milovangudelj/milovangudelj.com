@@ -1,24 +1,23 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 
-import { spotifyApi } from "../../lib/spotify";
-import { authOptions, ExtendedSession } from "./auth/[...nextauth]";
-import { FormData } from "../../app/[locale]/music-stats/ControlsBar";
+import { spotifyApi } from "@lib/spotify";
+import {
+	authOptions,
+	ExtendedSession,
+} from "@/app/api/auth/[...nextauth]/route";
+import { FormData } from "@/app/[lang]/music-stats/ControlsBar";
 
-export default async function handler(
-	req: NextApiRequest,
-	res: NextApiResponse
-) {
-	const session = (await getServerSession(
-		req,
-		res,
-		authOptions
-	)) as ExtendedSession;
+export async function GET(req: NextRequest, res: NextResponse) {
+	const session = (await getServerSession(authOptions)) as ExtendedSession;
 
 	if (!session || !session.user?.accessToken || !session.user.refreshToken) {
-		res.status(401);
-		res.send({ error: "Unauthorised!" });
-		return;
+		return new NextResponse(JSON.stringify({ error: "Unauthorised!" }), {
+			status: 401,
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
 	}
 
 	spotifyApi.setAccessToken(session.user.accessToken);
@@ -57,13 +56,14 @@ export default async function handler(
 		},
 	};
 
-	res.status(200);
-	res.setHeader("Content-Type", "application/json");
-	res.setHeader(
-		"Cache-Control",
-		"public, s-maxage=86400, stale-while-revalidate=43200"
-	);
-	res.send(userStats);
+	return new NextResponse(JSON.stringify(userStats), {
+		status: 200,
+		headers: {
+			"Content-Type": "application/json",
+			"Cache-Control":
+				"public, s-maxage=86400, stale-while-revalidate=43200",
+		},
+	});
 }
 
 const getTopArtists = async (period: FormData["period"]) => {

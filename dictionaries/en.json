@@ -25,7 +25,11 @@
 		"music": {
 			"title": "Oh, btw...",
 			"p1": "I looove music. So if you're interested here's a little bit of information about that.",
-			"p2": "Plus if you want you can get a cool looking poster with your top artists and tracks, kind of like a <link>Spotify Wrapped</link> but in miniature.",
+			"p2": {
+				"pre": "Plus if you want you can get a cool looking poster with your top artists and tracks, kind of like a ",
+				"link": "Spotify Wrapped",
+				"post": " but in miniature."
+			},
 			"cta": "Get your Music-Stats"
 		},
 		"nowPlaying": {
@@ -92,7 +96,11 @@
 		},
 		"poster": {
 			"title": "Poster",
-			"description": "In 2021 I started the <em>#postereveryday</em> challenge. Here are some of the best ones.",
+			"description": {
+				"pre": "In 2021 I started the ",
+				"hashtag": "#postereveryday",
+				"post": " challenge. Here are some of the best ones."
+			},
 			"drag": "Drag or scroll"
 		},
 		"cta": {
@@ -101,7 +109,10 @@
 		}
 	},
 	"Music-Stats": {
-		"p1": "An up to date miniature version of your {number} Spotify Wrapped.",
+		"p1": {
+			"pre": "An up to date miniature version of your ",
+			"post": " Spotify Wrapped."
+		},
 		"data": "Data provided by",
 		"filters": {
 			"title": "Filter by",
