@@ -1,3 +1,4 @@
+const spotify_authorization = process.env.SPOTIFY_AUTHORIZATION!;
 const spotify_code = process.env.SPOTIFY_CODE!;
 
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
@@ -9,6 +10,7 @@ const getAccessToken = async () => {
 	const response = await fetch(TOKEN_ENDPOINT, {
 		method: "POST",
 		headers: {
+			Authorization: `Basic ${spotify_authorization}`,
 			"Content-Type": "application/x-www-form-urlencoded",
 		},
 		body: new URLSearchParams({
