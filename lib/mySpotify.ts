@@ -1,8 +1,5 @@
-const client_id = process.env.SPOTIFY_CLIENT_ID;
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN as string;
+const spotify_code = process.env.SPOTIFY_CODE!;
 
-const basic = btoa(`${client_id}:${client_secret}`);
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`;
 const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists`;
@@ -12,20 +9,25 @@ const getAccessToken = async () => {
 	const response = await fetch(TOKEN_ENDPOINT, {
 		method: "POST",
 		headers: {
-			Authorization: `Basic ${basic}`,
 			"Content-Type": "application/x-www-form-urlencoded",
 		},
 		body: new URLSearchParams({
-			grant_type: "refresh_token",
-			refresh_token,
+			grant_type: "authorization_code",
+			code: spotify_code,
+			redirect_uri: "http://localhost:3000/music-stats",
 		}),
+		next: {
+			revalidate: 3600,
+		},
 	});
 
-	return response.json();
+	const data = await response.json();
+
+	return data.access_token as string;
 };
 
 export const getNowPlaying = async () => {
-	const { access_token } = await getAccessToken();
+	const access_token = await getAccessToken();
 
 	return fetch(NOW_PLAYING_ENDPOINT, {
 		headers: {
@@ -35,7 +37,7 @@ export const getNowPlaying = async () => {
 };
 
 export const getTopTracks = async () => {
-	const { access_token } = await getAccessToken();
+	const access_token = await getAccessToken();
 
 	return fetch(TOP_TRACKS_ENDPOINT, {
 		headers: {
@@ -51,7 +53,7 @@ export const getTopArtists = async ({
 	limit: number;
 	range: "short" | "medium" | "long";
 }) => {
-	const { access_token } = await getAccessToken();
+	const access_token = await getAccessToken();
 
 	const tRange: { [key in typeof range]: string } = {
 		short: "short_term",
