@@ -16,7 +16,7 @@ const getAccessToken = async () => {
 		body: new URLSearchParams({
 			grant_type: "authorization_code",
 			code: spotify_code,
-			redirect_uri: "http://localhost:3000/music-stats",
+			redirect_uri: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/music-stats`,
 		}),
 		next: {
 			revalidate: 3600,
