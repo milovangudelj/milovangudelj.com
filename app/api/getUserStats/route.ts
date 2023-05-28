@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 
-import { spotifyApi } from "@lib/spotify";
+import { spotifyApi } from "~lib/spotify";
 import {
 	authOptions,
 	ExtendedSession,
-} from "@/app/api/auth/[...nextauth]/route";
-import { FormData } from "@/app/[lang]/music-stats/ControlsBar";
+} from "~/app/api/auth/[...nextauth]/route";
+import { FormData } from "~/app/[lang]/music-stats/ControlsBar";
 
 export async function GET(req: NextRequest, res: NextResponse) {
 	const session = (await getServerSession(authOptions)) as ExtendedSession;

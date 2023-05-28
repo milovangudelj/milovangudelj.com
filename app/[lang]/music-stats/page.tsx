@@ -5,6 +5,9 @@ import { redirect } from "next/navigation";
 import { Artist, Track } from "~lib/types";
 import { getPalette, Palette } from "~utils/getPalette";
 
+import { Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
+
 import { BigAssStar } from "~components/BigAssStar";
 import { Container } from "~components/Container";
 import { Section } from "~components/Section";

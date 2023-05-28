@@ -4,7 +4,7 @@ import Negotiator from "negotiator";
 
 import { generateSiteMap } from "~lib/sitemap";
 
-import { i18n } from "@/i18n.config";
+import { i18n } from "~/i18n.config";
 
 function getLocale(request: NextRequest): string | undefined {
 	// Negotiator expects plain object so we need to transform headers
@@ -31,7 +31,18 @@ export const middleware = async (request: NextRequest) => {
 		});
 	}
 
+	// Ignore requests to the Studio
 	if (request.nextUrl.pathname.startsWith("/studio")) {
+		return NextResponse.next();
+	}
+
+	// `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
+	// If you have one
+	if (
+		["/fonts", "/images"].some(
+			(value) => pathname.startsWith(`${value}/`) || pathname === value
+		)
+	)
 		return NextResponse.next();
 	}
 

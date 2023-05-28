@@ -1,18 +1,15 @@
 import Link from "next/link";
 
-import messages from "@/dictionaries/en.json";
-
 import { AboutSection } from "~components/sections/About";
 import Artists from "~components/TopArtists/TopArtists";
 import { Button } from "~components/Button";
 import { Container } from "~components/Container";
 import NowPlaying from "~components/NowPlaying/NowPlaying";
 import { Section } from "~components/Section";
-
 import { GenreSolarSystem } from "./GenreSolarSystem";
 
-import { Locale } from "@/i18n.config";
-import { getDictionary } from "@/utils/getDictionary";
+import { Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
 
 export const metadata = {
 	title: "Milovan Gudelj - About me",

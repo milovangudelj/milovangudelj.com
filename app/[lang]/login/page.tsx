@@ -5,8 +5,8 @@ import { Container } from "~components/Container";
 import { Section } from "~components/Section";
 import { LoginButton } from "./LoginButton";
 
-import { Locale } from "@/i18n.config";
-import { getDictionary } from "@/utils/getDictionary";
+import { Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
 
 export const metadata = {
 	title: "Milovan Gudelj - Login",

@@ -1,11 +1,14 @@
 import { Analytics } from "@vercel/analytics/react";
 import localFont from "next/font/local";
 
+import { i18n, Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
+
 import "~styles/globals.css";
 
-import { SessionProvider } from "~lib/sessionProvider";
 import { Navbar } from "~components/Navbar";
 import { Footer } from "~components/Footer";
+import { NextSession } from "~/components/NextSession";
 
 const inter = localFont({
 	src: "../../public/fonts/Inter-Var.woff2",

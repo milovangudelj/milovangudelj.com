@@ -11,8 +11,8 @@ import { Projects } from "~components/Projects";
 import { Smiley } from "~components/Smiley";
 import { type Project } from "./work/page";
 
-import { getDictionary } from "@utils/getDictionary";
-import { Locale } from "@/i18n.config";
+import { getDictionary } from "~utils/getDictionary";
+import { Locale } from "~/i18n.config";
 
 const QUERY = gql`
 	{

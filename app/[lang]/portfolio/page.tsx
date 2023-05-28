@@ -1,7 +1,9 @@
 import Image from "next/image";
 
+import { Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
+
 import { CTA } from "~components/sections/CTA";
-import { getTranslations } from "next-intl/server";
 
 import { Container } from "~components/Container";
 import { Section } from "~components/Section";

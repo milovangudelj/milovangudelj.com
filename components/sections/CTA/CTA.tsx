@@ -1,11 +1,11 @@
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Section } from "@components/Section";
-import { Container } from "@components/Container";
-import { asyncComponent } from "@lib/asyncComponent";
-import { getDictionary } from "@/utils/getDictionary";
-import { Locale } from "@/i18n.config";
+import { Section } from "~components/Section";
+import { Container } from "~components/Container";
+import { asyncComponent } from "~lib/asyncComponent";
+import { getDictionary } from "~/utils/getDictionary";
+import { Locale } from "~/i18n.config";
 
 const Pattern = ({ className }: ComponentProps<"svg">) => {
 	return (

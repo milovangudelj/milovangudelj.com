@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { RefCallback, useCallback, useState } from "react";
+import { ComponentProps, RefCallback, useCallback, useState } from "react";
 import { Button } from "~components/Button";
-import { LanguageSwitch } from "~components/LanguageSwitch";
 import { MobileNav } from "~components/MobileNav";
 import { NavLinks } from "~components/NavLinks";
+import { LanguageSwitch } from "~components/LanguageSwitch";
+import { Locale } from "~/i18n.config";
 
 export const Navbar = ({
 	links,

@@ -6,7 +6,9 @@ import { Section } from "~components/Section";
 import { Container } from "~components/Container";
 import ProjectShowcase from "~components/ProjectShowcase/ProjectShowcase";
 import { Smiley } from "~components/Smiley";
-import { getTranslations } from "next-intl/server";
+
+import { Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
 
 export interface Project {
 	id: string;

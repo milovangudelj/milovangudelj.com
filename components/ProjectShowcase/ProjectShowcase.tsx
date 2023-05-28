@@ -2,12 +2,12 @@
 
 import Image from "next/legacy/image";
 
-import { Project } from "@/app/[lang]/work/page";
+import { Project } from "~/app/[lang]/work/page";
 import Link from "next/link";
 import { RichText } from "@graphcms/rich-text-react-renderer";
-import { Button } from "@components/Button";
-import { colorMap } from "@lib/hygraph";
-import { useIsDesktop, useIsMobile } from "@lib/useMediaQuery";
+import { Button } from "~components/Button";
+import { colorMap } from "~lib/hygraph";
+import { useIsDesktop, useIsMobile } from "~lib/useMediaQuery";
 
 interface ProjectShowcaseProps extends Omit<Project, "id"> {
 	messages: {
