@@ -34,7 +34,6 @@ export default defineConfig({
 		// Vision lets you query your content with GROQ in the studio
 		// https://www.sanity.io/docs/the-vision-plugin
 		visionTool({ defaultApiVersion: apiVersion }),
-		media(),
 		dashboardTool({
 			widgets: [
 				sanityTutorialsWidget(),
@@ -44,14 +43,4 @@ export default defineConfig({
 			],
 		}),
 	],
-	form: {
-		// Don't use this plugin when selecting files only (but allow all other enabled asset sources)
-		file: {
-			assetSources: (previousAssetSources) => {
-				return previousAssetSources.filter(
-					(assetSource) => assetSource !== mediaAssetSource
-				);
-			},
-		},
-	},
 });
