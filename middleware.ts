@@ -22,7 +22,7 @@ export const middleware = async (request: NextRequest) => {
 	const pathname = request.nextUrl.pathname;
 
 	// Generates sitemap.xml if path is /sitemap.xml
-	if (request.nextUrl.pathname.startsWith("/sitemap.xml")) {
+	if (request.nextUrl.pathname.localeCompare("/sitemap.xml") === 0) {
 		const sitemap = await generateSiteMap();
 
 		return new NextResponse(sitemap, {
@@ -33,8 +33,16 @@ export const middleware = async (request: NextRequest) => {
 
 	// `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
 	// If you have one
-	if (["/fonts", "/images"].some((value) => pathname.includes(value)))
+	if (["/fonts", "/images"].some((value) => pathname.includes(value))) {
 		return NextResponse.next();
+	}
+
+	if (
+		request.nextUrl.pathname.localeCompare("/studio") === 0 ||
+		request.nextUrl.pathname.startsWith("/studio/")
+	) {
+		return NextResponse.next();
+	}
 
 	// Check if the default locale is in the pathname
 	if (
