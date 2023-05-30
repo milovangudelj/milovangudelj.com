@@ -1,4 +1,4 @@
-import { type Track as TrackType } from "@lib/types";
+import { type Track as TrackType } from "~lib/types";
 
 export const Track = (track: TrackType & { ranking: number }) => {
 	return (

@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { motion, type Variants } from "framer-motion";
 
-import { Button } from "@components/Button";
-import { NavLink } from "@components/NavLink";
-import { Locale } from "@/i18n.config";
+import { Button } from "~components/Button";
+import { NavLink } from "~components/NavLink";
+import { Locale } from "~/i18n.config";
 
 export const MobileNav = ({
 	links,

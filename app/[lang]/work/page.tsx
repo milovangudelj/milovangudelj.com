@@ -1,14 +1,14 @@
 import { gql } from "graphql-request";
 
-import { colorMap, hygraph } from "@lib/hygraph";
+import { colorMap, hygraph } from "~lib/hygraph";
 
-import { Section } from "@components/Section";
-import { Container } from "@components/Container";
-import ProjectShowcase from "@components/ProjectShowcase/ProjectShowcase";
-import { Smiley } from "@components/Smiley";
+import { Section } from "~components/Section";
+import { Container } from "~components/Container";
+import ProjectShowcase from "~components/ProjectShowcase/ProjectShowcase";
+import { Smiley } from "~components/Smiley";
 
-import { Locale } from "@/i18n.config";
-import { getDictionary } from "@/utils/getDictionary";
+import { Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
 
 export interface Project {
 	id: string;

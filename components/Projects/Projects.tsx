@@ -3,8 +3,8 @@
 import { ComponentProps, useRef } from "react";
 import { useScrollContainer } from "react-indiana-drag-scroll";
 
-import { ProjectCard } from "@components/ProjectCard";
-import { Project } from "@/app/[lang]/work/page";
+import { ProjectCard } from "~components/ProjectCard";
+import { Project } from "~/app/[lang]/work/page";
 
 interface ProjectsProps extends ComponentProps<"div"> {
 	projects: Omit<Project, "description">[];

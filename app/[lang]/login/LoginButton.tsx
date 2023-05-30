@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { Button, ButtonProps } from "@components/Button";
+import { Button, ButtonProps } from "~components/Button";
 
 export const LoginButton = ({
 	lang,

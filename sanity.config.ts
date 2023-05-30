@@ -17,8 +17,8 @@ import { vercelWidget } from "sanity-plugin-dashboard-widget-vercel";
 import { media, mediaAssetSource } from "sanity-plugin-media";
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, dataset, projectId, projectTitle } from "@/sanity/env";
-import { schema } from "@/sanity/schema";
+import { apiVersion, dataset, projectId, projectTitle } from "~/sanity/env";
+import { schema } from "~/sanity/schema";
 
 export default defineConfig({
 	basePath: "/studio",

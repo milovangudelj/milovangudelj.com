@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 
-import { NavLink } from "@components/NavLink/NavLink";
-import { Locale } from "@/i18n.config";
+import { NavLink } from "~components/NavLink/NavLink";
+import { Locale } from "~/i18n.config";
 
 export const NavLinks = ({
 	links,

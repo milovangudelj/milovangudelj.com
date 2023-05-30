@@ -1,26 +1,26 @@
 import Image from "next/image";
 
-import { Locale } from "@/i18n.config";
-import { getDictionary } from "@/utils/getDictionary";
+import { Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
 
-import { CTA } from "@components/sections/CTA";
+import { CTA } from "~components/sections/CTA";
 
-import { Container } from "@components/Container";
-import { Section } from "@components/Section";
-import { PosterGallery } from "@components/PosterGallery";
+import { Container } from "~components/Container";
+import { Section } from "~components/Section";
+import { PosterGallery } from "~components/PosterGallery";
 
-import squiggle from "@images/squiggle.svg";
-import arrow from "@images/arrow.svg";
+import squiggle from "~images/squiggle.svg";
+import arrow from "~images/arrow.svg";
 
-import figma from "@images/logos/logo_figma.svg";
-import illustrator from "@images/logos/logo_illustrator.svg";
-import lightroom from "@images/logos/logo_lightroom.svg";
-import photoshop from "@images/logos/logo_photoshop.svg";
+import figma from "~images/logos/logo_figma.svg";
+import illustrator from "~images/logos/logo_illustrator.svg";
+import lightroom from "~images/logos/logo_lightroom.svg";
+import photoshop from "~images/logos/logo_photoshop.svg";
 
-import nextjs from "@images/logos/logo_nextjs.svg";
-import vercel from "@images/logos/logo_vercel.svg";
-import tailwindcss from "@images/logos/logo_tailwindcss.svg";
-import webflow from "@images/logos/logo_webflow.svg";
+import nextjs from "~images/logos/logo_nextjs.svg";
+import vercel from "~images/logos/logo_vercel.svg";
+import tailwindcss from "~images/logos/logo_tailwindcss.svg";
+import webflow from "~images/logos/logo_webflow.svg";
 
 export const metadata = {
 	title: "Milovan Gudelj - Portfolio",

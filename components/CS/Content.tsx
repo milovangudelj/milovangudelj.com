@@ -3,7 +3,7 @@ import { EmbedReferences, RichTextContent } from "@graphcms/rich-text-types";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { renderers } from "@components/richTextRenderers";
+import { renderers } from "~components/richTextRenderers";
 
 type CSContentTypeWithEmbeds = {
 	json: RichTextContent;

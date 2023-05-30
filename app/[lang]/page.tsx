@@ -1,18 +1,18 @@
 import { gql } from "graphql-request";
 
-import { hygraph } from "@lib/hygraph";
+import { hygraph } from "~lib/hygraph";
 
-import { WigglyStars } from "@components/WigglyStars";
-import { AboutSection } from "@components/sections/About";
-import { CTA } from "@components/sections/CTA";
-import { Section } from "@components/Section";
-import { Container } from "@components/Container";
-import { Projects } from "@components/Projects";
-import { Smiley } from "@components/Smiley";
+import { WigglyStars } from "~components/WigglyStars";
+import { AboutSection } from "~components/sections/About";
+import { CTA } from "~components/sections/CTA";
+import { Section } from "~components/Section";
+import { Container } from "~components/Container";
+import { Projects } from "~components/Projects";
+import { Smiley } from "~components/Smiley";
 import { type Project } from "./work/page";
 
-import { getDictionary } from "@utils/getDictionary";
-import { Locale } from "@/i18n.config";
+import { getDictionary } from "~utils/getDictionary";
+import { Locale } from "~/i18n.config";
 
 const QUERY = gql`
 	{

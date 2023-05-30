@@ -1,7 +1,7 @@
 import { createClient } from 'next-sanity'
 
-import { apiVersion, dataset, projectId, useCdn } from "@/sanity/env";
-import { ProjectPayload } from "@/sanity/types";
+import { apiVersion, dataset, projectId, useCdn } from "~/sanity/env";
+import { ProjectPayload } from "~/sanity/types";
 
 import { projectBySlugQuery, projectPaths } from "./queries";
 

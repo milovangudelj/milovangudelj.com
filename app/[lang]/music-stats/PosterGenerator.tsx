@@ -2,7 +2,7 @@
 
 import html2canvas from "html2canvas";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Poster } from "@components/Poster";
+import { Poster } from "~components/Poster";
 import { FormData } from "./ControlsBar";
 import { UserStats } from "./page";
 
