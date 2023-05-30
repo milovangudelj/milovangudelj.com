@@ -12,6 +12,7 @@ import {
 	projectInfoWidget,
 } from "@sanity/dashboard";
 
+import { colorInput } from "@sanity/color-input";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { vercelWidget } from "sanity-plugin-dashboard-widget-vercel";
 import { media, mediaAssetSource } from "sanity-plugin-media";
@@ -29,6 +30,7 @@ export default defineConfig({
 	schema,
 	plugins: [
 		deskTool(),
+		colorInput(),
 		// Add an image asset source for Unsplash
 		unsplashImageAsset(),
 		// Vision lets you query your content with GROQ in the studio

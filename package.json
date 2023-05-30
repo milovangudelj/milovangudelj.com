@@ -13,6 +13,7 @@
 		"@graphcms/rich-text-react-renderer": "^0.6.1",
 		"@headlessui/react": "^1.7.4",
 		"@phosphor-icons/react": "^2.0.5",
+		"@sanity/color-input": "^3.1.0",
 		"@sanity/dashboard": "^3.1.4",
 		"@sanity/icons": "^2.0.0",
 		"@sanity/image-url": "1",
