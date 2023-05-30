@@ -24,3 +24,7 @@ export interface ProjectPayload {
 	tags?: string[];
 	title?: string;
 }
+
+export interface CaseStudyPayload {
+	title?: string;
+}

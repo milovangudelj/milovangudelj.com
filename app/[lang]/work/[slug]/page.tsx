@@ -5,6 +5,7 @@ import { hygraph } from "~lib/hygraph";
 
 import { CS } from "~components/CS";
 import { type Metadata } from "next";
+import { getCaseStudyPaths } from "~/sanity/lib/client";
 
 const GET_SLUGS = gql`
 	{
@@ -56,11 +57,9 @@ const GET_DATA = gql`
 `;
 
 export async function generateStaticParams() {
-	const { caseStudies } = await hygraph.request<{
-		caseStudies: { slug: string }[];
-	}>(GET_SLUGS);
+	const caseStudies = await getCaseStudyPaths();
 
-	return caseStudies.map((caseStudy) => ({ slug: caseStudy.slug }));
+	return caseStudies.map((caseStudy) => ({ slug: caseStudy }));
 }
 
 const getProjctData = async (slug: string) => {

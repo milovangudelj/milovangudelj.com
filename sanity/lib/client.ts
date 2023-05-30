@@ -1,9 +1,14 @@
 import { createClient } from 'next-sanity'
 
 import { apiVersion, dataset, projectId, useCdn } from "~/sanity/env";
-import { ProjectPayload } from "~/sanity/types";
+import { ProjectPayload, CaseStudyPayload } from "~/sanity/types";
 
-import { projectBySlugQuery, projectPaths } from "./queries";
+import {
+	projectBySlugQuery,
+	projectPaths,
+	caseStudyBySlugQuery,
+	caseStudyPaths,
+} from "./queries";
 
 export const client = createClient({
 	apiVersion,
@@ -20,6 +25,18 @@ export async function getProjectBySlug({
 	return await client.fetch(projectBySlugQuery, { slug });
 }
 
+export async function getCaseStudyBySlug({
+	slug,
+}: {
+	slug: string;
+}): Promise<CaseStudyPayload | undefined> {
+	return await client.fetch(caseStudyBySlugQuery, { slug });
+}
+
 export async function getProjectPaths(): Promise<string[]> {
 	return (await client.fetch(projectPaths)) || [];
+}
+
+export async function getCaseStudyPaths(): Promise<string[]> {
+	return (await client.fetch(caseStudyPaths)) || [];
 }
