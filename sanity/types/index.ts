@@ -27,4 +27,9 @@ export interface ProjectPayload {
 
 export interface CaseStudyPayload {
 	title?: string;
+	subtitle?: string;
+	intro?: PortableTextBlock[];
+	content?: PortableTextBlock[];
+	color?: string;
+	coverImage?: Image;
 }

@@ -1,11 +1,12 @@
 import { gql } from "graphql-request";
 import { getPlaiceholder } from "plaiceholder";
+import { PortableText } from "@portabletext/react";
 
 import { hygraph } from "~lib/hygraph";
 
 import { CS } from "~components/CS";
 import { type Metadata } from "next";
-import { getCaseStudyPaths } from "~/sanity/lib/client";
+import { getCaseStudyBySlug, getCaseStudyPaths } from "~/sanity/lib/client";
 
 const GET_SLUGS = gql`
 	{
@@ -67,6 +68,8 @@ const getProjctData = async (slug: string) => {
 		slug,
 	});
 
+	const altCaseStudy = await getCaseStudyBySlug({ slug });
+
 	const images = caseStudy.content.references.filter(
 		(asset: any) =>
 			asset.__typename === "Asset" && asset.mimeType.includes("image")
@@ -79,7 +82,14 @@ const getProjctData = async (slug: string) => {
 		})
 	);
 
-	return caseStudy;
+	const res = {
+		...caseStudy,
+		title: altCaseStudy ? altCaseStudy.title : caseStudy.title,
+		subtitle: altCaseStudy ? altCaseStudy.subtitle : caseStudy.subtitle,
+		color: altCaseStudy ? altCaseStudy.color : caseStudy.color,
+	};
+
+	return res;
 };
 
 export async function generateMetadata({
@@ -93,7 +103,7 @@ export async function generateMetadata({
 		title: `${title} | Milovan Gudelj`,
 		description: subtitle,
 		alternates: {
-			canonical: `https://www.milovangudelj.com/work/${params.slug}`,
+			canonical: `https://www.milovangudelj.com/en/work/${params.slug}`,
 			languages: {
 				"it-IT": `https://www.milovangudelj.com/it/work/${params.slug}`,
 			},

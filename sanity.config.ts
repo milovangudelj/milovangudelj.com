@@ -12,6 +12,7 @@ import {
 	projectInfoWidget,
 } from "@sanity/dashboard";
 
+import { languageFilter } from "@sanity/language-filter";
 import { colorInput } from "@sanity/color-input";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { vercelWidget } from "sanity-plugin-dashboard-widget-vercel";
@@ -43,6 +44,19 @@ export default defineConfig({
 				projectUsersWidget(),
 				vercelWidget(),
 			],
+		}),
+		languageFilter({
+			supportedLanguages: [
+				{ id: "en", title: "English" },
+				{ id: "it", title: "Italian" },
+			],
+			// Select English by default
+			defaultLanguages: ["en"],
+			// Only show language filter for document type `page` (schemaType.name)
+			// documentTypes: ['page'],
+			filterField: (enclosingType, field, selectedLanguageIds) =>
+				!enclosingType.name.startsWith("locale") ||
+				selectedLanguageIds.includes(field.name),
 		}),
 	],
 });

@@ -7,7 +7,14 @@ export const projectBySlugQuery = groq`
 `;
 
 export const caseStudyBySlugQuery = groq`
-  *[_type == "project" && slug.current == $slug][0].caseStudy->{...}
+  *[_type == "project" && slug.current == $slug][0].caseStudy->{
+    title,
+    subtitle,
+    intro,
+    content,
+    "color": color.hex,
+    "coverImage": project->coverImage
+  }
 `;
 
 export const projectPaths = groq`

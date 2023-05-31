@@ -42,7 +42,6 @@ export default defineType({
 							},
 						],
 					},
-					styles: [],
 					type: "block",
 				}),
 			],
@@ -71,7 +70,6 @@ export default defineType({
 							},
 						],
 					},
-					styles: [],
 				}),
 				defineField({
 					type: "image",

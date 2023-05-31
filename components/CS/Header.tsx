@@ -5,6 +5,7 @@ import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 import { colorMap } from "~lib/hygraph";
 import { renderers } from "~components/richTextRenderers";
+import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "~/utils/getLuminance";
 
 type CSContentTypeWithoutEmbeds = {
 	raw: RichTextContent;
@@ -35,10 +36,14 @@ export const Header = ({
 			)}
 		>
 			<h1
-				className={`mb-8 inline-block px-4 py-2 text-sub-heading-mobile xl:text-sub-heading ${twMerge(
-					"bg-yellow text-black",
-					colorMap[color]
-				)}`}
+				className={`mb-8 inline-block px-4 py-2 text-sub-heading-mobile xl:text-sub-heading`}
+				style={{
+					backgroundColor: color,
+					color:
+						getLuminance(color) > TEXT_LUMINANCE_TRESHOLD
+							? "black"
+							: "white",
+				}}
 			>
 				{title}
 			</h1>
