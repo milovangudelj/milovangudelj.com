@@ -8,7 +8,7 @@ export const CS = ({ children, className }: ComponentProps<"main">) => {
 	return (
 		<main
 			className={twMerge(
-				"mx-auto grid max-w-8xl grid-cols-5 px-8 md:relative md:px-16 xl:px-8",
+				"mx-auto grid max-w-7xl grid-cols-5 px-8 md:relative 2xl:px-0",
 				className
 			)}
 		>

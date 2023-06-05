@@ -1,61 +1,7 @@
-import { gql } from "graphql-request";
-import { getPlaiceholder } from "plaiceholder";
-import { PortableText } from "@portabletext/react";
-
-import { hygraph } from "~lib/hygraph";
-
 import { CS } from "~components/CS";
 import { type Metadata } from "next";
 import { getCaseStudyBySlug, getCaseStudyPaths } from "~/sanity/lib/client";
-
-const GET_SLUGS = gql`
-	{
-		caseStudies {
-			slug
-		}
-	}
-`;
-
-const GET_DATA = gql`
-	query GetData($slug: String!) {
-		caseStudy(where: { slug: $slug }) {
-			title
-			color
-			subtitle
-			intro {
-				raw
-			}
-			cover {
-				id
-				url
-				width
-				height
-				alt
-				caption
-			}
-			content {
-				json
-				references {
-					... on Asset {
-						mimeType
-						id
-						url
-						width
-						height
-						alt
-						caption
-						__typename
-					}
-					... on CsOverline {
-						id
-						content
-						__typename
-					}
-				}
-			}
-		}
-	}
-`;
+import { urlForImage } from "~/sanity/lib/image";
 
 export async function generateStaticParams() {
 	const caseStudies = await getCaseStudyPaths();
@@ -64,32 +10,9 @@ export async function generateStaticParams() {
 }
 
 const getProjctData = async (slug: string) => {
-	const { caseStudy } = await hygraph.request<{ caseStudy: any }>(GET_DATA, {
-		slug,
-	});
-
 	const altCaseStudy = await getCaseStudyBySlug({ slug });
 
-	const images = caseStudy.content.references.filter(
-		(asset: any) =>
-			asset.__typename === "Asset" && asset.mimeType.includes("image")
-	);
-
-	await Promise.all(
-		images.map(async (image: any) => {
-			const { base64 } = await getPlaiceholder(image.url);
-			image.blurDataUrl = base64;
-		})
-	);
-
-	const res = {
-		...caseStudy,
-		title: altCaseStudy ? altCaseStudy.title : caseStudy.title,
-		subtitle: altCaseStudy ? altCaseStudy.subtitle : caseStudy.subtitle,
-		color: altCaseStudy ? altCaseStudy.color : caseStudy.color,
-	};
-
-	return res;
+	return altCaseStudy;
 };
 
 export async function generateMetadata({
@@ -111,7 +34,7 @@ export async function generateMetadata({
 		themeColor: color,
 		openGraph: {
 			images: {
-				url: cover.url,
+				url: urlForImage(cover.image).url(),
 				width: cover.width,
 				height: cover.height,
 			},
@@ -120,8 +43,14 @@ export async function generateMetadata({
 }
 
 const ProjectPage = async ({ params }: { params: { slug: string } }) => {
-	const { title, color, subtitle, intro, cover, content } =
-		await getProjctData(params.slug);
+	const {
+		title,
+		color,
+		subtitle,
+		intro,
+		cover,
+		body,
+	} = await getProjctData(params.slug);
 
 	return (
 		<CS>
@@ -132,7 +61,7 @@ const ProjectPage = async ({ params }: { params: { slug: string } }) => {
 				intro={intro}
 				cover={cover}
 			/>
-			<CS.Content content={content} />
+			<CS.Content body={body} />
 		</CS>
 	);
 };

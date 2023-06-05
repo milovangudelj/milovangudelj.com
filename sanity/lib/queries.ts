@@ -11,9 +11,25 @@ export const caseStudyBySlugQuery = groq`
     title,
     subtitle,
     intro,
-    content,
+    "body": content[]{
+      _type == 'image' => @{
+        _key,
+        _type,
+        caption,
+        alt,
+        hotspot,
+        crop,
+        asset->,
+      },
+      _type != 'image' => @,
+    },
     "color": color.hex,
-    "coverImage": project->coverImage
+    "cover": {
+      "image": cover,
+      "lqip": cover.asset->metadata.lqip,
+      "width": cover.asset->metadata.dimensions.width,
+      "height": cover.asset->metadata.dimensions.height,
+    }
   }
 `;
 

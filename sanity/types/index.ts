@@ -1,5 +1,5 @@
 import type { PortableTextBlock } from "@portabletext/types";
-import type { Image } from "sanity";
+import type { Image, ImageAsset } from "sanity";
 
 export interface ShowcaseProject {
 	_type: string;
@@ -26,10 +26,18 @@ export interface ProjectPayload {
 }
 
 export interface CaseStudyPayload {
-	title?: string;
-	subtitle?: string;
-	intro?: PortableTextBlock[];
-	content?: PortableTextBlock[];
-	color?: string;
-	coverImage?: Image;
+	title: string;
+	subtitle: string;
+	intro: PortableTextBlock[];
+	body: PortableTextBlock[];
+	color: string;
+	cover: {
+		image: Image & {
+			alt: string;
+			caption: string;
+		};
+		lqip: string;
+		width: number;
+		height: number;
+	};
 }

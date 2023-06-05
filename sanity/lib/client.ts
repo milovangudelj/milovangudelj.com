@@ -29,7 +29,7 @@ export async function getCaseStudyBySlug({
 	slug,
 }: {
 	slug: string;
-}): Promise<CaseStudyPayload | undefined> {
+}): Promise<CaseStudyPayload> {
 	return await client.fetch(caseStudyBySlugQuery, { slug });
 }
 

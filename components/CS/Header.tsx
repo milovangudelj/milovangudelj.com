@@ -1,11 +1,16 @@
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { RichTextContent } from "@graphcms/rich-text-types";
-import Image from "next/legacy/image";
+import NextImage from "next/image";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 import { colorMap } from "~lib/hygraph";
 import { renderers } from "~components/richTextRenderers";
 import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "~/utils/getLuminance";
+import { PortableText } from "@portabletext/react";
+import { Image, PortableTextBlock } from "sanity";
+import { urlForImage } from "~/sanity/lib/image";
+import { CaseStudyPayload } from "~/sanity/types";
+import { decode } from "blurhash";
 
 type CSContentTypeWithoutEmbeds = {
 	raw: RichTextContent;
@@ -22,11 +27,11 @@ export const Header = ({
 	cover,
 	className,
 }: ComponentProps<"header"> & {
-	title: string;
-	color: string;
-	subtitle: string;
-	intro: CSContentTypeWithoutEmbeds;
-	cover: any;
+	title: CaseStudyPayload["title"];
+	color: CaseStudyPayload["color"];
+	subtitle: CaseStudyPayload["subtitle"];
+	intro: CaseStudyPayload["intro"];
+	cover: CaseStudyPayload["cover"];
 }) => {
 	return (
 		<header
@@ -40,7 +45,7 @@ export const Header = ({
 				style={{
 					backgroundColor: color,
 					color:
-						getLuminance(color) > TEXT_LUMINANCE_TRESHOLD
+						getLuminance(color || "#FFFFFF") > TEXT_LUMINANCE_TRESHOLD
 							? "black"
 							: "white",
 				}}
@@ -50,22 +55,35 @@ export const Header = ({
 			<span className="mb-8 block text-d2-mobile md:text-d2">
 				{subtitle}
 			</span>
-			<RichText content={intro.raw} renderers={renderers("csIntro")} />
+			{/* <RichText content={intro.raw} renderers={renderers("csIntro")} /> */}
+			<PortableText
+				value={intro!}
+				components={{
+					block: {
+						normal: ({ children }) => (
+							<p className="mb-8 whitespace-pre-line text-sub-heading-mobile text-white/80 xl:text-sub-heading">
+								{children}
+							</p>
+						),
+					},
+				}}
+			/>
 			<figure className="relative -mx-8 mt-16 h-56 md:-mx-16 md:mt-32 md:h-64 xl:-mx-[33.3%] xl:mt-16 xl:h-96">
-				<Image
-					src={cover.url}
-					alt={cover.alt}
-					title={cover.alt}
-					layout="fill"
-					objectFit="cover"
+				<NextImage
+					src={urlForImage(cover.image).url()}
+					alt={cover.image.alt ?? cover.image.caption}
+					title={cover.image.alt}
 					quality={100}
 					sizes="1440px"
-					placeholder={cover.blurDataUrl ? "blur" : "empty"}
-					blurDataURL={cover.blurDataUrl}
+					placeholder={"blur"}
+					blurDataURL={cover.lqip}
 					priority
+					className="h-full w-full object-cover"
+					width={cover.width}
+					height={cover.height}
 				/>
 				<figcaption className="absolute top-full left-8 text-label-md text-white/60 md:left-16 xl:left-0">
-					{cover.caption ?? cover.alt}
+					{cover.image.caption ?? cover.image.alt ?? ""}
 				</figcaption>
 			</figure>
 		</header>
