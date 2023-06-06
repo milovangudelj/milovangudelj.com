@@ -6,6 +6,26 @@ export const projectBySlugQuery = groq`
   }
 `;
 
+export const projectsQuery = groq`
+  *[_type == "project"][0..2] {
+    title,
+    "slug": slug.current,
+    year,
+    site,
+    "cover": {
+      "image": cover,
+      "lqip": cover.asset->metadata.lqip,
+      "width": cover.asset->metadata.dimensions.width,
+      "height": cover.asset->metadata.dimensions.height,
+    },
+    overview,
+    "color": color.hex,
+    client,
+    "tags": tags[]->value,
+    caseStudy,
+  }
+`;
+
 export const caseStudyBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0].caseStudy->{
     title,
@@ -23,7 +43,7 @@ export const caseStudyBySlugQuery = groq`
       },
       _type != 'image' => @,
     },
-    "color": color.hex,
+    "color": project->color.hex,
     "cover": {
       "image": cover,
       "lqip": cover.asset->metadata.lqip,

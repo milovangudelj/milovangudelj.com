@@ -6,6 +6,7 @@ import { ProjectPayload, CaseStudyPayload } from "~/sanity/types";
 import {
 	projectBySlugQuery,
 	projectPaths,
+	projectsQuery,
 	caseStudyBySlugQuery,
 	caseStudyPaths,
 } from "./queries";
@@ -23,6 +24,10 @@ export async function getProjectBySlug({
 	slug: string;
 }): Promise<ProjectPayload | undefined> {
 	return await client.fetch(projectBySlugQuery, { slug });
+}
+
+export async function getProjects(): Promise<ProjectPayload[]> {
+	return await client.fetch(projectsQuery);
 }
 
 export async function getCaseStudyBySlug({

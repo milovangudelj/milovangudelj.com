@@ -1,5 +1,5 @@
 import type { PortableTextBlock } from "@portabletext/types";
-import type { Image, ImageAsset } from "sanity";
+import type { Image, ImageAsset, Reference } from "sanity";
 
 export interface ShowcaseProject {
 	_type: string;
@@ -11,18 +11,24 @@ export interface ShowcaseProject {
 }
 
 export interface ProjectPayload {
-	client?: string;
-	coverImage?: Image;
-	description?: PortableTextBlock[];
-	duration?: {
-		start?: string;
-		end?: string;
-	};
-	overview?: PortableTextBlock[];
-	site?: string;
+	title: string;
 	slug: string;
-	tags?: string[];
-	title?: string;
+	year: number;
+	site: string;
+	cover: {
+		image: Image & {
+			alt: string;
+			caption: string;
+		};
+		lqip: string;
+		width: number;
+		height: number;
+	};
+	overview: PortableTextBlock[];
+	color: string;
+	client: string;
+	tags: string[];
+	caseStudy: Reference | null;
 }
 
 export interface CaseStudyPayload {

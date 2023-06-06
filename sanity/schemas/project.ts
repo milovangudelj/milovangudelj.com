@@ -29,6 +29,12 @@ export default defineType({
 			validation: (rule) => rule.required(),
 		}),
 		defineField({
+			name: "year",
+			title: "Year",
+			type: "number",
+			validation: (rule) => rule.required(),
+		}),
+		defineField({
 			name: "caseStudy",
 			title: "Case Study",
 			type: "reference",
@@ -114,6 +120,25 @@ export default defineType({
 			],
 			options: {
 				layout: "tags",
+			},
+			validation: (rule) => rule.required(),
+		}),
+		defineField({
+			name: "color",
+			title: "Color",
+			type: "color",
+			options: {
+				colorList: [
+					"#FFC700",
+					"#F14E1C",
+					"#0FAA58",
+					"#5552FE",
+					"#C6B9FF",
+					"#A25AFF",
+					"#FF8575",
+					"#689BF9",
+					"#B1EBD3",
+				],
 			},
 			validation: (rule) => rule.required(),
 		}),
