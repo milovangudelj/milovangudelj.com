@@ -10,5 +10,5 @@
       "version": 18
     }
   },
-  "postCreateCommand": "echo alias cls=clear >> /etc/bash.bashrc"
+  "postCreateCommand": "echo alias cls=clear >> /etc/bash.bashrc && yarn install"
 }
