@@ -10,5 +10,5 @@
       "version": 18
     }
   },
-  "postCreateCommand": "echo alias cls=clear >> /etc/bash.bashrc && yarn install"
+  "postCreateCommand": "echo alias cls=clear >> /home/codespace/.bashrc && yarn install"
 }
