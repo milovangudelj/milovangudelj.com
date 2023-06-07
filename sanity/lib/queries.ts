@@ -26,6 +26,20 @@ export const projectsQuery = groq`
   }
 `;
 
+export const slimProjectsQuery = groq`
+  *[_type == "project"][0..2] {
+    title,
+    "slug": slug.current,
+    site,
+    "cover": {
+      "image": cover,
+      "lqip": cover.asset->metadata.lqip,
+      "width": cover.asset->metadata.dimensions.width,
+      "height": cover.asset->metadata.dimensions.height,
+    },
+  }
+`;
+
 export const caseStudyBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0].caseStudy->{
     title,

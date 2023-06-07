@@ -31,6 +31,21 @@ export interface ProjectPayload {
 	caseStudy: Reference | null;
 }
 
+export interface SlimProjectPayload {
+	title: string;
+	slug: string;
+	site: string;
+	cover: {
+		image: Image & {
+			alt: string;
+			caption: string;
+		};
+		lqip: string;
+		width: number;
+		height: number;
+	};
+}
+
 export interface CaseStudyPayload {
 	title: string;
 	subtitle: string;

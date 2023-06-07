@@ -1,30 +1,37 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
+
+import { urlForImage } from "~/sanity/lib/image";
+import { SlimProjectPayload } from "~/sanity/types";
 
 type ProjectCardProps = {
 	title: string;
-	href: string;
-	link: string;
-	image: string;
+	site: string;
+	cover: SlimProjectPayload["cover"];
 };
 
-export const ProjectCard = ({ title, href, link, image }: ProjectCardProps) => {
+export const ProjectCard = ({ title, site, cover }: ProjectCardProps) => {
 	return (
 		<div className="space-y-8 md:space-y-[26px]">
 			<Link
-				href={href}
+				href={site}
 				className="relative inline-block aspect-video h-[150px] cursor-pointer border-2 bg-black drop-shadow-brutal md:h-[300px] xl:drop-shadow-brutal-lg"
 			>
 				<Image
-					src={image}
-					layout={"fill"}
+					src={urlForImage(cover.image).url()}
 					quality={100}
-					alt="Dummy project card image"
+					alt={cover.image.alt ?? cover.image.caption ?? title}
+					title={cover.image.alt ?? cover.image.caption ?? title}
+					width={cover.width}
+					height={cover.height}
+					placeholder="blur"
+					blurDataURL={cover.lqip}
+					className="object-cover w-full h-full"
 				/>
 			</Link>
 			<div className="flex flex-col">
 				<Link
-					href={href}
+					href={site}
 					className="group w-fit text-sub-heading-mobile font-medium md:text-sub-heading"
 				>
 					{title}{" "}
@@ -32,7 +39,7 @@ export const ProjectCard = ({ title, href, link, image }: ProjectCardProps) => {
 						→
 					</span>
 				</Link>
-				<span className="text-label-md text-dark-me">{link}</span>
+				<span className="text-label-md text-dark-me">{site}</span>
 			</div>
 		</div>
 	);

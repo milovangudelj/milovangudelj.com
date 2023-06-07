@@ -1,23 +1,10 @@
-import { RichText } from "@graphcms/rich-text-react-renderer";
-import { RichTextContent } from "@graphcms/rich-text-types";
 import NextImage from "next/image";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
-import { colorMap } from "~lib/hygraph";
-import { renderers } from "~components/richTextRenderers";
 import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "~/utils/getLuminance";
 import { PortableText } from "@portabletext/react";
-import { Image, PortableTextBlock } from "sanity";
 import { urlForImage } from "~/sanity/lib/image";
 import { CaseStudyPayload } from "~/sanity/types";
-import { decode } from "blurhash";
-
-type CSContentTypeWithoutEmbeds = {
-	raw: RichTextContent;
-	html: string;
-	markdown: string;
-	text: string;
-};
 
 export const Header = ({
 	title,
@@ -55,7 +42,6 @@ export const Header = ({
 			<span className="mb-8 block text-d2-mobile md:text-d2">
 				{subtitle}
 			</span>
-			{/* <RichText content={intro.raw} renderers={renderers("csIntro")} /> */}
 			<PortableText
 				value={intro!}
 				components={{

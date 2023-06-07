@@ -7,19 +7,6 @@ import { Locale } from "~/i18n.config";
 import { getDictionary } from "~/utils/getDictionary";
 import { getProjects } from "~/sanity/lib/client";
 
-export interface Project {
-	id: string;
-	title: string;
-	year: number;
-	href: string;
-	link: string;
-	image: string;
-	categories: string[];
-	description: { json: any; [key: string]: any };
-	caseStudy?: { slug: string; color: string };
-	color: string;
-}
-
 const getProjcts = async () => {
 	const projects = await getProjects();
 

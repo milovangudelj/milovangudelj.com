@@ -1,7 +1,11 @@
 import { createClient } from 'next-sanity'
 
 import { apiVersion, dataset, projectId, useCdn } from "~/sanity/env";
-import { ProjectPayload, CaseStudyPayload } from "~/sanity/types";
+import {
+	ProjectPayload,
+	CaseStudyPayload,
+	SlimProjectPayload,
+} from "~/sanity/types";
 
 import {
 	projectBySlugQuery,
@@ -9,6 +13,7 @@ import {
 	projectsQuery,
 	caseStudyBySlugQuery,
 	caseStudyPaths,
+	slimProjectsQuery,
 } from "./queries";
 
 export const client = createClient({
@@ -28,6 +33,10 @@ export async function getProjectBySlug({
 
 export async function getProjects(): Promise<ProjectPayload[]> {
 	return await client.fetch(projectsQuery);
+}
+
+export async function getSlimProjects(): Promise<SlimProjectPayload[]> {
+	return await client.fetch(slimProjectsQuery);
 }
 
 export async function getCaseStudyBySlug({

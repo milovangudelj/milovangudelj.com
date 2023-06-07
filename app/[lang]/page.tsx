@@ -1,7 +1,3 @@
-import { gql } from "graphql-request";
-
-import { hygraph } from "~lib/hygraph";
-
 import { WigglyStars } from "~components/WigglyStars";
 import { AboutSection } from "~components/sections/About";
 import { CTA } from "~components/sections/CTA";
@@ -9,27 +5,13 @@ import { Section } from "~components/Section";
 import { Container } from "~components/Container";
 import { Projects } from "~components/Projects";
 import { Smiley } from "~components/Smiley";
-import { type Project } from "./work/page";
 
 import { getDictionary } from "~utils/getDictionary";
 import { Locale } from "~/i18n.config";
-
-const QUERY = gql`
-	{
-		projects {
-			id
-			title
-			href
-			link
-			image
-		}
-	}
-`;
+import { getSlimProjects } from "~/sanity/lib/client";
 
 async function getProjects() {
-	const { projects } = await hygraph.request<{
-		projects: Omit<Project, "description">[];
-	}>(QUERY);
+	const projects = await getSlimProjects();
 
 	return projects;
 }
