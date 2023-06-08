@@ -3,11 +3,11 @@
 import { ComponentProps, useRef } from "react";
 import { useScrollContainer } from "react-indiana-drag-scroll";
 
-import { ProjectCard } from "@components/ProjectCard";
-import { Project } from "@/app/[lang]/work/page";
+import { ProjectCard } from "~components/ProjectCard";
+import { SlimProjectPayload } from "~/sanity/types";
 
 interface ProjectsProps extends ComponentProps<"div"> {
-	projects: Omit<Project, "description">[];
+	projects: SlimProjectPayload[];
 }
 
 export const Projects = ({ projects }: ProjectsProps) => {
@@ -32,9 +32,9 @@ export const Projects = ({ projects }: ProjectsProps) => {
 				ref={cloneRef}
 				className="scrollbar-hidden pointer-events-none absolute -left-[calc((100vw-min(1280px,_100vw))/2)] flex w-screen overflow-x-visible px-[calc((100vw-1280px)/2)]"
 			>
-				{projects.map(({ id, ...props }) => (
+				{projects.map(({ slug, ...props }) => (
 					<li
-						key={id}
+						key={slug}
 						className="relative flex-initial pr-8 last:pr-0 md:pr-16 md:last:pr-0"
 					>
 						<ProjectCard {...props} />
@@ -48,9 +48,9 @@ export const Projects = ({ projects }: ProjectsProps) => {
 				ref={scrollContainer.ref}
 				className="scrollbar-hidden relative flex cursor-move overflow-x-scroll bg-green max-md:opacity-0"
 			>
-				{projects.map(({ id, ...props }) => (
+				{projects.map(({ slug, ...props }) => (
 					<li
-						key={id}
+						key={slug}
 						className="relative flex-initial pr-8 last:pr-0 md:pr-16 md:last:pr-0"
 					>
 						<ProjectCard {...props} />

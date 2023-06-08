@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { ComponentProps, RefCallback, useCallback, useState } from "react";
-import { Button } from "@components/Button";
-import { MobileNav } from "@components/MobileNav";
-import { NavLinks } from "@components/NavLinks";
-import { LanguageSwitch } from "@components/LanguageSwitch";
-import { Locale } from "@/i18n.config";
+import { Button } from "~components/Button";
+import { MobileNav } from "~components/MobileNav";
+import { NavLinks } from "~components/NavLinks";
+import { LanguageSwitch } from "~components/LanguageSwitch";
+import { Locale } from "~/i18n.config";
 
 export const Navbar = ({
 	links,

@@ -6,7 +6,12 @@ const nextConfig = {
 	},
 	swcMinify: true,
 	images: {
-		domains: ["milovangudelj.com", "media.graphassets.com", "i.scdn.co"],
+		domains: [
+			"milovangudelj.com",
+			"media.graphassets.com",
+			"i.scdn.co",
+			"cdn.sanity.io",
+		],
 	},
 };
 

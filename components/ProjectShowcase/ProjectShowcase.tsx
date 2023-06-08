@@ -1,15 +1,18 @@
 "use client";
 
-import Image from "next/legacy/image";
+// TODO: Fix this spaghetti code
 
-import { Project } from "@/app/[lang]/work/page";
+import Image from "next/image";
+
 import Link from "next/link";
-import { RichText } from "@graphcms/rich-text-react-renderer";
-import { Button } from "@components/Button";
-import { colorMap } from "@lib/hygraph";
-import { useIsDesktop, useIsMobile } from "@lib/useMediaQuery";
+import { Button } from "~components/Button";
+import { useIsDesktop, useIsMobile } from "~lib/useMediaQuery";
+import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "~/utils/getLuminance";
+import { ProjectPayload } from "~/sanity/types";
+import { urlForImage } from "~/sanity/lib/image";
+import { PortableText } from "@portabletext/react";
 
-interface ProjectShowcaseProps extends Omit<Project, "id"> {
+interface ProjectShowcaseProps extends ProjectPayload {
 	messages: {
 		brief: string;
 		visit: string;
@@ -24,25 +27,18 @@ interface ProjectShowcaseProps extends Omit<Project, "id"> {
 	};
 }
 
-const categoryMap: { [key: string]: string } = {
-	ui_design: "uiDesign",
-	web_design: "webDesign",
-	frontend_development: "webDev",
-	full_stack_development: "frontEnd",
-	web_development: "fullStack",
-};
-
 export const ProjectShowcase = ({
 	messages,
-	description,
-	href,
-	caseStudy,
-	image,
-	link,
 	title,
+	slug,
 	year,
-	categories,
+	site,
+	cover,
+	overview,
 	color,
+	client,
+	tags,
+	caseStudy,
 }: ProjectShowcaseProps) => {
 	const isDesktop = useIsDesktop();
 
@@ -52,10 +48,9 @@ export const ProjectShowcase = ({
 				<div className="order-last h-full xl:col-span-3">
 					<ProjectDetails
 						title={title}
-						link={link}
-						href={href}
-						categories={categories}
-						catNames={messages.category}
+						link={site}
+						href={site}
+						categories={tags}
 						visitText={messages.visit}
 						color={color}
 					/>
@@ -66,33 +61,31 @@ export const ProjectShowcase = ({
 					<div className="flex flex-col md:grid md:h-max md:grid-cols-5 md:space-y-0 xl:w-full xl:space-y-8">
 						<ProjectDetails
 							title={title}
-							link={link}
-							href={href}
-							categories={categories}
-							catNames={messages.category}
+							link={site}
+							href={site}
+							categories={tags}
 							visitText={messages.visit}
 							color={color}
 						/>
 						<ProjectImage
 							year={year}
-							image={image}
-							title={title}
-							href={href}
+							image={cover}
+							href={site}
 							visitText={messages.visit}
 						/>
 					</div>
 				) : (
 					<ProjectImage
 						year={year}
-						image={image}
-						title={title}
-						href={href}
+						image={cover}
+						href={site}
 						visitText={messages.visit}
 					/>
 				)}
 				<ProjectDescription
-					description={description}
+					description={overview}
 					caseStudy={caseStudy}
+					slug={slug}
 					briefText={messages.brief}
 					readCSText={messages.readCS}
 				/>
@@ -107,25 +100,28 @@ const ProjectDetails = ({
 	link,
 	href,
 	categories,
-	catNames,
 	visitText,
 	color,
 }: {
-	title: Project["title"];
-	link: Project["link"];
-	href: Project["href"];
-	categories: Project["categories"];
-	catNames: { [key: string]: string };
+	title: ProjectPayload["title"];
+	link: ProjectPayload["slug"];
+	href: ProjectPayload["slug"];
+	categories: ProjectPayload["tags"];
 	visitText: string;
-	color: Project["color"];
+	color: ProjectPayload["color"];
 }) => {
 	const isMobile = useIsMobile();
 
 	return (
 		<div
-			className={`relative z-[1] space-y-4 border-2 border-t border-dashed ${
-				colorMap[color] ?? "bg-lilla"
-			} p-4 drop-shadow-brutal max-md:[border-top:1px_solid_black] md:z-auto md:col-span-2 md:space-y-6 md:border-t-2 md:drop-shadow-brutal-lg md:max-lg:[border-right:1px_solid_black] xl:sticky xl:top-[152px] xl:border-r-2 xl:p-8`}
+			className={`relative z-[1] space-y-4 border-2 border-t border-dashed p-4 drop-shadow-brutal max-md:[border-top:1px_solid_black] md:z-auto md:col-span-2 md:space-y-6 md:border-t-2 md:drop-shadow-brutal-lg md:max-lg:[border-right:1px_solid_black] xl:sticky xl:top-[152px] xl:border-r-2 xl:p-8`}
+			style={{
+				backgroundColor: color,
+				color:
+					getLuminance(color) > TEXT_LUMINANCE_TRESHOLD
+						? "black"
+						: "white",
+			}}
 		>
 			<h3 className="text-h4-mobile md:text-sub-heading xl:text-h4">
 				{title}
@@ -136,7 +132,7 @@ const ProjectDetails = ({
 			<div className="md:space-y-6 xl:flex xl:items-end xl:justify-between xl:space-y-0">
 				<ul className="list-inside list-disc">
 					{categories.map((category, idx) => (
-						<li key={`cat_${idx}`}>{catNames[categoryMap[category]]}</li>
+						<li key={`cat_${idx}`}>{category}</li>
 					))}
 				</ul>
 				{!isMobile && <VisitButton href={href} text={visitText} />}
@@ -149,7 +145,7 @@ const VisitButton = ({
 	href,
 	text,
 }: {
-	href: Project["href"];
+	href: ProjectPayload["slug"];
 	text: string;
 }) => {
 	return (
@@ -162,27 +158,29 @@ const VisitButton = ({
 const ProjectDescription = ({
 	description,
 	caseStudy,
+	slug,
 	briefText,
 	readCSText,
 }: {
-	description: Project["description"];
-	caseStudy: Project["caseStudy"];
+	description: ProjectPayload["overview"];
+	caseStudy: ProjectPayload["caseStudy"];
+	slug: ProjectPayload["slug"];
 	briefText: string;
 	readCSText: string;
 }) => {
 	return (
 		<div className="prose prose-lg prose-p:text-black">
 			<h4 className="text-h5-mobile text-black">{briefText}</h4>
-			<RichText
-				content={description.json}
-				references={description.references}
+			<PortableText
+				value={description}
+				components={{
+					block: {
+						normal: ({ children }) => <p>{children}</p>,
+					},
+				}}
 			/>
 			{caseStudy && (
-				<Button
-					as={Link}
-					href={`/work/${caseStudy.slug}`}
-					className="text-black"
-				>
+				<Button as={Link} href={`/work/${slug}`} className="text-black">
 					{readCSText} ↗
 				</Button>
 			)}
@@ -193,14 +191,12 @@ const ProjectDescription = ({
 const ProjectImage = ({
 	year,
 	image,
-	title,
 	href,
 	visitText,
 }: {
-	year: Project["year"];
-	image: Project["image"];
-	title: Project["title"];
-	href: Project["href"];
+	year: ProjectPayload["year"];
+	image: ProjectPayload["cover"];
+	href: ProjectPayload["site"];
 	visitText: string;
 }) => {
 	const isMobile = useIsMobile();
@@ -217,16 +213,16 @@ const ProjectImage = ({
 			)}
 			<span className="md:aspect-none relative flex aspect-video w-full items-center justify-center border-2 border-b bg-black drop-shadow-brutal md:h-full md:border-b-2 md:border-l md:drop-shadow-brutal-lg xl:aspect-video xl:h-auto xl:border-l-2">
 				<Image
-					src={image}
-					layout={"fill"}
-					objectFit={"cover"}
+					src={urlForImage(image.image).url()}
+					className="h-full w-full object-cover"
 					quality={100}
-					alt={`${title} website screenshot`}
-					title={`${title} website screenshot`}
+					alt={image.image.alt ?? image.image.caption}
+					title={image.image.alt ?? image.image.caption}
+					width={image.width}
+					height={image.height}
+					placeholder="blur"
+					blurDataURL={image.lqip}
 				/>
-				<span className="font-space text-body text-white" aria-hidden>
-					Loading...
-				</span>
 			</span>
 		</div>
 	);

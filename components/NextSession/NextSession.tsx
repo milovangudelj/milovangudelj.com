@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
 import { ReactNode } from "react";
 
-import { asyncComponent } from "@/lib/asyncComponent";
-import { SessionProvider } from "@/lib/sessionProvider";
+import { asyncComponent } from "~/lib/asyncComponent";
+import { SessionProvider } from "~/lib/sessionProvider";
 
 export const NextSession = asyncComponent(
 	async ({ children }: { children: ReactNode }) => {

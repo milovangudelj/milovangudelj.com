@@ -1,6 +1,8 @@
 import { hexToRgb } from "./hexToRgb";
 
 export const getLuminance = (color: string): number => {
+	if (!color.includes("#")) return 1;
+	
 	let tempColor: { r: number; g: number; b: number } = { r: 0, g: 0, b: 0 };
 
 	const rgb = hexToRgb(color);

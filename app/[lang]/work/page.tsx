@@ -1,86 +1,14 @@
-import { gql } from "graphql-request";
+import { Section } from "~components/Section";
+import { Container } from "~components/Container";
+import ProjectShowcase from "~components/ProjectShowcase/ProjectShowcase";
+import { Smiley } from "~components/Smiley";
 
-import { colorMap, hygraph } from "@lib/hygraph";
-
-import { Section } from "@components/Section";
-import { Container } from "@components/Container";
-import ProjectShowcase from "@components/ProjectShowcase/ProjectShowcase";
-import { Smiley } from "@components/Smiley";
-
-import { Locale } from "@/i18n.config";
-import { getDictionary } from "@/utils/getDictionary";
-
-export interface Project {
-	id: string;
-	title: string;
-	year: number;
-	href: string;
-	link: string;
-	image: string;
-	categories: string[];
-	description: { json: any; [key: string]: any };
-	caseStudy?: { slug: string; color: string };
-	color: string;
-}
-
-const QUERY = gql`
-	{
-		projects {
-			id
-			title
-			year
-			href
-			link
-			image
-			description {
-				json
-				references {
-					... on Asset {
-						id
-						url
-						mimeType
-						width
-						height
-					}
-				}
-			}
-			categories
-			caseStudy {
-				slug
-				color
-			}
-		}
-	}
-`;
+import { Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
+import { getProjects } from "~/sanity/lib/client";
 
 const getProjcts = async () => {
-	const { projects } = await hygraph.request<{ projects: Project[] }>(QUERY);
-
-	let avColors = Object.keys(colorMap).filter(
-		(el) =>
-			![
-				"yellow",
-				"lavender",
-				"lilla",
-				"sad_orange",
-				"orange",
-				"green",
-			].includes(el)
-	);
-
-	await Promise.all(
-		projects.map(async (project) => {
-			if (project.caseStudy?.color) {
-				avColors = avColors.filter((el) => el !== project.caseStudy?.color);
-				project.color = project.caseStudy.color;
-				return;
-			}
-			const color = avColors[Math.floor(Math.random() * avColors.length)];
-			project.color = color;
-
-			avColors = avColors.filter((el) => el !== color);
-		})
-	);
+	const projects = await getProjects();
 
 	return projects;
 };
@@ -117,8 +45,8 @@ const WorkPage = async ({
 				</main>
 			</Section>
 			<ul>
-				{projects.map(({ id, ...props }, i) => (
-					<li key={id}>
+				{projects.map((project) => (
+					<li key={project.slug}>
 						<Section className="bg-green">
 							<Container>
 								<ProjectShowcase
@@ -143,7 +71,7 @@ const WorkPage = async ({
 													.fullStack,
 										},
 									}}
-									{...props}
+									{...project}
 								/>
 							</Container>
 						</Section>

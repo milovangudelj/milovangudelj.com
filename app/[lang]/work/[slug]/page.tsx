@@ -1,86 +1,18 @@
-import { gql } from "graphql-request";
-import { getPlaiceholder } from "plaiceholder";
-
-import { hygraph } from "@lib/hygraph";
-
-import { CS } from "@components/CS";
+import { CS } from "~components/CS";
 import { type Metadata } from "next";
-
-const GET_SLUGS = gql`
-	{
-		caseStudies {
-			slug
-		}
-	}
-`;
-
-const GET_DATA = gql`
-	query GetData($slug: String!) {
-		caseStudy(where: { slug: $slug }) {
-			title
-			color
-			subtitle
-			intro {
-				raw
-			}
-			cover {
-				id
-				url
-				width
-				height
-				alt
-				caption
-			}
-			content {
-				json
-				references {
-					... on Asset {
-						mimeType
-						id
-						url
-						width
-						height
-						alt
-						caption
-						__typename
-					}
-					... on CsOverline {
-						id
-						content
-						__typename
-					}
-				}
-			}
-		}
-	}
-`;
+import { getCaseStudyBySlug, getCaseStudyPaths } from "~/sanity/lib/client";
+import { urlForImage } from "~/sanity/lib/image";
 
 export async function generateStaticParams() {
-	const { caseStudies } = await hygraph.request<{
-		caseStudies: { slug: string }[];
-	}>(GET_SLUGS);
+	const caseStudies = await getCaseStudyPaths();
 
-	return caseStudies.map((caseStudy) => ({ slug: caseStudy.slug }));
+	return caseStudies.map((caseStudy) => ({ slug: caseStudy }));
 }
 
 const getProjctData = async (slug: string) => {
-	const { caseStudy } = await hygraph.request<{ caseStudy: any }>(GET_DATA, {
-		slug,
-	});
+	const altCaseStudy = await getCaseStudyBySlug({ slug });
 
-	const images = caseStudy.content.references.filter(
-		(asset: any) =>
-			asset.__typename === "Asset" && asset.mimeType.includes("image")
-	);
-
-	await Promise.all(
-		images.map(async (image: any) => {
-			const { base64 } = await getPlaiceholder(image.url);
-			image.blurDataUrl = base64;
-		})
-	);
-
-	return caseStudy;
+	return altCaseStudy;
 };
 
 export async function generateMetadata({
@@ -94,7 +26,7 @@ export async function generateMetadata({
 		title: `${title} | Milovan Gudelj`,
 		description: subtitle,
 		alternates: {
-			canonical: `https://www.milovangudelj.com/work/${params.slug}`,
+			canonical: `https://www.milovangudelj.com/en/work/${params.slug}`,
 			languages: {
 				"it-IT": `https://www.milovangudelj.com/it/work/${params.slug}`,
 			},
@@ -102,7 +34,7 @@ export async function generateMetadata({
 		themeColor: color,
 		openGraph: {
 			images: {
-				url: cover.url,
+				url: urlForImage(cover.image).url(),
 				width: cover.width,
 				height: cover.height,
 			},
@@ -111,8 +43,14 @@ export async function generateMetadata({
 }
 
 const ProjectPage = async ({ params }: { params: { slug: string } }) => {
-	const { title, color, subtitle, intro, cover, content } =
-		await getProjctData(params.slug);
+	const {
+		title,
+		color,
+		subtitle,
+		intro,
+		cover,
+		body,
+	} = await getProjctData(params.slug);
 
 	return (
 		<CS>
@@ -123,7 +61,7 @@ const ProjectPage = async ({ params }: { params: { slug: string } }) => {
 				intro={intro}
 				cover={cover}
 			/>
-			<CS.Content content={content} />
+			<CS.Content body={body} />
 		</CS>
 	);
 };

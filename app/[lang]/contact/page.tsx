@@ -1,14 +1,14 @@
 import Image from "next/image";
 
-import { Section } from "@components/Section";
-import { CTA } from "@components/sections/CTA";
+import { Section } from "~components/Section";
+import { CTA } from "~components/sections/CTA";
 
-import igLogo from "@images/igLogo.png";
-import twLogo from "@images/twLogo.svg";
-import drLogo from "@images/drLogo.svg";
+import igLogo from "~images/igLogo.png";
+import twLogo from "~images/twLogo.svg";
+import drLogo from "~images/drLogo.svg";
 
-import { Locale } from "@/i18n.config";
-import { getDictionary } from "@/utils/getDictionary";
+import { Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
 
 export const metadata = {
 	title: "Milovan Gudelj - Contact me",

@@ -1,8 +1,8 @@
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "@utils/getLuminance";
-import { Palette } from "@utils/getPalette";
+import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "~utils/getLuminance";
+import { Palette } from "~utils/getPalette";
 
 export interface StatsListProps {
 	items: { name: string; image: string; url: string }[];
