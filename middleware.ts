@@ -33,13 +33,11 @@ export const middleware = async (request: NextRequest) => {
 
 	// `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
 	// If you have one
-	if (["/fonts", "/images"].some((value) => pathname.includes(value))) {
-		return NextResponse.next();
-	}
-
 	if (
-		request.nextUrl.pathname.localeCompare("/studio") === 0 ||
-		request.nextUrl.pathname.startsWith("/studio/")
+		["/fonts", "/images"].some(
+			(value) =>
+				pathname.startsWith(value) || pathname.localeCompare(value) === 0
+		)
 	) {
 		return NextResponse.next();
 	}
@@ -90,5 +88,7 @@ export const middleware = async (request: NextRequest) => {
 
 export const config = {
 	// Matcher ignoring `/_next/` and `/api/`
-	matcher: ["/((?!api|_next/static|_next/image|images|fonts).*)"],
+	matcher: [
+		"/((?!api|studio|robots.txt|_next/static|_next/image|images|fonts).*)",
+	],
 };
