@@ -1,12 +1,22 @@
 "use client";
 
+import {
+	ComponentProps,
+	RefCallback,
+	Suspense,
+	useCallback,
+	useState,
+} from "react";
 import Link from "next/link";
-import { ComponentProps, RefCallback, useCallback, useState } from "react";
-import { Button } from "~components/Button";
+
+import { Locale } from "~/i18n.config";
+
 import { MobileNav } from "~components/MobileNav";
 import { NavLinks } from "~components/NavLinks";
-import { LanguageSwitch } from "~components/LanguageSwitch";
-import { Locale } from "~/i18n.config";
+import {
+	LanguageSwitch,
+	LanguageSwitchFallback,
+} from "~components/LanguageSwitch";
 
 export const Navbar = ({
 	links,
@@ -36,7 +46,9 @@ export const Navbar = ({
 						className="max-md:pointer-events-none max-md:invisible max-md:hidden max-md:select-none"
 					/>
 					<span className="inline-block h-6 w-px bg-yellow max-md:invisible max-md:hidden"></span>
-					<LanguageSwitch />
+					<Suspense fallback={<LanguageSwitchFallback />}>
+						<LanguageSwitch />
+					</Suspense>
 					<MobileNav navRect={rect} lang={lang as Locale} links={links} />
 				</div>
 			</div>
