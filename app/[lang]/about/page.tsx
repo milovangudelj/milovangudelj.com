@@ -8,7 +8,7 @@ import { Section } from "~components/Section";
 import { Locale } from "~/i18n.config";
 import { getDictionary } from "~/utils/getDictionary";
 
-import heroImage from "~images/poly-me.png";
+import heroImage from "~images/poly-me.webp";
 import { NowPlaying } from "~/components";
 
 export const metadata = {
@@ -46,6 +46,7 @@ const AboutPage = async ({
 					src={heroImage}
 					loading="eager"
 					alt="A picture of me"
+					sizes="804px"
 					width={402}
 					height={535}
 					placeholder="blur"

@@ -9,7 +9,7 @@ import { getDictionary } from "~utils/getDictionary";
 import { Locale } from "~/i18n.config";
 import { getSlimProjects } from "~/sanity/lib/client";
 
-import heroImage from "~images/poly-me.png";
+import heroImage from "~images/poly-me.webp";
 
 async function getProjects() {
 	const projects = await getSlimProjects();
@@ -44,6 +44,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 					src={heroImage}
 					loading="eager"
 					alt="A picture of me"
+					sizes="804px"
 					width={402}
 					height={535}
 					placeholder="blur"
