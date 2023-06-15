@@ -42,6 +42,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 				</p>
 				<Image
 					src={heroImage}
+					loading="eager"
 					alt="A picture of me"
 					width={402}
 					height={535}
