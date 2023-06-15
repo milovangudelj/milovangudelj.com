@@ -24,7 +24,7 @@ const getProjctData = async (slug: string) => {
 export async function generateMetadata({
 	params: { slug, lang },
 }: {
-	params: { slug: string; lang: Locale; };
+	params: { slug: string; lang: Locale };
 }): Promise<Metadata> {
 	const { title, color, subtitle, cover } = await getProjctData(slug);
 
@@ -48,7 +48,11 @@ export async function generateMetadata({
 	};
 }
 
-const ProjectPage = async ({ params: { slug, lang } }: { params: { slug: string; lang: Locale; } }) => {
+const ProjectPage = async ({
+	params: { slug, lang },
+}: {
+	params: { slug: string; lang: Locale };
+}) => {
 	const { title, color, subtitle, intro, cover, body } = await getProjctData(
 		slug
 	);
@@ -58,7 +62,10 @@ const ProjectPage = async ({ params: { slug, lang } }: { params: { slug: string;
 			<Container as="main" className="relative">
 				<header className="p-32 pb-16">
 					<div className="mb-8 flex items-center space-x-3 text-button">
-						<Link href="/" className="text-white/70 hover:text-white transition">
+						<Link
+							href="/"
+							className="text-white/70 transition hover:text-white"
+						>
 							← Go Back
 						</Link>
 						<span className="inline-block h-6 w-px bg-white/[0.06]"></span>
@@ -89,7 +96,7 @@ const ProjectPage = async ({ params: { slug, lang } }: { params: { slug: string;
 							placeholder={"blur"}
 							blurDataURL={cover.lqip}
 							priority
-							className="w-full rounded-2xl object-cover h-[400px]"
+							className="h-[400px] w-full rounded-2xl object-cover"
 							width={cover.width}
 							height={cover.height}
 						/>
@@ -212,5 +219,4 @@ const ProjectPage = async ({ params: { slug, lang } }: { params: { slug: string;
 	);
 };
 
-export const dynamic = "force-static";
 export default ProjectPage;
