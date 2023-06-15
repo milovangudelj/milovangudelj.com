@@ -2,7 +2,6 @@ const spotify_authorization = process.env.SPOTIFY_AUTHORIZATION!;
 const spotify_code = process.env.SPOTIFY_CODE!;
 
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
-const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`;
 const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
@@ -16,7 +15,7 @@ const getAccessToken = async () => {
 		body: new URLSearchParams({
 			grant_type: "authorization_code",
 			code: spotify_code,
-			redirect_uri: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/music-stats`,
+			redirect_uri: `${process.env.NEXT_PUBLIC_WEBSITE_URL}`,
 		}),
 		next: {
 			revalidate: 3600,
@@ -31,7 +30,7 @@ const getAccessToken = async () => {
 export const getNowPlaying = async () => {
 	const access_token = await getAccessToken();
 
-	return fetch(NOW_PLAYING_ENDPOINT, {
+	const res = await fetch(NOW_PLAYING_ENDPOINT, {
 		headers: {
 			Authorization: `Bearer ${access_token}`,
 		},
@@ -39,16 +38,8 @@ export const getNowPlaying = async () => {
 			revalidate: 0,
 		},
 	});
-};
 
-export const getTopTracks = async () => {
-	const access_token = await getAccessToken();
-
-	return fetch(TOP_TRACKS_ENDPOINT, {
-		headers: {
-			Authorization: `Bearer ${access_token}`,
-		},
-	});
+	return await res.json();
 };
 
 export const getTopArtists = async ({
@@ -66,7 +57,7 @@ export const getTopArtists = async ({
 		long: "long_term",
 	};
 
-	return fetch(
+	const res = await fetch(
 		`${TOP_ARTISTS_ENDPOINT}?${new URLSearchParams({
 			limit: `${limit}`,
 			time_range: `${tRange[range]}`,
@@ -77,4 +68,6 @@ export const getTopArtists = async ({
 			},
 		}
 	);
+
+	return await res.json();
 };

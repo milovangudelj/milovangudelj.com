@@ -7,8 +7,7 @@ import { spotifyColors } from "~utils/getColors";
 export const runtime = "edge";
 
 export async function GET(req: NextRequest) {
-	const response = await getTopArtists({ limit: 5, range: "medium" });
-	const { items } = await response.json();
+	const { items } = await getTopArtists({ limit: 5, range: "medium" });
 
 	const colors = shuffle(spotifyColors);
 	const artists = await Promise.all(

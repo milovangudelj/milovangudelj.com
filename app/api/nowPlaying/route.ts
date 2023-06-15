@@ -4,20 +4,9 @@ import { getNowPlaying } from "~lib/mySpotify";
 export const runtime = "edge";
 
 export async function GET(req: NextRequest) {
-	const response = await getNowPlaying();
+	const song = await getNowPlaying();
 
-	if (response.status === 204 || response.status > 400) {
-		return new Response(JSON.stringify({ isPlaying: false }), {
-			status: 200,
-			headers: {
-				"content-type": "application/json",
-			},
-		});
-	}
-
-	const song = await response.json();
-
-	if (song.item === null) {
+	if (!song || !song.item) {
 		return new Response(JSON.stringify({ isPlaying: false }), {
 			status: 200,
 			headers: {

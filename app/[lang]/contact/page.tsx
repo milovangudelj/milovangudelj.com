@@ -1,14 +1,15 @@
 import Image from "next/image";
 
 import { Section } from "~components/Section";
+import { Container } from "~components/Container";
 import { CTA } from "~components/sections/CTA";
+
+import { Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
 
 import igLogo from "~images/igLogo.png";
 import twLogo from "~images/twLogo.svg";
 import drLogo from "~images/drLogo.svg";
-
-import { Locale } from "~/i18n.config";
-import { getDictionary } from "~/utils/getDictionary";
 
 export const metadata = {
 	title: "Milovan Gudelj - Contact me",
@@ -29,17 +30,18 @@ const ContactPage = async ({
 
 	return (
 		<>
-			<Section className="relative scroll-mt-[72px] overflow-hidden bg-black text-white md:scroll-mt-[88px]">
-				<main className="mx-auto flex max-w-7xl items-center justify-between px-8 2xl:px-0">
+			<Section className="relative overflow-hidden">
+				<Container
+					as="main"
+					className="flex items-center justify-between space-y-0"
+				>
 					<div className="space-y-16">
-						<div className="space-y-8">
-							<h1 className="text-d2-mobile xl:text-d2">
-								{dictionary.Contact.title}
-							</h1>
-							<p className="text-body">
-								{dictionary.Contact.description}
-							</p>
-						</div>
+						<h1 className="text-d2-mobile xl:text-d2">
+							{dictionary.Contact.title}
+						</h1>
+						<p className="text-sub-heading-mobile 2xl:text-sub-heading">
+							{dictionary.Contact.description}
+						</p>
 						<div className="flex items-center space-x-6 py-0.5 font-space md:space-x-12">
 							<a
 								href="https://instagram.com/milovangudelj"
@@ -67,7 +69,7 @@ const ContactPage = async ({
 							</a>
 						</div>
 					</div>
-					<div className="mr-8 hidden origin-center rotate-12 flex-col items-center space-y-20 xl:flex">
+					<div className="mr-[calc(32px+128px)] hidden origin-center rotate-12 flex-col items-center space-y-20 xl:flex">
 						<Image
 							alt="Dribbble logo"
 							className="origin-center -rotate-12"
@@ -92,9 +94,9 @@ const ContactPage = async ({
 							/>
 						</div>
 					</div>
-				</main>
+				</Container>
 			</Section>
-			<CTA lang={lang as Locale}/>
+			<CTA lang={lang as Locale} />
 		</>
 	);
 };

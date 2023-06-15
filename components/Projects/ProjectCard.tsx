@@ -15,7 +15,7 @@ export const ProjectCard = ({ title, site, cover }: ProjectCardProps) => {
 		<div className="space-y-8 md:space-y-[26px]">
 			<Link
 				href={site}
-				className="relative inline-block aspect-video h-[150px] cursor-pointer border-2 bg-black drop-shadow-brutal md:h-[300px] xl:drop-shadow-brutal-lg"
+				className="relative inline-block aspect-video h-[150px] cursor-pointer overflow-hidden rounded-2xl md:h-[300px]"
 			>
 				<Image
 					src={urlForImage(cover.image).url()}
@@ -26,7 +26,7 @@ export const ProjectCard = ({ title, site, cover }: ProjectCardProps) => {
 					height={cover.height}
 					placeholder="blur"
 					blurDataURL={cover.lqip}
-					className="object-cover w-full h-full"
+					className="h-full w-full object-cover"
 				/>
 			</Link>
 			<div className="flex flex-col">
@@ -39,7 +39,7 @@ export const ProjectCard = ({ title, site, cover }: ProjectCardProps) => {
 						→
 					</span>
 				</Link>
-				<span className="text-label-md text-dark-me">{site}</span>
+				<span className="text-label-md text-light-me">{site}</span>
 			</div>
 		</div>
 	);

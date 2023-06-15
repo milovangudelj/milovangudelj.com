@@ -17,7 +17,7 @@ export const NavLinks = ({
 	lang: Locale;
 }) => {
 	return (
-		<ul className={twMerge("flex bg-yellow text-black", className)}>
+		<ul className={twMerge("flex text-white", className)}>
 			{links.map((link) => (
 				<li key={link.id}>
 					<NavLink

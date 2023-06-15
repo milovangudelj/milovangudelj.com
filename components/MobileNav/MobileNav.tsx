@@ -129,7 +129,7 @@ export const MobileNav = ({
 				animate={menuOpen ? "open" : "closed"}
 				variants={list}
 				className={twMerge(
-					`absolute top-full left-0 h-[var(--nav-height)] w-[var(--nav-width)] flex-col items-end justify-center bg-yellow px-8 py-2 text-black`,
+					`absolute left-0 top-full h-[var(--nav-height)] w-[var(--nav-width)] flex-col items-end justify-center bg-yellow px-8 py-2 text-black`,
 					className
 				)}
 			>
@@ -145,18 +145,6 @@ export const MobileNav = ({
 						/>
 					</motion.li>
 				))}
-				<motion.li variants={item}>
-					<Button
-						as={Link}
-						href={`/${lang}/music-stats`}
-						onClick={() => {
-							setMenuOpen(false);
-						}}
-						className="mr-4 mt-4 md:pointer-events-none md:invisible md:hidden md:select-none"
-					>
-						Music-Stats ↗
-					</Button>
-				</motion.li>
 			</motion.ul>
 		</div>
 	);

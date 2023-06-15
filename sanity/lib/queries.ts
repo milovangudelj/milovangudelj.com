@@ -74,3 +74,16 @@ export const projectPaths = groq`
 export const caseStudyPaths = groq`
   *[_type == "caseStudy"].project->slug.current
 `;
+
+export const postersQuery = groq`
+  *[_type == "poster"] | order(_createdAt asc)[0..7] {
+    title,
+    day,
+    "image": {
+      "image": image,
+      "lqip": image.asset->metadata.lqip,
+      "width": image.asset->metadata.dimensions.width,
+      "height": image.asset->metadata.dimensions.height,
+    },
+  }
+`;

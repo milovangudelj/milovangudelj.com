@@ -30,16 +30,6 @@ export async function generateSiteMap() {
 		<xhtml:link rel="alternate" hreflang="en" href="https://www.milovangudelj.com/contact"/>
 		<xhtml:link rel="alternate" hreflang="it" href="https://www.milovangudelj.com/it/contact"/>
 	</url>
-	<url>
-		<loc>https://www.milovangudelj.com/login</loc>
-		<xhtml:link rel="alternate" hreflang="en" href="https://www.milovangudelj.com/login"/>
-		<xhtml:link rel="alternate" hreflang="it" href="https://www.milovangudelj.com/it/login"/>
-	</url>
-	<url>
-		<loc>https://www.milovangudelj.com/music-stats</loc>
-		<xhtml:link rel="alternate" hreflang="en" href="https://www.milovangudelj.com/music-stats"/>
-		<xhtml:link rel="alternate" hreflang="it" href="https://www.milovangudelj.com/it/music-stats"/>
-	</url>
 	${csUrls
 		.map((slug) => {
 			return `<url>

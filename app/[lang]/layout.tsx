@@ -8,7 +8,6 @@ import "~styles/globals.css";
 
 import { Navbar } from "~components/Navbar";
 import { Footer } from "~components/Footer";
-import { NextSession } from "~/components/NextSession";
 
 const inter = localFont({
 	src: "../../public/fonts/Inter-Var.woff2",
@@ -125,14 +124,12 @@ export default async function RootLayout({
 			lang={params.lang}
 			className={`${inter.variable} ${spaceGrotesk.variable}`}
 		>
-			<body className="h-fill scroll-smooth bg-black font-sans text-white">
-				<NextSession>
-					<Navbar lang={params.lang} links={links} />
-					<div className="relative z-[1] mb-[58.25px] bg-black">
-						{children}
-					</div>
-					<Footer />
-				</NextSession>
+			<body className="h-fill relative scroll-smooth bg-black font-sans text-white before:pointer-events-none before:absolute before:inset-0 before:block before:bg-noise before:bg-repeat before:[background-size:100px]">
+				<Navbar lang={params.lang} links={links} />
+				<div className="relative before:pointer-events-none before:absolute before:inset-0 before:mx-auto before:max-w-7xl before:border-x before:border-white/[0.06]">
+					{children}
+				</div>
+				<Footer />
 				{process.env.NODE_ENV === "production" && <Analytics />}
 			</body>
 		</html>

@@ -1,11 +1,14 @@
 import { Section } from "~components/Section";
 import { Container } from "~components/Container";
-import ProjectShowcase from "~components/ProjectShowcase/ProjectShowcase";
-import { Smiley } from "~components/Smiley";
+import { ProjectShowcase } from "~components/ProjectShowcase";
 
 import { Locale } from "~/i18n.config";
 import { getDictionary } from "~/utils/getDictionary";
 import { getProjects } from "~/sanity/lib/client";
+import { CTA } from "~/components/sections";
+
+import heroImage from "~images/work-hero-image.png";
+import Image from "next/image";
 
 const getProjcts = async () => {
 	const projects = await getProjects();
@@ -33,51 +36,51 @@ const WorkPage = async ({
 
 	return (
 		<>
-			<Section className="relative scroll-mt-[72px] overflow-hidden bg-black text-white md:scroll-mt-[88px]">
-				<main className="mx-auto max-w-7xl space-y-16 px-8 md:space-y-32 2xl:px-0">
-					<div className="relative space-y-8 md:space-y-0">
-						<h1 className="text-d2-mobile md:mb-8 xl:text-d2">
-							{dictionary.Work.title}
-						</h1>
-						<p className="text-body">{dictionary.Work.description}</p>
-						<Smiley className="absolute -top-16 right-0 h-[64px] w-[65px] text-light-cyan md:h-[128px] md:w-[130px] xl:-top-0 xl:right-16 xl:h-[192.2px] xl:w-[196.23px]" />
+			<Section className="relative min-h-[calc(100vh-72.39px)]">
+				<Container as="main">
+					<h1 className="text-d1-mobile 2xl:text-d1">
+						{dictionary.Work.title}
+					</h1>
+					<div className="space-y-8">
+						<p className="text-sub-heading-mobile 2xl:text-sub-heading">
+							{dictionary.Work.description}
+						</p>
+						<p className="text-body text-white/70">
+							{dictionary.Work.subtitle}
+						</p>
 					</div>
-				</main>
+					<span
+						aria-hidden
+						className="inline-block text-sub-heading text-yellow"
+					>
+						↓
+					</span>
+				</Container>
+				<Image
+					src={heroImage}
+					alt="Isometric screenshot of DoYourThing's homepage"
+					quality={100}
+					sizes={"1280px"}
+					width={1280}
+					height={485}
+					placeholder="blur"
+					className="pointer-events-none absolute bottom-0 right-[calc((100%-1280px)/2)] select-none object-cover"
+				/>
 			</Section>
-			<ul>
-				{projects.map((project) => (
-					<li key={project.slug}>
-						<Section className="bg-green">
-							<Container>
-								<ProjectShowcase
-									messages={{
-										brief: dictionary.ProjectShowcase.brief,
-										visit: dictionary.ProjectShowcase.visit,
-										readCS: dictionary.ProjectShowcase.readCS,
-										category: {
-											uiDesign:
-												dictionary.ProjectShowcase.category
-													.uiDesign,
-											webDesign:
-												dictionary.ProjectShowcase.category
-													.webDesign,
-											webDev:
-												dictionary.ProjectShowcase.category.webDev,
-											frontEnd:
-												dictionary.ProjectShowcase.category
-													.frontEnd,
-											fullStack:
-												dictionary.ProjectShowcase.category
-													.fullStack,
-										},
-									}}
-									{...project}
-								/>
-							</Container>
-						</Section>
-					</li>
-				))}
-			</ul>
+			{projects.map((project) => (
+				<Section key={project.slug}>
+					<Container>
+						<ProjectShowcase
+							messages={{
+								visit: dictionary.ProjectShowcase.visit,
+								read: dictionary.ProjectShowcase.readCS,
+							}}
+							project={project}
+						/>
+					</Container>
+				</Section>
+			))}
+			<CTA lang={lang} />
 		</>
 	);
 };

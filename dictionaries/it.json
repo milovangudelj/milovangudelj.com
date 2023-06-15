@@ -14,7 +14,8 @@
 	},
 	"Work": {
 		"title": "My designs",
-		"description": "Qui di seguito troverai alcuni dei miei lavori più recenti, enjoy!"
+		"description": "Qui di seguito troverai alcuni dei miei lavori più recenti, enjoy!",
+		"subtitle": "Here’s a curated list of my most successful ones."
 	},
 	"About": {
 		"main": {
@@ -45,11 +46,7 @@
 	},
 	"WrappedList": {
 		"open": "Apri su Spotify",
-		"listen": "Ascolta su Spotify",
-		"alt": {
-			"artist": "Foto profilo di",
-			"track": "Foto dell'album di"
-		}
+		"artist": "Foto profilo di"
 	},
 	"CTA": {
 		"title": "Interested?",
@@ -74,6 +71,7 @@
 	"Portfolio": {
 		"title": "Portfolio",
 		"description": "Questa è principalmente una collezione di poster che ho fatto, con un po' di informazioni sulle mie passate esperienze.",
+		"subtitle": "Something something about not having a CV but only this page as my designated experience showcase.",
 		"experience": {
 			"title": "Esperienze",
 			"p1": "Sono uno studente di ingegneria informatica all'Università di Padova. Negli ultimi cinque anni ho raccolto esperienza come designer e sviluppatore web grazie a vari progetti.",
@@ -97,7 +95,7 @@
 		"poster": {
 			"title": "Poster",
 			"description": {
-				"pre": "Nel 2021 ho iniziato la ",
+				"pre": "Nel 2020 ho iniziato la ",
 				"hashtag": "#postereveryday",
 				"post": " challenge. Questa è la selezione dei poster più belli."
 			},
@@ -106,67 +104,6 @@
 		"cta": {
 			"title": "Hai domanade?",
 			"description": "Non esitare a contattarmi se sei incuriosito/a o hai domande su qualsiasi cosa."
-		}
-	},
-	"Music-Stats": {
-		"p1": {
-			"pre": "Una versione aggiornata del tuo Spotify Wrapped ",
-			"post": "."
-		},
-		"data": "Dati forniti da",
-		"filters": {
-			"title": "Filtra per",
-			"all": "Entrambi",
-			"artists": "Artisti",
-			"tracks": "Tracce"
-		},
-		"period": {
-			"title": "Periodo",
-			"short": "Ultimi 3 mesi",
-			"medium": "Ultimi 6 mesi",
-			"long": "Di sempre"
-		},
-		"download": {
-			"action": "Scarica il poster",
-			"generating": "Sto generando..."
-		},
-		"artists": {
-			"title": {
-				"top": "Migliori",
-				"artists": "artisti"
-			},
-			"subtitle": {
-				"short": "Negli ultimi 3 mesi questi sono stati i tuoi artistsi più amati.",
-				"medium": "Negli ultimi 6 mesi questi sono stati i tuoi artistsi più amati.",
-				"long": "Dalla creazione del tuo account questi sono stati i tuoi artistsi più amati."
-			},
-			"description": {
-				"loading": "Sto caricando...",
-				"title": "Come raccogli i dati?",
-				"p1": "Spotify espone un'API (application programming interface) agli sviluppatori attraverso la quale puoi ottenere i tuoi dati avendo la giusta chiave di accesso.",
-				"p2": "Quella chiave speciale viene fornita da Spotify quando fai il login ed è poi usata per richiedere i tuoi dati quando la pagina carica."
-			}
-		},
-		"tracks": {
-			"title": {
-				"top": "Migliori",
-				"tracks": "tracce"
-			},
-			"subtitle": {
-				"short": "Negli ultimi 3 mesi non riuscivi a smettere di ascoltare questi cinque brani.",
-				"medium": "Negli ultimi 6 mesi non riuscivi a smettere di ascoltare questi cinque brani.",
-				"long": "Dalla creazione del tuo account questi sono stati i tuoi cinque brani più ascoltati."
-			},
-			"description": {
-				"loading": "Sto caricando...",
-				"title": "Perché è diverso dal mio Wrapped?",
-				"p1": "Spotify Wrapped raccoglie i dati che ti mostra durante tutto l'anno mentre io riesco a richiedere solo i dati relativi agli ultimi 3/6 mesi o dalla data di creazione del tuo account.",
-				"p2": "Per questo puoi selezionare solo quelle tre opzioni nella barra dei filtri qui sopra. L'API di Spotify è limitata ma i dati forniti sono sempre aggiornati e non devi aspettare un intero anno per vederli."
-			}
-		},
-		"notice": {
-			"label": "Nota",
-			"text": "Non sono sostenuto ne sponsorizzato da Spotify e da nessuno dei loro associati."
 		}
 	}
 }

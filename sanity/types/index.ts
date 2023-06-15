@@ -62,3 +62,17 @@ export interface CaseStudyPayload {
 		height: number;
 	};
 }
+
+export interface PosterPayload {
+	title: string;
+	day: number;
+	image: {
+		image: Image & {
+			alt: string;
+			caption: string;
+		};
+		lqip: string;
+		width: number;
+		height: number;
+	};
+}

@@ -4,17 +4,16 @@ import Image, { StaticImageData } from "next/image";
 import { ComponentProps, useRef } from "react";
 import { useScrollContainer } from "react-indiana-drag-scroll";
 
+import { urlForImage } from '~/sanity/lib/image';
+import { PosterPayload } from '~/sanity/types';
+
 interface GalleryProps extends ComponentProps<"div"> {
-	images: { src: string | StaticImageData; alt: string }[];
-	imageWidth?: number;
-	imageHeight?: number;
+	posters: PosterPayload[];
 	dragText?: string;
 }
 
 export const PosterGallery = ({
-	images,
-	imageWidth,
-	imageHeight,
+	posters,
 	dragText = "Drag or scroll",
 	...porps
 }: GalleryProps) => {
@@ -39,27 +38,27 @@ export const PosterGallery = ({
 				ref={imagesRef}
 				className="pointer-events-none absolute top-0 left-0 flex w-max gap-16 pb-8"
 			>
-				{images.map((image, index) => (
+				{posters.map((poster) => (
 					<li
-						key={`gallery_image_${index}`}
-						style={{
-							width: imageWidth,
-							height: imageHeight,
-							position: "relative",
-						}}
+						key={`postereveryday_${poster.day}`}
+						className="w-[375px] h-[500px] relative rounded-2xl overflow-hidden"
 					>
 						<span
 							aria-hidden
-							className="absolute inset-0 flex items-center justify-center bg-purple text-sub-heading-mobile text-black"
+							className="absolute inset-0 flex items-center justify-center bg-white/20 text-sub-heading-mobile text-black"
 						>
 							Loading...
 						</span>
 						<Image
-							src={image.src}
-							alt={image.alt}
-							width={imageWidth}
-							height={imageHeight}
-							className="relative"
+							src={urlForImage(poster.image.image).url()}
+							alt={`${poster.title} - ${poster.image.image.alt}`}
+							title={`${poster.title} - ${poster.image.image.caption}`}
+							quality={100}
+							width={375}
+							height={500}
+							placeholder="blur"
+							blurDataURL={poster.image.lqip}
+							className="relative object-cover h-full w-full"
 						/>
 					</li>
 				))}
@@ -69,15 +68,14 @@ export const PosterGallery = ({
 				ref={scrollContainer.ref}
 				className="scrollbar-hidden flex cursor-move gap-16 overflow-x-scroll"
 			>
-				{images.map((image, index) => (
+				{posters.map((poster) => (
 					<li
-						key={`gallery_image_clone_${index}`}
-						style={{ width: imageWidth, height: imageHeight }}
-						className="flex-none bg-[#fefefe]/0"
+						key={`postereveryday_${poster.day}`}
+						className="flex-none bg-transparent rounded-2xl overflow-hidden w-[375px] h-[500px]"
 					></li>
 				))}
-				<span className="absolute top-0 -left-[calc((100vw-min(1280px,_100vw))/2)] bottom-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] bg-gradient-to-l from-black/0 to-black xl:block"></span>
-				<span className="absolute top-0 left-full bottom-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] bg-gradient-to-r from-black/0 to-black xl:block"></span>
+				<span className="absolute top-0 -left-[calc((100vw-min(1280px,_100vw))/2)] bottom-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] backdrop-blur-sm xl:block"></span>
+				<span className="absolute top-0 left-full bottom-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] backdrop-blur-sm xl:block"></span>
 			</ul>
 			<span className="mt-8 inline-block text-button">
 				{dragText} <span className="text-yellow">→</span>

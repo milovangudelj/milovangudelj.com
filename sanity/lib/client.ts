@@ -5,6 +5,7 @@ import {
 	ProjectPayload,
 	CaseStudyPayload,
 	SlimProjectPayload,
+	PosterPayload
 } from "~/sanity/types";
 
 import {
@@ -14,6 +15,7 @@ import {
 	caseStudyBySlugQuery,
 	caseStudyPaths,
 	slimProjectsQuery,
+	postersQuery
 } from "./queries";
 
 export const client = createClient({
@@ -53,4 +55,8 @@ export async function getProjectPaths(): Promise<string[]> {
 
 export async function getCaseStudyPaths(): Promise<string[]> {
 	return (await client.fetch(caseStudyPaths)) || [];
+}
+
+export async function getPosters(): Promise<PosterPayload[]> {
+	return await client.fetch(postersQuery);
 }

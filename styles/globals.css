@@ -1,6 +1,10 @@
 @tailwind base;
 
 @layer base {
+	:root {
+		--orbit-radius: 300px;
+	}
+
 	img {
 	  @apply inline-block;
 	}
@@ -61,7 +65,7 @@
 	}
 
 	p {
-		@apply max-w-[500px];
+		@apply max-w-[680px] text-body;
 	}
 
 	.scrollbar-hidden::-webkit-scrollbar {

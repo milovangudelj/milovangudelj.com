@@ -2,19 +2,14 @@ import Image from "next/image";
 import { ComponentProps, CSSProperties } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Artist, Track } from "~lib/types";
+import { _Artist } from "~lib/types";
 import { getLuminance, TEXT_LUMINANCE_TRESHOLD } from "~utils/getLuminance";
 import { Palette } from "~utils/getPalette";
 
 export interface WrappedListProps extends ComponentProps<"ol"> {
-	items: Track[] | Artist[];
-	of: "tracks" | "artists";
-	altText?: {
-		artist: string;
-		track: string;
-	};
+	items: _Artist[];
+	altText?: string;
 	openText?: string;
-	listenText?: string;
 	palette: Palette;
 	className?: string;
 	style?: CSSProperties;
@@ -23,10 +18,8 @@ export interface WrappedListProps extends ComponentProps<"ol"> {
 export const WrappedList = ({
 	className,
 	items,
-	of,
 	altText,
 	openText,
-	listenText,
 	palette,
 	style,
 	...props
@@ -34,7 +27,6 @@ export const WrappedList = ({
 	if (items.length === 0)
 		return (
 			<YoungAccount
-				of={of}
 				className={twMerge(
 					`bg-black text-white drop-shadow-brutal`,
 					className
@@ -57,10 +49,7 @@ export const WrappedList = ({
 					rank={idx + 1}
 					altText={altText}
 					openText={openText}
-					listenText={listenText}
-					color={
-						"name" in item ? palette.artists[idx] : palette.tracks[idx]
-					}
+					color={palette.artists[idx]}
 					key={item.url}
 				/>
 			))}
@@ -72,27 +61,21 @@ const WrappedListItem = ({
 	item,
 	isFirst,
 	rank,
-	altText = { artist: "'s profile picture", track: "'s album picture" },
+	altText = "'s profile picture",
 	openText = "Open on Spotify",
-	listenText = "Listen on Spotify",
 	className,
 	color,
 	style,
 	...props
 }: ComponentProps<"li"> & {
-	item: Track | Artist;
+	item: _Artist;
 	isFirst: boolean;
 	rank: number;
-	altText?: {
-		artist: string;
-		track: string;
-	};
+	altText?: string;
 	openText?: string;
-	listenText?: string;
 	color: string;
 }) => {
 	const lightText = getLuminance(color) <= TEXT_LUMINANCE_TRESHOLD;
-	const isArtist = "name" in item;
 
 	return (
 		<li
@@ -106,21 +89,13 @@ const WrappedListItem = ({
 				}`}
 				style={{ backgroundColor: !isFirst ? color : undefined }}
 				title={
-					isArtist
-						? altText.artist.startsWith("'")
-							? `${item.name}${
-									item.name.endsWith("s")
-										? altText.artist.replace("'s", "'")
-										: altText.artist
-							  }`
-							: `${altText.artist} ${item.name}`
-						: altText.track.startsWith("'")
-						? `${item.title}${
-								item.title.endsWith("s")
-									? altText.track.replace("'s", "'")
-									: altText.track
+					altText.startsWith("'")
+						? `${item.name}${
+								item.name.endsWith("s")
+									? altText.replace("'s", "'")
+									: altText
 						  }`
-						: `${altText.track} ${item.title}`
+						: `${altText} ${item.name}`
 				}
 			>
 				<Image
@@ -128,9 +103,7 @@ const WrappedListItem = ({
 					sizes={`64px`}
 					quality={100}
 					src={item.image.url}
-					alt={`${
-						isArtist ? item.name + "'s profile" : item.title + "'s album"
-					} picture`}
+					alt={`${item.name + "'s profile"} picture`}
 					width={64}
 					height={64}
 					loading={"lazy"}
@@ -152,7 +125,7 @@ const WrappedListItem = ({
 					className={`${
 						isFirst ? "text-sub-heading" : "text-sub-heading-mobile"
 					} group flex h-full w-full items-center px-4`}
-					title={`${rank}. ${isArtist ? item.name : item.title}`}
+					title={`${rank}. ${item.name}`}
 				>
 					<span
 						className={`${
@@ -162,9 +135,9 @@ const WrappedListItem = ({
 						{rank}
 					</span>
 					<div className="max-w-fill flex-shrink overflow-hidden truncate">
-						<span>{isArtist ? item.name : item.title}</span>
+						<span>{item.name}</span>
 						<span className="block select-none text-label-sm leading-none opacity-40 transition group-hover:opacity-80">
-							{"name" in item ? openText : listenText} ↗
+							{openText} ↗
 						</span>
 					</div>
 					{false && (
@@ -178,11 +151,7 @@ const WrappedListItem = ({
 	);
 };
 
-const YoungAccount = ({
-	of,
-	className,
-	...props
-}: ComponentProps<"div"> & { of: "tracks" | "artists" }) => {
+const YoungAccount = ({ className, ...props }: ComponentProps<"div">) => {
 	return (
 		<div className={twMerge(className, `h-80`)} {...props}>
 			{"Your account is too Young"}
