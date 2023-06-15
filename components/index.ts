@@ -7,7 +7,6 @@ export * from "./Projects";
 export * from "./ProjectShowcase";
 export * from "./Section";
 export * from "./Container";
-export * from "./CS";
 export * from "./NowPlaying";
 export * from "./TopArtists";
 export * from "./Button";
