@@ -40,14 +40,14 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 					Wait, there&apos;s more{" "}
 					<span className="font-space text-yellow">↓</span>
 				</p>
-				<Image
-					src={heroImage}
+				{/* eslint-disable-next-line @next/next/no-img-element */}
+				<img
+					src="/images/poly-me-sd.webp"
 					loading="eager"
 					alt="A picture of me"
-					sizes="402px, 804px 2x"
+					srcSet="/images/poly-me.webp 2x"
 					width={402}
 					height={535}
-					placeholder="blur"
 					className="pointer-events-none absolute bottom-0 right-[calc((100%-1280px)/2)] select-none object-cover"
 				/>
 			</Section>
