@@ -17,15 +17,22 @@ export const ProjectCard = ({ title, site, cover }: ProjectCardProps) => {
 				href={site}
 				className="relative inline-block aspect-video h-[150px] cursor-pointer overflow-hidden rounded-2xl md:h-[300px]"
 			>
-				<Image
-					src={urlForImage(cover.image).url()}
-					quality={100}
+				{/* eslint-disable-next-line @next/next/no-img-element */}
+				<img
+					src={urlForImage(cover.image)
+						.width(Math.floor((300 * 16) / 9))
+						.height(300)
+						.quality(100)
+						.url()}
+					srcSet={`${urlForImage(cover.image)
+						.width(Math.floor((600 * 16) / 9))
+						.height(600)
+						.quality(100)
+						.url()} 2x`}
 					alt={cover.image.alt ?? cover.image.caption ?? title}
 					title={cover.image.alt ?? cover.image.caption ?? title}
-					width={cover.width}
-					height={cover.height}
-					placeholder="blur"
-					blurDataURL={cover.lqip}
+					width={Math.floor((300 * 16) / 9)}
+					height={300}
 					className="h-full w-full object-cover"
 				/>
 			</Link>
