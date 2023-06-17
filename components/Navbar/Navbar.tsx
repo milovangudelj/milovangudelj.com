@@ -46,7 +46,9 @@ export const Navbar = ({
 						className="max-md:pointer-events-none max-md:invisible max-md:hidden max-md:select-none"
 					/>
 					<span className="inline-block h-6 w-px bg-yellow max-md:invisible max-md:hidden"></span>
-					<Suspense fallback={<LanguageSwitchFallback />}>
+					<Suspense
+						fallback={<LanguageSwitchFallback lang={lang as Locale} />}
+					>
 						<LanguageSwitch />
 					</Suspense>
 					<MobileNav navRect={rect} lang={lang as Locale} links={links} />
