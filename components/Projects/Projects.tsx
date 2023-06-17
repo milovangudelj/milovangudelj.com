@@ -41,8 +41,8 @@ export const Projects = ({ projects }: ProjectsProps) => {
 					</li>
 				))}
 			</ul>
-			<span className="absolute -left-[calc((100vw-min(1280px,_100vw))/2)] bottom-0 top-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] bg-transparent backdrop-blur-sm xl:block"></span>
-			<span className="absolute bottom-0 left-full top-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] bg-transparent backdrop-blur-sm xl:block"></span>
+			<span className="absolute -left-8 w-8 md:-left-[calc((100vw-min(1280px,_100vw))/2)] bottom-0 top-0 md:w-[calc((100vw-min(1280px,_100vw))/2)] bg-transparent backdrop-blur-sm"></span>
+			<span className="absolute bottom-0 left-full top-0 w-8 md:w-[calc((100vw-min(1280px,_100vw))/2)] bg-transparent backdrop-blur-sm"></span>
 			<ul
 				onScroll={handleScroll}
 				ref={scrollContainer.ref}

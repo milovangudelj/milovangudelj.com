@@ -12,7 +12,6 @@ import { Locale } from "~/i18n.config";
 export const MobileNav = ({
 	links,
 	navRect,
-	className,
 	lang,
 }: {
 	links: {
@@ -21,7 +20,6 @@ export const MobileNav = ({
 		href: string | URL;
 	}[];
 	navRect: DOMRect | undefined;
-	className?: string;
 	lang: Locale;
 }) => {
 	const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -128,16 +126,13 @@ export const MobileNav = ({
 				initial={"closed"}
 				animate={menuOpen ? "open" : "closed"}
 				variants={list}
-				className={twMerge(
-					`absolute left-0 top-full h-[var(--nav-height)] w-[var(--nav-width)] flex-col items-end justify-center bg-yellow px-8 py-2 text-black`,
-					className
-				)}
+				className="absolute border-t border-white/[0.06] left-0 top-full h-[var(--nav-height)] w-[var(--nav-width)] flex-col items-end justify-center gap-4 bg-black bg-noise bg-repeat [background-size:100px] px-8 py-2"
 			>
 				{links.map((link) => (
 					<motion.li variants={item} key={link.id}>
 						<NavLink
 							id={link.id}
-							href={`${lang}${link.href}`}
+							href={link.href}
 							label={link.label}
 							onClick={() => {
 								setMenuOpen(false);

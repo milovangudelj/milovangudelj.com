@@ -15,7 +15,7 @@ export const ProjectCard = ({ title, site, cover }: ProjectCardProps) => {
 		<div className="space-y-8 md:space-y-[26px]">
 			<Link
 				href={site}
-				className="relative inline-block aspect-video h-[150px] cursor-pointer overflow-hidden rounded-2xl md:h-[300px]"
+				className="relative inline-block aspect-video h-[150px] cursor-pointer overflow-hidden rounded-lg md:rounded-2xl md:h-[300px]"
 			>
 				<Image
 					src={urlForImage(cover.image).url()}

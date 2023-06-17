@@ -20,7 +20,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 
 	return (
 		<>
-			<Section className="relative h-[calc(100vh-72.39px)] text-white">
+			<Section className="relative text-white md:h-[calc(100vh-72.39px)]">
 				<Container as="main">
 					<h1 className="mb-16 text-h1-mobile md:text-d1-mobile 2xl:text-d1">
 						{dictionary.Home.heroTitle.webDev}{" "}
@@ -31,21 +31,21 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 					<p className="max-w-[500px] text-sub-heading-mobile md:text-sub-heading">
 						{dictionary.Home.heroParagraph}
 					</p>
+					{/* eslint-disable-next-line @next/next/no-img-element */}
+					<img
+						src="/images/poly-me-sd.webp"
+						loading="eager"
+						alt="A picture of me"
+						srcSet="/images/poly-me.webp 2x"
+						width={402}
+						height={535}
+						className="pointer-events-none max-md:hidden absolute bottom-0 right-[calc((100%-1280px)/2)] select-none object-cover"
+					/>
 				</Container>
 				<p className="absolute bottom-8 left-[calc((100%-1280px)/2)] text-label-md text-white/70">
 					Wait, there&apos;s more{" "}
 					<span className="font-space text-yellow">↓</span>
 				</p>
-				{/* eslint-disable-next-line @next/next/no-img-element */}
-				<img
-					src="/images/poly-me-sd.webp"
-					loading="eager"
-					alt="A picture of me"
-					srcSet="/images/poly-me.webp 2x"
-					width={402}
-					height={535}
-					className="pointer-events-none absolute bottom-0 right-[calc((100%-1280px)/2)] select-none object-cover"
-				/>
 			</Section>
 			<Section>
 				<Container>

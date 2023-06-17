@@ -19,7 +19,7 @@ export const NavLink = ({
 	return (
 		<Link
 			href={href}
-			className={`relative inline-block px-4 py-2 text-button ${
+			className={`relative inline-block px-4 py-2 text-sub-heading md:text-button ${
 				id === segment ? "opacity-100" : "opacity-60"
 			} transition hover:opacity-100`}
 			onClick={onClick}

@@ -126,7 +126,7 @@ export default async function RootLayout({
 		>
 			<body className="h-fill relative scroll-smooth bg-black font-sans text-white before:pointer-events-none before:absolute before:inset-0 before:block before:bg-noise before:bg-repeat before:[background-size:100px]">
 				<Navbar lang={params.lang} links={links} />
-				<div className="relative before:pointer-events-none before:absolute before:inset-0 before:mx-auto before:max-w-7xl before:border-x before:border-white/[0.06]">
+				<div className="relative before:pointer-events-none before:absolute before:z-10 before:inset-0 before:mx-auto before:w-[calc(100%-64px)] before:border-x before:border-white/[0.06] before:md:max-w-7xl">
 					{children}
 				</div>
 				<Footer />

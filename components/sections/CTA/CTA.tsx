@@ -21,7 +21,7 @@ export const CTA = asyncComponent(
 
 		return (
 			<Section
-				className="bg-yellow bg-noise bg-repeat text-black [background-size:100px] before:pointer-events-none before:absolute before:inset-0 before:mx-auto before:max-w-7xl before:border-x before:border-black/[0.06]"
+				className="bg-yellow bg-noise bg-repeat relative text-black [background-size:100px] before:pointer-events-none before:z-10 before:absolute before:inset-0 before:mx-auto before:w-[calc(100%-64px)] before:md:max-w-7xl before:border-x before:border-black/[0.06]"
 				{...props}
 			>
 				<Container>
