@@ -415,7 +415,7 @@ module.exports = {
 			backgroundImage: {
 				"chevron-down": "url(/images/chevron-down.svg)",
 				noise: "url(/images/noise.webp)",
-				"album-noise": "url(/images/album-noise.png)",
+				"album-noise": "url(/images/album-noise.webp)",
 				"fading-dashes": "url(/images/fading-dashed-line.svg)",
 			},
 		},
