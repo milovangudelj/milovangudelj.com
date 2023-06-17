@@ -7,7 +7,7 @@ import { getDictionary } from "~/utils/getDictionary";
 import { getProjects } from "~/sanity/lib/client";
 import { CTA } from "~/components/sections";
 
-import heroImage from "~images/work-hero-image.png";
+import heroImage from "~images/work-hero-image.webp";
 import Image from "next/image";
 
 const getProjcts = async () => {
