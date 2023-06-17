@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { CTA } from "~components/sections/CTA";
 import { Section } from "~components/Section";
 import { Container } from "~components/Container";
@@ -8,8 +6,6 @@ import { Projects } from "~components/Projects";
 import { getDictionary } from "~utils/getDictionary";
 import { Locale } from "~/i18n.config";
 import { getSlimProjects } from "~/sanity/lib/client";
-
-import heroImage from "~images/poly-me.webp";
 
 async function getProjects() {
 	const projects = await getSlimProjects();
