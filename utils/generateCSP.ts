@@ -4,7 +4,10 @@ export const generateCSP = () => {
 	const nonce = crypto.randomUUID();
 
 	const csp = [
-		{ name: "default-src", values: ["'self'"] },
+		{
+			name: "default-src",
+			values: ["'self'", "https://*.milovangudelj.com"],
+		},
 		{
 			name: "script-src",
 			values: [
