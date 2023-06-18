@@ -59,8 +59,8 @@ const ProjectPage = async ({
 
 	return (
 		<>
-			<Container as="main" className="relative px-8">
-				<header className="xl:p-32 max-xl:px-0 max-xl:pt-32 pb-16">
+			<Container as="main" className="relative max-xl:px-8">
+				<header className="pb-16 max-xl:px-0 max-xl:pt-32 xl:p-32 xl:pb-16">
 					<div className="mb-8 flex items-center space-x-3 text-button">
 						<Link
 							href="/work"
@@ -86,7 +86,7 @@ const ProjectPage = async ({
 							},
 						}}
 					/>
-					<figure className="relative xl:-mx-32 mt-32">
+					<figure className="relative mt-32 xl:-mx-32">
 						<Image
 							src={urlForImage(cover.image).url()}
 							alt={cover.image.alt ?? cover.image.caption}
@@ -96,30 +96,30 @@ const ProjectPage = async ({
 							placeholder={"blur"}
 							blurDataURL={cover.lqip}
 							priority
-							className="xl:h-[400px] max-xl:aspect-video w-full rounded-lg xl:rounded-2xl object-cover"
+							className="w-full rounded-lg object-cover max-xl:aspect-video xl:h-[400px] xl:rounded-2xl"
 							width={cover.width}
 							height={cover.height}
 						/>
-						<figcaption className="xl:pl-32 pt-1 text-label-md text-white/40">
+						<figcaption className="pt-1 text-label-md text-white/40 xl:pl-32">
 							{cover.image.caption ?? cover.image.alt ?? ""}
 						</figcaption>
 					</figure>
 				</header>
-				<div className="p-0 max-xl:pb-32 xl:p-32 pt-0">
+				<div className="pt-0 max-xl:pb-32 xl:p-32 xl:pt-0">
 					<PortableText
 						value={body}
 						components={{
 							types: {
 								image: ({ value, isInline }) => {
 									return (
-										<figure className="relative xl:-mx-32 my-32">
+										<figure className="relative my-32 xl:-mx-32">
 											<Image
 												src={value.asset.url}
 												alt={value.alt ?? value.caption ?? ""}
 												title={value.alt ?? value.caption ?? ""}
 												quality={100}
 												sizes="1280px"
-												className="xl:h-[400px] max-xl:aspect-video w-full rounded-lg xl:rounded-2xl object-cover"
+												className="w-full rounded-lg object-cover max-xl:aspect-video xl:h-[400px] xl:rounded-2xl"
 												width={
 													value.asset.metadata.dimensions.width
 												}
@@ -129,7 +129,7 @@ const ProjectPage = async ({
 												placeholder="blur"
 												blurDataURL={value.asset.metadata.lqip}
 											/>
-											<figcaption className="xl:pl-32 pt-1 text-label-md text-white/40">
+											<figcaption className="pt-1 text-label-md text-white/40 xl:pl-32">
 												{cover.image.caption ??
 													cover.image.alt ??
 													""}

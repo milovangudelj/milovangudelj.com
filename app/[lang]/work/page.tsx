@@ -64,7 +64,7 @@ const WorkPage = async ({
 					width={1280}
 					height={485}
 					placeholder="blur"
-					className="pointer-events-none absolute bottom-0 left-8 w-[calc(100%-64px)] select-none object-cover xl:left-[calc((100%-1280px)/2)]"
+					className="pointer-events-none absolute bottom-0 select-none object-cover max-xl:left-8 max-xl:w-[calc(100%-64px)] xl:right-[calc((100%-1280px)/2)]"
 				/>
 			</Section>
 			{projects.map((project) => (
