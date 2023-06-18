@@ -52,9 +52,9 @@ const PortfolioPage = async ({
 
 	return (
 		<>
-			<Section className="relative min-h-[calc(100vh-72.39px)]">
+			<Section className="relative xl:min-h-[calc(100vh-72.39px)]">
 				<Container as="main" className="relative">
-					<h1 className="text-d1-mobile 2xl:text-d1">
+					<h1 className="text-h1-mobile md:text-d1-mobile 2xl:text-d1">
 						{dictionary.Portfolio.title}
 					</h1>
 					<div className="space-y-8">
@@ -71,61 +71,63 @@ const PortfolioPage = async ({
 					alt="Decorative squiggly line"
 					width={425}
 					height={80}
-					className="pointer-events-none absolute bottom-[256px] right-[calc((100%-1280px)/2)] select-none object-cover"
+					className="pointer-events-none absolute right-8 select-none object-cover max-xl:top-8 max-xl:h-10 max-xl:w-[212.5px] xl:bottom-[256px] xl:right-[calc((100%-1280px)/2)]"
 				/>
 				<Image
 					src={semicircle}
 					alt="Decorative semicircle"
 					width={182}
 					height={91}
-					className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 select-none object-cover"
+					className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 select-none object-cover max-xl:h-[45.5px] max-xl:w-[91px]"
 				/>
 			</Section>
-			<Section>
+			<Section className="overflow-hidden">
 				<Container className="relative space-y-0">
 					<h2 className="text-h2-mobile md:text-h2">
 						{dictionary.Portfolio.experience.title}
 					</h2>
-					<div className="space-y-8 pt-16 text-white/70">
+					<div className="space-y-8 pt-16 max-xl:pb-16 text-white/70">
 						<p>{dictionary.Portfolio.experience.p1}</p>
 						<p>{dictionary.Portfolio.experience.p2}</p>
 						<p>{dictionary.Portfolio.experience.p3}</p>
 						<p>{dictionary.Portfolio.experience.p4}</p>
 					</div>
-					<div className="absolute -bottom-[128px] -top-[128px] right-[128px]">
-						<div className="absolute bottom-0 right-0 top-0 flex flex-col">
-							<span className="repeat-none inline-block h-[128px] w-px bg-fading-dashes"></span>
-							<span className="w-0 flex-1 border-[0.5px] border-white/40"></span>
-							<span className="repeat-none inline-block h-[128px] w-px rotate-180 bg-fading-dashes"></span>
+					<div className="relative xl:absolute xl:-bottom-[128px] xl:-top-[128px] xl:right-[128px]">
+						<span aria-hidden className="absolute z-[5] top-0 -bottom-[33px] w-8 -left-8 xl:hidden backdrop-blur-sm inline-block"></span>
+						<span aria-hidden className="absolute z-[5] top-0 -bottom-[33px] w-8 -right-8 xl:hidden backdrop-blur-sm inline-block"></span>
+						<div className="absolute max-xl:-bottom-[33px] xl:bottom-0 right-0 xl:top-0 max-xl:left-0 flex xl:flex-col max-xl:items-center">
+							<span className="repeat-none max-xl:-ml-16 inline-block max-xl:h-px max-xl:w-32 max-xl:bg-h-fading-dashes xl:h-32 xl:w-px xl:bg-fading-dashes"></span>
+							<span className="xl:w-0 max-xl:h-0 flex-1 border-[0.5px] border-white/40"></span>
+							<span className="repeat-none max-xl:-mr-16 inline-block max-xl:h-px max-xl:w-32 max-xl:bg-h-fading-dashes xl:h-32 xl:w-px xl:bg-fading-dashes rotate-180"></span>
 						</div>
-						<div className="flex h-full flex-col items-end justify-center space-y-16">
-							<div className="relative mr-8 w-fit rounded-lg border border-dashed border-yellow px-4 py-2 text-label-md text-yellow">
+						<div className="flex h-full gap-8 xl:gap-16 items-center xl:items-end flex-row-reverse max-xl:pr-8 xl:justify-center xl:flex-col">
+							<div className="relative xl:mr-8 min-w-fit rounded-lg border border-dashed border-yellow px-4 py-2 text-label-md text-yellow">
 								<span>Your website?</span>
 								<span className="mx-2 inline-block text-yellow/70">
 									-
 								</span>
 								<span className="text-yellow/70">2023</span>
-								<span className="absolute left-full top-1/2 inline-block h-px w-8 -translate-y-1/2 bg-gradient-to-r from-white/0 to-white/40"></span>
+								<span className="absolute inline-block from-white/0 to-white/40 max-xl:left-1/2 max-xl:top-full max-xl:h-8 max-xl:w-px max-xl:-translate-x-1/2 max-xl:bg-gradient-to-b xl:left-full xl:top-1/2 xl:h-px xl:w-8 xl:-translate-y-1/2 xl:bg-gradient-to-r"></span>
 							</div>
 							{projects.map((project) => (
 								<div
 									key={project.id}
-									className="relative mr-8 w-fit rounded-lg bg-yellow px-4 py-2 text-label-md text-black"
+									className="relative xl:mr-8 min-w-fit rounded-lg bg-yellow px-4 py-2 text-label-md text-black"
 								>
 									<span>{project.title}</span>
 									<span className="mx-2 inline-block text-black/70">
 										-
 									</span>
 									<span className="text-black/70">{project.year}</span>
-									<span className="absolute left-full top-1/2 inline-block h-px w-8 -translate-x-px -translate-y-1/2 bg-gradient-to-r from-white/0 to-white/40"></span>
+									<span className="absolute inline-block from-white/0 to-white/40 max-xl:left-1/2 max-xl:top-full max-xl:h-8 max-xl:w-px max-xl:-translate-x-1/2 max-xl:bg-gradient-to-b xl:left-full xl:top-1/2 xl:h-px xl:w-8 xl:-translate-y-1/2 xl:bg-gradient-to-r"></span>
 								</div>
 							))}
 						</div>
 					</div>
 				</Container>
 			</Section>
-			<Section className="relative">
-				<Container className="relative">
+			<Section className="relative max-xl:pb-[calc(182px+64px)] overflow-hidden">
+				<Container className="xl:relative">
 					<h2 className="text-h2-mobile 2xl:text-h2">
 						{dictionary.Portfolio.software.title}
 					</h2>

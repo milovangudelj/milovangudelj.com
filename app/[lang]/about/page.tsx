@@ -27,7 +27,7 @@ const AboutPage = async ({
 		<>
 			<Section className="relative min-h-[calc(100vh-72.39px)]">
 				<Container>
-					<h1 className="text-d1-mobile 2xl:text-d1">
+					<h1 className="text-h1-mobile md:text-d1-mobile 2xl:text-d1">
 						{dictionary.About.main.title}
 					</h1>
 					<div className="space-y-8">
@@ -38,22 +38,22 @@ const AboutPage = async ({
 							{dictionary.About.main.p2}
 						</p>
 					</div>
+					{/* eslint-disable-next-line @next/next/no-img-element */}
+					<img
+						src="/images/poly-me-sd.webp"
+						loading="eager"
+						alt="A picture of me"
+						srcSet="/images/poly-me.webp 2x"
+						width={402}
+						height={535}
+						className="pointer-events-none absolute bottom-0 right-[calc((100%-1280px)/2)] select-none object-cover max-md:hidden"
+					/>
 				</Container>
-				{/* eslint-disable-next-line @next/next/no-img-element */}
-				<img
-					src="/images/poly-me-sd.webp"
-					loading="eager"
-					alt="A picture of me"
-					srcSet="/images/poly-me.webp 2x"
-					width={402}
-					height={535}
-					className="pointer-events-none absolute bottom-0 right-[calc((100%-1280px)/2)] select-none object-cover"
-				/>
 			</Section>
 			<Section className="relative">
 				<Container>
 					<h2 className="text-h2-mobile md:text-h2">Music</h2>
-					<div className="flex">
+					<div className="flex flex-col gap-16 xl:flex-row">
 						<div className="flex-1 space-y-8 text-white/70">
 							<p>
 								Music has been, and still is, a huge part of my life. I

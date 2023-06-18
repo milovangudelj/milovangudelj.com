@@ -36,7 +36,7 @@ const ContactPage = async ({
 					className="flex items-center justify-between space-y-0"
 				>
 					<div className="space-y-16">
-						<h1 className="text-d2-mobile xl:text-d2">
+						<h1 className="text-h1-mobile md:text-d1-mobile 2xl:text-d1">
 							{dictionary.Contact.title}
 						</h1>
 						<p className="text-sub-heading-mobile 2xl:text-sub-heading">

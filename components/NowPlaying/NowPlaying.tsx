@@ -28,11 +28,11 @@ export const NowPlaying = ({
 	}, [data?.title, data?.artist]);
 
 	return (
-		<div className="mr-[128px]">
+		<div className="xl:mr-[128px]">
 			<h3 className="mb-4 text-label-md">{title}</h3>
 			{!data && <NowPlayingSkeleton />}
 			{data && (
-				<div className="space-y-4">
+				<div className="flex w-max flex-col gap-4">
 					<div
 						className="h-[240px] w-[240px] overflow-hidden rounded-lg bg-white/20"
 						title={data.album}

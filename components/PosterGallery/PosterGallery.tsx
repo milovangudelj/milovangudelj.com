@@ -41,7 +41,7 @@ export const PosterGallery = ({
 				{posters.map((poster) => (
 					<li
 						key={`postereveryday_${poster.day}`}
-						className="w-[375px] h-[500px] relative rounded-2xl overflow-hidden"
+						className="xl:w-[375px] xl:h-[500px] w-[225px] h-[300px] relative rounded-lg xl:rounded-2xl overflow-hidden"
 					>
 						<span
 							aria-hidden
@@ -71,12 +71,12 @@ export const PosterGallery = ({
 				{posters.map((poster) => (
 					<li
 						key={`postereveryday_${poster.day}`}
-						className="flex-none bg-transparent rounded-2xl overflow-hidden w-[375px] h-[500px]"
+						className="flex-none bg-transparent overflow-hidden xl:w-[375px] xl:h-[500px] w-[225px] h-[300px] relative rounded-lg xl:rounded-2xl"
 					></li>
 				))}
-				<span className="absolute top-0 -left-[calc((100vw-min(1280px,_100vw))/2)] bottom-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] backdrop-blur-sm xl:block"></span>
-				<span className="absolute top-0 left-full bottom-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] backdrop-blur-sm xl:block"></span>
 			</ul>
+				<span className="absolute -top-2 -left-8 xl:-left-[calc((100vw-min(1280px,_100vw))/2)] bottom-[calc(23.4px+32px-8px)] w-8 xl:w-[calc((100vw-min(1280px,_100vw))/2)] backdrop-blur-sm xl:block"></span>
+				<span className="absolute -top-2 -right-8 xl:-right-[calc((100vw-min(1280px,_100vw))/2)] bottom-[calc(23.4px+32px-8px)] w-8 xl:w-[calc((100vw-min(1280px,_100vw))/2)] backdrop-blur-sm xl:block"></span>
 			<span className="mt-8 inline-block text-button">
 				{dragText} <span className="text-yellow">→</span>
 			</span>

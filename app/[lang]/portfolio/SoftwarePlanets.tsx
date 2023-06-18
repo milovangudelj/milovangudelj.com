@@ -11,8 +11,10 @@ import tailwindcss from "~images/logos/logo_tailwindcss.svg";
 import webflow from "~images/logos/logo_webflow.svg";
 
 export const SoftwarePlanets = () => {
-	return <div className="absolute -bottom-[128px] -top-[128px] right-px flex w-[332px] flex-col justify-center overflow-hidden p-8">
-	<div className="h-[600px] w-[600px] rounded-full bg-gradient-to-r from-white/40 to-50% p-px">
+	return <div className="absolute bottom-0 xl:-bottom-[128px] xl:-top-[128px] -right-8 xl:right-px max-xl:-left-8 xl:flex xl:w-[332px] max-xl:h-[182px] xl:flex-col xl:justify-center max-xl:items-top overflow-hidden p-8">
+	<span aria-hidden className="absolute z-[5] top-0 bottom-0 w-8 left-8 xl:hidden backdrop-blur-sm inline-block"></span>
+	<span aria-hidden className="absolute z-[5] top-0 bottom-0 w-8 right-8 xl:hidden backdrop-blur-sm inline-block"></span>
+	<div className="max-xl:absolute max-xl:top-8 max-xl:-left-[calc(300px-50%)] h-[600px] w-[600px] rounded-full bg-gradient-to-b xl:bg-gradient-to-r from-white/40 xl:to-50% to-[150px] p-px">
 		<div className="h-full w-full rounded-full bg-black flex items-center justify-center bg-noise relative bg-repeat [background-size:100px]">
 			<span className="absolute z-[1] aspect-square w-16 animate-orbit-1 rounded-full bg-noise bg-repeat bg-black [background-size:100px] inline-flex items-center justify-center">
 				<Image src={figma} alt="Figma's logo" width={48} height={48} className="object-contain w-12 h-12"/>

@@ -417,6 +417,7 @@ module.exports = {
 				noise: "url(/images/noise.webp)",
 				"album-noise": "url(/images/album-noise.webp)",
 				"fading-dashes": "url(/images/fading-dashed-line.svg)",
+				"h-fading-dashes": "url(/images/fading-dashed-horizontal-line.svg)",
 			},
 		},
 	},

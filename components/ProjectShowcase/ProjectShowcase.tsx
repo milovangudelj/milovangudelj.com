@@ -18,10 +18,10 @@ interface ProjectShowcaseProps extends ComponentProps<"div"> {
 export const ProjectShowcase = async ({ messages, project }: ProjectShowcaseProps) => {
 	return (
 		<>
-			<div className="flex items-end justify-between">
-				<div className="flex items-baseline">
-					<h2 className="text-h2">{project.title}</h2>
-					<span className="mx-4 inline-block text-sub-heading-mobile text-white/70 2xl:text-sub-heading">
+			<div className="flex flex-col gap-8 xl:gap-0 xl:flex-row xl:items-end xl:justify-between">
+				<div className="flex flex-col md:flex-row gap-8 md:gap-0 items-baseline">
+					<h2 className="text-h2-mobile xl:text-h2">{project.title}</h2>
+					<span className="mx-4 hidden md:inline-block text-sub-heading-mobile text-white/70 2xl:text-sub-heading">
 						-
 					</span>
 					<span className="text-sub-heading-mobile text-white/70 2xl:text-sub-heading">
@@ -39,7 +39,7 @@ export const ProjectShowcase = async ({ messages, project }: ProjectShowcaseProp
 			</div>
 			<Image
 				src={urlForImage(project.cover.image).url()}
-				className="aspect-video w-full rounded-2xl object-cover"
+				className="aspect-video w-full pointer-events-none select-none rounded-2xl object-cover"
 				quality={100}
 				alt={project.cover.image.alt ?? project.cover.image.caption}
 				title={project.cover.image.alt ?? project.cover.image.caption}
