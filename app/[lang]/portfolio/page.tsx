@@ -103,10 +103,10 @@ const PortfolioPage = async ({
 						></span>
 						<div className="absolute bottom-0 right-0 flex max-xl:left-0 max-xl:items-center xl:top-0 xl:flex-col">
 							<span className="repeat-none inline-block max-xl:-ml-16 max-xl:h-px max-xl:w-32 max-xl:bg-h-fading-dashes xl:h-32 xl:w-px xl:bg-fading-dashes"></span>
-							<span className="flex-1 border-[0.5px] border-white/40 max-xl:h-0 xl:w-0"></span>
+							<span className="flex-1 bg-white/40 max-xl:h-px xl:w-px"></span>
 							<span className="repeat-none inline-block rotate-180 max-xl:-mr-16 max-xl:h-px max-xl:w-32 max-xl:bg-h-fading-dashes xl:h-32 xl:w-px xl:bg-fading-dashes"></span>
 						</div>
-						<div className="scrollbar-hidden flex flex-row-reverse flex-nowrap items-end gap-8 overflow-scroll max-xl:-mx-8 max-xl:h-min max-xl:px-16 max-xl:pb-px xl:h-full xl:flex-col xl:items-end xl:justify-center xl:gap-16">
+						<div className="scrollbar-hidden flex flex-row-reverse flex-nowrap items-end gap-8 overflow-scroll max-xl:-mx-8 max-xl:h-min max-xl:px-16 max-xl:pb-px xl:h-full xl:flex-col xl:items-end xl:justify-center xl:gap-16 xl:pr-px">
 							<div className="flex min-w-fit flex-col items-center xl:flex-row">
 								<div className="rounded-lg border border-dashed border-yellow px-4 py-2 text-label-md text-yellow">
 									<span>Your website?</span>
