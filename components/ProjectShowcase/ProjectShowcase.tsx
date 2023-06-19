@@ -39,7 +39,7 @@ export const ProjectShowcase = async ({ messages, project }: ProjectShowcaseProp
 			</div>
 			<Image
 				src={urlForImage(project.cover.image).url()}
-				className="aspect-video w-full pointer-events-none select-none rounded-2xl object-cover"
+				className="aspect-video w-full pointer-events-none select-none rounded-lg xl:rounded-2xl object-cover"
 				quality={100}
 				alt={project.cover.image.alt ?? project.cover.image.caption}
 				title={project.cover.image.alt ?? project.cover.image.caption}
