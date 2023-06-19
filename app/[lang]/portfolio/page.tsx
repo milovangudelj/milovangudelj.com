@@ -86,47 +86,59 @@ const PortfolioPage = async ({
 					<h2 className="text-h2-mobile md:text-h2">
 						{dictionary.Portfolio.experience.title}
 					</h2>
-					<div className="space-y-8 pt-16 max-xl:pb-16 text-white/70">
+					<div className="space-y-8 pt-16 text-white/70 max-xl:pb-16">
 						<p>{dictionary.Portfolio.experience.p1}</p>
 						<p>{dictionary.Portfolio.experience.p2}</p>
 						<p>{dictionary.Portfolio.experience.p3}</p>
 						<p>{dictionary.Portfolio.experience.p4}</p>
 					</div>
 					<div className="relative xl:absolute xl:-bottom-[128px] xl:-top-[128px] xl:right-[128px]">
-						<span aria-hidden className="absolute z-[5] top-0 -bottom-[33px] w-8 -left-8 xl:hidden backdrop-blur-sm inline-block"></span>
-						<span aria-hidden className="absolute z-[5] top-0 -bottom-[33px] w-8 -right-8 xl:hidden backdrop-blur-sm inline-block"></span>
-						<div className="absolute max-xl:-bottom-[33px] xl:bottom-0 right-0 xl:top-0 max-xl:left-0 flex xl:flex-col max-xl:items-center">
-							<span className="repeat-none max-xl:-ml-16 inline-block max-xl:h-px max-xl:w-32 max-xl:bg-h-fading-dashes xl:h-32 xl:w-px xl:bg-fading-dashes"></span>
-							<span className="xl:w-0 max-xl:h-0 flex-1 border-[0.5px] border-white/40"></span>
-							<span className="repeat-none max-xl:-mr-16 inline-block max-xl:h-px max-xl:w-32 max-xl:bg-h-fading-dashes xl:h-32 xl:w-px xl:bg-fading-dashes rotate-180"></span>
+						<span
+							aria-hidden
+							className="absolute -bottom-2 -left-8 -top-2 z-[5] inline-block w-8 backdrop-blur-sm xl:hidden"
+						></span>
+						<span
+							aria-hidden
+							className="absolute -bottom-2 -right-8 -top-2 z-[5] inline-block w-8 backdrop-blur-sm xl:hidden"
+						></span>
+						<div className="absolute bottom-0 right-0 flex max-xl:left-0 max-xl:items-center xl:top-0 xl:flex-col">
+							<span className="repeat-none inline-block max-xl:-ml-16 max-xl:h-px max-xl:w-32 max-xl:bg-h-fading-dashes xl:h-32 xl:w-px xl:bg-fading-dashes"></span>
+							<span className="flex-1 border-[0.5px] border-white/40 max-xl:h-0 xl:w-0"></span>
+							<span className="repeat-none inline-block rotate-180 max-xl:-mr-16 max-xl:h-px max-xl:w-32 max-xl:bg-h-fading-dashes xl:h-32 xl:w-px xl:bg-fading-dashes"></span>
 						</div>
-						<div className="flex h-full gap-8 xl:gap-16 items-center xl:items-end flex-row-reverse max-xl:pr-8 xl:justify-center xl:flex-col">
-							<div className="relative xl:mr-8 min-w-fit rounded-lg border border-dashed border-yellow px-4 py-2 text-label-md text-yellow">
-								<span>Your website?</span>
-								<span className="mx-2 inline-block text-yellow/70">
-									-
-								</span>
-								<span className="text-yellow/70">2023</span>
-								<span className="absolute inline-block from-white/0 to-white/40 max-xl:left-1/2 max-xl:top-full max-xl:h-8 max-xl:w-px max-xl:-translate-x-1/2 max-xl:bg-gradient-to-b xl:left-full xl:top-1/2 xl:h-px xl:w-8 xl:-translate-y-1/2 xl:bg-gradient-to-r"></span>
+						<div className="scrollbar-hidden flex flex-row-reverse flex-nowrap items-end gap-8 overflow-scroll max-xl:-mx-8 max-xl:h-min max-xl:px-16 max-xl:pb-px xl:h-full xl:flex-col xl:items-end xl:justify-center xl:gap-16">
+							<div className="flex min-w-fit flex-col items-center xl:flex-row">
+								<div className="rounded-lg border border-dashed border-yellow px-4 py-2 text-label-md text-yellow">
+									<span>Your website?</span>
+									<span className="mx-2 inline-block text-yellow/70">
+										-
+									</span>
+									<span className="text-yellow/70">2023</span>
+								</div>
+								<span className="inline-block from-white/0 to-white/40 max-xl:h-8 max-xl:w-px max-xl:bg-gradient-to-b xl:h-px xl:w-8 xl:bg-gradient-to-r"></span>
 							</div>
 							{projects.map((project) => (
 								<div
 									key={project.id}
-									className="relative xl:mr-8 min-w-fit rounded-lg bg-yellow px-4 py-2 text-label-md text-black"
+									className="flex min-w-fit flex-col items-center xl:flex-row"
 								>
-									<span>{project.title}</span>
-									<span className="mx-2 inline-block text-black/70">
-										-
-									</span>
-									<span className="text-black/70">{project.year}</span>
-									<span className="absolute inline-block from-white/0 to-white/40 max-xl:left-1/2 max-xl:top-full max-xl:h-8 max-xl:w-px max-xl:-translate-x-1/2 max-xl:bg-gradient-to-b xl:left-full xl:top-1/2 xl:h-px xl:w-8 xl:-translate-y-1/2 xl:bg-gradient-to-r"></span>
+									<div className="rounded-lg bg-yellow px-4 py-2 text-label-md text-black">
+										<span>{project.title}</span>
+										<span className="mx-2 inline-block text-black/70">
+											-
+										</span>
+										<span className="text-black/70">
+											{project.year}
+										</span>
+									</div>
+									<span className="inline-block from-white/0 to-white/40 max-xl:h-8 max-xl:w-px max-xl:bg-gradient-to-b xl:h-px xl:w-8 xl:bg-gradient-to-r"></span>
 								</div>
 							))}
 						</div>
 					</div>
 				</Container>
 			</Section>
-			<Section className="relative max-xl:pb-[calc(182px+64px)] overflow-hidden">
+			<Section className="relative overflow-hidden max-xl:pb-[calc(182px+64px)]">
 				<Container className="xl:relative">
 					<h2 className="text-h2-mobile 2xl:text-h2">
 						{dictionary.Portfolio.software.title}
