@@ -52,7 +52,7 @@ const PortfolioPage = async ({
 
 	return (
 		<>
-			<Section className="relative xl:min-h-[calc(100vh-72.39px)]">
+			<Section className="relative xl:h-[var(--mobile-nav-height)]">
 				<Container as="main" className="relative">
 					<h1 className="text-h1-mobile md:text-d1-mobile 2xl:text-d1">
 						{dictionary.Portfolio.title}
@@ -92,22 +92,22 @@ const PortfolioPage = async ({
 						<p>{dictionary.Portfolio.experience.p3}</p>
 						<p>{dictionary.Portfolio.experience.p4}</p>
 					</div>
-					<div className="relative xl:absolute xl:-bottom-[128px] xl:-top-[128px] xl:right-[128px]">
+					<div className="relative lg:absolute lg:-bottom-[128px] lg:-top-[128px] lg:right-[64px] xl:right-[128px]">
 						<span
 							aria-hidden
-							className="absolute -bottom-2 -left-8 -top-2 z-[5] inline-block w-8 backdrop-blur-sm xl:hidden"
+							className="absolute -bottom-2 -left-8 -top-2 z-[5] inline-block w-8 backdrop-blur-sm lg:hidden"
 						></span>
 						<span
 							aria-hidden
-							className="absolute -bottom-2 -right-8 -top-2 z-[5] inline-block w-8 backdrop-blur-sm xl:hidden"
+							className="absolute -bottom-2 -right-8 -top-2 z-[5] inline-block w-8 backdrop-blur-sm lg:hidden"
 						></span>
-						<div className="absolute bottom-0 right-0 flex max-xl:left-0 max-xl:items-center xl:top-0 xl:flex-col">
-							<span className="repeat-none inline-block max-xl:-ml-16 max-xl:h-px max-xl:w-32 max-xl:bg-h-fading-dashes xl:h-32 xl:w-px xl:bg-fading-dashes"></span>
-							<span className="flex-1 bg-white/40 max-xl:h-px xl:w-px"></span>
-							<span className="repeat-none inline-block rotate-180 max-xl:-mr-16 max-xl:h-px max-xl:w-32 max-xl:bg-h-fading-dashes xl:h-32 xl:w-px xl:bg-fading-dashes"></span>
+						<div className="absolute bottom-0 right-0 flex max-lg:left-0 max-lg:items-center lg:top-0 lg:flex-col">
+							<span className="repeat-none inline-block max-lg:-ml-16 max-lg:h-px max-lg:w-32 max-lg:bg-h-fading-dashes lg:h-32 lg:w-px lg:bg-fading-dashes"></span>
+							<span className="flex-1 bg-white/40 max-lg:h-px lg:w-px"></span>
+							<span className="repeat-none inline-block rotate-180 max-lg:-mr-16 max-lg:h-px max-lg:w-32 max-lg:bg-h-fading-dashes lg:h-32 lg:w-px lg:bg-fading-dashes"></span>
 						</div>
-						<div className="scrollbar-hidden flex flex-row-reverse flex-nowrap items-end gap-8 overflow-scroll max-xl:-mx-8 max-xl:h-min max-xl:px-16 max-xl:pb-px xl:h-full xl:flex-col xl:items-end xl:justify-center xl:gap-16 xl:pr-px">
-							<div className="flex min-w-fit flex-col items-center xl:flex-row">
+						<div className="scrollbar-hidden flex flex-row-reverse flex-nowrap items-end gap-8 overflow-scroll max-lg:-mx-8 max-lg:h-min max-lg:px-16 max-lg:pb-px lg:h-full lg:flex-col lg:items-end lg:justify-center lg:gap-16 lg:pr-px">
+							<div className="flex min-w-fit flex-col items-center lg:flex-row">
 								<div className="rounded-lg border border-dashed border-yellow px-4 py-2 text-label-md text-yellow">
 									<span>Your website?</span>
 									<span className="mx-2 inline-block text-yellow/70">
@@ -115,12 +115,12 @@ const PortfolioPage = async ({
 									</span>
 									<span className="text-yellow/70">2023</span>
 								</div>
-								<span className="inline-block from-white/0 to-white/40 max-xl:h-8 max-xl:w-px max-xl:bg-gradient-to-b xl:h-px xl:w-8 xl:bg-gradient-to-r"></span>
+								<span className="inline-block from-white/0 to-white/40 max-lg:h-8 max-lg:w-px max-lg:bg-gradient-to-b lg:h-px lg:w-8 lg:bg-gradient-to-r"></span>
 							</div>
 							{projects.map((project) => (
 								<div
 									key={project.id}
-									className="flex min-w-fit flex-col items-center xl:flex-row"
+									className="flex min-w-fit flex-col items-center lg:flex-row"
 								>
 									<div className="rounded-lg bg-yellow px-4 py-2 text-label-md text-black">
 										<span>{project.title}</span>
@@ -131,7 +131,7 @@ const PortfolioPage = async ({
 											{project.year}
 										</span>
 									</div>
-									<span className="inline-block from-white/0 to-white/40 max-xl:h-8 max-xl:w-px max-xl:bg-gradient-to-b xl:h-px xl:w-8 xl:bg-gradient-to-r"></span>
+									<span className="inline-block from-white/0 to-white/40 max-lg:h-8 max-lg:w-px max-lg:bg-gradient-to-b lg:h-px lg:w-8 lg:bg-gradient-to-r"></span>
 								</div>
 							))}
 						</div>

@@ -18,10 +18,10 @@ interface ProjectShowcaseProps extends ComponentProps<"div"> {
 export const ProjectShowcase = async ({ messages, project }: ProjectShowcaseProps) => {
 	return (
 		<>
-			<div className="flex flex-col gap-8 xl:gap-0 xl:flex-row xl:items-end xl:justify-between">
-				<div className="flex flex-col md:flex-row gap-8 md:gap-0 items-baseline">
+			<div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-0">
+				<div className="flex flex-col items-baseline gap-8 md:flex-row md:gap-0">
 					<h2 className="text-h2-mobile xl:text-h2">{project.title}</h2>
-					<span className="mx-4 hidden md:inline-block text-sub-heading-mobile text-white/70 2xl:text-sub-heading">
+					<span className="mx-4 hidden text-sub-heading-mobile text-white/70 md:inline-block 2xl:text-sub-heading">
 						-
 					</span>
 					<span className="text-sub-heading-mobile text-white/70 2xl:text-sub-heading">
@@ -39,7 +39,7 @@ export const ProjectShowcase = async ({ messages, project }: ProjectShowcaseProp
 			</div>
 			<Image
 				src={urlForImage(project.cover.image).url()}
-				className="aspect-video w-full pointer-events-none select-none rounded-lg xl:rounded-2xl object-cover"
+				className="pointer-events-none aspect-video w-full select-none rounded-lg object-cover xl:rounded-2xl"
 				quality={100}
 				alt={project.cover.image.alt ?? project.cover.image.caption}
 				title={project.cover.image.alt ?? project.cover.image.caption}
@@ -49,18 +49,16 @@ export const ProjectShowcase = async ({ messages, project }: ProjectShowcaseProp
 				blurDataURL={project.cover.lqip}
 			/>
 			<div className="space-y-8">
-			<PortableText
-				value={project.overview}
-				components={{
-					block: {
-						normal: ({ children }) => (
-							<p className="text-white/70">
-								{children}
-							</p>
-						),
-					},
-				}}
-			/>
+				<PortableText
+					value={project.overview}
+					components={{
+						block: {
+							normal: ({ children }) => (
+								<p className="text-white/70">{children}</p>
+							),
+						},
+					}}
+				/>
 			</div>
 			{project.caseStudy && (
 				<Button as={Link} href={`/work/${project.slug}`}>

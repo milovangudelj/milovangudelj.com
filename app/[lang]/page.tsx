@@ -20,7 +20,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 
 	return (
 		<>
-			<Section className="relative text-white md:h-[calc(100vh-72.39px)]">
+			<Section className="relative text-white lg:h-[var(--mobile-nav-height)]">
 				<Container as="main">
 					<h1 className="mb-16 text-h1-mobile md:text-d1-mobile 2xl:text-d1">
 						{dictionary.Home.heroTitle.webDev}{" "}
@@ -39,10 +39,10 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 						srcSet="/images/poly-me.webp 2x"
 						width={402}
 						height={535}
-						className="pointer-events-none max-md:hidden absolute bottom-0 right-[calc((100%-1280px)/2)] select-none object-cover"
+						className="pointer-events-none absolute bottom-0 right-[var(--side-width)] hidden select-none object-cover lg:block"
 					/>
 				</Container>
-				<p className="absolute bottom-8 left-[calc((100%-1280px)/2)] text-label-md text-white/70">
+				<p className="absolute bottom-8 left-8 text-label-md text-white/70 xl:left-[var(--side-width)]">
 					Wait, there&apos;s more{" "}
 					<span className="font-space text-yellow">↓</span>
 				</p>

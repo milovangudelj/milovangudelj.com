@@ -1,11 +1,11 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
-import { ComponentProps, useRef } from "react";
+import Image from "next/image";
+import { ComponentProps } from "react";
 import { useScrollContainer } from "react-indiana-drag-scroll";
 
-import { urlForImage } from '~/sanity/lib/image';
-import { PosterPayload } from '~/sanity/types';
+import { urlForImage } from "~/sanity/lib/image";
+import { PosterPayload } from "~/sanity/types";
 
 interface GalleryProps extends ComponentProps<"div"> {
 	posters: PosterPayload[];
@@ -17,7 +17,6 @@ export const PosterGallery = ({
 	dragText = "Drag or scroll",
 	...porps
 }: GalleryProps) => {
-	const imagesRef = useRef<HTMLUListElement>(null);
 	const scrollContainer = useScrollContainer({
 		mouseScroll: {
 			rubberBand: false,
@@ -25,23 +24,16 @@ export const PosterGallery = ({
 		},
 	});
 
-	const handleScroll: React.UIEventHandler<HTMLUListElement> = (e) => {
-		const scrollOffset = e.currentTarget.scrollLeft;
-
-		if (imagesRef.current)
-			imagesRef.current.style.transform = `translateX(-${scrollOffset}px)`;
-	};
-
 	return (
 		<div className="relative w-full overflow-visible">
 			<ul
 				ref={scrollContainer.ref}
-				className="scrollbar-hidden -mx-8 flex gap-16 overflow-y-hidden overflow-x-scroll px-8 pb-8 xl:-mx-[calc((100vw-min(1280px,_100vw))/2)] xl:px-[calc((100vw-min(1280px,_100vw))/2)]"
+				className="scrollbar-hidden -mx-8 flex gap-16 overflow-y-hidden overflow-x-scroll px-8 pb-8 xl:-mx-[var(--side-width)] xl:px-[var(--side-width)]"
 			>
 				{posters.map((poster) => (
 					<li
 						key={`postereveryday_${poster.day}`}
-						className="relative h-[300px] w-[225px] flex-none overflow-hidden rounded-lg xl:h-[500px] xl:w-[375px] xl:rounded-2xl"
+						className="relative h-[300px] w-[225px] flex-none overflow-hidden rounded-lg lg:h-[400px] lg:w-[300px] xl:h-[500px] xl:w-[375px] xl:rounded-2xl"
 					>
 						<span
 							aria-hidden
@@ -63,8 +55,8 @@ export const PosterGallery = ({
 					</li>
 				))}
 			</ul>
-			<span className="absolute -left-8 -top-2 bottom-[calc(23.4px+32px-8px)] w-8 backdrop-blur-sm xl:-left-[calc((100vw-min(1280px,_100vw))/2)] xl:block xl:w-[calc((100vw-min(1280px,_100vw))/2)]"></span>
-			<span className="absolute -right-8 -top-2 bottom-[calc(23.4px+32px-8px)] w-8 backdrop-blur-sm xl:-right-[calc((100vw-min(1280px,_100vw))/2)] xl:block xl:w-[calc((100vw-min(1280px,_100vw))/2)]"></span>
+			<span className="absolute -left-8 -top-2 bottom-[calc(23.4px+32px-8px)] w-8 backdrop-blur-sm xl:-left-[var(--side-width)] xl:block xl:w-[var(--side-width)]"></span>
+			<span className="absolute -right-8 -top-2 bottom-[calc(23.4px+32px-8px)] w-8 backdrop-blur-sm xl:-right-[var(--side-width)] xl:block xl:w-[var(--side-width)]"></span>
 			<span className="mt-8 inline-block text-button">
 				{dragText} <span className="text-yellow">→</span>
 			</span>

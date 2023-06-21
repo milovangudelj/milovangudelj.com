@@ -5,6 +5,7 @@ import {
 	RefCallback,
 	Suspense,
 	useCallback,
+	useEffect,
 	useState,
 } from "react";
 import Link from "next/link";
@@ -27,8 +28,18 @@ export const Navbar = ({
 		label: string;
 		href: string | URL;
 	}[];
+	lang: Locale;
 }) => {
 	const [rect, navRef] = useClientRect();
+
+	useEffect(() => {
+		if (!rect || !rect.height) return;
+
+		document.documentElement.style.setProperty(
+			"--nav-height",
+			`${rect.height}px`
+		);
+	}, [rect]);
 
 	return (
 		<div
@@ -36,22 +47,20 @@ export const Navbar = ({
 			className="sticky top-0 z-20 border-b border-white/[0.06] bg-black bg-noise bg-repeat px-8 shadow-2xl backdrop-blur-sm transition duration-300 [background-size:100px]"
 		>
 			<div className="mx-auto flex w-full max-w-7xl items-center justify-between py-4">
-				<Link href="/" className="relative text-sub-heading">
+				<Link href={`/${lang}`} className="relative text-sub-heading">
 					Milo
 				</Link>
 				<div className="flex items-center">
 					<NavLinks
 						links={links}
-						lang={lang as Locale}
+						lang={lang}
 						className="max-md:pointer-events-none max-md:invisible max-md:hidden max-md:select-none"
 					/>
 					<span className="inline-block h-6 w-px bg-yellow max-md:invisible max-md:hidden"></span>
-					<Suspense
-						fallback={<LanguageSwitchFallback lang={lang as Locale} />}
-					>
+					<Suspense fallback={<LanguageSwitchFallback lang={lang} />}>
 						<LanguageSwitch />
 					</Suspense>
-					<MobileNav navRect={rect} lang={lang as Locale} links={links} />
+					<MobileNav lang={lang} links={links} />
 				</div>
 			</div>
 		</div>

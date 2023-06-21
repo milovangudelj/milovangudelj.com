@@ -42,7 +42,7 @@ const ContactPage = async ({
 						<p className="text-sub-heading-mobile 2xl:text-sub-heading">
 							{dictionary.Contact.description}
 						</p>
-						<div className="flex items-center space-x-6 py-0.5 font-space md:space-x-12">
+						<div className="flex items-center gap-4 py-0.5 font-space md:gap-12">
 							<a
 								href="https://instagram.com/milovangudelj"
 								target="_blank"

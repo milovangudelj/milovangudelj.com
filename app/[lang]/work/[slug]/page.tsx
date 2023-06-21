@@ -96,7 +96,7 @@ const ProjectPage = async ({
 							placeholder={"blur"}
 							blurDataURL={cover.lqip}
 							priority
-							className="w-full rounded-lg object-cover max-xl:aspect-video xl:h-[400px] xl:rounded-2xl"
+							className="w-full rounded-lg object-cover max-xl:aspect-video max-xl:max-h-[300px] xl:h-[400px] xl:rounded-2xl"
 							width={cover.width}
 							height={cover.height}
 						/>
@@ -119,7 +119,7 @@ const ProjectPage = async ({
 												title={value.alt ?? value.caption ?? ""}
 												quality={100}
 												sizes="1280px"
-												className="w-full rounded-lg object-cover max-xl:aspect-video xl:h-[400px] xl:rounded-2xl"
+												className="w-full rounded-lg object-cover max-xl:aspect-video max-xl:max-h-[300px] xl:h-[400px] xl:rounded-2xl"
 												width={
 													value.asset.metadata.dimensions.width
 												}

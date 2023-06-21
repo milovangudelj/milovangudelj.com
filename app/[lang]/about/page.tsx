@@ -25,7 +25,7 @@ const AboutPage = async ({
 
 	return (
 		<>
-			<Section className="relative min-h-[calc(100vh-72.39px)]">
+			<Section className="relative lg:h-[var(--mobile-nav-height)]">
 				<Container>
 					<h1 className="text-h1-mobile md:text-d1-mobile 2xl:text-d1">
 						{dictionary.About.main.title}
@@ -46,7 +46,7 @@ const AboutPage = async ({
 						srcSet="/images/poly-me.webp 2x"
 						width={402}
 						height={535}
-						className="pointer-events-none absolute bottom-0 right-[calc((100%-1280px)/2)] select-none object-cover max-md:hidden"
+						className="pointer-events-none absolute bottom-0 right-[var(--side-width)] hidden select-none object-cover lg:block"
 					/>
 				</Container>
 			</Section>

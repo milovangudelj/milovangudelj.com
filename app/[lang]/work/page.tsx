@@ -36,7 +36,7 @@ const WorkPage = async ({
 
 	return (
 		<>
-			<Section className="relative xl:min-h-[calc(100vh-72.39px)]">
+			<Section className="relative xl:min-h-[var(--mobile-nav-height)]">
 				<Container as="main">
 					<h1 className="text-h1-mobile md:text-d1-mobile 2xl:text-d1">
 						{dictionary.Work.title}
@@ -64,7 +64,7 @@ const WorkPage = async ({
 					width={1280}
 					height={485}
 					placeholder="blur"
-					className="pointer-events-none absolute bottom-0 select-none object-cover max-xl:left-8 max-xl:w-[calc(100%-64px)] xl:right-[calc((100%-1280px)/2)]"
+					className="pointer-events-none absolute bottom-0 right-[var(--side-width)] w-[calc(100%-calc(var(--side-width)*2))] select-none object-cover"
 				/>
 			</Section>
 			{projects.map((project) => (
