@@ -76,6 +76,7 @@ const WorkPage = async ({
 								read: dictionary.ProjectShowcase.readCS,
 							}}
 							project={project}
+							lang={lang}
 						/>
 					</Container>
 				</Section>

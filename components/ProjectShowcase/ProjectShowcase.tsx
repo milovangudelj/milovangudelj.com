@@ -1,11 +1,13 @@
+import Link from "next/link";
 import Image from "next/image";
 import { ComponentProps } from "react";
 import { PortableText } from "@portabletext/react";
 
 import { urlForImage } from "~/sanity/lib/image";
 import { ProjectPayload } from "~/sanity/types";
+import { Locale } from "~/i18n.config";
+
 import { Button } from "~components/Button";
-import Link from "next/link";
 
 interface ProjectShowcaseProps extends ComponentProps<"div"> {
 	messages: {
@@ -13,9 +15,10 @@ interface ProjectShowcaseProps extends ComponentProps<"div"> {
 		read: string;
 	};
 	project: ProjectPayload;
+	lang: Locale;
 }
 
-export const ProjectShowcase = async ({ messages, project }: ProjectShowcaseProps) => {
+export const ProjectShowcase = async ({ messages, project, lang }: ProjectShowcaseProps) => {
 	return (
 		<>
 			<div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-0">
@@ -61,7 +64,7 @@ export const ProjectShowcase = async ({ messages, project }: ProjectShowcaseProp
 				/>
 			</div>
 			{project.caseStudy && (
-				<Button as={Link} href={`/work/${project.slug}`}>
+				<Button as={Link} href={`${lang}/work/${project.slug}`}>
 					{messages.read} ↗
 				</Button>
 			)}

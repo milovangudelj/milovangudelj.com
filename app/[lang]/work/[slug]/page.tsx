@@ -63,7 +63,7 @@ const ProjectPage = async ({
 				<header className="pb-16 max-xl:px-0 max-xl:pt-32 xl:p-32 xl:pb-16">
 					<div className="mb-8 flex items-center space-x-3 text-button">
 						<Link
-							href="/work"
+							href={`/${lang}/work`}
 							className="text-white/70 transition hover:text-white"
 						>
 							← Go Back

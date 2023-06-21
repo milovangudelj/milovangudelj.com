@@ -22,7 +22,7 @@ export const NavLinks = ({
 				<li key={link.id}>
 					<NavLink
 						id={link.id}
-						href={`${lang}${link.href}`}
+						href={`/${lang}${link.href}`}
 						label={link.label}
 					/>
 				</li>

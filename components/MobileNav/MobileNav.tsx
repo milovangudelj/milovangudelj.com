@@ -93,7 +93,7 @@ export const MobileNav = ({
 					<motion.li variants={item} key={link.id}>
 						<NavLink
 							id={link.id}
-							href={`${lang}${link.href}`}
+							href={`/${lang}${link.href}`}
 							label={link.label}
 							onClick={() => {
 								setMenuOpen(false);
