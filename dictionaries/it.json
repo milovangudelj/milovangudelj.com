@@ -70,8 +70,8 @@
 	},
 	"Portfolio": {
 		"title": "Portfolio",
-		"description": "Questa è principalmente una collezione di poster che ho fatto, con un po' di informazioni sulle mie passate esperienze.",
-		"subtitle": "Something something about not having a CV but only this page as my designated experience showcase.",
+		"description": "Queste sono principalmente informazioni sulle mie passate esperienze, unite con una collezione di poster che ho fatto.",
+		"subtitle": "Invece di un tradizionale curriculum vitae, ho scelto di presentare la mia esperienza e creatività attraverso un formato più visuale e narrativo.",
 		"experience": {
 			"title": "Esperienze",
 			"p1": "Sono uno studente di ingegneria informatica all'Università di Padova. Negli ultimi cinque anni ho raccolto esperienza come designer e sviluppatore web grazie a vari progetti.",
