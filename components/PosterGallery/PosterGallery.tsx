@@ -1,24 +1,22 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
-import { ComponentProps, useRef } from "react";
+import Image from "next/image";
+import { ComponentProps } from "react";
 import { useScrollContainer } from "react-indiana-drag-scroll";
 
+import { urlForImage } from "~/sanity/lib/image";
+import { PosterPayload } from "~/sanity/types";
+
 interface GalleryProps extends ComponentProps<"div"> {
-	images: { src: string | StaticImageData; alt: string }[];
-	imageWidth?: number;
-	imageHeight?: number;
+	posters: PosterPayload[];
 	dragText?: string;
 }
 
 export const PosterGallery = ({
-	images,
-	imageWidth,
-	imageHeight,
+	posters,
 	dragText = "Drag or scroll",
 	...porps
 }: GalleryProps) => {
-	const imagesRef = useRef<HTMLUListElement>(null);
 	const scrollContainer = useScrollContainer({
 		mouseScroll: {
 			rubberBand: false,
@@ -26,59 +24,39 @@ export const PosterGallery = ({
 		},
 	});
 
-	const handleScroll: React.UIEventHandler<HTMLUListElement> = (e) => {
-		const scrollOffset = e.currentTarget.scrollLeft;
-
-		if (imagesRef.current)
-			imagesRef.current.style.transform = `translateX(-${scrollOffset}px)`;
-	};
-
 	return (
 		<div className="relative w-full overflow-visible">
 			<ul
-				ref={imagesRef}
-				className="pointer-events-none absolute top-0 left-0 flex w-max gap-16 pb-8"
+				ref={scrollContainer.ref}
+				className="scrollbar-hidden -mx-8 flex gap-16 overflow-y-hidden overflow-x-scroll px-8 pb-8 xl:-mx-[var(--side-width)] xl:px-[var(--side-width)]"
 			>
-				{images.map((image, index) => (
+				{posters.map((poster) => (
 					<li
-						key={`gallery_image_${index}`}
-						style={{
-							width: imageWidth,
-							height: imageHeight,
-							position: "relative",
-						}}
+						key={`postereveryday_${poster.day}`}
+						className="relative h-[300px] w-[225px] flex-none overflow-hidden rounded-lg lg:h-[400px] lg:w-[300px] xl:h-[500px] xl:w-[375px] xl:rounded-2xl"
 					>
 						<span
 							aria-hidden
-							className="absolute inset-0 flex items-center justify-center bg-purple text-sub-heading-mobile text-black"
+							className="absolute inset-0 flex items-center justify-center bg-white/20 text-sub-heading-mobile text-black"
 						>
 							Loading...
 						</span>
 						<Image
-							src={image.src}
-							alt={image.alt}
-							width={imageWidth}
-							height={imageHeight}
-							className="relative"
+							src={urlForImage(poster.image.image).url()}
+							alt={`${poster.title} - ${poster.image.image.alt}`}
+							title={`${poster.title} - ${poster.image.image.caption}`}
+							quality={100}
+							width={375}
+							height={500}
+							placeholder="blur"
+							blurDataURL={poster.image.lqip}
+							className="relative h-full w-full object-cover"
 						/>
 					</li>
 				))}
 			</ul>
-			<ul
-				onScroll={handleScroll}
-				ref={scrollContainer.ref}
-				className="scrollbar-hidden flex cursor-move gap-16 overflow-x-scroll"
-			>
-				{images.map((image, index) => (
-					<li
-						key={`gallery_image_clone_${index}`}
-						style={{ width: imageWidth, height: imageHeight }}
-						className="flex-none bg-[#fefefe]/0"
-					></li>
-				))}
-				<span className="absolute top-0 -left-[calc((100vw-min(1280px,_100vw))/2)] bottom-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] bg-gradient-to-l from-black/0 to-black xl:block"></span>
-				<span className="absolute top-0 left-full bottom-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] bg-gradient-to-r from-black/0 to-black xl:block"></span>
-			</ul>
+			<span className="absolute -left-8 -top-2 bottom-[calc(23.4px+32px-8px)] w-8 backdrop-blur-sm xl:-left-[var(--side-width)] xl:block xl:w-[var(--side-width)]"></span>
+			<span className="absolute -right-8 -top-2 bottom-[calc(23.4px+32px-8px)] w-8 backdrop-blur-sm xl:-right-[var(--side-width)] xl:block xl:w-[var(--side-width)]"></span>
 			<span className="mt-8 inline-block text-button">
 				{dragText} <span className="text-yellow">→</span>
 			</span>

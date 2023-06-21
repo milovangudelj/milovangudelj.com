@@ -3,7 +3,7 @@
 import { ComponentProps, useRef } from "react";
 import { useScrollContainer } from "react-indiana-drag-scroll";
 
-import { ProjectCard } from "~components/ProjectCard";
+import { ProjectCard } from "./ProjectCard";
 import { SlimProjectPayload } from "~/sanity/types";
 
 interface ProjectsProps extends ComponentProps<"div"> {
@@ -11,7 +11,6 @@ interface ProjectsProps extends ComponentProps<"div"> {
 }
 
 export const Projects = ({ projects }: ProjectsProps) => {
-	const cloneRef = useRef<HTMLUListElement>(null);
 	const scrollContainer = useScrollContainer({
 		mouseScroll: {
 			rubberBand: false,
@@ -19,44 +18,20 @@ export const Projects = ({ projects }: ProjectsProps) => {
 		},
 	});
 
-	const handleScroll: React.UIEventHandler<HTMLUListElement> = (e) => {
-		const scrollOffset = e.currentTarget.scrollLeft;
-
-		if (cloneRef.current)
-			cloneRef.current.style.transform = `translateX(-${scrollOffset}px)`;
-	};
-
 	return (
-		<div className="relative">
+		<div className="relative w-full pt-16">
 			<ul
-				ref={cloneRef}
-				className="scrollbar-hidden pointer-events-none absolute -left-[calc((100vw-min(1280px,_100vw))/2)] flex w-screen overflow-x-visible px-[calc((100vw-1280px)/2)]"
-			>
-				{projects.map(({ slug, ...props }) => (
-					<li
-						key={slug}
-						className="relative flex-initial pr-8 last:pr-0 md:pr-16 md:last:pr-0"
-					>
-						<ProjectCard {...props} />
-					</li>
-				))}
-			</ul>
-			<span className="absolute top-0 -left-[calc((100vw-min(1280px,_100vw))/2)] bottom-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] bg-gradient-to-l from-green/0 to-green xl:block"></span>
-			<span className="absolute top-0 left-full bottom-0 hidden w-[calc((100vw-min(1280px,_100vw))/2)] bg-gradient-to-r from-green/0 to-green xl:block"></span>
-			<ul
-				onScroll={handleScroll}
 				ref={scrollContainer.ref}
-				className="scrollbar-hidden relative flex cursor-move overflow-x-scroll bg-green max-md:opacity-0"
+				className="scrollbar-hidden -mx-8 flex gap-8 overflow-y-hidden overflow-x-scroll px-8 xl:-mx-[var(--side-width)] xl:gap-16 xl:px-[var(--side-width)]"
 			>
 				{projects.map(({ slug, ...props }) => (
-					<li
-						key={slug}
-						className="relative flex-initial pr-8 last:pr-0 md:pr-16 md:last:pr-0"
-					>
+					<li key={slug} className="relative flex-none">
 						<ProjectCard {...props} />
 					</li>
 				))}
 			</ul>
+			<span className="absolute -left-8 bottom-0 top-0 w-8 bg-transparent backdrop-blur-sm xl:-left-[var(--side-width)] xl:w-[var(--side-width)]"></span>
+			<span className="absolute bottom-0 left-full top-0 w-8 bg-transparent backdrop-blur-sm xl:w-[var(--side-width)]"></span>
 		</div>
 	);
 };

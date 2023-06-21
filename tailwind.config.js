@@ -305,6 +305,14 @@ module.exports = {
 				"wiggle-inv": "wiggle-inv 500ms ease-in-out",
 				stretch: "stretch 2.4s ease-in-out infinite",
 				"spin-slow": "spin 2s linear infinite",
+				"orbit-1": "orbit-1 60s linear infinite",
+				"orbit-2": "orbit-2 60s linear infinite",
+				"orbit-3": "orbit-3 60s linear infinite",
+				"orbit-4": "orbit-4 60s linear infinite",
+				"orbit-5": "orbit-5 60s linear infinite",
+				"orbit-6": "orbit-6 60s linear infinite",
+				"orbit-7": "orbit-7 60s linear infinite",
+				"orbit-8": "orbit-8 60s linear infinite",
 			},
 			keyframes: {
 				wiggle: {
@@ -323,9 +331,93 @@ module.exports = {
 					"0%, 100%": { transform: "scaleY(1)" },
 					"50%": { transform: "scaleY(.5)" },
 				},
+				"orbit-1": {
+					"0%": {
+						transform:
+							"rotate(-0deg) translateX(var(--orbit-radius)) rotate(0deg)",
+					},
+					"100%": {
+						transform:
+							"rotate(-360deg) translateX(var(--orbit-radius)) rotate(360deg)",
+					},
+				},
+				"orbit-2": {
+					"0%": {
+						transform:
+							"rotate(-45deg) translateX(var(--orbit-radius)) rotate(45deg)",
+					},
+					"100%": {
+						transform:
+							"rotate(-405deg) translateX(var(--orbit-radius)) rotate(405deg)",
+					},
+				},
+				"orbit-3": {
+					"0%": {
+						transform:
+							"rotate(-90deg) translateX(var(--orbit-radius)) rotate(90deg)",
+					},
+					"100%": {
+						transform:
+							"rotate(-450deg) translateX(var(--orbit-radius)) rotate(450deg)",
+					},
+				},
+				"orbit-4": {
+					"0%": {
+						transform:
+							"rotate(-135deg) translateX(var(--orbit-radius)) rotate(135deg)",
+					},
+					"100%": {
+						transform:
+							"rotate(-495deg) translateX(var(--orbit-radius)) rotate(495deg)",
+					},
+				},
+				"orbit-5": {
+					"0%": {
+						transform:
+							"rotate(-180deg) translateX(var(--orbit-radius)) rotate(180deg)",
+					},
+					"100%": {
+						transform:
+							"rotate(-540deg) translateX(var(--orbit-radius)) rotate(540deg)",
+					},
+				},
+				"orbit-6": {
+					"0%": {
+						transform:
+							"rotate(-225deg) translateX(var(--orbit-radius)) rotate(225deg)",
+					},
+					"100%": {
+						transform:
+							"rotate(-585deg) translateX(var(--orbit-radius)) rotate(585deg)",
+					},
+				},
+				"orbit-7": {
+					"0%": {
+						transform:
+							"rotate(-270deg) translateX(var(--orbit-radius)) rotate(270deg)",
+					},
+					"100%": {
+						transform:
+							"rotate(-630deg) translateX(var(--orbit-radius)) rotate(630deg)",
+					},
+				},
+				"orbit-8": {
+					"0%": {
+						transform:
+							"rotate(-315deg) translateX(var(--orbit-radius)) rotate(315deg)",
+					},
+					"100%": {
+						transform:
+							"rotate(-675deg) translateX(var(--orbit-radius)) rotate(675deg)",
+					},
+				},
 			},
 			backgroundImage: {
 				"chevron-down": "url(/images/chevron-down.svg)",
+				noise: "url(/images/noise.webp)",
+				"album-noise": "url(/images/album-noise.webp)",
+				"fading-dashes": "url(/images/fading-dashed-line.svg)",
+				"h-fading-dashes": "url(/images/fading-dashed-horizontal-line.svg)",
 			},
 		},
 	},

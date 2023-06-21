@@ -1,18 +1,14 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { twMerge } from "tailwind-merge";
+import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
 
-import { Button } from "~components/Button";
-import { NavLink } from "~components/NavLink";
 import { Locale } from "~/i18n.config";
+
+import { NavLink } from "~components/NavLink";
 
 export const MobileNav = ({
 	links,
-	navRect,
-	className,
 	lang,
 }: {
 	links: {
@@ -20,46 +16,9 @@ export const MobileNav = ({
 		label: string;
 		href: string | URL;
 	}[];
-	navRect: DOMRect | undefined;
-	className?: string;
 	lang: Locale;
 }) => {
 	const [menuOpen, setMenuOpen] = useState<boolean>(false);
-
-	const [navHeight, setNavHeight] = useState<number>(0);
-	const [navWidth, setNavWidth] = useState<number>(0);
-
-	const [windowHeight, setWindowHeight] = useState<number>(
-		typeof window !== "undefined" ? window.innerHeight : 0
-	);
-
-	useEffect(() => {
-		setNavWidth(navRect?.width ?? 0);
-		setNavHeight(navRect?.height ?? 0);
-	}, [navRect]);
-
-	useEffect(() => {
-		const onResize = () => {
-			setWindowHeight(window.innerHeight);
-		};
-
-		window.addEventListener("resize", onResize);
-
-		return () => {
-			window.removeEventListener("resize", onResize);
-		};
-	}, []);
-
-	useEffect(() => {
-		document.documentElement.style.setProperty(
-			"--nav-height",
-			`${windowHeight - navHeight}px`
-		);
-		document.documentElement.style.setProperty(
-			"--nav-width",
-			`${navWidth}px`
-		);
-	}, [navWidth, navHeight, windowHeight]);
 
 	const toggleMenu = () => {
 		setMenuOpen((s) => !s);
@@ -128,16 +87,13 @@ export const MobileNav = ({
 				initial={"closed"}
 				animate={menuOpen ? "open" : "closed"}
 				variants={list}
-				className={twMerge(
-					`absolute top-full left-0 h-[var(--nav-height)] w-[var(--nav-width)] flex-col items-end justify-center bg-yellow px-8 py-2 text-black`,
-					className
-				)}
+				className="absolute left-0 right-0 top-full h-[calc(var(--mobile-nav-height)+1px)] flex-col items-end justify-center gap-4 border-t border-white/[0.06] bg-black bg-noise bg-repeat px-8 py-2 [background-size:100px] before:pointer-events-none before:absolute before:inset-0 before:z-10 before:mx-auto before:w-[calc(100%-64px)] before:border-x before:border-white/[0.06]"
 			>
 				{links.map((link) => (
 					<motion.li variants={item} key={link.id}>
 						<NavLink
 							id={link.id}
-							href={`${lang}${link.href}`}
+							href={`/${lang}${link.href}`}
 							label={link.label}
 							onClick={() => {
 								setMenuOpen(false);
@@ -145,18 +101,6 @@ export const MobileNav = ({
 						/>
 					</motion.li>
 				))}
-				<motion.li variants={item}>
-					<Button
-						as={Link}
-						href={`/${lang}/music-stats`}
-						onClick={() => {
-							setMenuOpen(false);
-						}}
-						className="mr-4 mt-4 md:pointer-events-none md:invisible md:hidden md:select-none"
-					>
-						Music-Stats ↗
-					</Button>
-				</motion.li>
 			</motion.ul>
 		</div>
 	);

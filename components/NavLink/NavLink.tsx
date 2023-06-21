@@ -19,13 +19,13 @@ export const NavLink = ({
 	return (
 		<Link
 			href={href}
-			className={`relative inline-block px-4 py-2 text-sub-heading ${
+			className={`relative inline-block px-4 py-2 text-sub-heading md:text-button ${
 				id === segment ? "opacity-100" : "opacity-60"
 			} transition hover:opacity-100`}
 			onClick={onClick}
 		>
 			{id === segment && (
-				<span className="absolute left-0 top-0 bottom-0 -ml-1 mt-1 flex items-center motion-safe:animate-spin-slow md:-ml-0.5">
+				<span className="absolute bottom-0 left-0 top-0 -ml-1 mt-1 flex items-center text-yellow motion-safe:animate-spin-slow md:-ml-0.5">
 					<svg
 						className="aspect-square w-2.5 md:w-3"
 						viewBox="0 0 13 12"

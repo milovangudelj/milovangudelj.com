@@ -1,21 +1,34 @@
-import { ReactNode } from "react";
+import {
+	ComponentPropsWithoutRef,
+	ElementType,
+	HTMLAttributes,
+	ReactNode,
+} from "react";
 import { twMerge } from "tailwind-merge";
 
-export const Container = ({
+export interface ContainerProps<T extends ElementType>
+	extends HTMLAttributes<T> {
+	as?: T;
+}
+
+export const Container = <T extends ElementType = "div">({
 	children,
-	className = "",
-}: {
-	children: ReactNode;
-	className?: string;
-}) => {
+	as,
+	className,
+	...props
+}: ContainerProps<T> &
+	Omit<ComponentPropsWithoutRef<T>, keyof ContainerProps<T>>) => {
+	const Component = as || "div";
+
 	return (
-		<div
+		<Component
 			className={twMerge(
-				"mx-auto max-w-7xl space-y-16 px-8 2xl:px-0",
+				"mx-auto max-w-7xl space-y-16",
 				className
 			)}
+			{...props}
 		>
 			{children}
-		</div>
+		</Component>
 	);
 };

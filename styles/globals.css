@@ -1,6 +1,13 @@
 @tailwind base;
 
 @layer base {
+	:root {
+		--orbit-radius: 300px;
+		--side-width: calc(max(calc(100vw - 1280px), 64px) / 2);
+		--nav-height: 72.39px;
+		--mobile-nav-height: calc(100dvh - var(--nav-height));
+	}
+
 	img {
 	  @apply inline-block;
 	}
@@ -61,7 +68,7 @@
 	}
 
 	p {
-		@apply max-w-[500px];
+		@apply max-w-[680px] text-body;
 	}
 
 	.scrollbar-hidden::-webkit-scrollbar {

@@ -2,25 +2,17 @@ import Image from "next/image";
 
 import { Locale } from "~/i18n.config";
 import { getDictionary } from "~/utils/getDictionary";
+import { getPosters } from "~/sanity/lib/client";
 
 import { CTA } from "~components/sections/CTA";
 
 import { Container } from "~components/Container";
 import { Section } from "~components/Section";
 import { PosterGallery } from "~components/PosterGallery";
+import { SoftwarePlanets } from "./SoftwarePlanets";
 
-import squiggle from "~images/squiggle.svg";
-import arrow from "~images/arrow.svg";
-
-import figma from "~images/logos/logo_figma.svg";
-import illustrator from "~images/logos/logo_illustrator.svg";
-import lightroom from "~images/logos/logo_lightroom.svg";
-import photoshop from "~images/logos/logo_photoshop.svg";
-
-import nextjs from "~images/logos/logo_nextjs.svg";
-import vercel from "~images/logos/logo_vercel.svg";
-import tailwindcss from "~images/logos/logo_tailwindcss.svg";
-import webflow from "~images/logos/logo_webflow.svg";
+import squiggle from "~images/squiggly-line.svg";
+import semicircle from "~images/semicircle.svg";
 
 export const metadata = {
 	title: "Milovan Gudelj - Portfolio",
@@ -38,171 +30,143 @@ const PortfolioPage = async ({
 	params: { lang: Locale };
 }) => {
 	const dictionary = await getDictionary(lang);
+	const posters = await getPosters();
+
+	const projects = [
+		{
+			id: "pr_01",
+			title: "DoYourThing",
+			year: 2022,
+		},
+		{
+			id: "pr_02",
+			title: "UniOrari",
+			year: 2021,
+		},
+		{
+			id: "pr_03",
+			title: "Piscina di Agordo",
+			year: 2019,
+		},
+	];
 
 	return (
 		<>
-			<Section className="relative scroll-mt-[72px] overflow-hidden bg-salmon md:scroll-mt-[88px]">
-				<main className="relative mx-auto flex max-w-7xl items-center justify-between px-8 2xl:px-0">
+			<Section className="relative xl:h-[var(--mobile-nav-height)]">
+				<Container as="main" className="relative">
+					<h1 className="text-h1-mobile md:text-d1-mobile 2xl:text-d1">
+						{dictionary.Portfolio.title}
+					</h1>
 					<div className="space-y-8">
-						<h1 className="text-d2-mobile xl:text-d2">
-							{dictionary.Portfolio.title}
-						</h1>
 						<p className="text-sub-heading">
 							{dictionary.Portfolio.description}
 						</p>
+						<p className="text-white/70">
+							{dictionary.Portfolio.subtitle}
+						</p>
 					</div>
-					<div className="absolute -bottom-20 -right-[360px] sm:-top-2 md:-right-64 xl:-right-16">
-						<Image
-							src={squiggle}
-							alt="Black squiggly line"
-							width={528}
-							height={80}
-						/>
-					</div>
-				</main>
-				<div className="absolute -right-12 aspect-square w-[96px] rounded-full border-[16px] border-black max-sm:top-8 sm:bottom-0 sm:left-1/2 sm:translate-y-1/2 sm:-translate-x-1/2 md:w-[182px]"></div>
+				</Container>
+				<Image
+					src={squiggle}
+					alt="Decorative squiggly line"
+					width={425}
+					height={80}
+					className="pointer-events-none absolute right-8 select-none object-cover max-xl:top-8 max-xl:h-10 max-xl:w-[212.5px] xl:bottom-[256px] xl:right-[calc((100%-1280px)/2)]"
+				/>
+				<Image
+					src={semicircle}
+					alt="Decorative semicircle"
+					width={182}
+					height={91}
+					className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 select-none object-cover max-xl:h-[45.5px] max-xl:w-[91px]"
+				/>
 			</Section>
-			<Section className="bg-black py-16 text-white md:py-32 md:px-16">
-				<Container>
+			<Section className="overflow-hidden">
+				<Container className="relative space-y-0">
 					<h2 className="text-h2-mobile md:text-h2">
 						{dictionary.Portfolio.experience.title}
 					</h2>
-					<div className="relative space-y-8 text-body md:flex md:space-y-0">
-						<div className="flex-1 space-y-8 md:mr-32">
-							<p>{dictionary.Portfolio.experience.p1}</p>
-							<p>{dictionary.Portfolio.experience.p2}</p>
+					<div className="space-y-8 pt-16 text-white/70 max-xl:pb-16">
+						<p>{dictionary.Portfolio.experience.p1}</p>
+						<p>{dictionary.Portfolio.experience.p2}</p>
+						<p>{dictionary.Portfolio.experience.p3}</p>
+						<p>{dictionary.Portfolio.experience.p4}</p>
+					</div>
+					<div className="relative lg:absolute lg:-bottom-[128px] lg:-top-[128px] lg:right-[64px] xl:right-[128px]">
+						<span
+							aria-hidden
+							className="absolute -bottom-2 -left-8 -top-2 z-[5] inline-block w-8 backdrop-blur-sm lg:hidden"
+						></span>
+						<span
+							aria-hidden
+							className="absolute -bottom-2 -right-8 -top-2 z-[5] inline-block w-8 backdrop-blur-sm lg:hidden"
+						></span>
+						<div className="absolute bottom-0 right-0 flex max-lg:left-0 max-lg:items-center lg:top-0 lg:flex-col">
+							<span className="repeat-none inline-block max-lg:-ml-16 max-lg:h-px max-lg:w-32 max-lg:bg-h-fading-dashes lg:h-32 lg:w-px lg:bg-fading-dashes"></span>
+							<span className="flex-1 bg-white/40 max-lg:h-px lg:w-px"></span>
+							<span className="repeat-none inline-block rotate-180 max-lg:-mr-16 max-lg:h-px max-lg:w-32 max-lg:bg-h-fading-dashes lg:h-32 lg:w-px lg:bg-fading-dashes"></span>
 						</div>
-						<div className="absolute top-1/2 left-1/2 mt-[18px] hidden flex-none -translate-x-1/2 -translate-y-1/2 md:block">
-							<Image
-								src={arrow}
-								alt={
-									"Yellow arrow pointing from the second paragraph to the third"
-								}
-								width={82}
-								height={85}
-							/>
-						</div>
-						<div className="flex-1 space-y-8 md:ml-32">
-							<p>{dictionary.Portfolio.experience.p3}</p>
-							<p>{dictionary.Portfolio.experience.p4}</p>
+						<div className="scrollbar-hidden flex flex-row-reverse flex-nowrap items-end gap-8 overflow-scroll max-lg:-mx-8 max-lg:h-min max-lg:px-16 max-lg:pb-px lg:h-full lg:flex-col lg:items-end lg:justify-center lg:gap-16 lg:pr-px">
+							<div className="flex min-w-fit flex-col items-center lg:flex-row">
+								<div className="rounded-lg border border-dashed border-yellow px-4 py-2 text-label-md text-yellow">
+									<span>Your website?</span>
+									<span className="mx-2 inline-block text-yellow/70">
+										-
+									</span>
+									<span className="text-yellow/70">2023</span>
+								</div>
+								<span className="inline-block from-white/0 to-white/40 max-lg:h-8 max-lg:w-px max-lg:bg-gradient-to-b lg:h-px lg:w-8 lg:bg-gradient-to-r"></span>
+							</div>
+							{projects.map((project) => (
+								<div
+									key={project.id}
+									className="flex min-w-fit flex-col items-center lg:flex-row"
+								>
+									<div className="rounded-lg bg-yellow px-4 py-2 text-label-md text-black">
+										<span>{project.title}</span>
+										<span className="mx-2 inline-block text-black/70">
+											-
+										</span>
+										<span className="text-black/70">
+											{project.year}
+										</span>
+									</div>
+									<span className="inline-block from-white/0 to-white/40 max-lg:h-8 max-lg:w-px max-lg:bg-gradient-to-b lg:h-px lg:w-8 lg:bg-gradient-to-r"></span>
+								</div>
+							))}
 						</div>
 					</div>
 				</Container>
 			</Section>
-			<Section className="bg-black py-16 text-white md:py-32 md:px-16">
-				<Container>
-					<h2 className="text-h2-mobile md:text-h2">
+			<Section className="relative overflow-hidden max-xl:pb-[calc(182px+64px)]">
+				<Container className="xl:relative">
+					<h2 className="text-h2-mobile 2xl:text-h2">
 						{dictionary.Portfolio.software.title}
 					</h2>
-					<p className="mt-16 text-sub-heading-mobile md:text-sub-heading">
+					<p className="text-sub-heading-mobile 2xl:text-sub-heading">
 						{dictionary.Portfolio.software.description}
 					</p>
 					<div className="space-y-8">
-						<h3 className="text-sub-heading-mobile text-yellow md:text-sub-heading">
+						<h3 className="text-sub-heading-mobile text-yellow">
 							{dictionary.Portfolio.software.design.title}
 						</h3>
-						<div className="items-center gap-32 space-y-16 xl:flex xl:space-y-0">
-							<div className="flex-1 space-y-8">
-								<p className="text-body">
-									{dictionary.Portfolio.software.design.p1}
-								</p>
-							</div>
-							<ul className="flex flex-1 items-center justify-center gap-8 md:gap-16">
-								<li>
-									<Image
-										src={figma}
-										alt="Figma logo"
-										width={53.34}
-										height={80}
-										className="aspect-[5.334/8] h-[40px] object-contain sm:h-[60px] md:h-[70px] xl:h-[80px]"
-									/>
-								</li>
-								<li>
-									<Image
-										src={photoshop}
-										alt="Photoshop logo"
-										width={96}
-										height={96}
-										className="aspect-square w-[48px] object-contain sm:w-[68px] md:w-[80px] xl:w-[96px]"
-									/>
-								</li>
-								<li>
-									<Image
-										src={illustrator}
-										alt="Illustrator logo"
-										width={96}
-										height={96}
-										className="aspect-square w-[48px] object-contain sm:w-[68px] md:w-[80px] xl:w-[96px]"
-									/>
-								</li>
-								<li>
-									<Image
-										src={lightroom}
-										alt="Lightroom logo"
-										width={96}
-										height={96}
-										className="aspect-square w-[48px] object-contain sm:w-[68px] md:w-[80px] xl:w-[96px]"
-									/>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div className="space-y-8">
-						<h3 className="text-sub-heading-mobile text-yellow md:text-sub-heading">
+						<p className="text-body text-white/70">
+							{dictionary.Portfolio.software.design.p1}
+						</p>
+						<h3 className="text-sub-heading-mobile text-yellow">
 							{dictionary.Portfolio.software.web.title}
 						</h3>
-						<div className="items-center gap-32 space-y-16 xl:flex xl:space-y-0">
-							<div className="flex-1 space-y-8">
-								<p className="text-body">
-									{dictionary.Portfolio.software.web.p1}
-								</p>
-								<p className="text-body">
-									{dictionary.Portfolio.software.web.p2}
-								</p>
-							</div>
-							<ul className="flex flex-1 items-center justify-center gap-8 md:gap-16">
-								<li>
-									<Image
-										src={nextjs}
-										alt="Next.js logo"
-										width={96}
-										height={96}
-										className="aspect-square w-[48px] object-contain sm:w-[68px] md:w-[80px] xl:w-[96px]"
-									/>
-								</li>
-								<li>
-									<Image
-										src={tailwindcss}
-										alt="TailwindCSS logo"
-										width={96}
-										height={57.25}
-										className="aspect-[9.6/5.725] w-[48px] object-contain sm:w-[68px] md:w-[80px] xl:w-[96px]"
-									/>
-								</li>
-								<li>
-									<Image
-										src={vercel}
-										alt="Vercel logo"
-										width={76}
-										height={65}
-										className="aspect-[7.6/6.5] w-[28px] object-contain sm:w-[48px] md:w-[60px] xl:w-[76px]"
-									/>
-								</li>
-								<li>
-									<Image
-										src={webflow}
-										alt="Webflow logo"
-										width={96}
-										height={96}
-										className="aspect-square w-[38px] object-contain sm:w-[58px] md:w-[70px] xl:w-[80px]"
-									/>
-								</li>
-							</ul>
-						</div>
+						<p className="text-body text-white/70">
+							{dictionary.Portfolio.software.web.p1}
+						</p>
+						<p className="text-body text-white/70">
+							{dictionary.Portfolio.software.web.p2}
+						</p>
 					</div>
+					<SoftwarePlanets />
 				</Container>
 			</Section>
-			<Section className="overflow-hidden bg-black py-16 text-white md:py-32 md:px-16">
+			<Section className="overflow-hidden">
 				<Container>
 					<h2 className="text-h2-mobile md:text-h2">
 						{dictionary.Portfolio.poster.title}
@@ -215,57 +179,16 @@ const PortfolioPage = async ({
 						{dictionary.Portfolio.poster.description.post}
 					</p>
 					<PosterGallery
-						images={[
-							{
-								src: "/images/posters/poster_01.png",
-								alt: "#postereveryday design - Day 50",
-							},
-							{
-								src: "/images/posters/poster_02.png",
-								alt: "#postereveryday design - Day 49",
-							},
-							{
-								src: "/images/posters/poster_03.png",
-								alt: "#postereveryday design - Day 47",
-							},
-							{
-								src: "/images/posters/poster_04.png",
-								alt: "#postereveryday design - Day 25",
-							},
-						]}
-						imageWidth={400}
-						imageHeight={533}
+						posters={posters.slice(0, 4)}
 						dragText={dictionary.Portfolio.poster.drag}
 					/>
 					<PosterGallery
-						images={[
-							{
-								src: "/images/posters/poster_05.png",
-								alt: "#postereveryday design - Day 46",
-							},
-							{
-								src: "/images/posters/poster_06.png",
-								alt: "#postereveryday design - Day 21",
-							},
-							{
-								src: "/images/posters/poster_07.png",
-								alt: "#postereveryday design - Day 45",
-							},
-							{
-								src: "/images/posters/poster_08.png",
-								alt: "#postereveryday design - Day 30",
-							},
-						]}
-						imageWidth={400}
-						imageHeight={533}
+						posters={posters.slice(4)}
 						dragText={dictionary.Portfolio.poster.drag}
 					/>
 				</Container>
 			</Section>
-			<CTA
-				title={dictionary.Portfolio.cta.title}
-				description={dictionary.Portfolio.cta.description}
-			/>
+			<CTA lang={lang} />
 		</>
 	);
 };

@@ -1,4 +1,3 @@
-import { cva, type VariantProps } from "cva";
 import {
 	ComponentPropsWithoutRef,
 	ComponentPropsWithRef,
@@ -7,38 +6,7 @@ import {
 	HTMLAttributes,
 } from "react";
 
-const button = cva(
-	"border-2 text-black cursor-pointer text-center inline-block no-underline transition-all will-change-[filter] hover:drop-shadow-brutal",
-	{
-		variants: {
-			intent: {
-				primary: "bg-salmon",
-				secondary: "bg-lavender",
-				error: "bg-orange",
-			},
-			size: {
-				sm: "py-1 px-2 text-button-sm",
-				md: "py-1.5 px-3 text-button-md",
-				lg: "py-2 px-4 text-button",
-			},
-			fullWidth: {
-				true: "w-full",
-				fslse: "w-fit",
-			},
-		},
-		compoundVariants: [
-			{ intent: "primary", size: "sm", className: "uppercase" },
-		],
-		defaultVariants: {
-			intent: "primary",
-			size: "lg",
-		},
-	}
-);
-
-export interface ButtonProps<T extends ElementType>
-	extends HTMLAttributes<T>,
-		VariantProps<typeof button> {
+export interface ButtonProps<T extends ElementType> extends HTMLAttributes<T> {
 	as?: T;
 }
 
@@ -60,7 +28,7 @@ export const Button = forwardRef(
 
 		return (
 			<Component
-				className={button({ intent, size, fullWidth, className })}
+				className="inline-block min-w-fit text-center h-min rounded-lg bg-yellow px-4 py-2 text-button text-black"
 				ref={ref}
 				{...props}
 			>

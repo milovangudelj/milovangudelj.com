@@ -1,12 +1,23 @@
 "use client";
 
+import {
+	ComponentProps,
+	RefCallback,
+	Suspense,
+	useCallback,
+	useEffect,
+	useState,
+} from "react";
 import Link from "next/link";
-import { ComponentProps, RefCallback, useCallback, useState } from "react";
-import { Button } from "~components/Button";
+
+import { Locale } from "~/i18n.config";
+
 import { MobileNav } from "~components/MobileNav";
 import { NavLinks } from "~components/NavLinks";
-import { LanguageSwitch } from "~components/LanguageSwitch";
-import { Locale } from "~/i18n.config";
+import {
+	LanguageSwitch,
+	LanguageSwitchFallback,
+} from "~components/LanguageSwitch";
 
 export const Navbar = ({
 	links,
@@ -17,33 +28,39 @@ export const Navbar = ({
 		label: string;
 		href: string | URL;
 	}[];
+	lang: Locale;
 }) => {
 	const [rect, navRef] = useClientRect();
+
+	useEffect(() => {
+		if (!rect || !rect.height) return;
+
+		document.documentElement.style.setProperty(
+			"--nav-height",
+			`${rect.height}px`
+		);
+	}, [rect]);
 
 	return (
 		<div
 			ref={navRef}
-			className="sticky top-0 z-10 bg-yellow transition duration-300"
+			className="sticky top-0 z-20 border-b border-white/[0.06] bg-black bg-noise bg-repeat px-8 shadow-2xl backdrop-blur-sm transition duration-300 [background-size:100px]"
 		>
-			<div className="relative mx-auto flex w-full max-w-7xl items-center justify-between bg-yellow px-8 py-2 text-black md:py-1 2xl:px-0">
+			<div className="mx-auto flex w-full max-w-7xl items-center justify-between py-4">
 				<Link href={`/${lang}`} className="relative text-sub-heading">
 					Milo
 				</Link>
-				<div className="flex items-center gap-4">
+				<div className="flex items-center">
 					<NavLinks
 						links={links}
-						lang={lang as Locale}
+						lang={lang}
 						className="max-md:pointer-events-none max-md:invisible max-md:hidden max-md:select-none"
 					/>
-					<Button
-						as={Link}
-						href={`/${lang}/music-stats`}
-						className="max-md:pointer-events-none max-md:invisible max-md:hidden max-md:select-none"
-					>
-						Music-Stats ↗
-					</Button>
-					<LanguageSwitch />
-					<MobileNav navRect={rect} lang={lang as Locale} links={links} />
+					<span className="inline-block h-6 w-px bg-yellow max-md:invisible max-md:hidden"></span>
+					<Suspense fallback={<LanguageSwitchFallback lang={lang} />}>
+						<LanguageSwitch />
+					</Suspense>
+					<MobileNav lang={lang} links={links} />
 				</div>
 			</div>
 		</div>
