@@ -64,7 +64,7 @@ export const ProjectShowcase = async ({ messages, project, lang }: ProjectShowca
 				/>
 			</div>
 			{project.caseStudy && (
-				<Button as={Link} href={`${lang}/work/${project.slug}`}>
+				<Button as={Link} href={`/${lang}/work/${project.slug}`}>
 					{messages.read} ↗
 				</Button>
 			)}
