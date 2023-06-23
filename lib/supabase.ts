@@ -12,4 +12,8 @@ const supabaseKey = assertValue(
 	"Missing environment variable: SUPABASE_SERVICE_KEY"
 );
 
-export const supabase = createClient<Database>(supabaseUrl, supabaseKey);
+export const supabase = createClient<Database>(supabaseUrl, supabaseKey, {
+	auth: {
+		persistSession: false,
+	},
+});
