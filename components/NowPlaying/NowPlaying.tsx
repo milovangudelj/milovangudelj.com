@@ -102,7 +102,7 @@ export const NowPlaying = ({
 
 const NowPlayingSkeleton = () => {
 	return (
-		<div className="space-y-4">
+		<div className="w-[240px] space-y-4">
 			<div className="flex h-[240px] w-[240px] animate-pulse items-center justify-center rounded-lg bg-white/20">
 				<SpotifyLogo size={40} />
 			</div>
