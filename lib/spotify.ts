@@ -88,6 +88,8 @@ export const getNowPlaying = async () => {
 		},
 	});
 
+	if (res.status === 204 || res.status > 400) return null;
+
 	const data = await res.json();
 
 	return data;
@@ -119,6 +121,8 @@ export const getTopArtists = async ({
 			},
 		}
 	);
+
+	if (res.status === 204 || res.status > 400) return null;
 
 	const data = await res.json();
 
