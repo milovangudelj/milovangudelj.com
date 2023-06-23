@@ -32,7 +32,7 @@ export const NowPlaying = ({
 			<h3 className="mb-4 text-label-md">{title}</h3>
 			{!data && <NowPlayingSkeleton />}
 			{data && (
-				<div className="flex w-max flex-col gap-4">
+				<div className="flex w-[240px] flex-col gap-4">
 					<div
 						className="h-[240px] w-[240px] overflow-hidden rounded-lg bg-white/20"
 						title={data.album}
