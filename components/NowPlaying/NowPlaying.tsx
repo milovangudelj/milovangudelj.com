@@ -40,12 +40,12 @@ export const NowPlaying = ({
 						{data.isPlaying ? (
 							<Image
 								src={data.albumImageUrl}
-								sizes={`64px`}
+								sizes={`480px`}
 								quality={100}
 								width={240}
 								height={240}
 								alt={data.album}
-								className="pointer-events-none inset-0 h-14 w-14 object-cover"
+								className="pointer-events-none inset-0 h-full w-full object-cover"
 							/>
 						) : (
 							<div className="flex h-full w-full items-center justify-center bg-album-noise bg-cover text-white">
