@@ -1,11 +1,11 @@
-import { DocumentIcon, ImageIcon } from "@sanity/icons";
+import { File, Image } from "@phosphor-icons/react";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
 	name: "caseStudy",
 	title: "Case Study",
 	type: "document",
-	icon: DocumentIcon as any,
+	icon: File as any,
 	// Uncomment below to have edits publish automatically as you type
 	// liveEdit: true,
 	fields: [
@@ -104,7 +104,7 @@ export default defineType({
 				}),
 				defineField({
 					type: "image",
-					icon: ImageIcon as any,
+					icon: Image as any,
 					name: "image",
 					title: "Image",
 					options: {

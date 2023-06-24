@@ -1,11 +1,11 @@
-import { TagIcon } from "@sanity/icons";
+import { Tag } from "@phosphor-icons/react";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
 	name: "projectTag",
 	title: "Project Tag",
 	type: "document",
-	icon: TagIcon as any,
+	icon: Tag as any,
 	// Uncomment below to have edits publish automatically as you type
 	// liveEdit: true,
 	fields: [

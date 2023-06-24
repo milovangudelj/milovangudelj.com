@@ -1,7 +1,28 @@
-import { type SchemaTypeDefinition } from "sanity";
+import { SchemaPluginOptions, type SchemaTypeDefinition } from "sanity";
 
-import { project, caseStudy, projectTag, poster } from "~/sanity/schemas";
+import { singletonTypes } from "~/sanity/lib/singletons";
 
-export const schema: { types: SchemaTypeDefinition[] } = {
-	types: [project, caseStudy, projectTag, poster],
+import {
+	siteSettings,
+	siteNavigation,
+	siteColors,
+	project,
+	caseStudy,
+	projectTag,
+	poster,
+} from "~/sanity/schemas";
+
+export const schema: SchemaPluginOptions = {
+	types: [
+		siteSettings,
+		siteNavigation,
+		siteColors,
+		project,
+		caseStudy,
+		projectTag,
+		poster,
+	],
+	// Filter out singleton types from the global “New document” menu options
+	templates: (templates) =>
+		templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
 };

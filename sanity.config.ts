@@ -1,7 +1,3 @@
-/**
- * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...index]]/page.tsx` route
- */
-
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
@@ -18,24 +14,34 @@ import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { vercelWidget } from "sanity-plugin-dashboard-widget-vercel";
 import { media, mediaAssetSource } from "sanity-plugin-media";
 
-// Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
+import { structure } from "~/sanity/desk";
 import { apiVersion, dataset, projectId, projectTitle } from "~/sanity/env";
 import { schema } from "~/sanity/schema";
+import { singletonTypes, singletonActions } from "~/sanity/lib/singletons";
 
 export default defineConfig({
 	basePath: "/studio",
 	title: projectTitle,
 	projectId,
 	dataset,
-	// Add and edit the content schema in the './sanity/schema' folder
 	schema,
+	document: {
+		// For singleton types, filter out actions that are not explicitly included
+		// in the `singletonActions` list defined above
+		actions: (input, context) =>
+			singletonTypes.has(context.schemaType)
+				? input.filter(
+						({ action }) => action && singletonActions.has(action)
+				  )
+				: input,
+	},
 	plugins: [
-		deskTool(),
+		deskTool({
+			structure,
+		}),
 		colorInput(),
-		// Add an image asset source for Unsplash
 		unsplashImageAsset(),
-		// Vision lets you query your content with GROQ in the studio
-		// https://www.sanity.io/docs/the-vision-plugin
+		media(),
 		visionTool({ defaultApiVersion: apiVersion }),
 		dashboardTool({
 			widgets: [
@@ -50,7 +56,6 @@ export default defineConfig({
 				{ id: "en", title: "English" },
 				{ id: "it", title: "Italian" },
 			],
-			// Select English by default
 			defaultLanguages: ["en"],
 			// Only show language filter for document type `page` (schemaType.name)
 			// documentTypes: ['page'],
@@ -59,4 +64,13 @@ export default defineConfig({
 				selectedLanguageIds.includes(field.name),
 		}),
 	],
+	form: {
+		file: {
+			assetSources: (previousAssetSources) => {
+				return previousAssetSources.filter(
+					(assetSource) => assetSource !== mediaAssetSource
+				);
+			},
+		},
+	},
 });

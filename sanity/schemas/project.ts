@@ -1,11 +1,11 @@
-import { DocumentIcon } from "@sanity/icons";
+import { File } from "@phosphor-icons/react";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
 	name: "project",
 	title: "Project",
 	type: "document",
-	icon: DocumentIcon as any,
+	icon: File as any,
 	// Uncomment below to have edits publish automatically as you type
 	// liveEdit: true,
 	fields: [
