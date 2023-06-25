@@ -20,15 +20,12 @@ export const CTA = asyncComponent(
 		const dictionary = await getDictionary(lang as Locale);
 
 		return (
-			<Section
-				className="bg-yellow bg-noise bg-repeat relative text-black [background-size:100px] before:pointer-events-none before:z-10 before:absolute before:inset-0 before:mx-auto before:w-[calc(100%-64px)] before:md:max-w-7xl before:border-x before:border-black/[0.06]"
-				{...props}
-			>
+			<Section className="relative" {...props}>
 				<Container>
-					<h2 className="text-h2-mobile md:text-h2">
+					<h2 className="text-h2-mobile text-yellow md:text-h2">
 						{title ?? dictionary.CTA.title}
 					</h2>
-					<p className="text-body text-black/70">
+					<p className="text-body text-white/70">
 						{description ?? dictionary.CTA.description}
 					</p>
 					<div className="flex w-fit items-center space-x-4 py-0.5">
@@ -40,10 +37,10 @@ export const CTA = asyncComponent(
 						>
 							milovan.gudelj@gmail.com
 						</a>
-						<span className="text-black transition will-change-transform peer-hover:-translate-y-2 peer-hover:translate-x-2">
+						<span className="transition will-change-transform peer-hover:-translate-y-2 peer-hover:translate-x-2">
 							<svg
-								width="40"
-								height="40"
+								width="32"
+								height="32"
 								viewBox="0 0 49 49"
 								fill="currentColor"
 								xmlns="http://www.w3.org/2000/svg"
