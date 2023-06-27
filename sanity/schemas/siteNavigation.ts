@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
-export default defineType({
+export const siteNavigation = defineType({
 	name: "siteNavigation",
 	title: "Site Navigation",
 	type: "document",
@@ -13,7 +13,22 @@ export default defineType({
 				defineArrayMember({
 					name: "link",
 					title: "Nav Link",
-					type: "string",
+					type: "object",
+					fields: [
+						defineField({
+							name: "label",
+							title: "Label",
+							type: "localisedString",
+						}),
+						defineField({
+							name: "url",
+							title: "URL",
+							type: "string",
+							options: {
+								list: ["/about", "/work", "/portfolio", "/contact"],
+							},
+						}),
+					],
 				}),
 			],
 		}),
