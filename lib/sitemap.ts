@@ -1,7 +1,7 @@
+import { getCaseStudyPaths } from "~/sanity/lib/client";
+
 export async function generateSiteMap() {
-	const csUrls = await(
-		await fetch(`${process.env.NEXT_PUBLIC_WEBSITE_URL!}/api/getCSUrls`)
-	).json() as string[];
+	const csUrls = await getCaseStudyPaths();
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
