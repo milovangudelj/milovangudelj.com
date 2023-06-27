@@ -8,6 +8,7 @@ import {
 	projectInfoWidget,
 } from "@sanity/dashboard";
 
+import { documentInternationalization } from "@sanity/document-internationalization";
 import { languageFilter } from "@sanity/language-filter";
 import { colorInput } from "@sanity/color-input";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
@@ -51,6 +52,14 @@ export default defineConfig({
 				vercelWidget(),
 			],
 		}),
+		documentInternationalization({
+			// Required configuration
+			supportedLanguages: [
+				{ id: "en", title: "English" },
+				{ id: "it", title: "Italian" },
+			],
+			schemaTypes: ["project", "caseStudy"],
+		}),
 		languageFilter({
 			supportedLanguages: [
 				{ id: "en", title: "English" },
@@ -60,7 +69,7 @@ export default defineConfig({
 			// Only show language filter for document type `page` (schemaType.name)
 			// documentTypes: ['page'],
 			filterField: (enclosingType, field, selectedLanguageIds) =>
-				!enclosingType.name.startsWith("locale") ||
+				!enclosingType.name.startsWith("localisedString") ||
 				selectedLanguageIds.includes(field.name),
 		}),
 	],
