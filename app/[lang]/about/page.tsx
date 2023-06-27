@@ -1,12 +1,11 @@
+import { Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
+
 import { CTA } from "~components/sections/CTA";
 import { TopArtists } from "~components/TopArtists";
 import { Container } from "~components/Container";
 import { Section } from "~components/Section";
-
-import { Locale } from "~/i18n.config";
-import { getDictionary } from "~/utils/getDictionary";
-
-import { NowPlaying } from "~/components";
+import { NowPlaying } from "~/components/NowPlaying";
 
 export const metadata = {
 	title: "Milovan Gudelj - About me",
