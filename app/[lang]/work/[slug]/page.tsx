@@ -214,7 +214,7 @@ const ProjectPage = async ({
 					/>
 				</div>
 			</Container>
-			<CTA lang={lang} />
+			<CTA lang={lang} className="first-of-type:border-solid" />
 		</>
 	);
 };

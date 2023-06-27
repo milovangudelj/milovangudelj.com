@@ -11,7 +11,7 @@ export const CTA = asyncComponent(
 		title,
 		description,
 		lang,
-		className,
+		className = "",
 		...props
 	}: ComponentProps<"section"> & {
 		title?: string;
@@ -20,7 +20,7 @@ export const CTA = asyncComponent(
 		const dictionary = await getDictionary(lang as Locale);
 
 		return (
-			<Section className="relative" {...props}>
+			<Section className={`relative ${className}`} {...props}>
 				<Container>
 					<h2 className="text-h2-mobile text-yellow md:text-h2">
 						{title ?? dictionary.CTA.title}
