@@ -1,8 +1,5 @@
 import { defineType, defineField } from "sanity";
 
-// Since schemas are code, we can programmatically build
-// fields to hold translated values. We'll use this array
-// of languages to determine which fields to define.
 const supportedLanguages = [
 	{ id: "en", title: "English", isDefault: true },
 	{ id: "it", title: "Italian" },
