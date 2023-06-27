@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
-export default defineType({
+export const siteColors = defineType({
 	name: "siteColors",
 	title: "Site Colors",
 	type: "document",

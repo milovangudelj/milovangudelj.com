@@ -1,7 +1,7 @@
 import { Tag } from "@phosphor-icons/react";
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 
-export default defineType({
+export const projectTag = defineType({
 	name: "projectTag",
 	title: "Project Tag",
 	type: "document",

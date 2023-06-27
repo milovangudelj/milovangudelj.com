@@ -1,7 +1,7 @@
 import { Image } from "@phosphor-icons/react";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
-export default defineType({
+export const poster = defineType({
 	name: "poster",
 	title: "Poster",
 	type: "document",

@@ -1,7 +1,7 @@
 import { File, Image } from "@phosphor-icons/react";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
-export default defineType({
+export const caseStudy = defineType({
 	name: "caseStudy",
 	title: "Case Study",
 	type: "document",
