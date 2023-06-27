@@ -5,7 +5,8 @@ import {
 	ProjectPayload,
 	CaseStudyPayload,
 	SlimProjectPayload,
-	PosterPayload
+	PosterPayload,
+	SiteNavigationPayload,
 } from "~/sanity/types";
 
 import {
@@ -15,8 +16,10 @@ import {
 	caseStudyBySlugQuery,
 	caseStudyPaths,
 	slimProjectsQuery,
-	postersQuery
+	postersQuery,
+	siteNavigationQuery,
 } from "./queries";
+import { Locale } from "~/i18n.config";
 
 export const client = createClient({
 	apiVersion,
@@ -24,6 +27,14 @@ export const client = createClient({
 	projectId,
 	useCdn,
 });
+
+export async function getSiteNavigation({
+	lang,
+}: {
+	lang: Locale;
+}): Promise<SiteNavigationPayload> {
+	return await client.fetch(siteNavigationQuery, { lang });
+}
 
 export async function getProjectBySlug({
 	slug,

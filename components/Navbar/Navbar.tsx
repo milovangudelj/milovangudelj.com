@@ -18,16 +18,13 @@ import {
 	LanguageSwitch,
 	LanguageSwitchFallback,
 } from "~components/LanguageSwitch";
+import { SiteNavigationPayload } from "~/sanity/types";
 
 export const Navbar = ({
 	links,
 	lang,
 }: ComponentProps<"div"> & {
-	links: {
-		id: string;
-		label: string;
-		href: string | URL;
-	}[];
+	links: SiteNavigationPayload["links"];
 	lang: Locale;
 }) => {
 	const [rect, navRef] = useClientRect();

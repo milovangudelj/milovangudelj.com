@@ -4,13 +4,11 @@ import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 
 export const NavLink = ({
-	id,
 	href,
 	label,
 	onClick,
 }: {
-	id: string;
-	href: string | URL;
+	href: string;
 	label: string;
 	onClick?: () => void;
 }) => {
@@ -20,11 +18,11 @@ export const NavLink = ({
 		<Link
 			href={href}
 			className={`relative inline-block px-4 py-2 text-sub-heading md:text-button ${
-				id === segment ? "opacity-100" : "opacity-60"
+				href.slice(1) === segment ? "opacity-100" : "opacity-60"
 			} transition hover:opacity-100`}
 			onClick={onClick}
 		>
-			{id === segment && (
+			{href.slice(1) === segment && (
 				<span className="absolute bottom-0 left-0 top-0 -ml-1 mt-1 flex items-center text-yellow motion-safe:animate-spin-slow md:-ml-0.5">
 					<svg
 						className="aspect-square w-2.5 md:w-3"

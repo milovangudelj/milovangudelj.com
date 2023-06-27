@@ -6,16 +6,13 @@ import { motion, type Variants } from "framer-motion";
 import { Locale } from "~/i18n.config";
 
 import { NavLink } from "~components/NavLink";
+import { SiteNavigationPayload } from "~/sanity/types";
 
 export const MobileNav = ({
 	links,
 	lang,
 }: {
-	links: {
-		id: string;
-		label: string;
-		href: string | URL;
-	}[];
+	links: SiteNavigationPayload["links"];
 	lang: Locale;
 }) => {
 	const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -90,10 +87,9 @@ export const MobileNav = ({
 				className="absolute left-0 right-0 top-full h-[calc(var(--mobile-nav-height)+1px)] flex-col items-end justify-center gap-4 border-t border-white/[0.06] bg-black bg-noise bg-repeat px-8 py-2 [background-size:100px] before:pointer-events-none before:absolute before:inset-0 before:z-10 before:mx-auto before:w-[calc(100%-64px)] before:border-x before:border-white/[0.06]"
 			>
 				{links.map((link) => (
-					<motion.li variants={item} key={link.id}>
+					<motion.li variants={item} key={link._key}>
 						<NavLink
-							id={link.id}
-							href={`/${lang}${link.href}`}
+							href={`/${lang}${link.url}`}
 							label={link.label}
 							onClick={() => {
 								setMenuOpen(false);

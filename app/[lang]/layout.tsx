@@ -1,8 +1,8 @@
 import { Analytics } from "@vercel/analytics/react";
 import localFont from "next/font/local";
 
+import { getSiteNavigation } from "~/sanity/lib/client";
 import { i18n, Locale } from "~/i18n.config";
-import { getDictionary } from "~/utils/getDictionary";
 
 import "~styles/globals.css";
 
@@ -90,34 +90,7 @@ export default async function RootLayout({
 		lang: Locale;
 	};
 }) {
-	const dictionary = await getDictionary(params.lang);
-
-	const links: {
-		id: string;
-		label: string;
-		href: string | URL;
-	}[] = [
-		{
-			id: "about",
-			href: "/about",
-			label: dictionary.Navbar.about,
-		},
-		{
-			id: "work",
-			href: "/work",
-			label: dictionary.Navbar.work,
-		},
-		{
-			id: "portfolio",
-			href: "/portfolio",
-			label: dictionary.Navbar.portfolio,
-		},
-		{
-			id: "contact",
-			href: "/contact",
-			label: dictionary.Navbar.contact,
-		},
-	];
+	const { links } = await getSiteNavigation({ lang: params.lang });
 
 	return (
 		<html

@@ -1,5 +1,15 @@
 import { groq } from "next-sanity";
 
+export const siteNavigationQuery = groq`
+  *[_type == "siteNavigation" && _id == "siteNavigation"][0]{
+    "links": links[]{
+      _key,
+      url,
+      "label": label[$lang],
+    }
+  }
+`;
+
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
     title,

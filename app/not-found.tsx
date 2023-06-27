@@ -3,39 +3,12 @@ import Link from "next/link";
 
 import { Navbar } from "~/components";
 
-import { getDictionary } from "~/utils/getDictionary";
+import { getSiteNavigation } from "~/sanity/lib/client";
 
 import confusedTravolta from "~images/johntravolta.webp";
 
 export default async function NotFound() {
-	const dictionary = await getDictionary("en");
-
-	const links: {
-		id: string;
-		label: string;
-		href: string | URL;
-	}[] = [
-		{
-			id: "about",
-			href: "/about",
-			label: dictionary.Navbar.about,
-		},
-		{
-			id: "work",
-			href: "/work",
-			label: dictionary.Navbar.work,
-		},
-		{
-			id: "portfolio",
-			href: "/portfolio",
-			label: dictionary.Navbar.portfolio,
-		},
-		{
-			id: "contact",
-			href: "/contact",
-			label: dictionary.Navbar.contact,
-		},
-	];
+	const { links } = await getSiteNavigation({ lang: "en" });
 
 	return (
 		<div className="min-h-[100dvh] bg-black bg-noise bg-repeat [background-size:100px]">

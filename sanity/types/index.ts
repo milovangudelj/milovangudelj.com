@@ -1,6 +1,14 @@
 import type { PortableTextBlock } from "@portabletext/types";
 import type { Image, ImageAsset, Reference } from "sanity";
 
+export interface SiteNavigationPayload {
+	links: {
+		label: string;
+		url: string;
+		_key: string;
+	}[];
+}
+
 export interface ShowcaseProject {
 	_type: string;
 	coverImage?: Image;

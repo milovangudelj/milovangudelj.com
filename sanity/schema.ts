@@ -3,6 +3,7 @@ import { SchemaPluginOptions, type SchemaTypeDefinition } from "sanity";
 import { singletonTypes } from "~/sanity/lib/singletons";
 
 import {
+	localeString,
 	siteSettings,
 	siteNavigation,
 	siteColors,
@@ -14,6 +15,7 @@ import {
 
 export const schema: SchemaPluginOptions = {
 	types: [
+		localeString,
 		siteSettings,
 		siteNavigation,
 		siteColors,
