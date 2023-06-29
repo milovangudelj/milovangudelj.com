@@ -7,7 +7,12 @@ import {
 	Palette,
 	Tag,
 } from "@phosphor-icons/react";
-import { StructureResolver } from "sanity/desk";
+import { DefaultDocumentNodeResolver, StructureResolver } from "sanity/desk";
+import { LANGUAGES } from "./utils/languages";
+
+export const defaultDocumentNode: DefaultDocumentNodeResolver = (S) => {
+	return S.document().views([S.view.form()]);
+};
 
 export const structure: StructureResolver = (S, context) => {
 	console.log(context); // returns { currentUser, dataset, projectId, schema, getClient, documentStore }
@@ -55,12 +60,78 @@ export const structure: StructureResolver = (S, context) => {
 			S.listItem()
 				.title("Projects")
 				.schemaType("project")
-				.child(S.documentTypeList("project").title("Projects"))
+				.child(
+					S.list()
+						.title("Projects")
+						.items([
+							S.listItem()
+								.title("🌐 All")
+								.showIcon(false)
+								.schemaType("project")
+								.child(
+									S.documentList()
+										.id("all-languages")
+										.title("🌐 Projects")
+										.schemaType("project")
+										.filter('_type == "project"')
+								),
+							S.divider(),
+							...LANGUAGES.map((language) => {
+								return S.listItem()
+									.title(`${language.flag} ${language.title}`)
+									.showIcon(false)
+									.schemaType("project")
+									.child(
+										S.documentList()
+											.id(language.id)
+											.title(`${language.flag} Projects`)
+											.schemaType("project")
+											.filter(
+												'_type == "project" && language == $lang'
+											)
+											.params({ lang: language.id })
+									);
+							}),
+						])
+				)
 				.icon(File as any),
 			S.listItem()
 				.title("Case Studies")
 				.schemaType("caseStudy")
-				.child(S.documentTypeList("caseStudy").title("Case Studies"))
+				.child(
+					S.list()
+						.title("Case Studies")
+						.items([
+							S.listItem()
+								.title("🌐 All")
+								.showIcon(false)
+								.schemaType("caseStudy")
+								.child(
+									S.documentList()
+										.id("all-languages")
+										.title("🌐 Case Studies")
+										.schemaType("caseStudy")
+										.filter('_type == "caseStudy"')
+								),
+							S.divider(),
+							...LANGUAGES.map((language) => {
+								return S.listItem()
+									.title(`${language.flag} ${language.title}`)
+									.showIcon(false)
+									.schemaType("caseStudy")
+									.child(
+										S.documentList()
+											.id(language.id)
+											.title(`${language.flag} Case Studies`)
+											.schemaType("caseStudy")
+											.filter(
+												'_type == "caseStudy" && language == $lang'
+											)
+											.params({ lang: language.id })
+									);
+							}),
+						])
+				)
 				.icon(File as any),
 			S.divider(),
 			S.listItem()

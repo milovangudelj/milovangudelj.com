@@ -18,7 +18,7 @@ import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { vercelWidget } from "sanity-plugin-dashboard-widget-vercel";
 import { media, mediaAssetSource } from "sanity-plugin-media";
 
-import { structure } from "~/sanity/desk";
+import { defaultDocumentNode, structure } from "~/sanity/desk";
 import { apiVersion, dataset, projectId, projectTitle } from "~/sanity/env";
 import { schema } from "~/sanity/schema";
 import {
@@ -61,6 +61,7 @@ export default defineConfig({
 	plugins: [
 		deskTool({
 			structure,
+			defaultDocumentNode,
 		}),
 		colorInput(),
 		unsplashImageAsset(),

@@ -161,7 +161,10 @@ export const project = defineType({
 			const { media, title, language } = selection;
 			return {
 				media,
-				title: `${LANGUAGES[language as "en" | "it"]} ${title}`,
+				title,
+				subtitle: LANGUAGES.find(
+					(lang) => lang.id === language
+				)?.id.toLocaleUpperCase(),
 			};
 		},
 	},
