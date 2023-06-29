@@ -38,10 +38,12 @@ export async function getSiteNavigation({
 
 export async function getProjectBySlug({
 	slug,
+	lang = "en",
 }: {
 	slug: string;
+	lang?: Locale;
 }): Promise<ProjectPayload | undefined> {
-	return await client.fetch(projectBySlugQuery, { slug });
+	return await client.fetch(projectBySlugQuery, { slug, lang });
 }
 
 export async function getProjects(
@@ -58,10 +60,12 @@ export async function getSlimProjects(
 
 export async function getCaseStudyBySlug({
 	slug,
+	lang  = "en",
 }: {
 	slug: string;
+	lang?: Locale;
 }): Promise<CaseStudyPayload> {
-	return await client.fetch(caseStudyBySlugQuery, { slug });
+	return await client.fetch(caseStudyBySlugQuery, { slug, lang });
 }
 
 export async function getProjectPaths(): Promise<string[]> {

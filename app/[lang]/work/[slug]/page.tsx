@@ -15,18 +15,15 @@ export async function generateStaticParams() {
 	return caseStudies.map((caseStudy) => ({ slug: caseStudy }));
 }
 
-const getProjctData = async (slug: string) => {
-	const altCaseStudy = await getCaseStudyBySlug({ slug });
-
-	return altCaseStudy;
-};
-
 export async function generateMetadata({
 	params: { slug, lang },
 }: {
 	params: { slug: string; lang: Locale };
 }): Promise<Metadata> {
-	const { title, color, subtitle, cover } = await getProjctData(slug);
+	const { title, color, subtitle, cover } = await getCaseStudyBySlug({
+		slug,
+		lang,
+	});
 
 	return {
 		title: `${title} | Milovan Gudelj`,
@@ -53,9 +50,8 @@ const ProjectPage = async ({
 }: {
 	params: { slug: string; lang: Locale };
 }) => {
-	const { title, color, subtitle, intro, cover, body } = await getProjctData(
-		slug
-	);
+	const { title, color, subtitle, intro, cover, body } =
+		await getCaseStudyBySlug({ slug, lang });
 
 	return (
 		<>

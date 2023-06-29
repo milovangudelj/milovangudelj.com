@@ -1,6 +1,9 @@
 import { File, Image } from "@phosphor-icons/react";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
+import { isUniqueOtherThanLanguage } from "~/sanity/utils/isUniqueOtherThanLanguage";
+import { LANGUAGES } from "~/sanity/utils/languages";
+
 export const caseStudy = defineType({
 	name: "caseStudy",
 	title: "Case Study",
@@ -147,4 +150,18 @@ export const caseStudy = defineType({
 			validation: (rule) => rule.required(),
 		}),
 	],
+	preview: {
+		select: {
+			media: "cover.asset",
+			title: "title",
+			language: "language",
+		},
+		prepare(selection) {
+			const { media, title, language } = selection;
+			return {
+				media,
+				title: `${LANGUAGES[language as "en" | "it"]} ${title}`,
+			};
+		},
+	},
 });

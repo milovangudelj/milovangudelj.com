@@ -1,12 +1,8 @@
 import { File } from "@phosphor-icons/react";
-import {
-	SlugValidationContext,
-	defineArrayMember,
-	defineField,
-	defineType,
-} from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
-const LANGUAGES = { en: "🇬🇧", it: "🇮🇹" };
+import { isUniqueOtherThanLanguage } from "~/sanity/utils/isUniqueOtherThanLanguage";
+import { LANGUAGES } from "~/sanity/utils/languages";
 
 export const project = defineType({
 	name: "project",
@@ -157,41 +153,16 @@ export const project = defineType({
 	],
 	preview: {
 		select: {
-			imageUrl: "cover.asset.url",
+			media: "cover.asset",
 			title: "title",
 			language: "language",
 		},
 		prepare(selection) {
-			const { imageUrl, title, language } = selection;
+			const { media, title, language } = selection;
 			return {
-				imageUrl,
+				media,
 				title: `${LANGUAGES[language as "en" | "it"]} ${title}`,
 			};
 		},
 	},
 });
-
-export async function isUniqueOtherThanLanguage(
-	slug: string,
-	context: SlugValidationContext
-) {
-	const { document, getClient } = context;
-
-	if (!document?.language) return true;
-
-	const client = getClient({ apiVersion: "2023-04-24" });
-	const id = document._id.replace(/^drafts\./, "");
-	const params = {
-		draft: `drafts.${id}`,
-		published: id,
-		language: document.language,
-		slug,
-	};
-	const query = `!defined(*[
-	  !(_id in [$draft, $published]) &&
-	  slug.current == $slug &&
-	  language == $language
-	][0]._id)`;
-	const result = await client.fetch(query, params);
-	return result;
-}

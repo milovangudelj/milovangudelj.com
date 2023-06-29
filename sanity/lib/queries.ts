@@ -11,7 +11,7 @@ export const siteNavigationQuery = groq`
 `;
 
 export const projectBySlugQuery = groq`
-  *[_type == "project" && slug.current == $slug][0] {
+  *[_type == "project" && slug.current == $slug][language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0][0] {
     title,
   }
 `;
@@ -51,7 +51,7 @@ export const slimProjectsQuery = groq`
 `;
 
 export const caseStudyBySlugQuery = groq`
-  *[_type == "project" && slug.current == $slug][0].caseStudy->{
+  *[_type == "project" && slug.current == $slug][language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0][0].caseStudy->{
     title,
     subtitle,
     intro,
@@ -78,11 +78,11 @@ export const caseStudyBySlugQuery = groq`
 `;
 
 export const projectPaths = groq`
-  *[_type == "project" && slug.current != null].slug.current
+  *[_type == "project" && language == "en" && slug.current != null].slug.current
 `;
 
 export const caseStudyPaths = groq`
-  *[_type == "caseStudy"].project->slug.current
+  *[_type == "caseStudy" && language == "en"].project->slug.current
 `;
 
 export const postersQuery = groq`
