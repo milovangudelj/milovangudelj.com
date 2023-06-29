@@ -8,7 +8,10 @@ import {
 	projectInfoWidget,
 } from "@sanity/dashboard";
 
-import { documentInternationalization } from "@sanity/document-internationalization";
+import {
+	DeleteTranslationAction,
+	documentInternationalization,
+} from "@sanity/document-internationalization";
 import { languageFilter } from "@sanity/language-filter";
 import { colorInput } from "@sanity/color-input";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
@@ -18,7 +21,12 @@ import { media, mediaAssetSource } from "sanity-plugin-media";
 import { structure } from "~/sanity/desk";
 import { apiVersion, dataset, projectId, projectTitle } from "~/sanity/env";
 import { schema } from "~/sanity/schema";
-import { singletonTypes, singletonActions } from "~/sanity/lib/singletons";
+import {
+	singletonTypes,
+	singletonActions,
+	i18nActions,
+	i18nTypes,
+} from "~/sanity/lib/singletons";
 
 export default defineConfig({
 	basePath: "/studio",
@@ -27,14 +35,28 @@ export default defineConfig({
 	dataset,
 	schema,
 	document: {
-		// For singleton types, filter out actions that are not explicitly included
-		// in the `singletonActions` list defined above
-		actions: (input, context) =>
-			singletonTypes.has(context.schemaType)
-				? input.filter(
-						({ action }) => action && singletonActions.has(action)
-				  )
-				: input,
+		actions: (input, { schemaType }) => {
+			// For singleton types, filter out actions that are not explicitly included
+			// in the `singletonActions`
+			if (singletonTypes.has(schemaType)) {
+				return input.filter(
+					({ action }) => action && singletonActions.has(action)
+				);
+			}
+
+			// For i18n types, filter out actions that are not explicitly included
+			// in the `i18nActions`
+			if (i18nTypes.has(schemaType)) {
+				return [
+					...input.filter(
+						({ action }) => action && i18nActions.has(action)
+					),
+					DeleteTranslationAction,
+				];
+			}
+
+			return input;
+		},
 	},
 	plugins: [
 		deskTool({

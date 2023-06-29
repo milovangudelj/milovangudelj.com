@@ -10,12 +10,6 @@ import { CTA } from "~/components/sections";
 import heroImage from "~images/work-hero-image.webp";
 import Image from "next/image";
 
-const getProjcts = async () => {
-	const projects = await getProjects();
-
-	return projects;
-};
-
 export const metadata = {
 	title: "Milovan Gudelj - My work",
 	description: "A collection of past project I've worked on an am proud of.",
@@ -32,7 +26,7 @@ const WorkPage = async ({
 }) => {
 	const dictionary = await getDictionary(lang);
 
-	const projects = await getProjcts();
+	const projects = await getProjects(lang);
 
 	return (
 		<>

@@ -11,3 +11,18 @@ export const singletonTypes = new Set([
 	"siteNavigation",
 	"siteColors",
 ]);
+
+// Define the actions that should be available for internationalised documents
+export const i18nActions = new Set([
+	"discardChanges",
+	"duplicate",
+	"publish",
+	"restore",
+	"unpublish",
+]);
+
+// Internationalised types
+export const i18nTypes = new Set([
+	"project",
+	"caseStudy",
+]);

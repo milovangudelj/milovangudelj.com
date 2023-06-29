@@ -1,4 +1,4 @@
-import { createClient } from 'next-sanity'
+import { createClient } from "next-sanity";
 
 import { apiVersion, dataset, projectId, useCdn } from "~/sanity/env";
 import {
@@ -44,12 +44,16 @@ export async function getProjectBySlug({
 	return await client.fetch(projectBySlugQuery, { slug });
 }
 
-export async function getProjects(): Promise<ProjectPayload[]> {
-	return await client.fetch(projectsQuery);
+export async function getProjects(
+	lang: Locale = "en"
+): Promise<ProjectPayload[]> {
+	return await client.fetch(projectsQuery, { lang });
 }
 
-export async function getSlimProjects(): Promise<SlimProjectPayload[]> {
-	return await client.fetch(slimProjectsQuery);
+export async function getSlimProjects(
+	lang: Locale = "en"
+): Promise<SlimProjectPayload[]> {
+	return await client.fetch(slimProjectsQuery, { lang });
 }
 
 export async function getCaseStudyBySlug({

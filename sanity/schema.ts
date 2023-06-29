@@ -26,5 +26,9 @@ export const schema: SchemaPluginOptions = {
 	],
 	// Filter out singleton types from the global “New document” menu options
 	templates: (templates) =>
-		templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
+		templates.filter(
+			({ schemaType, id }) =>
+				!singletonTypes.has(schemaType) &&
+				!["project", "caseStudy"].includes(schemaType)
+		),
 };

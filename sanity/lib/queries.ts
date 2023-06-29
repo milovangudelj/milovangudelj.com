@@ -17,7 +17,7 @@ export const projectBySlugQuery = groq`
 `;
 
 export const projectsQuery = groq`
-  *[_type == "project"][0..2] {
+  *[_type == "project" && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] {
     title,
     "slug": slug.current,
     year,
@@ -37,7 +37,7 @@ export const projectsQuery = groq`
 `;
 
 export const slimProjectsQuery = groq`
-  *[_type == "project"][0..2] {
+  *[_type == "project" && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] {
     title,
     "slug": slug.current,
     site,

@@ -1,5 +1,12 @@
 import { File } from "@phosphor-icons/react";
-import { defineArrayMember, defineField, defineType } from "sanity";
+import {
+	SlugValidationContext,
+	defineArrayMember,
+	defineField,
+	defineType,
+} from "sanity";
+
+const LANGUAGES = { en: "🇬🇧", it: "🇮🇹" };
 
 export const project = defineType({
 	name: "project",
@@ -9,6 +16,12 @@ export const project = defineType({
 	// Uncomment below to have edits publish automatically as you type
 	// liveEdit: true,
 	fields: [
+		defineField({
+			name: "language",
+			type: "string",
+			readOnly: true,
+			hidden: true,
+		}),
 		defineField({
 			name: "title",
 			description: "This field is the title of your project.",
@@ -23,8 +36,7 @@ export const project = defineType({
 			options: {
 				source: "title",
 				maxLength: 96,
-				isUnique: (value, context) =>
-					context.defaultIsUnique(value, context),
+				isUnique: isUniqueOtherThanLanguage,
 			},
 			validation: (rule) => rule.required(),
 		}),
@@ -143,4 +155,43 @@ export const project = defineType({
 			validation: (rule) => rule.required(),
 		}),
 	],
+	preview: {
+		select: {
+			imageUrl: "cover.asset.url",
+			title: "title",
+			language: "language",
+		},
+		prepare(selection) {
+			const { imageUrl, title, language } = selection;
+			return {
+				imageUrl,
+				title: `${LANGUAGES[language as "en" | "it"]} ${title}`,
+			};
+		},
+	},
 });
+
+export async function isUniqueOtherThanLanguage(
+	slug: string,
+	context: SlugValidationContext
+) {
+	const { document, getClient } = context;
+
+	if (!document?.language) return true;
+
+	const client = getClient({ apiVersion: "2023-04-24" });
+	const id = document._id.replace(/^drafts\./, "");
+	const params = {
+		draft: `drafts.${id}`,
+		published: id,
+		language: document.language,
+		slug,
+	};
+	const query = `!defined(*[
+	  !(_id in [$draft, $published]) &&
+	  slug.current == $slug &&
+	  language == $language
+	][0]._id)`;
+	const result = await client.fetch(query, params);
+	return result;
+}

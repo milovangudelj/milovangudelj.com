@@ -7,14 +7,8 @@ import { getDictionary } from "~utils/getDictionary";
 import { Locale } from "~/i18n.config";
 import { getSlimProjects } from "~/sanity/lib/client";
 
-async function getProjects() {
-	const projects = await getSlimProjects();
-
-	return projects;
-}
-
 const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
-	const projects = await getProjects();
+	const projects = await getSlimProjects(lang);
 
 	const dictionary = await getDictionary(lang);
 
