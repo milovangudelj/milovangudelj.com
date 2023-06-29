@@ -12,7 +12,7 @@ export const projectTag = defineType({
 		defineField({
 			name: "value",
 			title: "Value",
-			type: "string",
+			type: "localisedString",
 			validation: (rule) => rule.required(),
 		}),
 		defineField({
@@ -22,4 +22,9 @@ export const projectTag = defineType({
 			validation: (rule) => rule.max(155).required(),
 		}),
 	],
+	preview: {
+		select: {
+			title: "value.en",
+		},
+	},
 });
