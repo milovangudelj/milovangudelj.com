@@ -18,7 +18,7 @@ export const ViewCount = ({ message }: { message: string }) => {
 	);
 
 	useEffect(() => {
-		startTransition(() => incrementViewCount());
+		startTransition(async () => await incrementViewCount());
 	}, []);
 
 	if (isLoading) return <ViewCountSkeleton />;
