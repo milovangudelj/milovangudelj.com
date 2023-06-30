@@ -1,5 +1,5 @@
 import { type NextRequest } from "next/server";
-import { getViewCount } from "~/utils/viewCount";
+import { getViewCount } from "~/lib/viewCount";
 
 export const runtime = "edge";
 
