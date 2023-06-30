@@ -22,10 +22,7 @@ export const Container = <T extends ElementType = "div">({
 
 	return (
 		<Component
-			className={twMerge(
-				"mx-auto max-w-7xl space-y-16",
-				className
-			)}
+			className={twMerge("mx-auto max-w-7xl space-y-16", className)}
 			{...props}
 		>
 			{children}

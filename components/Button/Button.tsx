@@ -28,7 +28,7 @@ export const Button = forwardRef(
 
 		return (
 			<Component
-				className="inline-block min-w-fit text-center h-min rounded-lg bg-yellow px-4 py-2 text-button text-black"
+				className="inline-block h-min min-w-fit rounded-lg bg-yellow px-4 py-2 text-center text-button text-black"
 				ref={ref}
 				{...props}
 			>

@@ -9,9 +9,9 @@
 	}
 
 	img {
-	  @apply inline-block;
+		@apply inline-block;
 	}
- }
+}
 
 @tailwind components;
 @tailwind utilities;
@@ -79,7 +79,7 @@
 @media screen and (min-width: 835px) {
 	/* Width */
 	::-webkit-scrollbar {
-		@apply w-1 h-1;
+		@apply h-1 w-1;
 	}
 
 	/* Track */

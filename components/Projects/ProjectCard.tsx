@@ -12,12 +12,12 @@ type ProjectCardProps = {
 
 export const ProjectCard = ({ title, site, cover }: ProjectCardProps) => {
 	return (
-		<div className="space-y-8 w-[calc(150px*16/9)] md:w-[calc(300px*16/9)] md:space-y-[26px]">
+		<div className="w-[calc(150px*16/9)] space-y-8 md:w-[calc(300px*16/9)] md:space-y-[26px]">
 			<a
 				target="_blank"
 				rel="noreferrer noopener"
 				href={site}
-				className="relative inline-block aspect-video h-[150px] cursor-pointer overflow-hidden rounded-lg md:rounded-2xl md:h-[300px]"
+				className="relative inline-block aspect-video h-[150px] cursor-pointer overflow-hidden rounded-lg md:h-[300px] md:rounded-2xl"
 			>
 				<Image
 					src={urlForImage(cover.image).url()}
@@ -32,17 +32,19 @@ export const ProjectCard = ({ title, site, cover }: ProjectCardProps) => {
 			</a>
 			<div className="flex w-full flex-col">
 				<a
-			 	target="_blank"
-			 	rel="noreferrer noopener"
+					target="_blank"
+					rel="noreferrer noopener"
 					href={site}
 					className="group w-fit text-sub-heading-mobile font-medium md:text-sub-heading"
 				>
 					{title}{" "}
-					<span className="inline-block text-white group-hover:text-yellow transition will-change-transform group-hover:translate-x-1">
+					<span className="inline-block text-white transition will-change-transform group-hover:translate-x-1 group-hover:text-yellow">
 						→
 					</span>
 				</a>
-				<span className="text-label-md max-w-full inline-block truncate text-light-me">{site}</span>
+				<span className="inline-block max-w-full truncate text-label-md text-light-me">
+					{site}
+				</span>
 			</div>
 		</div>
 	);

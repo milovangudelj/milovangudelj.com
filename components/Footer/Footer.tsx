@@ -9,7 +9,7 @@ export const Footer = () => {
 							target="_blank"
 							rel="noreferrer"
 							href="https://dribbble.com/milovangudelj"
-							className="hover:text-white transition"
+							className="transition hover:text-white"
 						>
 							Dr
 						</a>
@@ -19,7 +19,7 @@ export const Footer = () => {
 							target="_blank"
 							rel="noreferrer"
 							href="https://twitter.com/milovangudelj"
-							className="hover:text-white transition"
+							className="transition hover:text-white"
 						>
 							Tw
 						</a>
@@ -29,7 +29,7 @@ export const Footer = () => {
 							target="_blank"
 							rel="noreferrer"
 							href="https://instagram.com/milovangudelj"
-							className="hover:text-white transition"
+							className="transition hover:text-white"
 						>
 							Ig
 						</a>
@@ -39,7 +39,7 @@ export const Footer = () => {
 							target="_blank"
 							rel="noreferrer me"
 							href="https://mastodon.social/@ilikemartians"
-							className="hover:text-white transition"
+							className="transition hover:text-white"
 						>
 							Ma
 						</a>

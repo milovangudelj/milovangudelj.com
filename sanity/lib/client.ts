@@ -60,7 +60,7 @@ export async function getSlimProjects(
 
 export async function getCaseStudyBySlug({
 	slug,
-	lang  = "en",
+	lang = "en",
 }: {
 	slug: string;
 	lang?: Locale;

@@ -18,7 +18,11 @@ interface ProjectShowcaseProps extends ComponentProps<"div"> {
 	lang: Locale;
 }
 
-export const ProjectShowcase = async ({ messages, project, lang }: ProjectShowcaseProps) => {
+export const ProjectShowcase = async ({
+	messages,
+	project,
+	lang,
+}: ProjectShowcaseProps) => {
 	return (
 		<>
 			<div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-0">
