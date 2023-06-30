@@ -102,7 +102,7 @@ export default async function RootLayout({
 				<div className="relative before:pointer-events-none before:absolute before:inset-0 before:z-10 before:mx-auto before:w-[calc(100%-64px)] before:border-x before:border-white/[0.06] before:md:max-w-7xl">
 					{children}
 				</div>
-				<Footer />
+				<Footer lang={params.lang} />
 				{process.env.NODE_ENV === "production" && <Analytics />}
 			</body>
 		</html>

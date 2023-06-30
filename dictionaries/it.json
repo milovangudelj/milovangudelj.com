@@ -5,6 +5,9 @@
 		"portfolio": "portfolio",
 		"contact": "contatti"
 	},
+	"Footer": {
+		"views": "visualizzazioni"
+	},
 	"Home": {
 		"heroTitle": {
 			"webDev": "Web developer",

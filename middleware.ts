@@ -5,6 +5,7 @@ import Negotiator from "negotiator";
 import { generateSiteMap } from "~lib/sitemap";
 
 import { i18n } from "~/i18n.config";
+import { incrementViewCount } from "./utils/viewCount";
 
 function getLocale(request: NextRequest): string | undefined {
 	// Negotiator expects plain object so we need to transform headers
@@ -79,15 +80,19 @@ export const middleware = async (request: NextRequest) => {
 		// e.g. incoming request is /products
 		// The new URL is now /en-US/products
 		if (locale === i18n.defaultLocale) {
+			if (process.env.NODE_ENV === "production") await incrementViewCount();
+
 			return NextResponse.rewrite(
 				new URL(`/${locale}${pathname}`, request.url)
 			);
 		}
 
 		return NextResponse.redirect(
-			new URL(`/${locale}/${pathname}`, request.url)
+			new URL(`/${locale}${pathname}`, request.url)
 		);
 	}
+
+	if (process.env.NODE_ENV === "production") await incrementViewCount();
 
 	return NextResponse.next();
 };

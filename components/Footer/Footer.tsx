@@ -1,9 +1,25 @@
-export const Footer = () => {
+import { Suspense } from "react";
+
+import { Locale } from "~/i18n.config";
+import { getDictionary } from "~/utils/getDictionary";
+
+import { ViewCount } from "~components/ViewCount/ViewCount";
+import { ViewCountSkeleton } from "~components/ViewCount/ViewCountSkeleton";
+
+export const Footer = async ({ lang }: { lang: Locale }) => {
+	const dictionary = await getDictionary(lang);
+
 	return (
 		<footer className="border-t border-white/[0.06] px-8">
 			<div className="mx-auto flex w-full max-w-7xl items-center justify-between py-4 text-label-md text-white/70">
-				<span>Milovan Gudelj &copy; 2023</span>
-				<ul className="flex space-x-4">
+				<div className="flex items-baseline gap-4 max-md:flex-1 max-md:justify-between md:gap-2">
+					<span className="flex-none">Milovan Gudelj &copy; 2023</span>
+					<span className="hidden md:inline">-</span>
+					<Suspense fallback={<ViewCountSkeleton />}>
+						<ViewCount message={dictionary.Footer.views} />
+					</Suspense>
+				</div>
+				<ul className="hidden space-x-4 md:flex">
 					<li>
 						<a
 							target="_blank"
