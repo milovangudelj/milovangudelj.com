@@ -2,10 +2,12 @@
 
 import { useTransition, useEffect } from "react";
 import useSWR from "swr";
+import { Eye } from "@phosphor-icons/react";
 
 import fetcher from "~/lib/fetcher";
-import { ViewCountSkeleton } from "./ViewCountSkeleton";
-import { Eye } from "@phosphor-icons/react";
+import { incrementViewCount } from "~/lib/viewCount";
+
+import { ViewCountSkeleton } from "~components/ViewCount/ViewCountSkeleton";
 
 export const ViewCount = ({ message }: { message: string }) => {
 	let [isPending, startTransition] = useTransition();

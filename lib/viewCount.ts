@@ -22,18 +22,14 @@ export const incrementViewCount = async () => {
 		.eq("website", "www.milovangudelj.com")
 		.single();
 
-	if (previous.error) return null;
+	if (previous.error) return;
 
 	const count = previous.data.views;
 
-	const { data, error } = await supabase
+	await supabase
 		.from("view_count")
 		.update({ views: count + 1 })
 		.eq("website", "www.milovangudelj.com")
 		.select()
 		.single();
-
-	if (error) return null;
-
-	return { count: data.views };
 };
