@@ -1,25 +1,17 @@
 "use client";
 
-import { useTransition, useEffect } from "react";
 import useSWR from "swr";
 import { Eye } from "@phosphor-icons/react";
 
 import fetcher from "~/lib/fetcher";
-import { incrementViewCount } from "~/lib/viewCount";
 
 import { ViewCountSkeleton } from "~components/ViewCount/ViewCountSkeleton";
 
 export const ViewCount = ({ message }: { message: string }) => {
-	let [isPending, startTransition] = useTransition();
-
 	const { data, isLoading } = useSWR<{ count: number; error?: string }>(
 		"/api/viewCount",
 		fetcher
 	);
-
-	useEffect(() => {
-		startTransition(async () => await incrementViewCount());
-	}, []);
 
 	if (isLoading) return <ViewCountSkeleton />;
 
@@ -33,7 +25,7 @@ export const ViewCount = ({ message }: { message: string }) => {
 					{` ${message}`}
 				</span>
 			</div>
-			<Eye size={16} className="mb-0.5 flex-none" />
+			<Eye size={16} className="flex-none" />
 		</div>
 	);
 };
