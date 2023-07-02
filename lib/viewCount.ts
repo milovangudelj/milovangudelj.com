@@ -20,16 +20,37 @@ export const incrementViewCount = async () => {
 		.from("view_count")
 		.select("*")
 		.eq("website", "www.milovangudelj.com")
+		.limit(1)
 		.single();
 
-	if (previous.error) return;
+	if (previous.error)
+		return {
+			count: 0,
+			error: "Couldn't increment view count",
+		};
 
 	const count = previous.data.views;
 
-	await supabase
+	if (process.env.NODE_ENV !== "production") {
+		return {
+			count,
+		};
+	}
+
+	const { data, error } = await supabase
 		.from("view_count")
 		.update({ views: count + 1 })
 		.eq("website", "www.milovangudelj.com")
 		.select()
 		.single();
+
+	if (error)
+		return {
+			count: 0,
+			error: "Couldn't increment view count",
+		};
+
+	return {
+		count: data.views,
+	};
 };
