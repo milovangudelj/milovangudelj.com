@@ -5,7 +5,6 @@ export type _Artist = {
 		url: string;
 		width: number;
 		height: number;
-		color: string;
 	};
 };
 

@@ -1,4 +1,5 @@
 import { supabase } from "./supabase";
+import { _Artist } from "./types";
 
 const spotify_authorization = process.env.SPOTIFY_AUTHORIZATION!;
 
@@ -119,6 +120,9 @@ export const getTopArtists = async ({
 			headers: {
 				Authorization: `Bearer ${access_token}`,
 			},
+			next: {
+				revalidate: 60 * 60 * 24,
+			},
 		}
 	);
 
@@ -126,5 +130,13 @@ export const getTopArtists = async ({
 
 	const data = await res.json();
 
-	return data;
+	const artists = data.items.map((artist: any) => ({
+		name: artist.name,
+		url: artist.external_urls.spotify,
+		image: {
+			...artist.images[0],
+		},
+	})) as _Artist[];
+
+	return artists;
 };
