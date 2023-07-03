@@ -1,13 +1,8 @@
-"use client";
-
 import { ComponentProps } from "react";
 import Image from "next/image";
-import useSWRImmutable from "swr/immutable";
 
-import fetcher from "~lib/fetcher";
 import { _TopArtists, _Artist } from "~lib/types";
-import { getPalette } from "~utils/getPalette";
-import WrappedList from "~components/WrappedList/WrappedList";
+import { getTopArtists } from "~/lib/spotify";
 
 interface TopArtistsProps extends ComponentProps<"div"> {
 	title: string;
@@ -15,24 +10,24 @@ interface TopArtistsProps extends ComponentProps<"div"> {
 	itemOpenText?: string;
 }
 
-export const TopArtists = ({
+export const TopArtists = async ({
 	title,
 	itemAltText,
 	itemOpenText,
 	...props
 }: TopArtistsProps) => {
-	const { data } = useSWRImmutable<_TopArtists>("/api/topArtists", fetcher);
+	const artists = await getTopArtists({ limit: 5, range: "medium" });
 
 	return (
 		<div {...props}>
 			<h3 className="mb-4 text-label-md">{title}</h3>
 			<ul className="w-full justify-between max-xl:space-y-4 xl:flex">
-				{!data &&
+				{!artists &&
 					[...Array(5)].map((item, idx) => (
 						<ArtistSkeleton key={`skeleton_${idx}`} rank={idx + 1} />
 					))}
-				{data &&
-					data.artists.map((item, idx) => (
+				{artists &&
+					artists.map((item, idx) => (
 						<Artist key={item.url} item={item} rank={idx + 1} />
 					))}
 			</ul>
