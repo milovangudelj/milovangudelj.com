@@ -26,6 +26,7 @@ function getLocale(request: NextRequest): string | undefined {
 
 export const middleware = async (request: NextRequest) => {
 	const pathname = request.nextUrl.pathname;
+	const reqHeaders = new Headers(request.headers);
 
 	// Generates sitemap.xml if path is /sitemap.xml
 	if (request.nextUrl.pathname.localeCompare("/sitemap.xml") === 0) {
@@ -48,6 +49,9 @@ export const middleware = async (request: NextRequest) => {
 		return NextResponse.next();
 	}
 
+	const locale = getLocale(request) ?? "en";
+	reqHeaders.set("x-mg-locale", locale);
+
 	// Check if the default locale is in the pathname
 	if (
 		pathname.startsWith(`/${i18n.defaultLocale}/`) ||
@@ -62,7 +66,10 @@ export const middleware = async (request: NextRequest) => {
 					pathname === `/${i18n.defaultLocale}` ? "/" : ""
 				),
 				request.url
-			)
+			),
+			{
+				headers: reqHeaders,
+			}
 		);
 	}
 
@@ -74,22 +81,32 @@ export const middleware = async (request: NextRequest) => {
 
 	// Redirect if there is no locale
 	if (pathnameIsMissingLocale) {
-		const locale = getLocale(request);
-
 		// e.g. incoming request is /products
 		// The new URL is now /en-US/products
 		if (locale === i18n.defaultLocale) {
 			return NextResponse.rewrite(
-				new URL(`/${locale}${pathname}`, request.url)
+				new URL(`/${locale}${pathname}`, request.url),
+				{
+					headers: reqHeaders,
+				}
 			);
 		}
 
+		reqHeaders.set("x-mg-locale", "it");
 		return NextResponse.redirect(
-			new URL(`/${locale}${pathname}`, request.url)
+			new URL(`/${locale}${pathname}`, request.url),
+			{
+				headers: reqHeaders,
+			}
 		);
 	}
 
-	return NextResponse.next();
+	reqHeaders.set("x-mg-locale", "it");
+	return NextResponse.next({
+		request: {
+			headers: reqHeaders,
+		},
+	});
 };
 
 export const config = {
