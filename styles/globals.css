@@ -11,6 +11,12 @@
 	img {
 		@apply inline-block;
 	}
+
+	@media (min-width: 768px) {
+		:root {
+			--nav-height: 72.39px;
+		}
+	}
 }
 
 @tailwind components;
