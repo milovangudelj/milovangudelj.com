@@ -1,5 +1,3 @@
-"use server";
-
 import { supabase } from "~/lib/supabase";
 
 export const getViewCount = async () => {
