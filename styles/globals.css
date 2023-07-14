@@ -4,7 +4,7 @@
 	:root {
 		--orbit-radius: 300px;
 		--side-width: calc(max(calc(100vw - 1280px), 64px) / 2);
-		--nav-height: 72.39px;
+		--nav-height: 83px;
 		--mobile-nav-height: calc(100dvh - var(--nav-height));
 	}
 
