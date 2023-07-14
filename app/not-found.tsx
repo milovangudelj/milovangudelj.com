@@ -42,7 +42,7 @@ export default async function NotFound() {
 		>
 			<body>
 				<div className="min-h-[100dvh] bg-black bg-noise bg-repeat [background-size:100px]">
-					<Navbar lang="en" links={links} />
+					<Navbar lang={lang} links={links} />
 
 					<div className="flex h-[var(--mobile-nav-height)] flex-col items-center justify-center gap-16 px-8">
 						<Image
