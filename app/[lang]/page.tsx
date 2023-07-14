@@ -37,7 +37,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 					/>
 				</Container>
 				<p className="absolute bottom-8 left-8 text-label-md text-white/70 xl:left-[var(--side-width)]">
-					Wait, there&apos;s more{" "}
+					{dictionary.Home.more}{" "}
 					<span className="font-space text-yellow">↓</span>
 				</p>
 			</Section>

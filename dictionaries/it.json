@@ -13,7 +13,8 @@
 			"webDev": "Web developer",
 			"designer": "UI designer"
 		},
-		"heroParagraph": "Ciao, sono Milo! Sviluppo e progetto siti web coinvolgenti ed esperienze digitali uniche."
+		"heroParagraph": "Ciao, sono Milo! Sviluppo e progetto siti web coinvolgenti ed esperienze digitali uniche.",
+		"more": "Aspetta, c'è altro"
 	},
 	"Work": {
 		"title": "My designs",
@@ -108,5 +109,8 @@
 			"title": "Hai domanade?",
 			"description": "Non esitare a contattarmi se sei incuriosito/a o hai domande su qualsiasi cosa."
 		}
+	},
+	"NotFound": {
+		"content": "Questa pagina non esiste."
 	}
 }

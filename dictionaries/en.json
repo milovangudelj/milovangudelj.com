@@ -13,7 +13,8 @@
 			"webDev": "Web developer",
 			"designer": "UI designer"
 		},
-		"heroParagraph": "Hi! I design and develop engaging websites and delightful digital experiences."
+		"heroParagraph": "Hi! I design and develop engaging websites and delightful digital experiences.",
+		"more": "Wait, there's more"
 	},
 	"Work": {
 		"title": "My work",
@@ -108,5 +109,8 @@
 			"title": "Got a question?",
 			"description": "Don't hesitate to reach out if you have questions about anything you just read."
 		}
+	},
+	"NotFound": {
+		"content": "Oops, looks like you're lost."
 	}
 }
