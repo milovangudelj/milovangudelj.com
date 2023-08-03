@@ -22,4 +22,4 @@ export const i18nActions = new Set([
 ]);
 
 // Internationalised types
-export const i18nTypes = new Set(["project", "caseStudy"]);
+export const i18nTypes = new Set(['project', 'caseStudy', 'post'])
