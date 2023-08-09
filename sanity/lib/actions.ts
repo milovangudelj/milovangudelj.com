@@ -30,7 +30,7 @@ export function createExtendedPublishAction(originalPublishAction: DocumentActio
         setIsPublishing(true)
 
         // Set publishedAt to current date and time
-        patch.execute([{ set: { publishedAt: new Date().toISOString() } }])
+        patch.execute([{ setIfMissing: { publishedAt: new Date().toISOString() } }])
 
         // Perform the publish
         publish.execute()
