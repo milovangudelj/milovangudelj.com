@@ -28,6 +28,7 @@ import {
 	i18nActions,
 	i18nTypes,
 } from "~/sanity/lib/singletons";
+import { createExtendedPublishAction } from './sanity/lib/actions'
 
 export default defineConfig({
   basePath: '/studio',
@@ -50,6 +51,15 @@ export default defineConfig({
           ...input.filter(({ action }) => action && i18nActions.has(action)),
           DeleteTranslationAction,
         ]
+      }
+
+      // For posts modify the publish action to set the publishedAt field
+      if (schemaType === 'post') {
+        return input.map((originalAction) =>
+          originalAction.action === 'publish'
+            ? createExtendedPublishAction(originalAction)
+            : originalAction
+        )
       }
 
       return input
