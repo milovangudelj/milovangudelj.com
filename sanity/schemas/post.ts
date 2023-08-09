@@ -19,7 +19,7 @@ export const post = defineType({
       hidden: true,
     }),
     defineField({
-      name: '_publishedAt',
+      name: 'publishedAt',
       type: 'string',
       // readOnly: true,
       // hidden: true,
