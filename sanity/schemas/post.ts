@@ -19,6 +19,12 @@ export const post = defineType({
       hidden: true,
     }),
     defineField({
+      name: '_publishedAt',
+      type: 'string',
+      // readOnly: true,
+      // hidden: true,
+    }),
+    defineField({
       name: 'title',
       description: 'This field is the title of your post.',
       title: 'Title',
