@@ -28,16 +28,6 @@ export const middleware = async (request: NextRequest) => {
 	const pathname = request.nextUrl.pathname;
 	const reqHeaders = new Headers(request.headers);
 
-	// Generates sitemap.xml if path is /sitemap.xml
-	if (request.nextUrl.pathname.localeCompare("/sitemap.xml") === 0) {
-		const sitemap = await generateSiteMap();
-
-		return new NextResponse(sitemap, {
-			status: 200,
-			headers: { "Content-Type": "text/xml" },
-		});
-	}
-
 	// `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
 	// If you have one
 	if (
@@ -110,8 +100,6 @@ export const middleware = async (request: NextRequest) => {
 };
 
 export const config = {
-	// Matcher ignoring `/_next/` and `/api/`
-	matcher: [
-		"/((?!api|studio|robots.txt|_next/static|_next/image|images|fonts).*)",
-	],
-};
+  // Matcher ignoring `/_next/` and `/api/`
+  matcher: ['/((?!api|studio|sitemap.xml|robots.txt|_next/static|_next/image|images|fonts).*)'],
+}
