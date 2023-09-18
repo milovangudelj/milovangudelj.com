@@ -51,7 +51,7 @@
     "sanity-plugin-asset-source-unsplash": "^1.1.0",
     "sanity-plugin-dashboard-widget-vercel": "^2.0.1",
     "sanity-plugin-media": "^2.0.5",
-    "sharp": "^0.31.3",
+    "sharp": "^0.32.0",
     "spotify-web-api-node": "^5.0.2",
     "styled-components": "^5.2.0",
     "swr": "^2.0.0",
