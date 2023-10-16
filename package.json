@@ -33,7 +33,7 @@
     "cva": "npm:class-variance-authority",
     "framer-motion": "^10.0.0",
     "graphql": "16.8.1",
-    "graphql-request": "5.2.0",
+    "graphql-request": "6.1.0",
     "html-to-image": "^1.11.1",
     "html2canvas": "^1.4.1",
     "negotiator": "^0.6.3",
