@@ -1,22 +1,15 @@
 import { Analytics } from "@vercel/analytics/react";
 import localFont from "next/font/local";
+import { GeistSans } from 'geist/font'
 
-import { getSiteNavigation } from "~/sanity/lib/client";
-import { i18n, Locale } from "~/i18n.config";
+import { getSiteNavigation } from '~/sanity/lib/client'
+import { i18n, Locale } from '~/i18n.config'
 
-import "~styles/globals.css";
+import '~styles/globals.css'
 
-import { Navbar } from "~components/Navbar";
-import { Footer } from "~components/Footer";
+import { Navbar } from '~components/Navbar'
+import { Footer } from '~components/Footer'
 
-const inter = localFont({
-	src: "../../public/fonts/Inter-Var.woff2",
-	display: "swap",
-	preload: true,
-	weight: "100 900",
-	style: "oblique -10deg 0deg",
-	variable: "--font-inter",
-});
 const spaceGrotesk = localFont({
 	src: "../../public/fonts/SpaceGrotesk-Var.woff2",
 	display: "swap",
@@ -93,18 +86,15 @@ export default async function RootLayout({
 	const { links } = await getSiteNavigation({ lang: params.lang });
 
 	return (
-		<html
-			lang={params.lang}
-			className={`${inter.variable} ${spaceGrotesk.variable}`}
-		>
-			<body className="relative min-h-screen scroll-smooth bg-black font-sans text-white before:pointer-events-none before:absolute before:inset-0 before:block before:bg-noise before:bg-repeat before:[background-size:100px]">
-				<Navbar lang={params.lang} links={links} />
-				<div className="relative before:pointer-events-none before:absolute before:inset-0 before:z-10 before:mx-auto before:w-[calc(100%-64px)] before:border-x before:border-white/[0.06] before:md:max-w-7xl">
-					{children}
-				</div>
-				<Footer lang={params.lang} />
-				{process.env.NODE_ENV === "production" && <Analytics />}
-			</body>
-		</html>
-	);
+    <html lang={params.lang} className={`${GeistSans.variable} ${spaceGrotesk.variable}`}>
+      <body className="relative min-h-screen scroll-smooth bg-black font-sans text-white before:pointer-events-none before:absolute before:inset-0 before:block before:bg-noise before:bg-repeat before:[background-size:100px]">
+        <Navbar lang={params.lang} links={links} />
+        <div className="relative before:pointer-events-none before:absolute before:inset-0 before:z-10 before:mx-auto before:w-[calc(100%-64px)] before:border-x before:border-white/[0.06] before:md:max-w-7xl">
+          {children}
+        </div>
+        <Footer lang={params.lang} />
+        {process.env.NODE_ENV === 'production' && <Analytics />}
+      </body>
+    </html>
+  )
 }
