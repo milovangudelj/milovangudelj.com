@@ -99,5 +99,5 @@ export const middleware = async (request: NextRequest) => {
 
 export const config = {
   // Matcher ignoring `/_next/` and `/api/`
-  matcher: ['/((?!api|studio|sitemap.xml|robots.txt|_next/static|_next/image|images|fonts).*)'],
+  matcher: ['/((?!api|sitemap.xml|robots.txt|_next/static|_next/image|images|fonts).*)'],
 }
