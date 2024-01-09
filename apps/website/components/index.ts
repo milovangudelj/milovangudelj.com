@@ -10,7 +10,6 @@ export * from "./Container";
 export * from "./NowPlaying";
 export * from "./TopArtists";
 export * from "./Button";
-export * from "./WrappedList";
 export * from "./LanguageSwitch";
 export * from "./PosterGallery";
 export * from "./ViewCount";
