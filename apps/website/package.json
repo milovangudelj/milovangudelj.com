@@ -15,13 +15,13 @@
     "@headlessui/react": "^1.7.4",
     "@phosphor-icons/react": "^2.0.10",
     "@portabletext/react": "^3.0.2",
-    "ui": "workspace:*",
     "@sanity/client": "^6.1.7",
     "@sanity/image-url": "^1.0.2",
     "@supabase/supabase-js": "^2.26.0",
     "@types/negotiator": "^0.6.1",
     "@types/styled-components": "^5.1.0",
     "@vercel/analytics": "^1.0.0",
+    "@vercel/speed-insights": "^1.0.2",
     "cva": "npm:class-variance-authority",
     "framer-motion": "^10.0.0",
     "geist": "^1.0.0",
@@ -45,7 +45,8 @@
     "spotify-web-api-node": "^5.0.2",
     "styled-components": "^5.2.0",
     "swr": "^2.0.0",
-    "tailwind-merge": "^1.8.0"
+    "tailwind-merge": "^1.8.0",
+    "ui": "workspace:*"
   },
   "devDependencies": {
     "@graphcms/rich-text-types": "^0.5.0",

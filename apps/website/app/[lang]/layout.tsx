@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import localFont from "next/font/local";
 import { GeistSans } from 'geist/font/sans'
 
@@ -98,6 +99,7 @@ export default async function RootLayout({
           {children}
         </div>
         <Footer lang={params.lang} />
+        {process.env.NODE_ENV === 'production' && <SpeedInsights />}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
