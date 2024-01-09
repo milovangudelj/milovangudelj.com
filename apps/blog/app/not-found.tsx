@@ -56,7 +56,7 @@ export default async function NotFound() {
               alt="Confused John Travolta from the movie Pulp Fiction"
               className="aspect-[293/300] w-[293px] object-cover opacity-50 grayscale"
             />
-            <h1 className="text-sub-heading-mobile text-white xl:text-sub-heading">
+            <h1 className="text-sub-heading-mobile xl:text-sub-heading text-white">
               {dictionary.NotFound.content}
             </h1>
           </div>

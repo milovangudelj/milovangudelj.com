@@ -11,7 +11,7 @@ export const Footer = async ({ lang }: { lang: Locale }) => {
 
   return (
     <footer className="border-t border-white/[0.06] px-8">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between py-4 text-label-md text-white/70">
+      <div className="text-label-md mx-auto flex w-full max-w-7xl items-center justify-between py-4 text-white/70">
         <div className="flex items-baseline gap-4 max-md:flex-1 max-md:justify-between md:gap-2">
           <span className="flex-none">Milovan Gudelj &copy; 2023</span>
           <span className="hidden md:inline">-</span>

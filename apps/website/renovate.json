@@ -1,34 +1,29 @@
 {
-	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["config:base"],
-	"packageRules": [
-		{
-			"matchPackagePatterns": ["@types"],
-			"groupName": "types"
-		},
-		{
-			"matchPackageNames": ["next", "react", "react-dom"],
-			"groupName": "react"
-		},
-		{
-			"matchPackagePatterns": [
-				"tailwind",
-				"postcss",
-				"autoprefixer",
-				"headlessui"
-			],
-			"groupName": "tailwind"
-		},
-		{
-			"matchPackagePatterns": ["eslint"],
-			"groupName": "eslint"
-		},
-		{
-			"matchPackagePatterns": ["prettier"],
-			"groupName": "prettier"
-		}
-	],
-	"automerge": true,
-	"automergeType": "branch",
-	"schedule": ["before 2am on monday"]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["@types"],
+      "groupName": "types"
+    },
+    {
+      "matchPackageNames": ["next", "react", "react-dom"],
+      "groupName": "react"
+    },
+    {
+      "matchPackagePatterns": ["tailwind", "postcss", "autoprefixer", "headlessui"],
+      "groupName": "tailwind"
+    },
+    {
+      "matchPackagePatterns": ["eslint"],
+      "groupName": "eslint"
+    },
+    {
+      "matchPackagePatterns": ["prettier"],
+      "groupName": "prettier"
+    }
+  ],
+  "automerge": true,
+  "automergeType": "branch",
+  "schedule": ["before 2am on monday"]
 }

@@ -118,15 +118,15 @@ export const Entries = ({
                 <span className="text-body text-light-me">{created_by}</span>
               </div>
             </div>
-            <p className="relative flex items-center self-stretch break-words border-white/[0.06] px-4 py-2 text-body text-light-he max-md:border-t md:border-l lg:line-clamp-3">
+            <p className="text-body text-light-he relative flex items-center self-stretch break-words border-white/[0.06] px-4 py-2 max-md:border-t md:border-l lg:line-clamp-3">
               {body}
             </p>
             {isOwner && (
               <button
                 className={`bg-noise absolute right-0 top-0 hidden h-6 w-6 -translate-y-1/2 translate-x-1/2 items-center justify-center overflow-hidden rounded-full transition ${
                   is_published
-                    ? 'border border-white/[0.16] bg-black text-light-he'
-                    : 'border border-white/[0.16] bg-black text-light-le'
+                    ? 'text-light-he border border-white/[0.16] bg-black'
+                    : 'text-light-le border border-white/[0.16] bg-black'
                 } group-hover:flex`}
                 onClick={() => handleVisibilityToggle(id, is_published, !is_published)}
               >

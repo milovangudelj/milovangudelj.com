@@ -74,7 +74,7 @@
   }
 
   p {
-    @apply max-w-[680px] text-body;
+    @apply text-body max-w-[680px];
   }
 
   .scrollbar-hidden::-webkit-scrollbar {

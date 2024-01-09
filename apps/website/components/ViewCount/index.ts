@@ -1,2 +1,2 @@
-export * from "./ViewCount";
-export * from "./ViewCountSkeleton";
+export * from './ViewCount'
+export * from './ViewCountSkeleton'

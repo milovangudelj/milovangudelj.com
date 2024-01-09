@@ -1,13 +1,13 @@
-import { useIsomorphicLayoutEffect } from "~utils/useIsomorphicLayoutEffect";
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect'
 
 export const useLockBodyScroll = () => {
-	useIsomorphicLayoutEffect(() => {
-		const originalStyle = window.getComputedStyle(document.body).overflow;
+  useIsomorphicLayoutEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow
 
-		document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden'
 
-		return () => {
-			document.body.style.overflow = originalStyle;
-		};
-	}, []);
-};
+    return () => {
+      document.body.style.overflow = originalStyle
+    }
+  }, [])
+}

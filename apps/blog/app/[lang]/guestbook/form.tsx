@@ -76,7 +76,7 @@ export function Form({ authenticated }: { authenticated?: boolean }) {
           })}
           aria-invalid={errors.signature ? 'true' : 'false'}
           placeholder="Your message..."
-          className="form-input min-w-0 flex-1 rounded-lg border border-white/[0.06] bg-transparent px-4 py-2 text-body text-light-he transition placeholder:text-light-le focus:border-yellow focus:ring-yellow"
+          className="form-input text-body text-light-he placeholder:text-light-le focus:border-yellow focus:ring-yellow min-w-0 flex-1 rounded-lg border border-white/[0.06] bg-transparent px-4 py-2 transition"
         />
         {authenticated && (
           <Button type="submit" variant="primary">
@@ -94,11 +94,11 @@ export function Form({ authenticated }: { authenticated?: boolean }) {
           </Button>
         )}
       </form>
-      <div className="flex flex-1 items-baseline gap-2 text-label-md">
+      <div className="text-label-md flex flex-1 items-baseline gap-2">
         {authenticated && (
           <button
             onClick={handleSignOut}
-            className="flex-none bg-transparent text-light-me hover:text-light-he"
+            className="text-light-me hover:text-light-he flex-none bg-transparent"
           >
             Sign out
           </button>

@@ -60,7 +60,7 @@ export const LanguageSwitch = () => {
             key={locale.value}
             href={`/${locale.value}` + cleanPathname(pathname) + getQueryString()}
             title={locale.value === 'it' ? "Passa all'Italiano" : 'Switch to English'}
-            className={`relative inline-flex items-center gap-1 px-4 py-2 text-button opacity-60 transition hover:opacity-100`}
+            className={`text-button relative inline-flex items-center gap-1 px-4 py-2 opacity-60 transition hover:opacity-100`}
           >
             <span>{locale.label}</span>
             <span>

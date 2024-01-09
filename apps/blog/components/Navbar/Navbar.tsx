@@ -34,7 +34,7 @@ export const Navbar = ({
       className="bg-noise sticky top-0 z-20 border-b border-white/[0.06] bg-black px-8 shadow-2xl backdrop-blur-sm transition duration-300"
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between py-4">
-        <span className="relative text-sub-heading">
+        <span className="text-sub-heading relative">
           <a href={`https://www.milovangudelj.com/${lang}`}>Milo</a>{' '}
           <Link href={`/${lang}`} className="text-yellow">
             ~ blog
@@ -46,7 +46,7 @@ export const Navbar = ({
             lang={lang}
             className="max-md:pointer-events-none max-md:invisible max-md:hidden max-md:select-none"
           />
-          <span className="inline-block h-6 w-px bg-yellow max-md:invisible max-md:hidden"></span>
+          <span className="bg-yellow inline-block h-6 w-px max-md:invisible max-md:hidden"></span>
           <Suspense fallback={<LanguageSwitchFallback lang={lang} />}>
             <LanguageSwitch />
           </Suspense>

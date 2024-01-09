@@ -1,56 +1,54 @@
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router'
 import {
-	createContext,
-	Dispatch,
-	ReactNode,
-	SetStateAction,
-	useContext,
-	useEffect,
-	useState,
-} from "react";
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 
 type ScrollProviderValue = {
-	scrollable: boolean;
-	setScrollable: Dispatch<SetStateAction<boolean>>;
-};
+  scrollable: boolean
+  setScrollable: Dispatch<SetStateAction<boolean>>
+}
 
 const ScrollContext = createContext<ScrollProviderValue>({
-	scrollable: true,
-	setScrollable: () => {},
-});
+  scrollable: true,
+  setScrollable: () => {},
+})
 
 export function useScroll(): ScrollProviderValue {
-	return useContext(ScrollContext);
+  return useContext(ScrollContext)
 }
 
 export const ScrollProvider = ({ children }: { children: ReactNode }) => {
-	const value = useProvideScroll();
+  const value = useProvideScroll()
 
-	return (
-		<ScrollContext.Provider value={value}>{children}</ScrollContext.Provider>
-	);
-};
+  return <ScrollContext.Provider value={value}>{children}</ScrollContext.Provider>
+}
 
 const useProvideScroll = (): ScrollProviderValue => {
-	const [scrollable, setScrollable] = useState<boolean>(true);
-	const router = useRouter();
+  const [scrollable, setScrollable] = useState<boolean>(true)
+  const router = useRouter()
 
-	useEffect(() => {
-		const changeHandler = (url: string) => {
-			if (url !== router.asPath) {
-				setScrollable(true);
-			}
-		};
+  useEffect(() => {
+    const changeHandler = (url: string) => {
+      if (url !== router.asPath) {
+        setScrollable(true)
+      }
+    }
 
-		router.events.on("routeChangeStart", changeHandler);
+    router.events.on('routeChangeStart', changeHandler)
 
-		return () => {
-			router.events.off("routeChangeStart", changeHandler);
-		};
-	}, [router.events, router.asPath]);
+    return () => {
+      router.events.off('routeChangeStart', changeHandler)
+    }
+  }, [router.events, router.asPath])
 
-	return {
-		scrollable,
-		setScrollable,
-	};
-};
+  return {
+    scrollable,
+    setScrollable,
+  }
+}

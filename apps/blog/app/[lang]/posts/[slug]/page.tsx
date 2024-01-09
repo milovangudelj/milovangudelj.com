@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 
 import { Container } from '~/components/Container'
 import { Section } from '~/components/Section'
@@ -12,6 +12,10 @@ export async function generateStaticParams() {
   const posts = await getPostPaths()
 
   return posts.map((post) => ({ slug: post }))
+}
+
+export const viewport: Viewport = {
+  themeColor: '#FFC700',
 }
 
 export async function generateMetadata({
@@ -30,7 +34,6 @@ export async function generateMetadata({
         'it-IT': `https://blog.milovangudelj.com/it/posts/${slug}`,
       },
     },
-    themeColor: '#FFC700',
     openGraph: {
       images: {
         url: urlForImage(cover.image).url(),

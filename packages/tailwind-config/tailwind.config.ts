@@ -1,9 +1,9 @@
-import type { Config } from "tailwindcss";
-import typography from "@tailwindcss/typography";
-import forms from "@tailwindcss/forms";
-import defaultTheme from "tailwindcss/defaultTheme";
+import type { Config } from 'tailwindcss'
+import typography from '@tailwindcss/typography'
+import forms from '@tailwindcss/forms'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
-const config: Omit<Config, "content"> = {
+const config: Omit<Config, 'content'> = {
   theme: {
     colors: {
       yellow: '#FFC700',
@@ -357,5 +357,5 @@ const config: Omit<Config, "content"> = {
     },
   },
   plugins: [typography, forms],
-};
-export default config;
+}
+export default config

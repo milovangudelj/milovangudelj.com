@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { useLayoutEffect } from "react";
+import { useLayoutEffect } from 'react'
 
 /**
  * On the server, React emits a warning when calling `useLayoutEffect`.
@@ -9,7 +9,6 @@ import { useLayoutEffect } from "react";
  *
  * See: https://reactjs.org/docs/hooks-reference.html#uselayouteffect
  */
-const useIsomorphicLayoutEffect =
-	typeof window !== "undefined" ? useLayoutEffect : () => {};
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : () => {}
 
-export { useIsomorphicLayoutEffect };
+export { useIsomorphicLayoutEffect }

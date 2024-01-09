@@ -1,4 +1,4 @@
-import { groq } from "next-sanity";
+import { groq } from 'next-sanity'
 
 export const siteNavigationQuery = groq`
   *[_type == "siteNavigation" && _id == "siteNavigation"][0]{
@@ -8,13 +8,13 @@ export const siteNavigationQuery = groq`
       "label": label[$lang],
     }
   }
-`;
+`
 
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0][0] {
     title,
   }
-`;
+`
 
 export const projectsQuery = groq`
   *[_type == "project" && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] {
@@ -34,7 +34,7 @@ export const projectsQuery = groq`
     "tags": tags[]->value,
     caseStudy,
   }
-`;
+`
 
 export const slimProjectsQuery = groq`
   *[_type == "project" && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] {
@@ -48,7 +48,7 @@ export const slimProjectsQuery = groq`
       "height": cover.asset->metadata.dimensions.height,
     },
   }
-`;
+`
 
 export const caseStudyBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0][0].caseStudy->{
@@ -75,15 +75,15 @@ export const caseStudyBySlugQuery = groq`
       "height": cover.asset->metadata.dimensions.height,
     }
   }
-`;
+`
 
 export const projectPaths = groq`
   *[_type == "project" && language == "en" && slug.current != null].slug.current
-`;
+`
 
 export const caseStudyPaths = groq`
   *[_type == "caseStudy" && language == "en"].project->slug.current
-`;
+`
 
 export const postersQuery = groq`
   *[_type == "poster"] | order(_createdAt asc)[0..7] {
@@ -96,4 +96,4 @@ export const postersQuery = groq`
       "height": image.asset->metadata.dimensions.height,
     },
   }
-`;
+`

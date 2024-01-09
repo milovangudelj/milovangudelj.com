@@ -17,10 +17,10 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
     <>
       <Section className="relative text-white">
         <Container as="main" className="relative">
-          <h1 className="mb-16 max-w-[600px] text-h1-mobile md:text-d1-mobile 2xl:text-d1">
+          <h1 className="text-h1-mobile md:text-d1-mobile 2xl:text-d1 mb-16 max-w-[600px]">
             {dictionary.Home.heroTitle}
           </h1>
-          <p className="max-w-[500px] text-sub-heading-mobile md:text-sub-heading">
+          <p className="text-sub-heading-mobile md:text-sub-heading max-w-[500px]">
             {dictionary.Home.heroParagraph}
           </p>
           <Image
@@ -35,7 +35,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
       </Section>
       <Section>
         <Container>
-          <h2 className="mb-16 text-h2-mobile xl:text-h2">Latest posts</h2>
+          <h2 className="text-h2-mobile xl:text-h2 mb-16">Latest posts</h2>
           <ol className="flex justify-between">
             {posts.slice(0, 3).map((post) => (
               <li key={post.slug} className="">
@@ -54,15 +54,15 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
                 <div className="flex flex-col">
                   <Link
                     href={`/posts/${post.slug}`}
-                    className="group w-fit text-sub-heading-mobile font-medium md:text-sub-heading"
+                    className="text-sub-heading-mobile md:text-sub-heading group w-fit font-medium"
                   >
                     {post.title}{' '}
-                    <span className="inline-block text-white transition will-change-transform group-hover:translate-x-1 group-hover:text-yellow">
+                    <span className="group-hover:text-yellow inline-block text-white transition will-change-transform group-hover:translate-x-1">
                       →
                     </span>
                   </Link>
 
-                  <span className="inline-block max-w-full truncate text-label-md text-light-me">
+                  <span className="text-label-md text-light-me inline-block max-w-full truncate">
                     {46} views
                   </span>
                 </div>

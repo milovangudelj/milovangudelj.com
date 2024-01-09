@@ -1,79 +1,70 @@
-import {
-  File,
-  Folder,
-  Gear,
-  Image,
-  Link,
-  Palette,
-  PencilLine,
-  Tag,
-} from "@phosphor-icons/react";
-import { DefaultDocumentNodeResolver, StructureResolver } from "sanity/desk";
-import { LANGUAGES } from "./utils/languages";
+import { File, Folder, Gear, Image, Link, Palette, PencilLine, Tag } from '@phosphor-icons/react'
+import { DefaultDocumentNodeResolver, StructureResolver } from 'sanity/desk'
+import { LANGUAGES } from './utils/languages'
 
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (S) => {
-  return S.document().views([S.view.form()]);
-};
+  return S.document().views([S.view.form()])
+}
 
 export const structure: StructureResolver = (S, context) => {
   // console.log(context); // returns { currentUser, dataset, projectId, schema, getClient, documentStore }
 
   return S.list()
-    .title("Content")
+    .title('Content')
     .items([
       S.listItem()
-        .title("Settings")
+        .title('Settings')
         .icon(Folder)
         .child(
           S.list()
-            .title("Settings Documents")
+            .title('Settings Documents')
             .items([
               S.listItem()
-                .title("Site Settings")
+                .title('Site Settings')
                 .child(
                   S.document()
-                    .title("Site Settings")
-                    .schemaType("siteSettings")
-                    .documentId("siteSettings")
+                    .title('Site Settings')
+                    .schemaType('siteSettings')
+                    .documentId('siteSettings')
                 )
                 .icon(Gear),
               S.listItem()
-                .title("Site Navigation")
+                .title('Site Navigation')
                 .child(
                   S.document()
-                    .title("Site Navigation")
-                    .schemaType("siteNavigation")
-                    .documentId("siteNavigation")
+                    .title('Site Navigation')
+                    .schemaType('siteNavigation')
+                    .documentId('siteNavigation')
                 )
                 .icon(Link),
               S.listItem()
-                .title("Site Colors")
+                .title('Site Colors')
                 .child(
                   S.document()
-                    .title("Site Colors")
-                    .schemaType("siteColors")
-                    .documentId("siteColors")
+                    .title('Site Colors')
+                    .schemaType('siteColors')
+                    .documentId('siteColors')
                 )
                 .icon(Palette),
             ])
         ),
       S.divider(),
       S.listItem()
-        .title("Projects")
-        .schemaType("project")
+        .title('Projects')
+        .schemaType('project')
         .child(
           S.list()
-            .title("Projects")
+            .title('Projects')
             .items([
               S.listItem()
-                .title("🌐 All")
+                .title('🌐 All')
                 .showIcon(false)
-                .schemaType("project")
+                .schemaType('project')
                 .child(
                   S.documentList()
-                    .id("all-languages")
-                    .title("🌐 Projects")
-                    .schemaType("project")
+                    .id('all-languages')
+                    .title('🌐 Projects')
+                    .schemaType('project')
                     .filter('_type == "project"')
                 ),
               S.divider(),
@@ -81,35 +72,35 @@ export const structure: StructureResolver = (S, context) => {
                 return S.listItem()
                   .title(`${language.flag} ${language.title}`)
                   .showIcon(false)
-                  .schemaType("project")
+                  .schemaType('project')
                   .child(
                     S.documentList()
                       .id(language.id)
                       .title(`${language.flag} Projects`)
-                      .schemaType("project")
+                      .schemaType('project')
                       .filter('_type == "project" && language == $lang')
                       .params({ lang: language.id })
-                  );
+                  )
               }),
             ])
         )
         .icon(File),
       S.listItem()
-        .title("Case Studies")
-        .schemaType("caseStudy")
+        .title('Case Studies')
+        .schemaType('caseStudy')
         .child(
           S.list()
-            .title("Case Studies")
+            .title('Case Studies')
             .items([
               S.listItem()
-                .title("🌐 All")
+                .title('🌐 All')
                 .showIcon(false)
-                .schemaType("caseStudy")
+                .schemaType('caseStudy')
                 .child(
                   S.documentList()
-                    .id("all-languages")
-                    .title("🌐 Case Studies")
-                    .schemaType("caseStudy")
+                    .id('all-languages')
+                    .title('🌐 Case Studies')
+                    .schemaType('caseStudy')
                     .filter('_type == "caseStudy"')
                 ),
               S.divider(),
@@ -117,35 +108,35 @@ export const structure: StructureResolver = (S, context) => {
                 return S.listItem()
                   .title(`${language.flag} ${language.title}`)
                   .showIcon(false)
-                  .schemaType("caseStudy")
+                  .schemaType('caseStudy')
                   .child(
                     S.documentList()
                       .id(language.id)
                       .title(`${language.flag} Case Studies`)
-                      .schemaType("caseStudy")
+                      .schemaType('caseStudy')
                       .filter('_type == "caseStudy" && language == $lang')
                       .params({ lang: language.id })
-                  );
+                  )
               }),
             ])
         )
         .icon(File),
       S.listItem()
-        .title("Posts")
-        .schemaType("post")
+        .title('Posts')
+        .schemaType('post')
         .child(
           S.list()
-            .title("Posts")
+            .title('Posts')
             .items([
               S.listItem()
-                .title("🌐 All")
+                .title('🌐 All')
                 .showIcon(false)
-                .schemaType("post")
+                .schemaType('post')
                 .child(
                   S.documentList()
-                    .id("all-languages")
-                    .title("🌐 Posts")
-                    .schemaType("post")
+                    .id('all-languages')
+                    .title('🌐 Posts')
+                    .schemaType('post')
                     .filter('_type == "post"')
                 ),
               S.divider(),
@@ -153,43 +144,41 @@ export const structure: StructureResolver = (S, context) => {
                 return S.listItem()
                   .title(`${language.flag} ${language.title}`)
                   .showIcon(false)
-                  .schemaType("post")
+                  .schemaType('post')
                   .child(
                     S.documentList()
                       .id(language.id)
                       .title(`${language.flag} Posts`)
-                      .schemaType("post")
+                      .schemaType('post')
                       .filter('_type == "post" && language == $lang')
                       .params({ lang: language.id })
-                  );
+                  )
               }),
             ])
         )
         .icon(PencilLine),
       S.divider(),
       S.listItem()
-        .title("Project Tags")
-        .schemaType("projectTag")
-        .child(S.documentTypeList("projectTag").title("Project Tags"))
+        .title('Project Tags')
+        .schemaType('projectTag')
+        .child(S.documentTypeList('projectTag').title('Project Tags'))
         .icon(Tag),
       S.listItem()
-        .title("Post Tags")
-        .schemaType("postTag")
-        .child(S.documentTypeList("postTag").title("Post Tags"))
+        .title('Post Tags')
+        .schemaType('postTag')
+        .child(S.documentTypeList('postTag').title('Post Tags'))
         .icon(Tag),
       S.listItem()
-        .title("Media Tags")
-        .schemaType("media.tag")
-        .child(
-          S.documentTypeList("media.tag").title("Media Tags").showIcons(false)
-        )
+        .title('Media Tags')
+        .schemaType('media.tag')
+        .child(S.documentTypeList('media.tag').title('Media Tags').showIcons(false))
         .icon(Tag),
       S.divider(),
       S.listItem()
-        .title("Poster")
-        .schemaType("poster")
-        .child(S.documentTypeList("poster").title("Poster"))
+        .title('Poster')
+        .schemaType('poster')
+        .child(S.documentTypeList('poster').title('Poster'))
         .icon(Image),
     ])
-    .showIcons(true);
-};
+    .showIcons(true)
+}

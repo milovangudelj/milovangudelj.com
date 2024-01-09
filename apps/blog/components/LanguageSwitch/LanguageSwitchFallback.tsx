@@ -3,7 +3,7 @@ import { Locale } from '~/i18n.config'
 export const LanguageSwitchFallback = ({ lang }: { lang: Locale }) => {
   return (
     <span
-      className={`relative inline-flex items-center gap-1 px-4 py-2 text-button opacity-60 transition hover:opacity-100`}
+      className={`text-button relative inline-flex items-center gap-1 px-4 py-2 opacity-60 transition hover:opacity-100`}
     >
       <span>{lang === 'en' ? 'it' : 'en'}</span>
       <span>

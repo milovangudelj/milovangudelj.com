@@ -16,7 +16,7 @@ export const ViewCount = ({ message }: { message: string }) => {
 
   return (
     <div className="ml-auto inline-flex items-center gap-1 self-stretch overflow-hidden">
-      <div className="relative inline max-w-full truncate text-yellow/70">
+      <div className="text-yellow/70 relative inline max-w-full truncate">
         {data.count}
         <span className="absolute h-px w-px whitespace-pre border-none opacity-0 [clip:rect(0,_0,_0,_0)]">
           {` ${message}`}

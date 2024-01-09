@@ -1,2 +1,2 @@
-export * from "./LanguageSwitch";
-export * from "./LanguageSwitchFallback";
+export * from './LanguageSwitch'
+export * from './LanguageSwitchFallback'

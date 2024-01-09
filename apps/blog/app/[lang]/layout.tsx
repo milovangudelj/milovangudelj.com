@@ -6,6 +6,7 @@ import '~styles/globals.css'
 
 import { Navbar } from '~components/Navbar'
 import { Footer } from '~components/Footer'
+import { Viewport } from 'next'
 
 const inter = localFont({
   src: '../../public/fonts/Inter-Var.woff2',
@@ -23,6 +24,10 @@ const spaceGrotesk = localFont({
   style: 'normal',
   variable: '--font-space',
 })
+
+export const viewport: Viewport = {
+  themeColor: '#FFC700',
+}
 
 export const metadata = {
   title: 'Milovan Gudelj - Web developer / UI designer',
@@ -66,7 +71,6 @@ export const metadata = {
       type: 'image/png',
     },
   },
-  themeColor: '#000000',
   manifest: '/images/favicon/site.webmanifest',
   other: {
     'msapplication-TileColor': '#000000',

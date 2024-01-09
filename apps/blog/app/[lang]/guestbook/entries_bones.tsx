@@ -26,7 +26,7 @@ export const EntriesBones = ({ entries }: { entries: GuestbookEntry[] }) => {
                 <span className="text-body text-light-me">{created_by}</span>
               </div>
             </div>
-            <p className="relative flex items-center self-stretch break-words border-white/[0.06] px-4 py-2 text-body text-light-he max-md:border-t md:border-l lg:line-clamp-3">
+            <p className="text-body text-light-he relative flex items-center self-stretch break-words border-white/[0.06] px-4 py-2 max-md:border-t md:border-l lg:line-clamp-3">
               {body}
             </p>
           </li>

@@ -31,7 +31,7 @@ export const Button = forwardRef(
       <Component
         className={`inline-flex h-min min-w-fit items-center gap-3 rounded-lg ${
           variant === 'primary' ? 'bg-yellow' : 'bg-white'
-        } px-4 py-2 text-center font-sans text-body font-medium text-black`}
+        } text-body px-4 py-2 text-center font-sans font-medium text-black`}
         ref={ref}
         {...props}
       >

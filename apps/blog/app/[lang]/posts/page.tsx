@@ -15,7 +15,7 @@ export default async function PostsPage({ params: { lang } }: { params: { lang: 
     <>
       <Section>
         <Container>
-          <h1 className="mb-16 text-h1-mobile md:text-d1-mobile 2xl:text-d1">Latest posts</h1>
+          <h1 className="text-h1-mobile md:text-d1-mobile 2xl:text-d1 mb-16">Latest posts</h1>
           <ol className="flex justify-between">
             {posts.slice(0, 3).map((post) => (
               <li key={post.slug}>
@@ -34,14 +34,14 @@ export default async function PostsPage({ params: { lang } }: { params: { lang: 
                 <div className="flex flex-col">
                   <Link
                     href={`/posts/${post.slug}`}
-                    className="group w-fit text-sub-heading-mobile font-medium md:text-sub-heading"
+                    className="text-sub-heading-mobile md:text-sub-heading group w-fit font-medium"
                   >
                     {post.title}{' '}
-                    <span className="inline-block text-white transition will-change-transform group-hover:translate-x-1 group-hover:text-yellow">
+                    <span className="group-hover:text-yellow inline-block text-white transition will-change-transform group-hover:translate-x-1">
                       →
                     </span>
                   </Link>
-                  <span className="inline-block max-w-full truncate text-label-md text-light-me">
+                  <span className="text-label-md text-light-me inline-block max-w-full truncate">
                     {46} views
                   </span>
                 </div>
@@ -52,24 +52,24 @@ export default async function PostsPage({ params: { lang } }: { params: { lang: 
       </Section>
       <Section>
         <Container>
-          <h2 className="mb-16 text-h2-mobile md:text-h2">All posts</h2>
+          <h2 className="text-h2-mobile md:text-h2 mb-16">All posts</h2>
           <ol>
             {posts.slice(3).map((post) => (
               <li key={post.slug} className="mb-16 flex gap-16 last:mb-0">
                 <div className="flex flex-1 flex-col">
                   <Link
                     href={`/posts/${post.slug}`}
-                    className="group w-fit text-sub-heading-mobile font-medium md:text-sub-heading"
+                    className="text-sub-heading-mobile md:text-sub-heading group w-fit font-medium"
                   >
                     {post.title}{' '}
-                    <span className="inline-block text-white transition will-change-transform group-hover:translate-x-1 group-hover:text-yellow">
+                    <span className="group-hover:text-yellow inline-block text-white transition will-change-transform group-hover:translate-x-1">
                       →
                     </span>
                   </Link>
-                  <span className="inline-block max-w-full truncate text-label-md text-light-me">
+                  <span className="text-label-md text-light-me inline-block max-w-full truncate">
                     {46} views
                   </span>
-                  <p className="mt-8 line-clamp-3 text-light-me">
+                  <p className="text-light-me mt-8 line-clamp-3">
                     Lorem ipsum is placeholder text commonly used in the graphic, print, and
                     publishing industries for previewing layouts and visual mockups. Lorem ipsum is
                     placeholder text commonly used in the graphic, print, and publishing industries

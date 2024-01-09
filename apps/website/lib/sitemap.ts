@@ -1,9 +1,9 @@
-import { getCaseStudyPaths } from "~/sanity/client";
+import { getCaseStudyPaths } from '~/sanity/client'
 
 export async function generateSiteMap() {
-	const csUrls = await getCaseStudyPaths();
+  const csUrls = await getCaseStudyPaths()
 
-	return `<?xml version="1.0" encoding="UTF-8"?>
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	<url>
 		<loc>https://www.milovangudelj.com/en</loc>
@@ -31,14 +31,14 @@ export async function generateSiteMap() {
 		<xhtml:link rel="alternate" hreflang="it" href="https://www.milovangudelj.com/it/contact"/>
 	</url>
 	${csUrls
-		.map((slug) => {
-			return `<url>
+    .map((slug) => {
+      return `<url>
 		<loc>${`https://www.milovangudelj.com/en/work/${slug}`}</loc>
 		<xhtml:link rel="alternate" hreflang="en" href="${`https://www.milovangudelj.com/en/work/${slug}`}"/>
 		<xhtml:link rel="alternate" hreflang="it" href="${`https://www.milovangudelj.com/it/work/${slug}`}"/>
-	</url>`;
-		})
-		.join("")}
+	</url>`
+    })
+    .join('')}
 </urlset>
-`;
+`
 }

@@ -1,35 +1,34 @@
-import { hexToRgb } from "./hexToRgb";
+import { hexToRgb } from './hexToRgb'
 
 export const getLuminance = (color: string): number => {
-	if (!color.includes("#")) return 1;
+  if (!color.includes('#')) return 1
 
-	let tempColor: { r: number; g: number; b: number } = { r: 0, g: 0, b: 0 };
+  let tempColor: { r: number; g: number; b: number } = { r: 0, g: 0, b: 0 }
 
-	const rgb = hexToRgb(color);
+  const rgb = hexToRgb(color)
 
-	tempColor.r = calcPartial(rgb.r);
-	tempColor.g = calcPartial(rgb.g);
-	tempColor.b = calcPartial(rgb.b);
+  tempColor.r = calcPartial(rgb.r)
+  tempColor.g = calcPartial(rgb.g)
+  tempColor.b = calcPartial(rgb.b)
 
-	const colorLuminance =
-		0.2126 * tempColor.r + 0.7152 * tempColor.g + 0.0722 * tempColor.b;
+  const colorLuminance = 0.2126 * tempColor.r + 0.7152 * tempColor.g + 0.0722 * tempColor.b
 
-	return colorLuminance;
-};
+  return colorLuminance
+}
 
 const calcPartial = (c: number) => {
-	c = c / 255.0;
-	if (c <= 0.04045) {
-		c = c / 12.92;
-	} else {
-		c = ((c + 0.055) / 1.055) ** 2.4;
-	}
+  c = c / 255.0
+  if (c <= 0.04045) {
+    c = c / 12.92
+  } else {
+    c = ((c + 0.055) / 1.055) ** 2.4
+  }
 
-	return c;
-};
+  return c
+}
 
 /** Minimum luminance value for black text over a given color.
  *
  * `bgLuminance > treshold ? blackText : whiteText`
  */
-export const TEXT_LUMINANCE_TRESHOLD = 0.179;
+export const TEXT_LUMINANCE_TRESHOLD = 0.179

@@ -1,1 +1,1 @@
-export * from "./CTA";
+export * from './CTA'

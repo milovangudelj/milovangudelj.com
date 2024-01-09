@@ -4,23 +4,21 @@
  * @returns A new array with the values shuffled around
  */
 export const shuffle = <T = any>(collection: T[] | {}): T[] => {
-	const array = Array.isArray(collection)
-		? collection.map((v) => v)
-		: Object.values(collection);
+  const array = Array.isArray(collection) ? collection.map((v) => v) : Object.values(collection)
 
-	let index: number = array.length;
+  let index: number = array.length
 
-	while (--index) {
-		let randIndex: number = baseRandom(0, index);
-		const value = array[randIndex];
+  while (--index) {
+    let randIndex: number = baseRandom(0, index)
+    const value = array[randIndex]
 
-		array[randIndex] = array[index];
-		array[index] = value;
-	}
+    array[randIndex] = array[index]
+    array[index] = value
+  }
 
-	return array;
-};
+  return array
+}
 
 const baseRandom = (lower: number, upper: number) => {
-	return lower + Math.floor(Math.random() * (upper - lower + 1));
-};
+  return lower + Math.floor(Math.random() * (upper - lower + 1))
+}

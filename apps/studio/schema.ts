@@ -1,6 +1,6 @@
-import { SchemaPluginOptions, type SchemaTypeDefinition } from "sanity";
+import { SchemaPluginOptions, type SchemaTypeDefinition } from 'sanity'
 
-import { singletonTypes } from "./lib/singletons";
+import { singletonTypes } from './lib/singletons'
 
 import {
   localeString,
@@ -13,7 +13,7 @@ import {
   projectTag,
   postTag,
   poster,
-} from "./schemas";
+} from './schemas'
 
 export const schema: SchemaPluginOptions = {
   types: [
@@ -32,7 +32,6 @@ export const schema: SchemaPluginOptions = {
   templates: (prev) =>
     prev.filter(
       ({ schemaType, id }) =>
-        !singletonTypes.has(schemaType) &&
-        !["project", "caseStudy", "post"].includes(id)
+        !singletonTypes.has(schemaType) && !['project', 'caseStudy', 'post'].includes(id)
     ),
-};
+}
