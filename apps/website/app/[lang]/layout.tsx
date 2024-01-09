@@ -7,7 +7,7 @@ import { getSiteNavigation } from '~/sanity/client'
 import { i18n, Locale } from '~/i18n.config'
 
 import '~styles/globals.css'
-import "ui/styles.css";
+import "@repo/ui/styles.css";
 
 import { Navbar } from '~components/Navbar'
 import { Footer } from '~components/Footer'

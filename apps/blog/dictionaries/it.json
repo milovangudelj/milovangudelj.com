@@ -1,0 +1,12 @@
+{
+  "Footer": {
+    "views": "visualizzazioni"
+  },
+  "Home": {
+    "heroTitle": "Benvenuto/a nel mio blog",
+    "heroParagraph": "Leggi cosa sto costruendo, le mie opinioni sul web e altro ancora!"
+  },
+  "NotFound": {
+    "content": "Questa pagina non esiste."
+  }
+}
