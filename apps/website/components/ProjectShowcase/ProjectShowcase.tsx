@@ -7,7 +7,7 @@ import { urlForImage } from '~/sanity/image'
 import { ProjectPayload } from '~/sanity/types'
 import { Locale } from '~/i18n.config'
 
-import { Button } from '~components/Button'
+import { Button } from '@repo/ui'
 
 interface ProjectShowcaseProps extends ComponentProps<'div'> {
   messages: {
