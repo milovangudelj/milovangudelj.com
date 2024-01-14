@@ -3,12 +3,10 @@
 import { ComponentProps, RefCallback, Suspense, useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import { Locale } from '~/i18n.config'
+import { Locale } from '@repo/types/i18n'
 
-import { MobileNav } from '~components/MobileNav'
-import { NavLinks } from '~components/NavLinks'
-import { LanguageSwitch, LanguageSwitchFallback } from '~components/LanguageSwitch'
-import { SiteNavigationPayload } from '~/sanity/types'
+import { MobileNav, NavLinks, LanguageSwitch, LanguageSwitchFallback } from './'
+import { SiteNavigationPayload } from '@repo/types/studio'
 
 export const Navbar = ({
   links,
@@ -28,19 +26,19 @@ export const Navbar = ({
   return (
     <div
       ref={navRef}
-      className="bg-noise sticky top-0 z-20 border-b border-white/[0.06] bg-black bg-repeat px-8 shadow-2xl backdrop-blur-sm transition duration-300 [background-size:100px]"
+      className="ui-bg-noise ui-sticky ui-top-0 ui-z-20 ui-border-b ui-border-white/[0.06] ui-bg-black ui-bg-repeat ui-px-8 ui-shadow-2xl ui-backdrop-blur-sm ui-transition ui-duration-300 [background-size:100px]"
     >
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between py-4">
-        <Link href={`/${lang}`} className="text-sub-heading relative">
+      <div className="ui-mx-auto ui-flex ui-w-full ui-max-w-7xl ui-items-center ui-justify-between ui-py-4">
+        <Link href={`/${lang}`} className="ui-text-sub-heading ui-relative">
           Milo
         </Link>
-        <div className="flex items-center">
+        <div className="ui-flex ui-items-center">
           <NavLinks
             links={links}
             lang={lang}
-            className="max-md:pointer-events-none max-md:invisible max-md:hidden max-md:select-none"
+            className="max-md:ui-pointer-events-none max-md:ui-invisible max-md:ui-hidden max-md:ui-select-none"
           />
-          <span className="bg-yellow inline-block h-6 w-px max-md:invisible max-md:hidden"></span>
+          <span className="ui-bg-yellow ui-inline-block ui-h-6 ui-w-px max-md:ui-invisible max-md:ui-hidden"></span>
           <Suspense fallback={<LanguageSwitchFallback lang={lang} />}>
             <LanguageSwitch />
           </Suspense>

@@ -17,15 +17,15 @@ export const NavLink = ({
   return (
     <Link
       href={href}
-      className={`text-sub-heading md:text-button relative inline-block px-4 py-2 ${
-        href.slice(4) === segment ? 'opacity-100' : 'opacity-60'
-      } transition hover:opacity-100`}
+      className={`ui-text-sub-heading md:ui-text-button ui-relative ui-inline-block ui-px-4 ui-py-2 ${
+        href.slice(4) === segment ? 'ui-opacity-100' : 'ui-opacity-60'
+      } ui-transition hover:ui-opacity-100`}
       onClick={onClick}
     >
       {href.slice(4) === segment && (
-        <span className="text-yellow motion-safe:animate-spin-slow absolute bottom-0 left-0 top-0 -ml-1 mt-1 flex items-center md:-ml-0.5">
+        <span className="ui-text-yellow motion-safe:ui-animate-spin-slow ui-absolute ui-bottom-0 ui-left-0 ui-top-0 -ui-ml-1 ui-mt-1 ui-flex ui-items-center md:-ui-ml-0.5">
           <svg
-            className="aspect-square w-2.5 md:w-3"
+            className="ui-aspect-square ui-w-2.5 md:ui-w-3"
             viewBox="0 0 13 12"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

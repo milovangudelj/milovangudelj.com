@@ -2,7 +2,7 @@ import localFont from 'next/font/local'
 import Image from 'next/image'
 import { headers } from 'next/headers'
 
-import { Navbar } from '~/components'
+import { Navbar } from '@repo/ui'
 
 import { getSiteNavigation } from '~/sanity/client'
 

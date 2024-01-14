@@ -3,10 +3,10 @@
 import { useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
 
-import { Locale } from '~/i18n.config'
+type Locale = 'en' | 'it'
 
-import { NavLink } from '~components/NavLink'
-import { SiteNavigationPayload } from '~/sanity/types'
+import { NavLink } from './'
+import { SiteNavigationPayload } from '@repo/types/studio'
 
 export const MobileNav = ({
   links,
@@ -59,17 +59,19 @@ export const MobileNav = ({
   }
 
   return (
-    <div className="md:pointer-events-none md:invisible md:hidden md:select-none">
-      <div onClick={toggleMenu} className="relative z-10 space-y-1.5 p-4 md:hidden">
+    <div className="md:ui-pointer-events-none md:ui-invisible md:ui-hidden md:ui-select-none">
+      <div onClick={toggleMenu} className="ui-relative ui-z-10 ui-space-y-1.5 ui-p-4 md:ui-hidden">
         <span
-          className={`block h-0.5 w-8 origin-center bg-current transition-all will-change-transform ${
-            menuOpen ? 'translate-y-2 rotate-45' : 'transform'
+          className={`ui-block ui-h-0.5 ui-w-8 ui-origin-center ui-bg-current ui-transition-all ui-will-change-transform ${
+            menuOpen ? 'ui-translate-y-2 ui-rotate-45' : 'ui-transform'
           }`}
         ></span>
-        <span className={`block h-0.5 w-8 bg-current transition ${menuOpen && 'opacity-0'}`}></span>
         <span
-          className={`block h-0.5 w-8 origin-center bg-current transition-all will-change-transform ${
-            menuOpen ? '-translate-y-2 -rotate-45' : 'transform'
+          className={`ui-block h-0.5 w-8 bg-current transition ${menuOpen && 'opacity-0'}`}
+        ></span>
+        <span
+          className={`ui-block ui-h-0.5 ui-w-8 ui-origin-center ui-bg-current ui-transition-all ui-will-change-transform ${
+            menuOpen ? '-ui-translate-y-2 -ui-rotate-45' : 'ui-transform'
           }`}
         ></span>
       </div>
@@ -77,7 +79,7 @@ export const MobileNav = ({
         initial={'closed'}
         animate={menuOpen ? 'open' : 'closed'}
         variants={list}
-        className="bg-noise absolute left-0 right-0 top-full h-[var(--mobile-nav-height)] flex-col items-end justify-center gap-4 border-t border-white/[0.06] bg-black bg-repeat px-8 py-2 [background-size:100px] before:pointer-events-none before:absolute before:inset-0 before:z-10 before:mx-auto before:w-[calc(100%-64px)] before:border-x before:border-white/[0.06]"
+        className="ui-bg-noise ui-absolute ui-left-0 ui-right-0 ui-top-full ui-h-[var(--mobile-nav-height)] ui-flex-col ui-items-end ui-justify-center ui-gap-4 ui-border-t ui-border-white/[0.06] ui-bg-black ui-bg-repeat ui-px-8 ui-py-2 ui-[background-size:100px] before:ui-pointer-events-none before:ui-absolute before:ui-inset-0 before:ui-z-10 before:ui-mx-auto before:ui-w-[calc(100%-64px)] before:ui-border-x before:ui-border-white/[0.06]"
       >
         {links.map((link) => (
           <motion.li variants={item} key={link._key}>

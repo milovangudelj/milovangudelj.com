@@ -1,0 +1,18 @@
+{
+  "name": "@repo/types",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "./i18n.ts",
+    "./studio.ts"
+  ],
+  "exports": {
+    "./i18n": "./i18n.ts",
+    "./studio": "./studio.ts"
+  },
+  "dependencies": {
+    "@portabletext/types": "^2.0.8",
+    "sanity": "^3.23.4"
+  }
+}

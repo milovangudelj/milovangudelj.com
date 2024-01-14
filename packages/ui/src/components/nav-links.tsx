@@ -1,8 +1,8 @@
 import { twMerge } from 'tailwind-merge'
 
-import { NavLink } from '~components/NavLink/NavLink'
-import { Locale } from '~/i18n.config'
-import { SiteNavigationPayload } from '~/sanity/types'
+import { NavLink } from './'
+import { Locale } from '@repo/types/i18n'
+import { SiteNavigationPayload } from '@repo/types/studio'
 
 export const NavLinks = ({
   links,
@@ -14,7 +14,7 @@ export const NavLinks = ({
   lang: Locale
 }) => {
   return (
-    <ul className={twMerge('flex text-white', className)}>
+    <ul className={twMerge('ui-flex ui-text-white', className)}>
       {links.map((link) => (
         <li key={link._key}>
           <NavLink href={`/${lang}${link.url}`} label={link.label} />

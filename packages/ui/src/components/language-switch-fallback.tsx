@@ -1,9 +1,9 @@
-import { Locale } from '~/i18n.config'
+import { Locale } from '@repo/types/i18n'
 
 export const LanguageSwitchFallback = ({ lang }: { lang: Locale }) => {
   return (
     <span
-      className={`text-button relative inline-flex items-center gap-1 px-4 py-2 opacity-60 transition hover:opacity-100`}
+      className={`ui-text-button ui-relative ui-inline-flex ui-items-center ui-gap-1 ui-px-4 ui-py-2 ui-opacity-60 ui-transition hover:ui-opacity-100`}
     >
       <span>{lang === 'en' ? 'it' : 'en'}</span>
       <span>

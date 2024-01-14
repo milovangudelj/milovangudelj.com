@@ -8,8 +8,8 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:^",
+    "@repo/typescript-config": "workspace:^",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "turbo": "^1.11.3"

@@ -34,9 +34,10 @@
     "clean": "rimraf dist"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/tailwind-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:^",
+    "@repo/tailwind-config": "workspace:^",
+    "@repo/types": "workspace:^",
+    "@repo/typescript-config": "workspace:^",
     "@types/eslint": "^8.56.1",
     "@types/node": "^20.10.7",
     "@types/react": "^18.2.47",
@@ -50,5 +51,11 @@
     "tailwindcss": "^3.4.1",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.0.15",
+    "framer-motion": "^10.17.12",
+    "next": "^14.0.4",
+    "tailwind-merge": "^2.2.0"
   }
 }

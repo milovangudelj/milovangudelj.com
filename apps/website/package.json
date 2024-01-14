@@ -15,7 +15,7 @@
     "@headlessui/react": "^1.7.18",
     "@phosphor-icons/react": "^2.0.15",
     "@portabletext/react": "^3.0.11",
-    "@repo/ui": "workspace:*",
+    "@repo/ui": "workspace:^",
     "@sanity/client": "^6.10.0",
     "@sanity/image-url": "^1.0.2",
     "@supabase/supabase-js": "^2.39.2",
@@ -51,7 +51,8 @@
   "devDependencies": {
     "@graphcms/rich-text-types": "^0.5.0",
     "@portabletext/types": "^2.0.8",
-    "@repo/tailwind-config": "workspace:*",
+    "@repo/tailwind-config": "workspace:^",
+    "@repo/types": "workspace:^",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20.10.8",
