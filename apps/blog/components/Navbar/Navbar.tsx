@@ -31,7 +31,7 @@ export const Navbar = ({
   return (
     <div
       ref={navRef}
-      className="bg-noise sticky top-0 z-20 border-b border-white/[0.06] bg-black px-8 shadow-2xl backdrop-blur-sm transition duration-300"
+      className="bg-noise sticky top-0 z-20 border-b border-white/[0.06] bg-black px-8 shadow-2xl backdrop-blur-sm transition duration-300 [background-size:100px]"
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between py-4">
         <span className="text-sub-heading relative">

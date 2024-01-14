@@ -1,21 +1,16 @@
 import localFont from 'next/font/local'
+import { GeistSans } from 'geist/font/sans'
+import { Locale } from '@repo/types/i18n'
 
-import { i18n, Locale } from '~/i18n.config'
+import { i18n } from '~/i18n.config'
 
 import '~styles/globals.css'
+import '@repo/ui/styles.css'
 
 import { Navbar } from '~components/Navbar'
 import { Footer } from '~components/Footer'
-import { Viewport } from 'next'
+import { Metadata, Viewport } from 'next'
 
-const inter = localFont({
-  src: '../../public/fonts/Inter-Var.woff2',
-  display: 'swap',
-  preload: true,
-  weight: '100 900',
-  style: 'oblique -10deg 0deg',
-  variable: '--font-inter',
-})
 const spaceGrotesk = localFont({
   src: '../../public/fonts/SpaceGrotesk-Var.woff2',
   display: 'swap',
@@ -29,7 +24,7 @@ export const viewport: Viewport = {
   themeColor: '#FFC700',
 }
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Milovan Gudelj - Web developer / UI designer',
   description: 'I design and develop engaging websites and delightful digital experiences.',
   metadataBase: new URL('https://www.milovangudelj.com'),
@@ -103,8 +98,8 @@ export default async function RootLayout({
   }
 }) {
   return (
-    <html lang={params.lang} className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="bg-noise min-h-screen scroll-smooth bg-black font-sans text-white">
+    <html lang={params.lang} className={`${GeistSans.variable} ${spaceGrotesk.variable}`}>
+      <body className="bg-noise min-h-screen scroll-smooth bg-black bg-repeat font-sans text-white [background-size:100px]">
         <Navbar lang={params.lang} links={links[params.lang]} />
         <div className="relative">{children}</div>
         <Footer lang={params.lang} />

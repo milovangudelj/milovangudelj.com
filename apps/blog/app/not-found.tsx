@@ -1,23 +1,18 @@
-import localFont from 'next/font/local'
 import Image from 'next/image'
 import { headers } from 'next/headers'
+import localFont from 'next/font/local'
+import { GeistSans } from 'geist/font/sans'
 
 import { Navbar } from '~/components'
 
 import confusedTravolta from '~images/johntravolta.webp'
 
 import '~styles/globals.css'
-import { Locale } from '~/i18n.config'
+import '@repo/ui/styles.css'
+
+import { Locale } from '@repo/types/i18n'
 import { getDictionary } from '~/utils/getDictionary'
 
-const inter = localFont({
-  src: '../public/fonts/Inter-Var.woff2',
-  display: 'swap',
-  preload: true,
-  weight: '100 900',
-  style: 'oblique -10deg 0deg',
-  variable: '--font-inter',
-})
 const spaceGrotesk = localFont({
   src: '../public/fonts/SpaceGrotesk-Var.woff2',
   display: 'swap',
@@ -44,7 +39,10 @@ export default async function NotFound() {
   const dictionary = await getDictionary(lang)
 
   return (
-    <html lang={lang} className={`${inter.variable} ${spaceGrotesk.variable} bg-black text-white`}>
+    <html
+      lang={lang}
+      className={`${GeistSans.variable} ${spaceGrotesk.variable} bg-black text-white`}
+    >
       <body>
         <div className="bg-noise min-h-[100dvh] bg-black">
           <Navbar lang={lang} links={links[lang]} />

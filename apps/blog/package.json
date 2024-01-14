@@ -13,6 +13,7 @@
     "@formatjs/intl-localematcher": "^0.5.2",
     "@phosphor-icons/react": "^2.0.15",
     "@portabletext/types": "^2.0.8",
+    "@repo/ui": "workspace:^",
     "@sanity/image-url": "^1.0.2",
     "@supabase/auth-helpers-nextjs": "^0.8.7",
     "@supabase/gotrue-js": "^2.62.0",
@@ -28,6 +29,7 @@
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.4",
     "framer-motion": "^10.17.12",
+    "geist": "^1.2.0",
     "negotiator": "^0.6.3",
     "next": "^14.0.4",
     "next-sanity": "^7.0.7",
@@ -45,6 +47,8 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@repo/tailwind-config": "workspace:^",
+    "@repo/types": "workspace:^",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
     "@types/bad-words": "^3.0.3",
