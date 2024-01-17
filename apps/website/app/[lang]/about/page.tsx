@@ -1,10 +1,10 @@
-import { Locale } from '~/i18n.config'
+import { Container, Section } from '@repo/ui'
+import { Locale } from '@repo/types/i18n'
+
 import { getDictionary } from '~/utils/getDictionary'
 
 import { CTA } from '~components/sections/CTA'
 import { TopArtists } from '~components/TopArtists'
-import { Container } from '~components/Container'
-import { Section } from '~components/Section'
 import { NowPlaying } from '~/components/NowPlaying'
 
 export const metadata = {

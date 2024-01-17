@@ -1,10 +1,10 @@
 import Image from 'next/image'
 
-import { Section } from '~components/Section'
-import { Container } from '~components/Container'
+import { Container, Section } from '@repo/ui'
+import { Locale } from '@repo/types/i18n'
+
 import { CTA } from '~components/sections/CTA'
 
-import { Locale } from '~/i18n.config'
 import { getDictionary } from '~/utils/getDictionary'
 
 import igLogo from '~images/igLogo.png'

@@ -1,14 +1,15 @@
-import { Section } from '~components/Section'
-import { Container } from '~components/Container'
-import { ProjectShowcase } from '~components/ProjectShowcase'
+import Image from 'next/image'
 
-import { Locale } from '~/i18n.config'
-import { getDictionary } from '~/utils/getDictionary'
-import { getProjects } from '~/sanity/client'
+import { Container, Section } from '@repo/ui'
+import { Locale } from '@repo/types/i18n'
+
+import { ProjectShowcase } from '~components/ProjectShowcase'
 import { CTA } from '~/components/sections'
 
+import { getDictionary } from '~/utils/getDictionary'
+import { getProjects } from '~/sanity/client'
+
 import heroImage from '~images/work-hero-image.webp'
-import Image from 'next/image'
 
 export const metadata = {
   title: 'Milovan Gudelj - My work',

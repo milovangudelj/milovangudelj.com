@@ -1,9 +1,9 @@
 import { ComponentProps } from 'react'
 
-import { Section } from '~components/Section'
-import { Container } from '~components/Container'
+import { Container, Section } from '@repo/ui'
+import { Locale } from '@repo/types/i18n'
+
 import { getDictionary } from '~/utils/getDictionary'
-import { Locale } from '~/i18n.config'
 
 export const CTA = async ({
   title,

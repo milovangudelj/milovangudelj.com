@@ -1,8 +1,10 @@
+import { Metadata, Viewport } from 'next'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import localFont from 'next/font/local'
 import { GeistSans } from 'geist/font/sans'
-import { Navbar } from '@repo/ui'
+
+import { Navbar, Footer } from '@repo/ui'
 import { Locale } from '@repo/types/i18n'
 
 import { getSiteNavigation } from '~/sanity/client'
@@ -10,9 +12,6 @@ import { i18n } from '~/i18n.config'
 
 import '~styles/globals.css'
 import '@repo/ui/styles.css'
-
-import { Footer } from '~components/Footer'
-import { Metadata, Viewport } from 'next'
 
 const spaceGrotesk = localFont({
   src: '../../public/fonts/SpaceGrotesk-Var.woff2',

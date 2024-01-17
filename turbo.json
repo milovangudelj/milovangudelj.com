@@ -21,6 +21,10 @@
     },
     "clean": {
       "cache": false
+    },
+    "start": {
+      "dependsOn": ["^start"],
+      "env": ["SPOTIFY_AUTHORIZATION", "SUPABASE_SERVICE_KEY"]
     }
   },
   "globalEnv": ["NODE_ENV"]

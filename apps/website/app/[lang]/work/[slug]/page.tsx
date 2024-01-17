@@ -3,10 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { PortableText } from '@portabletext/react'
 
-import { Locale } from '~/i18n.config'
+import { Container } from '@repo/ui'
+import { Locale } from '@repo/types/i18n'
+
 import { getCaseStudyBySlug, getCaseStudyPaths } from '~/sanity/client'
 import { urlForImage } from '~/sanity/image'
-import { Container } from '~/components/Container'
 import { CTA } from '~/components/sections/CTA'
 
 export async function generateStaticParams() {
