@@ -15,14 +15,14 @@ export const ViewCount = ({ message }: { message: string }) => {
   if (!data) return null
 
   return (
-    <div className="ml-auto inline-flex items-center gap-1 self-stretch overflow-hidden">
-      <div className="text-yellow/70 relative inline max-w-full truncate">
+    <div className="ui-ml-auto ui-inline-flex ui-items-center ui-gap-1 ui-self-stretch ui-overflow-hidden">
+      <div className="ui-text-yellow/70 ui-relative ui-inline ui-max-w-full ui-truncate">
         {data.count}
-        <span className="absolute h-px w-px whitespace-pre border-none opacity-0 [clip:rect(0,_0,_0,_0)]">
+        <span className="ui-absolute ui-h-px ui-w-px ui-whitespace-pre ui-border-none ui-opacity-0 [clip:rect(0,_0,_0,_0)]">
           {` ${message}`}
         </span>
       </div>
-      <Eye size={16} className="flex-none" />
+      <Eye size={16} className="ui-flex-none" />
     </div>
   )
 }

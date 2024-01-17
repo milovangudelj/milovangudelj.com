@@ -8,22 +8,22 @@ export const Footer = async ({ lang }: { lang: Locale }) => {
   const dictionary = { Footer: { views: 'views' } }
 
   return (
-    <footer className="border-t border-white/[0.06] px-8">
-      <div className="text-label-md mx-auto flex w-full max-w-7xl items-center justify-between py-4 text-white/70">
-        <div className="flex items-baseline gap-4 max-md:flex-1 max-md:justify-between md:gap-2">
-          <span className="flex-none">Milovan Gudelj &copy; 2023</span>
-          <span className="hidden md:inline">-</span>
+    <footer className="ui-border-white/[0.06] ui-px-8 ui-border-t">
+      <div className="ui-text-label-md ui-mx-auto ui-flex ui-w-full ui-max-w-7xl ui-items-center ui-justify-between ui-py-4 ui-text-white/70">
+        <div className="ui-items-baseline ui-gap-4 max-md:ui-flex-1 max-md:ui-justify-between md:ui-gap-2 ui-flex">
+          <span className="ui-flex-none">Milovan Gudelj &copy; 2023</span>
+          <span className="ui-hidden md:ui-inline">-</span>
           <Suspense fallback={<ViewCountSkeleton />}>
             <ViewCount message={dictionary.Footer.views} />
           </Suspense>
         </div>
-        <ul className="hidden space-x-4 md:flex">
+        <ul className="ui-hidden ui-space-x-4 md:ui-flex">
           <li>
             <a
               target="_blank"
               rel="noreferrer"
               href="https://dribbble.com/milovangudelj"
-              className="transition hover:text-white"
+              className="ui-transition hover:ui-text-white"
             >
               Dr
             </a>
@@ -33,7 +33,7 @@ export const Footer = async ({ lang }: { lang: Locale }) => {
               target="_blank"
               rel="noreferrer"
               href="https://twitter.com/milovangudelj"
-              className="transition hover:text-white"
+              className="ui-transition hover:ui-text-white"
             >
               Tw
             </a>
@@ -43,7 +43,7 @@ export const Footer = async ({ lang }: { lang: Locale }) => {
               target="_blank"
               rel="noreferrer"
               href="https://instagram.com/milovangudelj"
-              className="transition hover:text-white"
+              className="ui-transition hover:ui-text-white"
             >
               Ig
             </a>
@@ -53,7 +53,7 @@ export const Footer = async ({ lang }: { lang: Locale }) => {
               target="_blank"
               rel="noreferrer me"
               href="https://mastodon.social/@ilikemartians"
-              className="transition hover:text-white"
+              className="ui-transition hover:ui-text-white"
             >
               Ma
             </a>

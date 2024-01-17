@@ -5,7 +5,7 @@ export const Section = ({ children, className = '' }: ComponentProps<'section'>)
   return (
     <section
       className={twMerge(
-        `border-t border-white/[0.06] px-8 py-32 first-of-type:border-none`,
+        `ui-border-t ui-border-white/[0.06] ui-px-8 ui-py-32 first-of-type:ui-border-none`,
         className
       )}
     >
