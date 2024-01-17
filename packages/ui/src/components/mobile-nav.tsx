@@ -67,7 +67,9 @@ export const MobileNav = ({
           }`}
         ></span>
         <span
-          className={`ui-block h-0.5 w-8 bg-current transition ${menuOpen && 'opacity-0'}`}
+          className={`ui-block ui-h-0.5 ui-w-8 ui-bg-current ui-transition ${
+            menuOpen && 'ui-opacity-0'
+          }`}
         ></span>
         <span
           className={`ui-block ui-h-0.5 ui-w-8 ui-origin-center ui-bg-current ui-transition-all ui-will-change-transform ${
