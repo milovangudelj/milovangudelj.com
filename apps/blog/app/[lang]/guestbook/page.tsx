@@ -2,8 +2,8 @@ import { Suspense } from 'react'
 import { cookies } from 'next/headers'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 
-import { Container } from '~/components/Container'
-import { Section } from '~/components/Section'
+import { Section, Container } from '@repo/ui'
+
 import { Form } from './form'
 import { Entries } from './entries'
 import { EntriesBones } from './entries_bones'

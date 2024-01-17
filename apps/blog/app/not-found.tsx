@@ -3,7 +3,7 @@ import { headers } from 'next/headers'
 import localFont from 'next/font/local'
 import { GeistSans } from 'geist/font/sans'
 
-import { Navbar } from '~/components'
+import { Navbar } from '@repo/ui'
 
 import confusedTravolta from '~images/johntravolta.webp'
 

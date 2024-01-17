@@ -1,3 +1,4 @@
+import { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 import { GeistSans } from 'geist/font/sans'
 import { Locale } from '@repo/types/i18n'
@@ -7,9 +8,7 @@ import { i18n } from '~/i18n.config'
 import '~styles/globals.css'
 import '@repo/ui/styles.css'
 
-import { Navbar } from '~components/Navbar'
-import { Footer } from '~components/Footer'
-import { Metadata, Viewport } from 'next'
+import { Navbar, Footer } from '@repo/ui'
 
 const spaceGrotesk = localFont({
   src: '../../public/fonts/SpaceGrotesk-Var.woff2',
@@ -100,7 +99,7 @@ export default async function RootLayout({
   return (
     <html lang={params.lang} className={`${GeistSans.variable} ${spaceGrotesk.variable}`}>
       <body className="bg-noise min-h-screen scroll-smooth bg-black bg-repeat font-sans text-white [background-size:100px]">
-        <Navbar lang={params.lang} links={links[params.lang]} />
+        <Navbar lang={params.lang} links={links[params.lang]} label="~ blog" />
         <div className="relative">{children}</div>
         <Footer lang={params.lang} />
       </body>

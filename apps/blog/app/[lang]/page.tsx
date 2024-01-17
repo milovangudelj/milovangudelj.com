@@ -1,10 +1,10 @@
-import { Section } from '~components/Section'
-import { Container } from '~components/Container'
-
-import { getDictionary } from '~utils/getDictionary'
-import { Locale } from '~/i18n.config'
 import Image from 'next/image'
 import Link from 'next/link'
+
+import { Section, Container } from '@repo/ui'
+import { Locale } from '@repo/types/i18n'
+
+import { getDictionary } from '~utils/getDictionary'
 import { getPosts } from '~/sanity/lib/client'
 import { urlForImage } from '~/sanity/lib/image'
 
