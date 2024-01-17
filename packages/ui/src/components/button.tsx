@@ -31,7 +31,7 @@ export const Button = forwardRef(
 
     return (
       <Component
-        className={`ui-inline-flex ui-h-min ui-min-w-fit ui-items-center ui-gap-3 ui-rounded-lg ui-px-4 ui-py-2 ui-text-center ui-text-black ui-font-sans ui-font-medium ${
+        className={`ui-inline-flex ui-h-min ui-min-w-fit ui-items-center ui-justify-center ui-gap-3 ui-rounded-lg ui-px-4 ui-py-2 ui-text-center ui-text-black ui-font-sans ui-font-medium ${
           variant === 'primary' ? 'ui-bg-yellow' : 'ui-bg-white'
         }`}
         ref={ref}
