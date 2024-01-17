@@ -34,7 +34,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
             className="pointer-events-none absolute bottom-0 right-[var(--side-width)] hidden select-none object-cover lg:block"
           />
         </Container>
-        <p className="text-label-md absolute bottom-8 left-8 text-white/70 xl:left-[var(--side-width)]">
+        <p className="text-label-md absolute bottom-8 left-8 text-white/70 max-md:hidden xl:left-[var(--side-width)]">
           {dictionary.Home.more} <span className="font-space text-yellow">↓</span>
         </p>
       </Section>
