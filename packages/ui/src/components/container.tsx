@@ -14,7 +14,7 @@ export const Container = <T extends ElementType = 'div'>({
   const Component = as || 'div'
 
   return (
-    <Component className={twMerge('ui-mx-auto ui-max-w-7xl', className)} {...props}>
+    <Component className={twMerge('ui-mx-auto ui-max-w-7xl ui-space-y-16', className)} {...props}>
       {children}
     </Component>
   )

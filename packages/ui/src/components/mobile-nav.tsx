@@ -79,7 +79,7 @@ export const MobileNav = ({
         initial={'closed'}
         animate={menuOpen ? 'open' : 'closed'}
         variants={list}
-        className="ui-bg-noise ui-absolute ui-left-0 ui-right-0 ui-top-full ui-h-[var(--mobile-nav-height)] ui-flex-col ui-items-end ui-justify-center ui-gap-4 ui-border-t ui-border-white/[0.06] ui-bg-black ui-bg-repeat ui-px-8 ui-py-2 before:ui-pointer-events-none before:ui-absolute before:ui-inset-0 before:ui-z-10 before:ui-mx-auto before:ui-w-[calc(100%-64px)] before:ui-border-x before:ui-border-white/[0.06] [background-size:100px]"
+        className="ui-bg-noise ui-absolute ui-left-0 ui-right-0 ui-top-full ui-h-[var(--mobile-nav-height)] ui-flex-col ui-items-end ui-justify-center ui-gap-4 ui-border-t ui-border-white/[0.06] ui-bg-black ui-bg-repeat ui-px-8 ui-py-2 [background-size:100px]"
       >
         {links.map((link) => (
           <motion.li variants={item} key={link._key}>

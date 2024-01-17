@@ -92,11 +92,9 @@ export default async function RootLayout({
 
   return (
     <html lang={params.lang} className={`${GeistSans.variable} ${spaceGrotesk.variable}`}>
-      <body className="before:bg-noise relative min-h-screen scroll-smooth bg-black font-sans text-white before:pointer-events-none before:absolute before:inset-0 before:block before:bg-repeat before:[background-size:100px]">
+      <body className="bg-noise relative min-h-screen scroll-smooth bg-black bg-repeat font-sans text-white [background-size:100px]">
         <Navbar lang={params.lang} links={links} />
-        <div className="relative before:pointer-events-none before:absolute before:inset-0 before:z-10 before:mx-auto before:w-[calc(100%-64px)] before:border-x before:border-white/[0.06] before:md:max-w-7xl">
-          {children}
-        </div>
+        {children}
         <Footer lang={params.lang} />
         {process.env.NODE_ENV === 'production' && <SpeedInsights />}
         {process.env.NODE_ENV === 'production' && <Analytics />}

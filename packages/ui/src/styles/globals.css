@@ -1,3 +1,134 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --orbit-radius: 300px;
+    --side-width: calc(max(calc(100vw - 1280px), 64px) / 2);
+    --nav-height: 83px;
+    --mobile-nav-height: calc(100dvh - var(--nav-height));
+  }
+
+  img {
+    @apply ui-inline-block;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --nav-height: 72.39px;
+    }
+  }
+
+  .w-fill,
+  .ui-w-fill {
+    width: stretch;
+  }
+  .min-w-fill,
+  .ui-min-w-fill {
+    min-width: stretch;
+  }
+  .max-w-fill,
+  .ui-max-w-fill {
+    max-width: stretch;
+  }
+  .h-fill,
+  .ui-h-fill {
+    height: stretch;
+  }
+  .min-h-fill,
+  .ui-min-h-fill {
+    min-height: stretch;
+  }
+  .max-h-fill,
+  .ui-max-h-fill {
+    max-height: stretch;
+  }
+
+  .text-d1,
+  .ui-text-d1,
+  .text-d1-mobile,
+  .ui-text-d1-mobile,
+  .text-d2,
+  .ui-text-d2,
+  .text-d2-mobile,
+  .ui-text-d2-mobile,
+  h1,
+  .text-h1,
+  .ui-text-h1,
+  .text-h1-mobile,
+  .ui-text-h1-mobile,
+  h2,
+  .text-h2,
+  .ui-text-h2,
+  .text-h2-mobile,
+  .ui-text-h2-mobile,
+  h3,
+  .text-h3,
+  .ui-text-h3,
+  .text-h3-mobile,
+  .ui-text-h3-mobile,
+  h4,
+  .text-h4,
+  .ui-text-h4,
+  .text-h4-mobile,
+  .ui-text-h4-mobile,
+  h5,
+  .text-h5,
+  .ui-text-h5,
+  .text-h5-mobile,
+  .ui-text-h5-mobile,
+  h6,
+  .text-h6,
+  .ui-text-h6,
+  .text-h6-mobile,
+  .ui-text-h6-mobile,
+  .text-sub-heading,
+  .ui-text-sub-heading,
+  .text-sub-heading-mobile,
+  .ui-text-sub-heading-mobile,
+  button,
+  .text-button,
+  .ui-text-button,
+  .text-button-md,
+  .ui-text-button-md,
+  .text-button-sm,
+  .ui-text-button-sm {
+    @apply ui-font-space;
+  }
+
+  p {
+    @apply ui-text-body ui-max-w-[680px];
+  }
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  @apply ui-hidden;
+}
+
+@media screen and (min-width: 835px) {
+  /* Width */
+  ::-webkit-scrollbar {
+    @apply ui-h-1 ui-w-1;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @apply ui-bg-black;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply ui-bg-white;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply ui-bg-yellow;
+  }
+
+  /* Corner */
+  ::-webkit-scrollbar-corner {
+    @apply ui-hidden;
+  }
+}

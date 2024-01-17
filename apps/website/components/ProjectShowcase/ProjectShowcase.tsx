@@ -32,7 +32,7 @@ export const ProjectShowcase = async ({ messages, project, lang }: ProjectShowca
           </span>
         </div>
         <Button as="a" target="_blank" rel="noreferrer noopener" href={project.site}>
-          {messages.visit} ↗
+          {messages.visit}
         </Button>
       </div>
       <Image
@@ -58,7 +58,7 @@ export const ProjectShowcase = async ({ messages, project, lang }: ProjectShowca
       </div>
       {project.caseStudy && (
         <Button as={Link} href={`/${lang}/work/${project.slug}`}>
-          {messages.read} ↗
+          {messages.read}
         </Button>
       )}
     </>
