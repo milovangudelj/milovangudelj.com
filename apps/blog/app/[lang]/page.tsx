@@ -2,16 +2,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Section, Container } from '@repo/ui'
-import { Locale } from '@repo/types/i18n'
+import { getDictionary, type Locale } from '@repo/i18n'
 
-import { getDictionary } from '~utils/getDictionary'
 import { getPosts } from '~/sanity/lib/client'
 import { urlForImage } from '~/sanity/lib/image'
 
 const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
   const posts = await getPosts(lang)
 
-  const dictionary = await getDictionary(lang)
+  const dictionary = await getDictionary(lang, 'blog')
 
   return (
     <>

@@ -5,7 +5,7 @@ import { PostPayload, SlimPostPayload } from '~/sanity/types'
 
 import { postBySlugQuery, postPaths, postsQuery, slimPostsQuery } from './queries'
 
-import { Locale } from '~/i18n.config'
+import { type Locale } from '@repo/i18n'
 
 export const client = createClient({
   apiVersion,

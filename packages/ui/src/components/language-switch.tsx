@@ -5,12 +5,14 @@ import { usePathname, useSearchParams, useSelectedLayoutSegments } from 'next/na
 import Link from 'next/link'
 import { GlobeSimple } from '@phosphor-icons/react'
 
-interface Locale {
-  value: 'en' | 'it'
+import { type Locale } from '@repo/i18n'
+
+interface LocaleMap {
+  value: Locale
   label: string
 }
 
-const locales: Locale[] = [
+const locales: LocaleMap[] = [
   { value: 'en', label: 'en' },
   { value: 'it', label: 'it' },
 ]

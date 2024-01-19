@@ -3,10 +3,9 @@
 import { useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
 
-type Locale = 'en' | 'it'
-
-import { NavLink } from './'
+import { NavLink } from './nav-link'
 import { SiteNavigationPayload } from '@repo/types/studio'
+import { type Locale } from '@repo/i18n'
 
 export const MobileNav = ({
   links,

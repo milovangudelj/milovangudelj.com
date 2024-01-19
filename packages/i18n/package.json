@@ -1,0 +1,26 @@
+{
+  "name": "@repo/i18n",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "./dist/**/*"
+  ],
+  "exports": {
+    ".": [
+      "./dist/index.js",
+      "./dist/index.d.ts",
+      "./dist/index.d.ts.map"
+    ]
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}

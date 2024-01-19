@@ -1,9 +1,8 @@
 import { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 import { GeistSans } from 'geist/font/sans'
-import { Locale } from '@repo/types/i18n'
 
-import { i18n } from '~/i18n.config'
+import { type Locale, config as i18n } from '@repo/i18n'
 
 import '~styles/globals.css'
 import '@repo/ui/styles.css'

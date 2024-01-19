@@ -10,8 +10,8 @@ import confusedTravolta from '~images/johntravolta.webp'
 import '~styles/globals.css'
 import '@repo/ui/styles.css'
 
-import { Locale } from '@repo/types/i18n'
-import { getDictionary } from '~/utils/getDictionary'
+import { type Locale } from '@repo/i18n'
+import { getDictionary } from '@repo/i18n'
 
 const spaceGrotesk = localFont({
   src: '../public/fonts/SpaceGrotesk-Var.woff2',
@@ -36,7 +36,7 @@ const links = {
 export default async function NotFound() {
   const lang = (headers().get('x-mg-locale') ?? 'en') as Locale
 
-  const dictionary = await getDictionary(lang)
+  const dictionary = await getDictionary(lang, 'blog')
 
   return (
     <html

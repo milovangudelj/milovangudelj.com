@@ -1,4 +1,4 @@
-import { Locale } from '@repo/types/i18n'
+import { type Locale } from '@repo/i18n'
 
 export const LanguageSwitchFallback = ({ lang }: { lang: Locale }) => {
   return (

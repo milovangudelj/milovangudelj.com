@@ -3,9 +3,13 @@
 import { ComponentProps, RefCallback, Suspense, useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import { Locale } from '@repo/types/i18n'
+import { type Locale } from '@repo/i18n'
 
-import { MobileNav, NavLinks, LanguageSwitch, LanguageSwitchFallback } from './'
+import { MobileNav } from './mobile-nav'
+import { NavLinks } from './nav-links'
+import { LanguageSwitch } from './language-switch'
+import { LanguageSwitchFallback } from './language-switch-fallback'
+
 import { SiteNavigationPayload } from '@repo/types/studio'
 
 type NavbarProps = ComponentProps<'div'> & {

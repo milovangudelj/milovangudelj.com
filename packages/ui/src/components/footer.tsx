@@ -1,11 +1,13 @@
 import { Suspense } from 'react'
 
-import { Locale } from '@repo/types/i18n'
+import { getDictionary } from '@repo/i18n'
 
-import { ViewCount, ViewCountSkeleton } from '.'
+import { ViewCount } from './view-count'
+import { ViewCountSkeleton } from './view-count-skeleton'
+import { type Locale } from '@repo/i18n'
 
 export const Footer = async ({ lang }: { lang: Locale }) => {
-  const dictionary = { Footer: { views: 'views' } }
+  const dictionary = await getDictionary(lang, 'website')
 
   return (
     <footer className="ui-border-white/[0.06] ui-px-8 ui-border-t">

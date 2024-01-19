@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Section, Container } from '@repo/ui'
-import { Locale } from '@repo/types/i18n'
+import { type Locale } from '@repo/i18n'
 
 import { getPosts } from '~/sanity/lib/client'
 import { urlForImage } from '~/sanity/lib/image'
