@@ -5,10 +5,7 @@ import Link from 'next/link'
 
 import { type Locale } from '@repo/i18n'
 
-import { MobileNav } from './mobile-nav'
-import { NavLinks } from './nav-links'
-import { LanguageSwitch } from './language-switch'
-import { LanguageSwitchFallback } from './language-switch-fallback'
+import { MobileNav, NavLinks, LanguageSwitch, LanguageSwitchFallback } from '.'
 
 import { SiteNavigationPayload } from '@repo/types/studio'
 

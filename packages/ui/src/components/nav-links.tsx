@@ -1,8 +1,9 @@
 import { twMerge } from 'tailwind-merge'
 
-import { NavLink } from './nav-link'
 import { type Locale } from '@repo/i18n'
 import { SiteNavigationPayload } from '@repo/types/studio'
+
+import { NavLink } from '.'
 
 export const NavLinks = ({
   links,

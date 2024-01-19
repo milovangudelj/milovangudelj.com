@@ -5,7 +5,7 @@ import { Eye } from '@phosphor-icons/react'
 
 import fetcher from '../lib/fetcher'
 
-import { ViewCountSkeleton } from './view-count-skeleton'
+import { ViewCountSkeleton } from '.'
 
 export const ViewCount = ({ message }: { message: string }) => {
   const { data, isLoading } = useSWR<{ count: number; error?: string }>('/api/viewCount', fetcher)
