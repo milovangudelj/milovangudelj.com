@@ -16,6 +16,7 @@
     "@phosphor-icons/react": "^2.0.15",
     "@portabletext/react": "^3.0.11",
     "@repo/i18n": "workspace:^",
+    "@repo/sanity": "workspace:^",
     "@repo/ui": "workspace:^",
     "@sanity/client": "^6.10.0",
     "@sanity/image-url": "^1.0.2",

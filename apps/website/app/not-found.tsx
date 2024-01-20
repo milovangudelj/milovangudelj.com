@@ -4,8 +4,7 @@ import { headers } from 'next/headers'
 
 import { Navbar } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
-
-import { getSiteNavigation } from '~/sanity/client'
+import { getSiteNavigation } from '@repo/sanity/queries'
 
 import confusedTravolta from '~images/johntravolta.webp'
 

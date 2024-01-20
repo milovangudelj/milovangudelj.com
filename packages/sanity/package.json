@@ -1,0 +1,27 @@
+{
+  "name": "@repo/sanity",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "Milovan Gudelj",
+    "email": "milovan.gudelj@gmail.com"
+  },
+  "type": "module",
+  "files": [
+    "./client.ts",
+    "./queries.ts"
+  ],
+  "exports": {
+    ".": "./client.ts",
+    "./queries": "./queries.ts"
+  },
+  "dependencies": {
+    "@repo/i18n": "workspace:^",
+    "next": "^14.0.4",
+    "next-sanity": "^7.0.7",
+    "sanity": "^3.23.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}

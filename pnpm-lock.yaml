@@ -259,6 +259,9 @@ importers:
       '@repo/i18n':
         specifier: workspace:^
         version: link:../../packages/i18n
+      '@repo/sanity':
+        specifier: workspace:^
+        version: link:../../packages/sanity
       '@repo/ui':
         specifier: workspace:^
         version: link:../../packages/ui
@@ -443,6 +446,25 @@ importers:
       server-only:
         specifier: ^0.0.1
         version: 0.0.1
+    devDependencies:
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+
+  packages/sanity:
+    dependencies:
+      '@repo/i18n':
+        specifier: workspace:^
+        version: link:../i18n
+      next:
+        specifier: ^14.0.4
+        version: 14.0.4(@babel/core@7.23.7)(react-dom@18.2.0)(react@18.2.0)
+      next-sanity:
+        specifier: ^7.0.7
+        version: 7.0.7(@sanity/client@6.10.0)(@sanity/icons@2.8.0)(@sanity/types@3.23.4)(@sanity/ui@1.9.3)(next@14.0.4)(react@18.2.0)(sanity@3.23.4)(styled-components@6.1.8)
+      sanity:
+        specifier: ^3.23.4
+        version: 3.23.4(react-dom@18.2.0)(react@18.2.0)(styled-components@6.1.8)
     devDependencies:
       typescript:
         specifier: ^5.3.3
