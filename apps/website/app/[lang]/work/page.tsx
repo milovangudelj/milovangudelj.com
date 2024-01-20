@@ -1,12 +1,11 @@
 import Image from 'next/image'
 
 import { Container, Section } from '@repo/ui'
-import { Locale } from '@repo/types/i18n'
+import { type Locale, getDictionary } from '@repo/i18n'
 
 import { ProjectShowcase } from '~components/ProjectShowcase'
 import { CTA } from '~/components/sections'
 
-import { getDictionary } from '~/utils/getDictionary'
 import { getProjects } from '~/sanity/client'
 
 import heroImage from '~images/work-hero-image.webp'
@@ -21,7 +20,7 @@ export const metadata = {
 }
 
 const WorkPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale } }) => {
-  const dictionary = await getDictionary(lang)
+  const dictionary = await getDictionary(lang, 'website')
 
   const projects = await getProjects(lang)
 

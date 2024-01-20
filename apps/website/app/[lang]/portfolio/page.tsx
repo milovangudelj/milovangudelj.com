@@ -1,9 +1,8 @@
 import Image from 'next/image'
 
 import { Container, Section } from '@repo/ui'
-import { Locale } from '@repo/types/i18n'
+import { type Locale, getDictionary } from '@repo/i18n'
 
-import { getDictionary } from '~/utils/getDictionary'
 import { getPosters } from '~/sanity/client'
 
 import { CTA } from '~components/sections/CTA'
@@ -23,7 +22,7 @@ export const metadata = {
 }
 
 const PortfolioPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale } }) => {
-  const dictionary = await getDictionary(lang)
+  const dictionary = await getDictionary(lang, 'website')
   const posters = await getPosters()
 
   const projects = [

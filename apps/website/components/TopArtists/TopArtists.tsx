@@ -1,7 +1,7 @@
 import { ComponentProps } from 'react'
 import Image from 'next/image'
 
-import { _TopArtists, _Artist } from '~lib/types'
+import { _Artist } from '~lib/types'
 import { getTopArtists } from '~/lib/spotify'
 
 interface TopArtistsProps extends ComponentProps<'div'> {
@@ -10,12 +10,7 @@ interface TopArtistsProps extends ComponentProps<'div'> {
   itemOpenText?: string
 }
 
-export const TopArtists = async ({
-  title,
-  itemAltText,
-  itemOpenText,
-  ...props
-}: TopArtistsProps) => {
+export const TopArtists = async ({ title, ...props }: TopArtistsProps) => {
   const artists = await getTopArtists({ limit: 5, range: 'medium' })
 
   return (

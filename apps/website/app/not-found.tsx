@@ -3,14 +3,13 @@ import Image from 'next/image'
 import { headers } from 'next/headers'
 
 import { Navbar } from '@repo/ui'
+import { type Locale, getDictionary } from '@repo/i18n'
 
 import { getSiteNavigation } from '~/sanity/client'
 
 import confusedTravolta from '~images/johntravolta.webp'
 
 import '~styles/globals.css'
-import { Locale } from '~/i18n.config'
-import { getDictionary } from '~/utils/getDictionary'
 
 const inter = localFont({
   src: '../public/fonts/Inter-Var.woff2',
@@ -33,7 +32,7 @@ export default async function NotFound() {
   const lang = (headers().get('x-mg-locale') ?? 'en') as Locale
   const { links } = await getSiteNavigation({ lang })
 
-  const dictionary = await getDictionary(lang)
+  const dictionary = await getDictionary(lang, 'website')
 
   return (
     <html lang={lang} className={`${inter.variable} ${spaceGrotesk.variable} bg-black text-white`}>

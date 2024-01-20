@@ -1,9 +1,7 @@
 import { ComponentProps } from 'react'
 
 import { Container, Section } from '@repo/ui'
-import { Locale } from '@repo/types/i18n'
-
-import { getDictionary } from '~/utils/getDictionary'
+import { type Locale, getDictionary } from '@repo/i18n'
 
 export const CTA = async ({
   title,
@@ -15,7 +13,7 @@ export const CTA = async ({
   title?: string
   description?: string
 }) => {
-  const dictionary = await getDictionary(lang as Locale)
+  const dictionary = await getDictionary(lang as Locale, 'website')
 
   return (
     <Section className={`relative ${className}`} {...props}>

@@ -1,5 +1,7 @@
 import { SanityClient, createClient } from 'next-sanity'
 
+import { type Locale } from '@repo/i18n'
+
 import {
   ProjectPayload,
   CaseStudyPayload,
@@ -18,7 +20,6 @@ import {
   postersQuery,
   siteNavigationQuery,
 } from './queries'
-import { Locale } from '~/i18n.config'
 
 export const client: SanityClient = createClient({
   apiVersion: '2023-05-28',

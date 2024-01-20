@@ -1,6 +1,6 @@
 'use client'
 
-import { ComponentProps, useRef } from 'react'
+import { ComponentProps } from 'react'
 import { useScrollContainer } from 'react-indiana-drag-scroll'
 
 import { ProjectCard } from './ProjectCard'

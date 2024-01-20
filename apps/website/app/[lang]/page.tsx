@@ -1,16 +1,15 @@
 import { Container, Section } from '@repo/ui'
-import { Locale } from '@repo/types/i18n'
+import { type Locale, getDictionary } from '@repo/i18n'
 
 import { CTA } from '~components/sections/CTA'
 import { Projects } from '~components/Projects'
 
-import { getDictionary } from '~utils/getDictionary'
 import { getSlimProjects } from '~/sanity/client'
 
 const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
   const projects = await getSlimProjects(lang)
 
-  const dictionary = await getDictionary(lang)
+  const dictionary = await getDictionary(lang, 'website')
 
   return (
     <>

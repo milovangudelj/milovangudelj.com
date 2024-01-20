@@ -1,5 +1,5 @@
 import type { PortableTextBlock } from '@portabletext/types'
-import type { Image, ImageAsset, Reference } from 'sanity'
+import type { Image, Reference } from 'sanity'
 
 export interface SiteNavigationPayload {
   links: {

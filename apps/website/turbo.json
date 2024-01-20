@@ -3,7 +3,11 @@
   "extends": ["//"],
   "pipeline": {
     "build": {
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": ["NEXT_PUBLIC_WEBSITE_URL", "NEXT_PUBLIC_SUPABASE_URL"]
+    },
+    "start": {
+      "env": ["SPOTIFY_AUTHORIZATION", "SUPABASE_SERVICE_KEY"]
     }
   }
 }

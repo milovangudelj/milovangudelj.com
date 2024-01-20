@@ -5,10 +5,9 @@ import localFont from 'next/font/local'
 import { GeistSans } from 'geist/font/sans'
 
 import { Navbar, Footer } from '@repo/ui'
-import { Locale } from '@repo/types/i18n'
+import { type Locale, config as i18n } from '@repo/i18n'
 
 import { getSiteNavigation } from '~/sanity/client'
-import { i18n } from '~/i18n.config'
 
 import '~styles/globals.css'
 import '@repo/ui/styles.css'

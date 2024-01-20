@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
 import { urlForImage } from '~/sanity/image'
 import { SlimProjectPayload } from '~/sanity/types'

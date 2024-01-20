@@ -256,6 +256,9 @@ importers:
       '@portabletext/react':
         specifier: ^3.0.11
         version: 3.0.11(react@18.2.0)
+      '@repo/i18n':
+        specifier: workspace:^
+        version: link:../../packages/i18n
       '@repo/ui':
         specifier: workspace:^
         version: link:../../packages/ui

@@ -1,11 +1,9 @@
 import Image from 'next/image'
 
 import { Container, Section } from '@repo/ui'
-import { Locale } from '@repo/types/i18n'
+import { type Locale, getDictionary } from '@repo/i18n'
 
 import { CTA } from '~components/sections/CTA'
-
-import { getDictionary } from '~/utils/getDictionary'
 
 import igLogo from '~images/igLogo.png'
 import twLogo from '~images/twLogo.svg'
@@ -22,7 +20,7 @@ export const metadata = {
 }
 
 const ContactPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale } }) => {
-  const dictionary = await getDictionary(lang)
+  const dictionary = await getDictionary(lang, 'website')
 
   return (
     <>

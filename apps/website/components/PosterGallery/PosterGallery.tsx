@@ -12,7 +12,7 @@ interface GalleryProps extends ComponentProps<'div'> {
   dragText?: string
 }
 
-export const PosterGallery = ({ posters, dragText = 'Drag or scroll', ...porps }: GalleryProps) => {
+export const PosterGallery = ({ posters, dragText = 'Drag or scroll' }: GalleryProps) => {
   const scrollContainer = useScrollContainer({
     mouseScroll: {
       rubberBand: false,

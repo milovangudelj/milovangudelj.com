@@ -1,7 +1,5 @@
 import { Container, Section } from '@repo/ui'
-import { Locale } from '@repo/types/i18n'
-
-import { getDictionary } from '~/utils/getDictionary'
+import { type Locale, getDictionary } from '@repo/i18n'
 
 import { CTA } from '~components/sections/CTA'
 import { TopArtists } from '~components/TopArtists'
@@ -16,7 +14,7 @@ export const metadata = {
 }
 
 const AboutPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale } }) => {
-  const dictionary = await getDictionary(lang)
+  const dictionary = await getDictionary(lang, 'website')
 
   return (
     <>

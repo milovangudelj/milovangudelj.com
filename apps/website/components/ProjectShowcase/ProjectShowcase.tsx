@@ -3,11 +3,12 @@ import Image from 'next/image'
 import { ComponentProps } from 'react'
 import { PortableText } from '@portabletext/react'
 
+import { Locale } from '@repo/i18n'
+import { Button } from '@repo/ui'
+
 import { urlForImage } from '~/sanity/image'
 import { ProjectPayload } from '~/sanity/types'
-import { Locale } from '~/i18n.config'
 
-import { Button } from '@repo/ui'
 
 interface ProjectShowcaseProps extends ComponentProps<'div'> {
   messages: {

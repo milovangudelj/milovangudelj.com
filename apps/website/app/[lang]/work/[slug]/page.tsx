@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { PortableText } from '@portabletext/react'
 
 import { Container } from '@repo/ui'
-import { Locale } from '@repo/types/i18n'
+import { type Locale } from '@repo/i18n'
 
 import { getCaseStudyBySlug, getCaseStudyPaths } from '~/sanity/client'
 import { urlForImage } from '~/sanity/image'

@@ -6,11 +6,6 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
-    "website#build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["SPOTIFY_AUTHORIZATION", "SUPABASE_SERVICE_KEY"]
-    },
     "lint": {
       "dependsOn": ["^lint"]
     },
@@ -23,8 +18,7 @@
       "cache": false
     },
     "start": {
-      "dependsOn": ["^start"],
-      "env": ["SPOTIFY_AUTHORIZATION", "SUPABASE_SERVICE_KEY"]
+      "dependsOn": ["^start"]
     }
   },
   "globalEnv": ["NODE_ENV"]
