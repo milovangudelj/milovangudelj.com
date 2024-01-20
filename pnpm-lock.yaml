@@ -510,6 +510,9 @@ importers:
       '@repo/i18n':
         specifier: workspace:^
         version: link:../i18n
+      '@repo/sanity':
+        specifier: workspace:^
+        version: link:../sanity
       framer-motion:
         specifier: ^10.17.12
         version: 10.17.12(react-dom@18.2.0)(react@18.2.0)

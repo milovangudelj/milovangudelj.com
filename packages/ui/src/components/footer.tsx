@@ -1,9 +1,8 @@
 import { Suspense } from 'react'
 
-import { getDictionary } from '@repo/i18n'
+import { getDictionary, type Locale } from '@repo/i18n'
 
 import { ViewCount, ViewCountSkeleton } from '.'
-import { type Locale } from '@repo/i18n'
 
 export const Footer = async ({ lang }: { lang: Locale }) => {
   const dictionary = await getDictionary(lang, 'website')

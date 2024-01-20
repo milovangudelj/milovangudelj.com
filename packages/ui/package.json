@@ -55,6 +55,7 @@
   "dependencies": {
     "@phosphor-icons/react": "^2.0.15",
     "@repo/i18n": "workspace:^",
+    "@repo/sanity": "workspace:^",
     "framer-motion": "^10.17.12",
     "next": "^14.0.4",
     "swr": "^2.2.4",

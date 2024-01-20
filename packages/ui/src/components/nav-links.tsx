@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 
 import { type Locale } from '@repo/i18n'
-import { SiteNavigationPayload } from '@repo/types/studio'
+import { SiteNavigationPayload } from '@repo/sanity/queries'
 
 import { NavLink } from '.'
 

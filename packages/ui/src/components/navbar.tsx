@@ -4,10 +4,10 @@ import { ComponentProps, RefCallback, Suspense, useCallback, useEffect, useState
 import Link from 'next/link'
 
 import { type Locale } from '@repo/i18n'
+import { SiteNavigationPayload } from '@repo/sanity/queries'
 
 import { MobileNav, NavLinks, LanguageSwitch, LanguageSwitchFallback } from '.'
 
-import { SiteNavigationPayload } from '@repo/types/studio'
 
 type NavbarProps = ComponentProps<'div'> & {
   links: SiteNavigationPayload['links']

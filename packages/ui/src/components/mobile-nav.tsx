@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
 
-import { SiteNavigationPayload } from '@repo/types/studio'
+import { SiteNavigationPayload } from '@repo/sanity/queries'
 import { type Locale } from '@repo/i18n'
 
 import { NavLink } from '.'

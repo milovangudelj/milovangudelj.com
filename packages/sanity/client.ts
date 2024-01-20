@@ -1,4 +1,4 @@
-import { QueryParams, SanityClient, createClient } from 'next-sanity'
+import { type QueryParams, type SanityClient, createClient } from 'next-sanity'
 import { draftMode } from 'next/headers'
 
 const DEFAULT_PARAMS = {} as QueryParams
@@ -42,10 +42,10 @@ const preview = <QueryResponse>(
       next: {
         revalidate: isDraftMode ? 0 : undefined,
         tags,
-      },
+      } as any,
     })
 }
 
 // Client object extended with the preview function
-const client = Object.assign(rawClient, { preview })
+const client: SanityClient = Object.assign(rawClient, { preview })
 export { client }
