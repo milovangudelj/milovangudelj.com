@@ -2,8 +2,7 @@ import Image from 'next/image'
 
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
-
-import { getPosters } from '~/sanity/client'
+import { getPosters } from '@repo/sanity/queries'
 
 import { CTA } from '~components/sections/CTA'
 import { PosterGallery } from '~components/PosterGallery'

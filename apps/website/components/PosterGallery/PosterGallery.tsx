@@ -4,8 +4,8 @@ import Image from 'next/image'
 import { ComponentProps } from 'react'
 import { useScrollContainer } from 'react-indiana-drag-scroll'
 
-import { urlForImage } from '~/sanity/image'
-import { PosterPayload } from '~/sanity/types'
+import { urlForImage } from '@repo/sanity/image'
+import { PosterPayload } from '@repo/sanity/queries'
 
 interface GalleryProps extends ComponentProps<'div'> {
   posters: PosterPayload[]

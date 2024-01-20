@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-import { urlForImage } from '~/sanity/image'
-import { SlimProjectPayload } from '~/sanity/types'
+import { urlForImage } from '@repo/sanity/image'
+import { SlimProjectPayload } from '@repo/sanity/queries'
 
 type ProjectCardProps = {
   title: string

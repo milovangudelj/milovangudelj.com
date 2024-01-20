@@ -6,8 +6,8 @@ import { PortableText } from '@portabletext/react'
 import { Locale } from '@repo/i18n'
 import { Button } from '@repo/ui'
 
-import { urlForImage } from '~/sanity/image'
-import { ProjectPayload } from '~/sanity/types'
+import { urlForImage } from '@repo/sanity/image'
+import { ProjectPayload } from '@repo/sanity/queries'
 
 
 interface ProjectShowcaseProps extends ComponentProps<'div'> {

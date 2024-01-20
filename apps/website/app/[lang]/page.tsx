@@ -1,10 +1,9 @@
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
+import { getSlimProjects } from '@repo/sanity/queries'
 
 import { CTA } from '~components/sections/CTA'
 import { Projects } from '~components/Projects'
-
-import { getSlimProjects } from '~/sanity/client'
 
 const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
   const projects = await getSlimProjects(lang)

@@ -4,7 +4,7 @@ import { ComponentProps } from 'react'
 import { useScrollContainer } from 'react-indiana-drag-scroll'
 
 import { ProjectCard } from './ProjectCard'
-import { SlimProjectPayload } from '~/sanity/types'
+import { SlimProjectPayload } from '@repo/sanity/queries'
 
 interface ProjectsProps extends ComponentProps<'div'> {
   projects: SlimProjectPayload[]

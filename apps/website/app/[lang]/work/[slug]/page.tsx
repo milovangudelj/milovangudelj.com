@@ -5,9 +5,9 @@ import { PortableText } from '@portabletext/react'
 
 import { Container } from '@repo/ui'
 import { type Locale } from '@repo/i18n'
+import { getCaseStudyBySlug, getCaseStudyPaths } from '@repo/sanity/queries'
+import { urlForImage } from '@repo/sanity/image'
 
-import { getCaseStudyBySlug, getCaseStudyPaths } from '~/sanity/client'
-import { urlForImage } from '~/sanity/image'
 import { CTA } from '~/components/sections/CTA'
 
 export async function generateStaticParams() {

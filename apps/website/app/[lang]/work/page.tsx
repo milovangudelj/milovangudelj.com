@@ -2,11 +2,10 @@ import Image from 'next/image'
 
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
+import { getProjects } from '@repo/sanity/queries'
 
 import { ProjectShowcase } from '~components/ProjectShowcase'
 import { CTA } from '~/components/sections'
-
-import { getProjects } from '~/sanity/client'
 
 import heroImage from '~images/work-hero-image.webp'
 

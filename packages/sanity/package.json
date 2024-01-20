@@ -9,19 +9,23 @@
   "type": "module",
   "files": [
     "./client.ts",
-    "./queries.ts"
+    "./queries.ts",
+    "./image.ts"
   ],
   "exports": {
     ".": "./client.ts",
-    "./queries": "./queries.ts"
+    "./queries": "./queries.ts",
+    "./image": "./image.ts"
   },
   "dependencies": {
     "@repo/i18n": "workspace:^",
+    "@sanity/image-url": "^1.0.2",
     "next": "^14.0.4",
     "next-sanity": "^7.0.7",
     "sanity": "^3.23.4"
   },
   "devDependencies": {
+    "@portabletext/types": "^2.0.8",
     "typescript": "^5.3.3"
   }
 }
