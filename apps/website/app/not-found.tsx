@@ -9,6 +9,7 @@ import { getSiteNavigation } from '@repo/sanity/queries'
 import confusedTravolta from '~images/johntravolta.webp'
 
 import '~styles/globals.css'
+import '@repo/ui/styles.css'
 
 const inter = localFont({
   src: '../public/fonts/Inter-Var.woff2',
