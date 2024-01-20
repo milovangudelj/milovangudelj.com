@@ -54,7 +54,6 @@
     "@graphcms/rich-text-types": "^0.5.0",
     "@portabletext/types": "^2.0.8",
     "@repo/tailwind-config": "workspace:^",
-    "@repo/types": "workspace:^",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20.10.8",

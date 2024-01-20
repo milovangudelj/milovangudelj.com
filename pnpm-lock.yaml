@@ -138,9 +138,6 @@ importers:
       '@repo/tailwind-config':
         specifier: workspace:^
         version: link:../../packages/tailwind-config
-      '@repo/types':
-        specifier: workspace:^
-        version: link:../../packages/types
       '@tailwindcss/forms':
         specifier: ^0.5.7
         version: 0.5.7(tailwindcss@3.4.1)
@@ -368,9 +365,6 @@ importers:
       '@repo/tailwind-config':
         specifier: workspace:^
         version: link:../../packages/tailwind-config
-      '@repo/types':
-        specifier: workspace:^
-        version: link:../../packages/types
       '@tailwindcss/forms':
         specifier: ^0.5.7
         version: 0.5.7(tailwindcss@3.4.1)
@@ -532,9 +526,6 @@ importers:
       '@repo/tailwind-config':
         specifier: workspace:^
         version: link:../tailwind-config
-      '@repo/types':
-        specifier: workspace:^
-        version: link:../types
       '@repo/typescript-config':
         specifier: workspace:^
         version: link:../typescript-config
