@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { GithubLogo } from '@phosphor-icons/react'
 
 import { Button } from '@repo/ui'
+
 import { Database } from '~/types/supabase'
 
 type FormData = {

@@ -3,12 +3,11 @@ import Link from 'next/link'
 
 import { Section, Container } from '@repo/ui'
 import { type Locale } from '@repo/i18n'
-
-import { getPosts } from '~/sanity/lib/client'
-import { urlForImage } from '~/sanity/lib/image'
+import { getPosts } from '@repo/sanity/fetch'
+import { urlForImage } from '@repo/sanity/image'
 
 export default async function PostsPage({ params: { lang } }: { params: { lang: Locale } }) {
-  const posts = await getPosts(lang)
+  const posts = await getPosts({ lang })
 
   return (
     <>

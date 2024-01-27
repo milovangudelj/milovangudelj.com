@@ -15,7 +15,7 @@ const nextConfig = {
       },
     ],
   },
-  transpilePackages: ['ui'],
+  transpilePackages: ['@repo/ui', '@repo/sanity'],
 }
 
 module.exports = nextConfig

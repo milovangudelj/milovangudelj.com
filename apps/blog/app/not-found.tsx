@@ -3,15 +3,14 @@ import { headers } from 'next/headers'
 import localFont from 'next/font/local'
 import { GeistSans } from 'geist/font/sans'
 
-import { Navbar } from '@repo/ui'
-
-import confusedTravolta from '~images/johntravolta.webp'
+import { type Locale, getDictionary } from '@repo/i18n'
 
 import '~styles/globals.css'
 import '@repo/ui/styles.css'
 
-import { type Locale } from '@repo/i18n'
-import { getDictionary } from '@repo/i18n'
+import { Navbar } from '@repo/ui'
+
+import confusedTravolta from '~images/johntravolta.webp'
 
 const spaceGrotesk = localFont({
   src: '../public/fonts/SpaceGrotesk-Var.woff2',

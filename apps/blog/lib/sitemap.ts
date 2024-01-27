@@ -1,4 +1,4 @@
-import { getPostPaths } from '~/sanity/lib/client'
+import { getPostPaths } from '@repo/sanity/fetch'
 
 export async function generateSiteMap() {
   const postUrls = await getPostPaths()

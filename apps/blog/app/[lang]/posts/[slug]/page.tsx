@@ -2,9 +2,9 @@ import { Metadata, Viewport } from 'next'
 
 import { Section, Container } from '@repo/ui'
 import { type Locale } from '@repo/i18n'
+import { getPostBySlug, getPostPaths } from '@repo/sanity/fetch'
+import { urlForImage } from '@repo/sanity/image'
 
-import { getPostBySlug, getPostPaths } from '~/sanity/lib/client'
-import { urlForImage } from '~/sanity/lib/image'
 import { toPlainText } from '~/utils/toPlainText'
 
 export async function generateStaticParams() {

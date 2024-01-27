@@ -1,7 +1,7 @@
 'use client'
 
 import { Eye, EyeClosed } from '@phosphor-icons/react'
-import { Session, createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
