@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
 
-import { CTA } from '~components/sections/CTA'
+import { CTA } from '~components/cta'
 
 import igLogo from '~images/igLogo.png'
 import twLogo from '~images/twLogo.svg'

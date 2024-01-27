@@ -9,11 +9,13 @@
   "type": "module",
   "files": [
     "./client.ts",
+    "./fetch.ts",
     "./queries.ts",
     "./image.ts"
   ],
   "exports": {
     ".": "./client.ts",
+    "./fetch": "./fetch.ts",
     "./queries": "./queries.ts",
     "./image": "./image.ts"
   },

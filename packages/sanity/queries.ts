@@ -1,9 +1,6 @@
 import { groq } from 'next-sanity'
 import { type Image, type Reference } from 'sanity'
 import { type PortableTextBlock } from '@portabletext/types'
-import { type Locale } from '@repo/i18n'
-
-import { client } from './client'
 
 // Site Navigation
 
@@ -22,13 +19,6 @@ export interface SiteNavigationPayload {
     url: string
     _key: string
   }[]
-}
-export async function getSiteNavigation({
-  lang,
-}: {
-  lang: Locale
-}): Promise<SiteNavigationPayload> {
-  return await client.fetch(siteNavigationQuery, { lang })
 }
 
 // Projects
@@ -68,16 +58,6 @@ export interface ProjectPayload {
   caseStudy: Reference | null
 }
 
-export async function getProjectBySlug({
-  slug,
-  lang = 'en',
-}: {
-  slug: string
-  lang?: Locale
-}): Promise<ProjectPayload | undefined> {
-  return await client.fetch(projectBySlugQuery, { slug, lang })
-}
-
 export const projectsQuery = groq`
   *[_type == "project" && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] {
     title,
@@ -97,10 +77,6 @@ export const projectsQuery = groq`
     caseStudy,
   }
 `
-
-export async function getProjects(lang: Locale = 'en'): Promise<ProjectPayload[]> {
-  return await client.fetch(projectsQuery, { lang })
-}
 
 export const slimProjectsQuery = groq`
   *[_type == "project" && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] {
@@ -129,10 +105,6 @@ export interface SlimProjectPayload {
     width: number
     height: number
   }
-}
-
-export async function getSlimProjects(lang: Locale = 'en'): Promise<SlimProjectPayload[]> {
-  return await client.fetch(slimProjectsQuery, { lang })
 }
 
 // Case Studies
@@ -181,16 +153,6 @@ export interface CaseStudyPayload {
   }
 }
 
-export async function getCaseStudyBySlug({
-  slug,
-  lang = 'en',
-}: {
-  slug: string
-  lang?: Locale
-}): Promise<CaseStudyPayload> {
-  return await client.fetch(caseStudyBySlugQuery, { slug, lang })
-}
-
 // Posters
 
 export const postersQuery = groq`
@@ -220,24 +182,12 @@ export interface PosterPayload {
   }
 }
 
-export async function getPosters(): Promise<PosterPayload[]> {
-  return await client.fetch(postersQuery)
-}
-
 // Paths
 
 export const projectPaths = groq`
   *[_type == "project" && language == "en" && slug.current != null].slug.current
 `
 
-export async function getProjectPaths(): Promise<string[]> {
-  return (await client.fetch(projectPaths)) || []
-}
-
 export const caseStudyPaths = groq`
 *[_type == "caseStudy" && language == "en"].project->slug.current
 `
-
-export async function getCaseStudyPaths(): Promise<string[]> {
-  return (await client.fetch(caseStudyPaths)) || []
-}

@@ -2,10 +2,10 @@ import Image from 'next/image'
 
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
-import { getPosters } from '@repo/sanity/queries'
+import { getPosters } from '@repo/sanity/fetch'
 
-import { CTA } from '~components/sections/CTA'
-import { PosterGallery } from '~components/PosterGallery'
+import { CTA } from '~components/cta'
+import { PosterGallery } from '~/components/poster-gallery'
 import { SoftwarePlanets } from './SoftwarePlanets'
 
 import squiggle from '~images/squiggly-line.svg'

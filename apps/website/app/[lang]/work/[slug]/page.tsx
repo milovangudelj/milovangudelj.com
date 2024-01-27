@@ -5,15 +5,13 @@ import { PortableText } from '@portabletext/react'
 
 import { Container } from '@repo/ui'
 import { type Locale } from '@repo/i18n'
-import { getCaseStudyBySlug, getCaseStudyPaths } from '@repo/sanity/queries'
+import { getCaseStudyBySlug, getCaseStudyPaths } from '@repo/sanity/fetch'
 import { urlForImage } from '@repo/sanity/image'
 
-import { CTA } from '~/components/sections/CTA'
+import { CTA } from '~/components/cta'
 
 export async function generateStaticParams() {
-  const caseStudies = await getCaseStudyPaths()
-
-  return caseStudies.map((caseStudy) => ({ slug: caseStudy }))
+  return (await getCaseStudyPaths()).map((path) => ({ slug: path }))
 }
 
 export async function generateViewport({

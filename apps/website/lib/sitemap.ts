@@ -1,4 +1,4 @@
-import { getCaseStudyPaths } from '@repo/sanity/queries'
+import { getCaseStudyPaths } from '@repo/sanity/fetch'
 
 export async function generateSiteMap() {
   const csUrls = await getCaseStudyPaths()

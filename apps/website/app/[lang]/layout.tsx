@@ -6,7 +6,7 @@ import { GeistSans } from 'geist/font/sans'
 
 import { Navbar, Footer } from '@repo/ui'
 import { type Locale, config as i18n } from '@repo/i18n'
-import { getSiteNavigation } from '@repo/sanity/queries'
+import { getSiteNavigation } from '@repo/sanity/fetch'
 
 import '~styles/globals.css'
 import '@repo/ui/styles.css'

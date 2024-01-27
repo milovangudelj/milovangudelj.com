@@ -8,7 +8,7 @@ const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists`
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 
 const getAccessToken = async () => {
-  const { data, error } = await supabase.from('spotify_access_token').select('*').limit(1).single()
+  const { data } = await supabase.from('spotify_access_token').select('*').limit(1).single()
 
   if (!data) return null
 
@@ -64,7 +64,7 @@ const refreshAccessToken = async () => {
 
   if (!old_access_token) return access_token
 
-  const { status } = await supabase
+  await supabase
     .from('spotify_access_token')
     .update({ value: access_token, expires_at: timestamp })
     .match({ id: old_access_token.id })
@@ -101,6 +101,7 @@ export const getTopArtists = async ({
 }) => {
   const access_token = await getAccessToken()
 
+  // eslint-disable-next-line no-unused-vars
   const tRange: { [key in typeof range]: string } = {
     short: 'short_term',
     medium: 'medium_term',

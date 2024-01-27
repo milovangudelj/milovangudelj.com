@@ -1,9 +1,9 @@
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
 
-import { CTA } from '~components/sections/CTA'
-import { TopArtists } from '~components/TopArtists'
-import { NowPlaying } from '~/components/NowPlaying'
+import { CTA } from '~components/cta'
+import { TopArtists } from '~/components/top-artists'
+import { NowPlaying } from '~/components/now-playing'
 
 export const metadata = {
   title: 'Milovan Gudelj - About me',

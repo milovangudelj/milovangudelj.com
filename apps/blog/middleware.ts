@@ -27,11 +27,7 @@ export const middleware = async (request: NextRequest) => {
 
   // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
   // If you have one
-  if (
-    ['/fonts', '/images'].some(
-      (value) => pathname.startsWith(value) || pathname.localeCompare(value) === 0
-    )
-  ) {
+  if (/^\/(fonts|images)\//.test(pathname)) {
     return NextResponse.next()
   }
 
@@ -47,13 +43,7 @@ export const middleware = async (request: NextRequest) => {
     // e.g. incoming request is /en/products
     // The new URL is now /products
     return NextResponse.redirect(
-      new URL(
-        pathname.replace(
-          `/${i18n.defaultLocale}`,
-          pathname === `/${i18n.defaultLocale}` ? '/' : ''
-        ),
-        request.url
-      ),
+      new URL(pathname.replace(`/${i18n.defaultLocale}`, ''), request.url),
       {
         headers: reqHeaders,
       }
@@ -91,7 +81,5 @@ export const middleware = async (request: NextRequest) => {
 
 export const config = {
   // Matcher ignoring `/_next/` and `/api/`
-  matcher: [
-    '/((?!api|studio|auth|sitemap.xml|robots.txt|_next/static|_next/image|images|fonts).*)',
-  ],
+  matcher: ['/((?!api|auth|sitemap.xml|robots.txt|_next/static|_next/image|images|fonts).*)'],
 }
