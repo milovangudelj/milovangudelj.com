@@ -20,17 +20,21 @@ import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { media, mediaAssetSource } from 'sanity-plugin-media'
 
 import { defaultDocumentNode, structure } from './desk'
-import { apiVersion } from './env'
+import { apiVersion, dataset, projectId } from './env'
 import { schema } from './schema'
 import { singletonTypes, singletonActions, i18nActions, i18nTypes } from './lib/singletons'
 import { createExtendedPublishAction } from './lib/actions'
+import { csSession } from './plugins/cross-site-session'
 
 export default defineConfig({
   name: 'default',
   title: 'milovangudelj.com',
+  auth: {
+    loginMethod: 'token',
+  },
 
-  projectId: 'b92e2bev',
-  dataset: 'production',
+  projectId: projectId,
+  dataset: dataset,
 
   schema,
 
@@ -97,6 +101,7 @@ export default defineConfig({
         !enclosingType.name.startsWith('localisedString') ||
         selectedLanguageIds.includes(field.name),
     }),
+    csSession(),
   ],
   form: {
     file: {

@@ -18,3 +18,8 @@ export const projectTitle = assertValue(
   process.env.SANITY_STUDIO_PROJECT_TITLE,
   'Missing environment variable: SANITY_STUDIO_PROJECT_TITLE'
 )
+
+export const frontendUrl = assertValue(
+  process.env.SANITY_STUDIO_FRONTEND_URL,
+  'Missing environment variable: SANITY_STUDIO_FRONTEND_URL'
+)
