@@ -11,7 +11,7 @@ export const csSession = definePlugin(() => {
     return {}
   }
 
-  fetch(`${frontendUrl}/api/setSanityToken`, {
+  fetch(`${frontendUrl}/api/setSanityToken/`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
