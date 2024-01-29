@@ -2,7 +2,9 @@ import { headers } from 'next/headers'
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin':
-    process.env.NODE_ENV === 'production' ? 'https://studio.milovangudelj.com' : '*',
+    process.env.NODE_ENV === 'production'
+      ? 'https://studio.milovangudelj.com'
+      : 'http://localhost:3333',
   'Access-Control-Allow-Credentials': 'true',
   'Access-Control-Allow-Headers': 'Authorization',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',

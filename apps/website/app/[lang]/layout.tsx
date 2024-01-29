@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import localFont from 'next/font/local'
 import { GeistSans } from 'geist/font/sans'
+import { Toaster } from 'sonner'
 
 import { Navbar, Footer } from '@repo/ui'
 import { type Locale, config as i18n } from '@repo/i18n'
@@ -10,6 +11,7 @@ import { getSiteNavigation } from '@repo/sanity/fetch'
 
 import '~styles/globals.css'
 import '@repo/ui/styles.css'
+import { SanityEditorToast } from './SanityEditorToast'
 
 const spaceGrotesk = localFont({
   src: '../../public/fonts/SpaceGrotesk-Var.woff2',
@@ -94,6 +96,8 @@ export default async function RootLayout({
         <Navbar lang={params.lang} links={links} />
         {children}
         <Footer lang={params.lang} />
+        <Toaster />
+        <SanityEditorToast />
         {process.env.NODE_ENV === 'production' && <SpeedInsights />}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

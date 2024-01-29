@@ -346,6 +346,9 @@ importers:
       sharp:
         specifier: ^0.33.1
         version: 0.33.1
+      sonner:
+        specifier: ^1.4.0
+        version: 1.4.0(react-dom@18.2.0)(react@18.2.0)
       spotify-web-api-node:
         specifier: ^5.0.2
         version: 5.0.2
@@ -11389,6 +11392,16 @@ packages:
     dependencies:
       solid-js: 1.8.9
       swr-store: 0.10.6
+    dev: false
+
+  /sonner@1.4.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-nvkTsIuOmi9e5Wz5If8ldasJjZNVfwiXYijBi2dbijvTQnQppvMcXTFNxL/NUFWlI2yJ1JX7TREDsg+gYm9WyA==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /sort-object-keys@1.1.3:
