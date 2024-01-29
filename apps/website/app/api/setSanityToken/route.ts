@@ -20,11 +20,9 @@ export async function POST() {
 export async function OPTIONS() {
   const resHeaders = new Headers({
     'Access-Control-Allow-Origin':
-      process.env.NODE_ENV === 'production'
-        ? 'https://studio.milovangudelj.com'
-        : 'http://localhost:3333',
+      process.env.NODE_ENV === 'production' ? 'https://studio.milovangudelj.com' : '*',
     'Access-Control-Allow-Credentials': 'true',
-    'Access-Control-Allow-Headers': '*',
+    'Access-Control-Allow-Headers': 'Authorization',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
   })
 
