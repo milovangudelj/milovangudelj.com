@@ -15,7 +15,7 @@ export async function POST() {
       process.env.NODE_ENV === 'production'
         ? 'https://studio.milovangudelj.com'
         : 'http://localhost:3333',
-    'Access-Control-Allow-Methods': 'POST',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Set-Cookie': cookie,
   }
