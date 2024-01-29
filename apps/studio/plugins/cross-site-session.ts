@@ -13,6 +13,7 @@ export const csSession = definePlugin(() => {
 
   fetch(`${frontendUrl}/api/setSanityToken`, {
     method: 'POST',
+    mode: 'no-cors',
     headers: {
       Authorization: `Bearer ${token}`,
     },
