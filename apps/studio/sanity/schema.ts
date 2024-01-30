@@ -1,6 +1,6 @@
 import { SchemaPluginOptions, type SchemaTypeDefinition } from 'sanity'
 
-import { singletonTypes } from './lib/singletons'
+import { singletonTypes } from '~/sanity/lib/singletons'
 
 import {
   localeString,

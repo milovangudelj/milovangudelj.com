@@ -1,14 +1,14 @@
-import { PencilLine, Image } from '@phosphor-icons/react'
+import { File, Image } from '@phosphor-icons/react'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-import { isUniqueOtherThanLanguage } from '../utils/isUniqueOtherThanLanguage'
-import { LANGUAGES } from '../utils/languages'
+import { isUniqueOtherThanLanguage } from '~/sanity/utils/isUniqueOtherThanLanguage'
+import { LANGUAGES } from '~/sanity/utils/languages'
 
-export const post = defineType({
-  name: 'post',
-  title: 'Post',
+export const caseStudy = defineType({
+  name: 'caseStudy',
+  title: 'Case Study',
   type: 'document',
-  icon: PencilLine,
+  icon: File as any,
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [
@@ -19,32 +19,20 @@ export const post = defineType({
       hidden: true,
     }),
     defineField({
-      name: 'publishedAt',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
-    }),
-    defineField({
       name: 'title',
-      description: 'This field is the title of your post.',
       title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-        isUnique: isUniqueOtherThanLanguage,
-      },
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'intro',
-      description: 'Used both for the <meta> description tag for SEO, and post subheader.',
+      description: 'Used both for the <meta> description tag for SEO, and project subheader.',
       title: 'Intro',
       type: 'array',
       of: [
@@ -62,7 +50,6 @@ export const post = defineType({
               },
             ],
           },
-          styles: [],
           type: 'block',
         }),
       ],
@@ -71,7 +58,7 @@ export const post = defineType({
     defineField({
       name: 'cover',
       title: 'Cover Image',
-      description: 'This image will be used as the cover image for the post.',
+      description: 'This image will be used as the cover image for the case study.',
       type: 'image',
       options: {
         hotspot: true,
@@ -98,23 +85,8 @@ export const post = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'tags',
-      title: 'Tags',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'reference',
-          to: { type: 'postTag' },
-        }),
-      ],
-      options: {
-        layout: 'tags',
-      },
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'body',
-      title: 'Post body',
+      name: 'content',
+      title: 'CS content',
       type: 'array',
       of: [
         defineArrayMember({
@@ -136,9 +108,9 @@ export const post = defineType({
             ],
           },
         }),
-        defineArrayMember({
+        defineField({
           type: 'image',
-          icon: Image,
+          icon: Image as any,
           name: 'image',
           title: 'Image',
           options: {
@@ -152,6 +124,11 @@ export const post = defineType({
           },
           fields: [
             defineField({
+              title: 'Caption',
+              name: 'caption',
+              type: 'string',
+            }),
+            defineField({
               name: 'alt',
               type: 'string',
               title: 'Alt text',
@@ -159,25 +136,14 @@ export const post = defineType({
             }),
           ],
         }),
-        defineArrayMember({
-          type: 'code',
-          name: 'codeBlock',
-          title: 'Code Block',
-          options: {
-            language: 'typescript',
-            languageAlternatives: [
-              { title: 'ts', value: 'typescript' },
-              { title: 'tsx', value: 'tsx' },
-              { title: 'js', value: 'javascript' },
-              { title: 'jsx', value: 'jsx' },
-              { title: 'md', value: 'markdown' },
-              { title: 'html', value: 'html' },
-              { title: 'css', value: 'css' },
-            ],
-            withFilename: true,
-          },
-        }),
       ],
+    }),
+    defineField({
+      name: 'project',
+      title: 'Project',
+      type: 'reference',
+      to: [{ type: 'project' }],
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {

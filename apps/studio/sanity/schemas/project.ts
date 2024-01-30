@@ -1,8 +1,8 @@
 import { File } from '@phosphor-icons/react'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-import { isUniqueOtherThanLanguage } from '../utils/isUniqueOtherThanLanguage'
-import { LANGUAGES } from '../utils/languages'
+import { isUniqueOtherThanLanguage } from '~/sanity/utils/isUniqueOtherThanLanguage'
+import { LANGUAGES } from '~/sanity/utils/languages'
 
 export const project = defineType({
   name: 'project',

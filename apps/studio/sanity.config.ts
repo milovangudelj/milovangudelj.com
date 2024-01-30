@@ -1,5 +1,5 @@
 import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
+import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import {
   dashboardTool,
@@ -19,12 +19,12 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { media, mediaAssetSource } from 'sanity-plugin-media'
 
-import { defaultDocumentNode, structure } from './desk'
-import { apiVersion, dataset, projectId } from './env'
-import { schema } from './schema'
-import { singletonTypes, singletonActions, i18nActions, i18nTypes } from './lib/singletons'
-import { createExtendedPublishAction } from './lib/actions'
-import { csSession } from './plugins/cross-site-session'
+import { defaultDocumentNode, structure } from '~/sanity/desk'
+import { apiVersion, dataset, projectId } from '~/sanity/env'
+import { schema } from '~/sanity/schema'
+import { singletonTypes, singletonActions, i18nActions, i18nTypes } from '~/sanity/lib/singletons'
+import { createExtendedPublishAction } from '~/sanity/lib/actions'
+import { csSession } from '~/sanity/plugins/cross-site-session'
 
 export default defineConfig({
   name: 'default',
@@ -69,7 +69,7 @@ export default defineConfig({
   },
 
   plugins: [
-    deskTool({
+    structureTool({
       structure,
       defaultDocumentNode,
     }),

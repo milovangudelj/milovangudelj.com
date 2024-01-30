@@ -1,6 +1,6 @@
 import { File, Folder, Gear, Image, Link, Palette, PencilLine, Tag } from '@phosphor-icons/react'
-import { DefaultDocumentNodeResolver, StructureResolver } from 'sanity/desk'
-import { LANGUAGES } from './utils/languages'
+import { DefaultDocumentNodeResolver, StructureResolver } from 'sanity/structure'
+import { LANGUAGES } from '~/sanity/utils/languages'
 
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (S) => {
   return S.document().views([S.view.form()])
