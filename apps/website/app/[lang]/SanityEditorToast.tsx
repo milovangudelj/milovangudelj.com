@@ -8,7 +8,7 @@ const getCookieValue = (name: string) =>
 
 export const SanityEditorToast = () => {
   useEffect(() => {
-    if (getCookieValue('sanitySession')) {
+    if (getCookieValue(`sanitySession_${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}`)) {
       toast('You appear to be an editor.', {
         action: {
           label: 'Go to the Studio',

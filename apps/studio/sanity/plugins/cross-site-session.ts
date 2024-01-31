@@ -15,6 +15,9 @@ export const csSession = definePlugin(() => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify({
+      projectId,
+    }),
     credentials: 'include',
   }).catch((err) => {})
 
