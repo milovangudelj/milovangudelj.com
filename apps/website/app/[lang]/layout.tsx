@@ -96,7 +96,24 @@ export default async function RootLayout({
         <Navbar lang={params.lang} links={links} />
         {children}
         <Footer lang={params.lang} />
-        <Toaster />
+        <Toaster
+          richColors={true}
+          toastOptions={{
+            style: {
+              backgroundColor: 'black',
+              backgroundImage: 'url(/images/noise.webp)',
+              backgroundSize: '100px',
+              borderRadius: '8px',
+              userSelect: 'none',
+              padding: '0',
+              border: '1px solid rgba(255, 255, 255, 0.16)',
+              fontSize: '0.875rem',
+              lineHeight: '1.25rem',
+              fontWeight: '400',
+              color: 'white',
+            },
+          }}
+        />
         <SanityEditorToast />
         {process.env.NODE_ENV === 'production' && <SpeedInsights />}
         {process.env.NODE_ENV === 'production' && <Analytics />}
