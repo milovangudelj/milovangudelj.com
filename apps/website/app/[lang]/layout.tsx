@@ -12,6 +12,7 @@ import { getSiteNavigation } from '@repo/sanity/fetch'
 import '~styles/globals.css'
 import '@repo/ui/styles.css'
 import { SanityEditorToast } from './SanityEditorToast'
+import { Suspense } from 'react'
 
 const spaceGrotesk = localFont({
   src: '../../public/fonts/SpaceGrotesk-Var.woff2',
@@ -114,7 +115,9 @@ export default async function RootLayout({
             },
           }}
         />
-        <SanityEditorToast />
+        <Suspense>
+          <SanityEditorToast />
+        </Suspense>
         {process.env.NODE_ENV === 'production' && <SpeedInsights />}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
