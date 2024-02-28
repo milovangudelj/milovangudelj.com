@@ -4,6 +4,9 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "dev:website": "concurrently \"turbo dev --filter=ui\" \"turbo dev --filter=website\"",
+    "dev:blog": "concurrently \"turbo dev --filter=ui\" \"turbo dev --filter=blog\"",
+    "dev:studio": "turbo dev --filter=studio",
     "start": "turbo start",
     "lint": "turbo lint",
     "format": "prettier --write ."
@@ -11,6 +14,7 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:^",
     "@repo/typescript-config": "workspace:^",
+    "concurrently": "^8.2.2",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "turbo": "^1.11.3"
