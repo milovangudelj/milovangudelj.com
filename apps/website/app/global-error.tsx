@@ -6,6 +6,9 @@ import * as Sentry from '@sentry/nextjs'
 import localFont from 'next/font/local'
 import { GeistSans } from 'geist/font/sans'
 
+import '~styles/globals.css'
+import '@repo/ui/styles.css'
+
 const spaceGrotesk = localFont({
   src: '../public/fonts/SpaceGrotesk-Var.woff2',
   display: 'swap',
