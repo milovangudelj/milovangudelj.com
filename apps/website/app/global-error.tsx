@@ -7,7 +7,7 @@ import localFont from 'next/font/local'
 import { GeistSans } from 'geist/font/sans'
 
 const spaceGrotesk = localFont({
-  src: '../../public/fonts/SpaceGrotesk-Var.woff2',
+  src: '../public/fonts/SpaceGrotesk-Var.woff2',
   display: 'swap',
   preload: true,
   weight: '300 700',
