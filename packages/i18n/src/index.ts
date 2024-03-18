@@ -1,4 +1,5 @@
 import en from './dictionaries/en'
+import it from './dictionaries/it'
 
 export const config = {
   defaultLocale: 'en',
@@ -32,10 +33,8 @@ const pickModule = <T extends DictionaryScope>(scope: T, dictionary: Dictionary)
 }
 
 const dictionaries = {
-  en: <T extends DictionaryScope>(scope: T) =>
-    import('./dictionaries/en').then((dictionary) => pickModule(scope, dictionary.default)),
-  it: <T extends DictionaryScope>(scope: T) =>
-    import('./dictionaries/it').then((dictionary) => pickModule(scope, dictionary.default)),
+  en: <T extends DictionaryScope>(scope: T) => pickModule(scope, en),
+  it: <T extends DictionaryScope>(scope: T) => pickModule(scope, it),
 }
 
 export const getDictionary = async <T extends DictionaryScope>(locale: Locale = 'en', scope: T) => {
