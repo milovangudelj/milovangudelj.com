@@ -38,5 +38,5 @@ const dictionaries = {
 }
 
 export const getDictionary = async <T extends DictionaryScope>(locale: Locale = 'en', scope: T) => {
-  return dictionaries[locale](scope)
+  return locale === 'en' ? dictionaries.en(scope) : dictionaries.it(scope)
 }
