@@ -48,11 +48,15 @@ const preview = <R = any>(
   const isDevelopment = process.env.NODE_ENV === 'development'
 
   return rawClient.withConfig({ useCdn: isDraftMode ? false : true }).fetch<R>(query, params, {
-    cache: isDevelopment || isDraftMode ? undefined : 'force-cache',
-    ...(isDraftMode && {
-      token: token ?? options.token,
-      perspective: 'previewDrafts',
-    }),
+    cache: isDevelopment || isDraftMode ? 'no-store' : 'default',
+    ...(isDraftMode
+      ? {
+          token: token ?? options.token,
+          perspective: 'previewDrafts',
+        }
+      : {
+          perspective: 'published',
+        }),
     next: {
       revalidate: isDraftMode ? 0 : undefined,
       tags: (options.next as any)?.tags ?? DEFAULT_TAGS,
@@ -90,10 +94,6 @@ export async function getProjectBySlug({ slug, lang = 'en' }: { slug: string; la
 
 export async function getProjects({ lang = 'en' }: { lang?: Locale }) {
   return await getData<ProjectPayload[]>(projectsQuery, { lang })
-}
-
-export async function getSlimProjects({ lang = 'en' }: { lang?: Locale }) {
-  return await getData<SlimProjectPayload[]>(slimProjectsQuery, { lang })
 }
 
 export async function getCaseStudyBySlug({ slug, lang = 'en' }: { slug: string; lang?: Locale }) {

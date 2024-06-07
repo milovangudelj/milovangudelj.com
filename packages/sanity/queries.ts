@@ -59,7 +59,7 @@ export interface ProjectPayload {
 }
 
 export const projectsQuery = groq`
-  *[_type == "project" && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] {
+  *[_type == "project" && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] | order(year desc) {
     title,
     "slug": slug.current,
     year,
@@ -79,7 +79,7 @@ export const projectsQuery = groq`
 `
 
 export const slimProjectsQuery = groq`
-  *[_type == "project" && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] {
+  *[_type == "project" && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] | order(year desc) {
     title,
     "slug": slug.current,
     site,
