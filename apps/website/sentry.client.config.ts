@@ -29,7 +29,10 @@ Sentry.init({
   ],
 
   ignoreErrors: [
+    // Known Wordpress plugins and php scripts
     'wp-login.php',
+    'revision.php',
+    '.php',
     // Random plugins/extensions
     'top.GLOBALS',
     // See: http://blog.errorception.com/2012/03/tale-of-unfindable-js-error.html
