@@ -59,7 +59,7 @@ export interface ProjectPayload {
 }
 
 export const projectsQuery = groq`
-  *[_type == "project" && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] | order(year desc) {
+  *[_type == "project" && showcase == true && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] | order(year desc) {
     title,
     "slug": slug.current,
     year,
@@ -79,7 +79,7 @@ export const projectsQuery = groq`
 `
 
 export const slimProjectsQuery = groq`
-  *[_type == "project" && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] | order(year desc) {
+  *[_type == "project" && showcase == true && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] | order(year desc) {
     title,
     "slug": slug.current,
     site,
@@ -110,7 +110,7 @@ export interface SlimProjectPayload {
 // Case Studies
 
 export const caseStudyBySlugQuery = groq`
-  *[_type == "project" && slug.current == $slug][language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0][0].caseStudy->{
+  *[_type == "project" && showcase == true && slug.current == $slug][language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0][0].caseStudy->{
     title,
     subtitle,
     intro,
@@ -283,11 +283,11 @@ export interface SlimPostPayload {
 // Paths
 
 export const projectPaths = groq`
-  *[_type == "project" && language == "en" && slug.current != null].slug.current
+  *[_type == "project" && showcase == true && language == "en" && slug.current != null].slug.current
 `
 
 export const caseStudyPaths = groq`
-*[_type == "caseStudy" && language == "en"].project->slug.current
+*[_type == "caseStudy" && language == "en" && project->showcase == true].project->slug.current
 `
 
 export const postPaths = groq`
