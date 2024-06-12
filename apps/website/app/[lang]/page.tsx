@@ -9,8 +9,6 @@ import { Projects } from '~/components/projects'
 const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
   const projects = await getData<SlimProjectPayload[]>(slimProjectsQuery, { lang })
 
-  console.log(projects)
-
   const dictionary = await getDictionary(lang, 'website')
 
   return (
