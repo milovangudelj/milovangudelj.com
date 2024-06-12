@@ -23,6 +23,9 @@ const en = {
         'In the past few years I’ve had the opportunity to work on a number of projects.',
       subtitle: 'Here’s a curated list of the most recent ones.',
     },
+    CaseStudy: {
+      back: 'Go Back',
+    },
     About: {
       main: {
         title: 'About me',

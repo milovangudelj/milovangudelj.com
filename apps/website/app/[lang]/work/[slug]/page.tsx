@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { PortableText } from '@portabletext/react'
 
 import { Container } from '@repo/ui'
-import { type Locale } from '@repo/i18n'
+import { getDictionary, type Locale } from '@repo/i18n'
 import { getCaseStudyBySlug, getCaseStudyPaths } from '@repo/sanity/fetch'
 import { urlForImage } from '@repo/sanity/image'
 
@@ -63,6 +63,8 @@ const ProjectPage = async ({
 }: {
   params: { slug: string; lang: Locale }
 }) => {
+  const dictionary = await getDictionary(lang, 'website')
+
   const { title, subtitle, intro, cover, body } = await getCaseStudyBySlug({ slug, lang })
 
   return (
@@ -71,7 +73,7 @@ const ProjectPage = async ({
         <header className="pb-16 max-xl:px-0 max-xl:pt-32 xl:p-32 xl:pb-16">
           <div className="text-button mb-8 flex items-center space-x-3">
             <Link href={`/${lang}/work`} className="text-white/70 transition hover:text-white">
-              ← Go Back
+              ← {dictionary.CaseStudy.back}
             </Link>
             <span className="inline-block h-6 w-px bg-white/[0.06]"></span>
             <h1 className="text-yellow">{title}</h1>

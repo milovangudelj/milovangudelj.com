@@ -20,9 +20,12 @@ const it: Dictionary = {
       more: "Aspetta, c'è altro",
     },
     Work: {
-      title: 'My designs',
+      title: 'I miei lavori',
       description: "Negli ultimi anni ho avuto l'opportunità di lavorare a una serie di progetti.",
       subtitle: 'Qui di seguito troverai alcuni dei miei lavori più recenti, enjoy!',
+    },
+    CaseStudy: {
+      back: 'Torna indietro',
     },
     About: {
       main: {
