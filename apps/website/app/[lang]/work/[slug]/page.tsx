@@ -91,15 +91,21 @@ const ProjectPage = async ({
           />
           <figure className="relative mt-32 xl:-mx-32">
             <Image
-              src={urlForImage(cover.image).url()}
+              src={urlForImage(cover.image)
+                .width(cover.width)
+                .height(Math.floor(cover.width / (1280 / 400)))
+                .fit('crop')
+                .focalPoint(cover.image.hotspot?.x ?? 0.5, cover.image.hotspot?.y ?? 0.5)
+                .quality(100)
+                .url()}
               alt={cover.image.alt ?? cover.image.caption}
-              title={cover.image.alt}
+              title={cover.image.caption ?? cover.image.alt ?? ''}
               quality={100}
               sizes="1280px"
               placeholder={'blur'}
               blurDataURL={cover.lqip}
               priority
-              className="w-full rounded-lg object-cover max-xl:aspect-video max-xl:max-h-[300px] xl:h-[400px] xl:rounded-2xl"
+              className={`w-full rounded-lg object-cover max-xl:aspect-video max-xl:max-h-[300px] xl:h-[400px] xl:rounded-2xl`}
               width={cover.width}
               height={cover.height}
             />
@@ -112,14 +118,36 @@ const ProjectPage = async ({
           <PortableText
             value={body}
             components={{
+              list: {
+                bullet: ({ children }) => <ul className="list-disc pl-5">{children}</ul>,
+                number: ({ children }) => <ol className="list-decimal pl-5">{children}</ol>,
+              },
+              listItem: {
+                bullet: ({ children }) => (
+                  <li className="mb-8 last:mb-0">
+                    <p className="pr-5 text-white/70">{children}</p>
+                  </li>
+                ),
+                number: ({ children }) => (
+                  <li className="mb-8 last:mb-0">
+                    <p className="pr-5 text-white/70">{children}</p>
+                  </li>
+                ),
+              },
               types: {
                 image: ({ value }) => {
                   return (
                     <figure className="relative my-32 xl:-mx-32">
                       <Image
-                        src={value.asset.url}
+                        src={urlForImage(value.asset)
+                          .width(value.asset.metadata.dimensions.width)
+                          .height(Math.floor(value.asset.metadata.dimensions.width / (1280 / 400)))
+                          .fit('crop')
+                          .focalPoint(value.hotspot?.x ?? 0.5, value.hotspot?.y ?? 0.5)
+                          .quality(100)
+                          .url()}
                         alt={value.alt ?? value.caption ?? ''}
-                        title={value.alt ?? value.caption ?? ''}
+                        title={value.caption ?? value.alt ?? ''}
                         quality={100}
                         sizes="1280px"
                         className="w-full rounded-lg object-cover max-xl:aspect-video max-xl:max-h-[300px] xl:h-[400px] xl:rounded-2xl"
