@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
-import { getPosters } from '@repo/sanity/fetch'
+import { getData } from '@repo/sanity/fetch'
 
 import { CTA } from '~components/cta'
 import { PosterGallery } from '~/components/poster-gallery'
@@ -10,6 +10,7 @@ import { SoftwarePlanets } from './SoftwarePlanets'
 
 import squiggle from '~images/squiggly-line.svg'
 import semicircle from '~images/semicircle.svg'
+import { PosterPayload, postersQuery } from '@repo/sanity/queries'
 
 export const metadata = {
   title: 'Milovan Gudelj - Portfolio',
@@ -22,7 +23,7 @@ export const metadata = {
 
 const PortfolioPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale } }) => {
   const dictionary = await getDictionary(lang, 'website')
-  const posters = await getPosters()
+  const posters = await getData<PosterPayload[]>(postersQuery)
 
   const projects = [
     {

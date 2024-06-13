@@ -4,12 +4,13 @@ import { headers } from 'next/headers'
 
 import { Navbar } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
-import { getSiteNavigation } from '@repo/sanity/fetch'
+import { getData } from '@repo/sanity/fetch'
 
 import confusedTravolta from '~images/johntravolta.webp'
 
 import '~styles/globals.css'
 import '@repo/ui/styles.css'
+import { SiteNavigationPayload, siteNavigationQuery } from '@repo/sanity/queries'
 
 const inter = localFont({
   src: '../public/fonts/Inter-Var.woff2',
@@ -30,7 +31,7 @@ const spaceGrotesk = localFont({
 
 export default async function NotFound() {
   const lang = (headers().get('x-mg-locale') ?? 'en') as Locale
-  const { links } = await getSiteNavigation({ lang })
+  const { links } = await getData<SiteNavigationPayload>(siteNavigationQuery, { lang })
 
   const dictionary = await getDictionary(lang, 'website')
 

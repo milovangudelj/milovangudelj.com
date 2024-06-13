@@ -7,12 +7,13 @@ import { Toaster } from 'sonner'
 
 import { Navbar, Footer } from '@repo/ui'
 import { type Locale, config as i18n } from '@repo/i18n'
-import { getSiteNavigation } from '@repo/sanity/fetch'
+import { getData } from '@repo/sanity/fetch'
 
 import '~styles/globals.css'
 import '@repo/ui/styles.css'
 import { SanityEditorToast } from './SanityEditorToast'
 import { Suspense } from 'react'
+import { SiteNavigationPayload, siteNavigationQuery } from '@repo/sanity/queries'
 
 const spaceGrotesk = localFont({
   src: '../../public/fonts/SpaceGrotesk-Var.woff2',
@@ -89,7 +90,7 @@ export default async function RootLayout({
     lang: Locale
   }
 }) {
-  const { links } = await getSiteNavigation({ lang: params.lang })
+  const { links } = await getData<SiteNavigationPayload>(siteNavigationQuery, { lang: params.lang })
 
   return (
     <html lang={params.lang} className={`${GeistSans.variable} ${spaceGrotesk.variable}`}>

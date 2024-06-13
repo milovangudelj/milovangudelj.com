@@ -5,13 +5,15 @@ import { PortableText } from '@portabletext/react'
 
 import { Container } from '@repo/ui'
 import { getDictionary, type Locale } from '@repo/i18n'
-import { getCaseStudyBySlug, getCaseStudyPaths } from '@repo/sanity/fetch'
+import { getData } from '@repo/sanity/fetch'
 import { urlForImage } from '@repo/sanity/image'
 
 import { CTA } from '~/components/cta'
+import { CaseStudyPayload, caseStudyBySlugQuery, caseStudyPaths } from '@repo/sanity/queries'
+import { client } from '@repo/sanity'
 
 export async function generateStaticParams() {
-  return (await getCaseStudyPaths()).map((path) => ({ slug: path }))
+  return (await client.fetch<string[]>(caseStudyPaths)).map((path) => ({ slug: path }))
 }
 
 export async function generateViewport({
@@ -19,7 +21,7 @@ export async function generateViewport({
 }: {
   params: { slug: string; lang: Locale }
 }): Promise<Metadata> {
-  const { color } = await getCaseStudyBySlug({
+  const { color } = await getData<CaseStudyPayload>(caseStudyBySlugQuery, {
     slug,
     lang,
   })
@@ -34,7 +36,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string; lang: Locale }
 }): Promise<Metadata> {
-  const { title, subtitle, cover } = await getCaseStudyBySlug({
+  const { title, subtitle, cover } = await getData<CaseStudyPayload>(caseStudyBySlugQuery, {
     slug,
     lang,
   })
@@ -65,7 +67,10 @@ const ProjectPage = async ({
 }) => {
   const dictionary = await getDictionary(lang, 'website')
 
-  const { title, subtitle, intro, cover, body } = await getCaseStudyBySlug({ slug, lang })
+  const { title, subtitle, intro, cover, body } = await getData<CaseStudyPayload>(
+    caseStudyBySlugQuery,
+    { slug, lang }
+  )
 
   return (
     <>

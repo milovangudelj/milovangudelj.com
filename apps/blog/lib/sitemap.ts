@@ -1,7 +1,8 @@
-import { getPostPaths } from '@repo/sanity/fetch'
+import { client } from '@repo/sanity'
+import { postPaths } from '@repo/sanity/queries'
 
 export async function generateSiteMap() {
-  const postUrls = await getPostPaths()
+  const postUrls = (await client.fetch<string[]>(postPaths)) || []
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">

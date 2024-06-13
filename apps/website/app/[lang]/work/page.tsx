@@ -2,12 +2,13 @@ import Image from 'next/image'
 
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
-import { getProjects } from '@repo/sanity/fetch'
+import { getData } from '@repo/sanity/fetch'
 
 import { ProjectShowcase } from '~/components/project-showcase'
 import { CTA } from '~/components/cta'
 
 import heroImage from '~images/work-hero-image.webp'
+import { ProjectPayload, projectsQuery } from '@repo/sanity/queries'
 
 export const metadata = {
   title: 'Milovan Gudelj - My work',
@@ -21,7 +22,7 @@ export const metadata = {
 const WorkPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale } }) => {
   const dictionary = await getDictionary(lang, 'website')
 
-  const projects = await getProjects({ lang })
+  const projects = await getData<ProjectPayload[]>(projectsQuery, { lang })
 
   return (
     <>
