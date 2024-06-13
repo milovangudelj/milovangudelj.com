@@ -7,7 +7,7 @@ import { CTA } from '~components/cta'
 import { Projects } from '~/components/projects'
 
 const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
-  const projects = await getData<SlimProjectPayload[]>(slimProjectsQuery, { lang }, ['projects'])
+  const projects = await getData<SlimProjectPayload[]>(slimProjectsQuery, { lang }, ['project'])
 
   const dictionary = await getDictionary(lang, 'website')
 

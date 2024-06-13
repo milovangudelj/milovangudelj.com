@@ -1,10 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "extends": ["//"],
-  "pipeline": {
+  "tasks": {
     "build": {
       "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["NEXT_PUBLIC_WEBSITE_URL", "NEXT_PUBLIC_SUPABASE_URL"]
+      "env": ["NEXT_PUBLIC_WEBSITE_URL", "NEXT_PUBLIC_SUPABASE_URL", "SANITY_REVALIDATE_SECRET"]
     },
     "start": {
       "env": ["SPOTIFY_AUTHORIZATION", "SUPABASE_SERVICE_KEY"],
