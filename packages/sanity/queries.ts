@@ -80,9 +80,11 @@ export const projectsQuery = groq`
 
 export const slimProjectsQuery = groq`
   *[_type == "project" && showcase == true && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] | order(year desc) {
+    _id,
     title,
     "slug": slug.current,
     site,
+    year,
     "cover": {
       "image": cover,
       "lqip": cover.asset->metadata.lqip,
@@ -93,9 +95,11 @@ export const slimProjectsQuery = groq`
 `
 
 export interface SlimProjectPayload {
+  _id: string
   title: string
   slug: string
   site: string
+  year: number
   cover: {
     image: Image & {
       alt: string

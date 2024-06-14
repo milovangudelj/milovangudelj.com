@@ -10,7 +10,14 @@ import { SoftwarePlanets } from './SoftwarePlanets'
 
 import squiggle from '~images/squiggly-line.svg'
 import semicircle from '~images/semicircle.svg'
-import { PosterPayload, postersQuery } from '@repo/sanity/queries'
+import {
+  PosterPayload,
+  SlimProjectPayload,
+  postersQuery,
+  projectsQuery,
+  slimPostsQuery,
+  slimProjectsQuery,
+} from '@repo/sanity/queries'
 
 export const metadata = {
   title: 'Milovan Gudelj - Portfolio',
@@ -23,9 +30,11 @@ export const metadata = {
 
 const PortfolioPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale } }) => {
   const dictionary = await getDictionary(lang, 'website')
-  const posters = await getData<PosterPayload[]>(postersQuery)
 
-  const projects = [
+  const posters = await getData<PosterPayload[]>(postersQuery, undefined, ['poster'])
+  const projects = await getData<SlimProjectPayload[]>(slimProjectsQuery, { lang }, ['project'])
+
+  const projects_alt = [
     {
       id: 'pr_01',
       title: 'DoYourThing',
@@ -98,12 +107,12 @@ const PortfolioPage = async ({ params: { lang = 'en' } }: { params: { lang: Loca
                 <div className="border-yellow text-label-md text-yellow rounded-lg border border-dashed px-4 py-2">
                   <span>Your website?</span>
                   <span className="text-yellow/70 mx-2 inline-block">-</span>
-                  <span className="text-yellow/70">2023</span>
+                  <span className="text-yellow/70">{new Date().getFullYear()}</span>
                 </div>
                 <span className="inline-block from-white/0 to-white/40 max-lg:h-8 max-lg:w-px max-lg:bg-gradient-to-b lg:h-px lg:w-8 lg:bg-gradient-to-r"></span>
               </div>
               {projects.map((project) => (
-                <div key={project.id} className="flex min-w-fit flex-col items-center lg:flex-row">
+                <div key={project._id} className="flex min-w-fit flex-col items-center lg:flex-row">
                   <div className="bg-yellow text-label-md rounded-lg px-4 py-2 text-black">
                     <span>{project.title}</span>
                     <span className="mx-2 inline-block text-black/70">-</span>
