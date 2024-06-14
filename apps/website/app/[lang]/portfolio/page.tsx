@@ -14,8 +14,6 @@ import {
   PosterPayload,
   SlimProjectPayload,
   postersQuery,
-  projectsQuery,
-  slimPostsQuery,
   slimProjectsQuery,
 } from '@repo/sanity/queries'
 

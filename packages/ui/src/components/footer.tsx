@@ -11,7 +11,7 @@ export const Footer = async ({ lang }: { lang: Locale }) => {
     <footer className="ui-border-white/[0.06] ui-px-8 ui-border-t">
       <div className="ui-text-label-md ui-mx-auto ui-flex ui-w-full ui-max-w-7xl ui-items-center ui-justify-between ui-py-4 ui-text-white/70">
         <div className="ui-items-baseline ui-gap-4 max-md:ui-flex-1 max-md:ui-justify-between md:ui-gap-2 ui-flex">
-          <span className="ui-flex-none">Milovan Gudelj &copy; 2023</span>
+          <span className="ui-flex-none">Milovan Gudelj &copy; {new Date().getFullYear()}</span>
           <span className="ui-hidden md:ui-inline">-</span>
           <Suspense fallback={<ViewCountSkeleton />}>
             <ViewCount message={dictionary.Footer.views} />
