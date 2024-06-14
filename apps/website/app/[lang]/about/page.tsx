@@ -61,7 +61,7 @@ const AboutPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale }
                 Wayne and Eminem just to name a few.
               </p>
               <p>
-                Below you can see what I&apos;m listening to right now, and my top artists in the
+                Here you can see what I&apos;m listening to right now, and my top artists in the
                 past year according to Spotify.
               </p>
             </div>
