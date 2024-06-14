@@ -14,31 +14,20 @@ export const token = process.env.SANITY_PREVIEW_TOKEN
 const preview = <R = any>(
   query: string,
   params: QueryParams | undefined = DEFAULT_PARAMS,
-  options: FilteredResponseQueryOptions = {}
+  options: FilteredResponseQueryOptions | undefined = {}
 ): Promise<R> => {
-  const isDraftMode = draftMode().isEnabled
-
-  if (isDraftMode && !token && !options.token) {
+  if (!token && !options.token) {
     throw new Error('The `SANITY_PREVIEW_TOKEN` environment variable is required.')
   }
 
-  const isDevelopment = process.env.NODE_ENV === 'development'
-
-  return rawClient.withConfig({ useCdn: isDraftMode ? false : true }).fetch<R>(query, params, {
-    cache: isDevelopment || isDraftMode ? 'no-store' : 'default',
-    ...(isDraftMode
-      ? {
-          token: token ?? options.token,
-          perspective: 'previewDrafts',
-        }
-      : {
-          perspective: 'published',
-        }),
-    next: {
-      revalidate: isDraftMode ? 0 : undefined,
-      tags: (options.next as any)?.tags ?? DEFAULT_TAGS,
-    } as any,
-  })
+  return rawClient
+    .withConfig({ useCdn: false, perspective: 'previewDrafts', token: options.token ?? token })
+    .fetch<R>(query, params, {
+      cache: 'no-store',
+      next: {
+        tags: options.next?.tags ?? DEFAULT_TAGS,
+      },
+    })
 }
 
 const client = {
@@ -50,12 +39,16 @@ const client = {
 // Query helpers
 
 export const getData = async <T>(query: string, params: QueryParams = {}, tags: string[] = []) => {
-  const fetcher = draftMode().isEnabled ? client.preview : (client.fetch as typeof rawClient.fetch)
+  const isDraftMode = draftMode().isEnabled
+  const isProduction = process.env.NODE_ENV === 'production'
+
+  const fetcher = !isProduction || isDraftMode ? client.preview : client.fetch
 
   const data = await fetcher<T>(query, params, {
+    cache: 'default',
     next: {
       tags,
-    } as any,
+    },
   })
 
   return data
