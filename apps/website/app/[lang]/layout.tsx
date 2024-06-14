@@ -90,7 +90,11 @@ export default async function RootLayout({
     lang: Locale
   }
 }) {
-  const { links } = await getData<SiteNavigationPayload>(siteNavigationQuery, { lang: params.lang })
+  const { links } = await getData<SiteNavigationPayload>(
+    siteNavigationQuery,
+    { lang: params.lang },
+    ['siteNavigation']
+  )
 
   return (
     <html lang={params.lang} className={`${GeistSans.variable} ${spaceGrotesk.variable}`}>

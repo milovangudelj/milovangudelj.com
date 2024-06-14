@@ -22,7 +22,7 @@ export const metadata = {
 const WorkPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale } }) => {
   const dictionary = await getDictionary(lang, 'website')
 
-  const projects = await getData<ProjectPayload[]>(projectsQuery, { lang })
+  const projects = await getData<ProjectPayload[]>(projectsQuery, { lang }, ['project'])
 
   return (
     <>

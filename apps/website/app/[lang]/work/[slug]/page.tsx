@@ -21,10 +21,14 @@ export async function generateViewport({
 }: {
   params: { slug: string; lang: Locale }
 }): Promise<Metadata> {
-  const { color } = await getData<CaseStudyPayload>(caseStudyBySlugQuery, {
-    slug,
-    lang,
-  })
+  const { color } = await getData<CaseStudyPayload>(
+    caseStudyBySlugQuery,
+    {
+      slug,
+      lang,
+    },
+    ['caseStudy', 'project']
+  )
 
   return {
     themeColor: color,
@@ -36,10 +40,14 @@ export async function generateMetadata({
 }: {
   params: { slug: string; lang: Locale }
 }): Promise<Metadata> {
-  const { title, subtitle, cover } = await getData<CaseStudyPayload>(caseStudyBySlugQuery, {
-    slug,
-    lang,
-  })
+  const { title, subtitle, cover } = await getData<CaseStudyPayload>(
+    caseStudyBySlugQuery,
+    {
+      slug,
+      lang,
+    },
+    ['caseStudy', 'project']
+  )
 
   return {
     title: `${title} | Milovan Gudelj`,
@@ -69,7 +77,8 @@ const ProjectPage = async ({
 
   const { title, subtitle, intro, cover, body } = await getData<CaseStudyPayload>(
     caseStudyBySlugQuery,
-    { slug, lang }
+    { slug, lang },
+    ['caseStudy', 'project']
   )
 
   return (

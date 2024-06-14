@@ -31,7 +31,9 @@ const spaceGrotesk = localFont({
 
 export default async function NotFound() {
   const lang = (headers().get('x-mg-locale') ?? 'en') as Locale
-  const { links } = await getData<SiteNavigationPayload>(siteNavigationQuery, { lang })
+  const { links } = await getData<SiteNavigationPayload>(siteNavigationQuery, { lang }, [
+    'siteNavigation',
+  ])
 
   const dictionary = await getDictionary(lang, 'website')
 
