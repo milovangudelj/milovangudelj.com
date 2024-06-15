@@ -157,7 +157,7 @@ const ProjectPage = async ({
               types: {
                 image: ({ value }) => {
                   return (
-                    <figure className="relative my-32 xl:-mx-32">
+                    <figure className="relative my-24 xl:-mx-32">
                       <Image
                         src={urlForImage(value.asset)
                           .width(value.asset.metadata.dimensions.width)
