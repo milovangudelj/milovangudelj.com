@@ -34,18 +34,15 @@ const it: Dictionary = {
         p2: 'Grazie ai miei cinque anni di esperienza, ho potuto affinare le mie competenze e mettermi in gioco in più realtà sia dal punto di vista tecnico che creativo. Inoltre, il mio interesse per il design grafico e la creazione di materiali POP mi ha permesso di portare una prospettiva unica e originale nel mio lavoro.',
       },
       music: {
-        title: 'Ah, a proposito...',
-        p1: "Adoro la musica. Quindi se sei interessato/a qua trovi un po' di informazioni su quello che ascolto.",
-        p2: {
-          pre: "In più se vuoi puoi scaricare un poster molto bello con i tuoi artisti e brani più ascoltati, un po' come ",
-          link: 'Spotify Wrapped',
-          post: ' ma in miniatura.',
-        },
-        cta: 'Scarica le tue Music-Stats',
+        title: 'Musica',
+        p1: "La musica è stata, e continua ad essere, una parte fondamentale della mia vita. Sono cresciuto ascoltando musica degli anni '70, '80 e '90 mescolata con una buona dose di cantautori italiani come Francesco Guccini e Fiorella Mannoia.",
+        p2: 'Immaginate solo un bambino italiano di nove anni che ascolta "Unchain My Heart" di Joe Cocker, o magari "Father and Son" di Cat Stevens. Bellissimo...',
+        p3: "Col passare del tempo, i miei gusti si sono ampliati e si sono avventurati nel mondo dell'Hip-Hop. Lì ho scoperto artisti come The Notorious B.I.G., The Game, Kendrick Lamar, J. Cole, Lil Wayne ed Eminem, solo per citarne alcuni.",
+        p4: "Qui puoi vedere cosa sto ascoltando in questo momento e i miei artisti preferiti dell'ultimo anno secondo Spotify.",
       },
       nowPlaying: {
         title: 'Sto ascoltando:',
-        notPlaying: 'Niente ora',
+        notPlaying: 'I miei pensieri',
       },
       topArtists: {
         title: 'I miei artisti più ascoltati:',
