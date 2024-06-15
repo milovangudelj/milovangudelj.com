@@ -43,29 +43,18 @@ const AboutPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale }
       </Section>
       <Section className="relative">
         <Container>
-          <h2 className="text-h2-mobile md:text-h2">Music</h2>
+          <h2 className="text-h2-mobile md:text-h2">{dictionary.About.music.title}</h2>
           <div className="flex flex-col gap-16 xl:flex-row">
             <div className="flex-1 space-y-8 text-white/70">
-              <p>
-                Music has been, and still is, a huge part of my life. I grew up listening to 70s,
-                80s and 90s music mixed with a healthy dose of Italian songwriters like Francesco
-                Guccini and Fiorella Mannoia.
-              </p>
-              <p>
-                Just imagine an Italian nine-year-old listening to Joe Cocker&apos;s “Unchain My
-                Heart”, or maybe Cat Stevens&apos; “Father and Son”. Pretty cool I&apos;d say.
-              </p>
-              <p>
-                As time went by my taste expanded and ventured off in the Hip-Hop land. There I
-                discovered artists like The Notorious Big, The Game, Kendrick Lamar, J. Cole, Lil
-                Wayne and Eminem just to name a few.
-              </p>
-              <p>
-                Here you can see what I&apos;m listening to right now, and my top artists in the
-                past year according to Spotify.
-              </p>
+              <p>{dictionary.About.music.p1}</p>
+              <p>{dictionary.About.music.p2}</p>
+              <p>{dictionary.About.music.p3}</p>
+              <p>{dictionary.About.music.p4}</p>
             </div>
-            <NowPlaying notPlayingMessage="Not playing" title="I'm listening to:" />
+            <NowPlaying
+              notPlayingMessage={dictionary.About.nowPlaying.notPlaying}
+              title={dictionary.About.nowPlaying.title}
+            />
           </div>
           <TopArtists
             className="mt-16"

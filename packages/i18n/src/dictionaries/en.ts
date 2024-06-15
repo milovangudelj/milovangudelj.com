@@ -33,18 +33,15 @@ const en = {
         p2: 'With five years of experience in building websites, I have honed my skills in both the technical and creative aspects of web development. My interest in graphic design and poster-making has also allowed me to bring a unique perspective to my work in UI/UX design.',
       },
       music: {
-        title: 'Oh, btw...',
-        p1: "I looove music. So if you're interested here's a little bit of information about that.",
-        p2: {
-          pre: 'Plus if you want you can get a cool looking poster with your top artists and tracks, kind of like a ',
-          link: 'Spotify Wrapped',
-          post: ' but in miniature.',
-        },
-        cta: 'Get your Music-Stats',
+        title: 'Music',
+        p1: 'Music has been, and still is, a huge part of my life. I grew up listening to 70s, 80s and 90s music mixed with a healthy dose of Italian songwriters like Francesco Guccini and Fiorella Mannoia.',
+        p2: "Just imagine an Italian nine-year-old listening to Joe Cocker's “Unchain My Heart”, or maybe Cat Stevens' “Father and Son”. Pretty cool I'd say.",
+        p3: 'As time went by my taste expanded and ventured off in the Hip-Hop land. There I discovered artists like The Notorious B.I.G., The Game, Kendrick Lamar, J. Cole, Lil Wayne and Eminem just to name a few.',
+        p4: "Here you can see what I'm listening to right now, and my top artists in the past six months according to Spotify.",
       },
       nowPlaying: {
-        title: 'Currently listening to:',
-        notPlaying: 'Not playing',
+        title: "I'm listening to:",
+        notPlaying: 'My thoughts',
       },
       topArtists: {
         title: 'My top artists:',
