@@ -6,4 +6,8 @@ export const client: SanityClient = createClient({
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   useCdn: true,
   perspective: 'published',
+  stega: {
+    enabled: false,
+    studioUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL,
+  },
 })

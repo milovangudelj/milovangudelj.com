@@ -4,6 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import localFont from 'next/font/local'
 import { GeistSans } from 'geist/font/sans'
 import { Toaster } from 'sonner'
+import { VisualEditing } from 'next-sanity'
 
 import { Navbar, Footer } from '@repo/ui'
 import { type Locale, config as i18n } from '@repo/i18n'

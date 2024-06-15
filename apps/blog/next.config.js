@@ -15,6 +15,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    taint: true,
+  },
   transpilePackages: ['@repo/ui', '@repo/sanity'],
 }
 

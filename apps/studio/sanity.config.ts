@@ -1,12 +1,7 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
-import {
-  dashboardTool,
-  sanityTutorialsWidget,
-  projectUsersWidget,
-  projectInfoWidget,
-} from '@sanity/dashboard'
+import { presentationTool } from 'sanity/presentation'
 
 import {
   DeleteTranslationAction,
@@ -16,8 +11,7 @@ import { languageFilter } from '@sanity/language-filter'
 import { colorInput } from '@sanity/color-input'
 import { codeInput } from '@sanity/code-input'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
-import { media, mediaAssetSource } from 'sanity-plugin-media'
+import { mediaAssetSource } from 'sanity-plugin-media'
 
 import { defaultDocumentNode, structure } from '~/sanity/desk'
 import { apiVersion, dataset, projectId } from '~/sanity/env'
@@ -73,14 +67,17 @@ export default defineConfig({
       structure,
       defaultDocumentNode,
     }),
+    presentationTool({
+      previewUrl: {
+        draftMode: {
+          enable: `${process.env.NEXT_PUBLIC_SANITY_FRONTEND_URL}/api/preview`,
+        },
+      },
+    }),
     colorInput(),
     codeInput(),
     unsplashImageAsset(),
-    media(),
     visionTool({ defaultApiVersion: apiVersion }),
-    dashboardTool({
-      widgets: [sanityTutorialsWidget(), projectInfoWidget(), projectUsersWidget(), vercelWidget()],
-    }),
     documentInternationalization({
       // Required configuration
       supportedLanguages: [

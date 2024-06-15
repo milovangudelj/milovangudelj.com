@@ -21,7 +21,12 @@ const preview = <R = any>(
   }
 
   return rawClient
-    .withConfig({ useCdn: false, perspective: 'previewDrafts', token: options.token ?? token })
+    .withConfig({
+      useCdn: false,
+      perspective: 'previewDrafts',
+      token: options.token ?? token,
+      stega: true,
+    })
     .fetch<R>(query, params, {
       cache: 'no-store',
       next: {
