@@ -130,23 +130,27 @@ const ProjectPage = async ({
             </figcaption>
           </figure>
         </header>
-        <div className="pt-0 max-xl:pb-32 xl:p-32 xl:pt-0">
+        <div className="flex flex-col gap-8 pt-0 max-xl:pb-32 xl:p-32 xl:pt-0">
           <PortableText
             value={body}
             components={{
               list: {
-                bullet: ({ children }) => <ul className="list-disc pl-5">{children}</ul>,
-                number: ({ children }) => <ol className="list-decimal pl-5">{children}</ol>,
+                bullet: ({ children }) => (
+                  <ul className="flex list-disc flex-col gap-8 pl-5">{children}</ul>
+                ),
+                number: ({ children }) => (
+                  <ol className="flex list-decimal flex-col gap-8 pl-5">{children}</ol>
+                ),
               },
               listItem: {
                 bullet: ({ children }) => (
-                  <li className="mb-8 last:mb-0">
-                    <p className="pr-5 text-white/70">{children}</p>
+                  <li className="pr-5 text-white/70">
+                    <p>{children}</p>
                   </li>
                 ),
                 number: ({ children }) => (
-                  <li className="mb-8 last:mb-0">
-                    <p className="pr-5 text-white/70">{children}</p>
+                  <li className="pr-5 text-white/70">
+                    <p>{children}</p>
                   </li>
                 ),
               },
@@ -182,7 +186,7 @@ const ProjectPage = async ({
               marks: {
                 // Ex. 1: custom renderer for the em / italics decorator
                 strong: ({ children }) => (
-                  <span className="text-sub-heading-mobile text-yellow mb-8 inline-block last:mb-0">
+                  <span className="text-sub-heading-mobile text-yellow inline-block last:mb-0">
                     {children}
                   </span>
                 ),
@@ -207,26 +211,24 @@ const ProjectPage = async ({
                 },
               },
               block: {
-                normal: ({ children }) => (
-                  <p className="mb-8 text-white/70 last:mb-0">{children}</p>
-                ),
+                normal: ({ children }) => <p className="text-white/70">{children}</p>,
                 h1: ({ children }) => (
-                  <h1 className="text-h1-mobile 2xl:text-h1 mb-16 last:mb-0">{children}</h1>
+                  <h1 className="text-h1-mobile 2xl:text-h1 mb-8">{children}</h1>
                 ),
                 h2: ({ children }) => (
-                  <h2 className="text-h2-mobile 2xl:text-h2 mb-16 last:mb-0">{children}</h2>
+                  <h2 className="text-h2-mobile 2xl:text-h2 mb-8">{children}</h2>
                 ),
                 h3: ({ children }) => (
-                  <h3 className="text-h3-mobile 2xl:text-h3 mb-16 last:mb-0">{children}</h3>
+                  <h3 className="text-h3-mobile 2xl:text-h3 mb-8">{children}</h3>
                 ),
                 h4: ({ children }) => (
-                  <h4 className="text-h4-mobile 2xl:text-h4 mb-16 last:mb-0">{children}</h4>
+                  <h4 className="text-h4-mobile 2xl:text-h4 mb-8">{children}</h4>
                 ),
                 h5: ({ children }) => (
-                  <h5 className="text-h5-mobile 2xl:text-h5 mb-16 last:mb-0">{children}</h5>
+                  <h5 className="text-h5-mobile 2xl:text-h5 mb-8">{children}</h5>
                 ),
                 h6: ({ children }) => (
-                  <h6 className="text-h6-mobile 2xl:text-h6 mb-16 last:mb-0">{children}</h6>
+                  <h6 className="text-h6-mobile 2xl:text-h6 mb-8">{children}</h6>
                 ),
               },
             }}
