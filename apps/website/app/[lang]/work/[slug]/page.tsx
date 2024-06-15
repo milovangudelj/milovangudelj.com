@@ -173,7 +173,7 @@ const ProjectPage = async ({
                         blurDataURL={value.asset.metadata.lqip}
                       />
                       <figcaption className="text-label-md pt-1 text-white/40 xl:pl-32">
-                        {cover.image.caption ?? cover.image.alt ?? ''}
+                        {value.caption ?? value.alt ?? ''}
                       </figcaption>
                     </figure>
                   )
