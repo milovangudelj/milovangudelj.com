@@ -16,7 +16,10 @@ export const CTA = async ({
   const dictionary = await getDictionary(lang as Locale, 'website')
 
   return (
-    <Section className={`relative ${className}`} {...props}>
+    <Section
+      className={`relative [background-image:_radial-gradient(circle,_rgb(255_255_255_/_.06)_1px,_rgba(0,_0,_0,_0)_1px)] [background-size:_40px_40px] ${className}`}
+      {...props}
+    >
       <Container>
         <h2 className="text-h2-mobile text-yellow md:text-h2">{title ?? dictionary.CTA.title}</h2>
         <p className="text-body text-white/70">{description ?? dictionary.CTA.description}</p>
