@@ -13,6 +13,7 @@ import {
   projectTag,
   postTag,
   poster,
+  page,
 } from './schemas'
 
 export const schema: SchemaPluginOptions = {
@@ -21,6 +22,7 @@ export const schema: SchemaPluginOptions = {
     siteSettings,
     siteNavigation,
     siteColors,
+    page,
     project,
     post,
     caseStudy,
