@@ -18,25 +18,25 @@ importers:
         specifier: ^8.2.2
         version: 8.2.2
       prettier:
-        specifier: ^3.1.1
+        specifier: ^3.3.2
         version: 3.3.2
       prettier-plugin-tailwindcss:
-        specifier: ^0.5.11
+        specifier: ^0.5.14
         version: 0.5.14(prettier@3.3.2)
       turbo:
-        specifier: ^1.11.3
+        specifier: ^1.13.4
         version: 1.13.4
 
   apps/blog:
     dependencies:
       '@formatjs/intl-localematcher':
-        specifier: ^0.5.2
+        specifier: ^0.5.4
         version: 0.5.4
       '@phosphor-icons/react':
-        specifier: ^2.0.15
+        specifier: ^2.1.6
         version: 2.1.6(react-dom@18.3.1)(react@18.3.1)
       '@portabletext/types':
-        specifier: ^2.0.8
+        specifier: ^2.0.13
         version: 2.0.13
       '@repo/i18n':
         specifier: workspace:^
@@ -54,91 +54,91 @@ importers:
         specifier: ^0.8.7
         version: 0.8.7(@supabase/supabase-js@2.43.5)
       '@supabase/gotrue-js':
-        specifier: ^2.62.0
+        specifier: ^2.64.3
         version: 2.64.3
       '@supabase/supabase-js':
-        specifier: ^2.39.2
+        specifier: ^2.43.5
         version: 2.43.5
       '@types/node':
-        specifier: ^20.10.8
+        specifier: ^20.14.6
         version: 20.14.6
       '@types/react':
-        specifier: ^18.2.47
+        specifier: ^18.3.3
         version: 18.3.3
       '@types/react-dom':
-        specifier: ^18.2.18
+        specifier: ^18.3.0
         version: 18.3.0
       '@upstash/ratelimit':
-        specifier: ^1.0.0
+        specifier: ^1.2.1
         version: 1.2.1
       '@vercel/kv':
         specifier: ^1.0.1
         version: 1.0.1
       ai:
-        specifier: ^2.2.31
+        specifier: ^2.2.37
         version: 2.2.37(react@18.3.1)(solid-js@1.8.17)(svelte@4.2.18)(vue@3.4.29)
       autoprefixer:
-        specifier: ^10.4.16
+        specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
       bad-words:
         specifier: ^3.0.4
         version: 3.0.4
       eslint:
-        specifier: ^8.56.0
+        specifier: ^8.57.0
         version: 8.57.0
       eslint-config-next:
-        specifier: ^14.0.4
+        specifier: ^14.2.4
         version: 14.2.4(eslint@8.57.0)(typescript@5.4.5)
       framer-motion:
-        specifier: ^10.17.12
+        specifier: ^10.18.0
         version: 10.18.0(react-dom@18.3.1)(react@18.3.1)
       geist:
-        specifier: ^1.2.0
+        specifier: ^1.3.0
         version: 1.3.0(next@14.2.4)
       negotiator:
         specifier: ^0.6.3
         version: 0.6.3
       next:
-        specifier: ^14.1.0
+        specifier: ^14.2.4
         version: 14.2.4(@babel/core@7.24.7)(react-dom@18.3.1)(react@18.3.1)
       next-sanity:
-        specifier: ^7.0.7
-        version: 7.1.4(@sanity/client@6.20.1)(@sanity/icons@2.11.8)(@sanity/types@3.47.1)(@sanity/ui@1.9.3)(next@14.2.4)(react@18.3.1)(sanity@3.47.1)(styled-components@6.1.11)
+        specifier: ^7.1.4
+        version: 7.1.4(@sanity/client@6.20.1)(@sanity/icons@2.11.8)(@sanity/types@3.47.1)(@sanity/ui@2.4.0)(next@14.2.4)(react@18.3.1)(sanity@3.47.1)(styled-components@6.1.11)
       openai:
-        specifier: ^4.24.2
+        specifier: ^4.52.0
         version: 4.52.0(encoding@0.1.13)
       openai-edge:
         specifier: ^1.2.2
         version: 1.2.2
       postcss:
-        specifier: ^8.4.33
+        specifier: ^8.4.38
         version: 8.4.38
       react:
-        specifier: ^18.2.0
+        specifier: ^18.3.1
         version: 18.3.1
       react-dom:
-        specifier: ^18.2.0
+        specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       react-hook-form:
-        specifier: ^7.49.3
+        specifier: ^7.52.0
         version: 7.52.0(react@18.3.1)
       sanity:
-        specifier: ^3.23.4
+        specifier: ^3.47.1
         version: 3.47.1(@types/node@20.14.6)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)(styled-components@6.1.11)
       sharp:
-        specifier: ^0.33.1
+        specifier: ^0.33.4
         version: 0.33.4
       swr:
-        specifier: ^2.2.4
+        specifier: ^2.2.5
         version: 2.2.5(react@18.3.1)
       tailwind-merge:
-        specifier: ^2.2.0
+        specifier: ^2.3.0
         version: 2.3.0
       tailwindcss:
-        specifier: ^3.4.1
+        specifier: ^3.4.4
         version: 3.4.4
       typescript:
-        specifier: ^5.3.3
+        specifier: ^5.4.5
         version: 5.4.5
     devDependencies:
       '@repo/tailwind-config':
@@ -148,7 +148,7 @@ importers:
         specifier: ^0.5.7
         version: 0.5.7(tailwindcss@3.4.4)
       '@tailwindcss/typography':
-        specifier: ^0.5.10
+        specifier: ^0.5.13
         version: 0.5.13(tailwindcss@3.4.4)
       '@types/bad-words':
         specifier: ^3.0.3
@@ -160,10 +160,10 @@ importers:
         specifier: ^0.1.13
         version: 0.1.13
       prettier:
-        specifier: ^3.1.1
+        specifier: ^3.3.2
         version: 3.3.2
       prettier-plugin-tailwindcss:
-        specifier: ^0.5.11
+        specifier: ^0.5.14
         version: 0.5.14(prettier@3.3.2)
 
   apps/studio:
@@ -187,10 +187,10 @@ importers:
         specifier: ^2.11.8
         version: 2.11.8(react@18.3.1)
       '@sanity/image-url':
-        specifier: '1'
+        specifier: ^1.0.2
         version: 1.0.2
       '@sanity/language-filter':
-        specifier: ^3.2.1
+        specifier: ^3.2.2
         version: 3.2.2(@sanity/ui@1.9.3)(react-dom@18.3.1)(react@18.3.1)(sanity@3.47.1)(styled-components@6.1.11)
       '@sanity/types':
         specifier: ^3.47.1
@@ -205,7 +205,7 @@ importers:
         specifier: 14.1.0
         version: 14.1.0(@babel/core@7.24.7)(react-dom@18.3.1)(react@18.3.1)
       next-sanity:
-        specifier: '5'
+        specifier: ^5.5.11
         version: 5.5.11(@sanity/client@6.20.1)(@sanity/icons@2.11.8)(@sanity/types@3.47.1)(@sanity/ui@1.9.3)(next@14.1.0)(react@18.3.1)(sanity@3.47.1)(styled-components@6.1.11)
       react:
         specifier: ^18.3.1
@@ -223,7 +223,7 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1(@sanity/dashboard@3.1.6)(@types/react@18.3.3)(react-dom@18.3.1)(react-is@18.3.1)(react@18.3.1)(sanity@3.47.1)(styled-components@6.1.11)
       sanity-plugin-media:
-        specifier: ^2.2.4
+        specifier: ^2.2.5
         version: 2.2.5(@sanity/ui@1.9.3)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)(sanity@3.47.1)(styled-components@6.1.11)
       styled-components:
         specifier: ^6.1.11
@@ -266,7 +266,7 @@ importers:
   apps/website:
     dependencies:
       '@formatjs/intl-localematcher':
-        specifier: ^0.5.2
+        specifier: ^0.5.4
         version: 0.5.4
       '@graphcms/rich-text-react-renderer':
         specifier: ^0.6.1
@@ -317,7 +317,7 @@ importers:
         specifier: npm:class-variance-authority@^0.7.0
         version: /class-variance-authority@0.7.0
       framer-motion:
-        specifier: ^10.17.12
+        specifier: ^10.18.0
         version: 10.18.0(react-dom@18.3.1)(react@18.3.1)
       geist:
         specifier: ^1.3.0
@@ -351,7 +351,7 @@ importers:
         version: 4.4.1(react-dom@18.3.1)(react@18.3.1)
       next-sanity:
         specifier: ^7.1.4
-        version: 7.1.4(@sanity/client@6.20.1)(@sanity/icons@2.11.8)(@sanity/types@3.47.1)(@sanity/ui@1.9.3)(next@14.2.4)(react@18.3.1)(sanity@3.47.1)(styled-components@6.1.11)
+        version: 7.1.4(@sanity/client@6.20.1)(@sanity/icons@2.11.8)(@sanity/types@3.47.1)(@sanity/ui@2.4.0)(next@14.2.4)(react@18.3.1)(sanity@3.47.1)(styled-components@6.1.11)
       plaiceholder:
         specifier: ^3.0.0
         version: 3.0.0(sharp@0.33.4)
@@ -365,7 +365,7 @@ importers:
         specifier: ^7.52.0
         version: 7.52.0(react@18.3.1)
       react-indiana-drag-scroll:
-        specifier: ^3.0.3-alpha
+        specifier: 3.0.3-alpha
         version: 3.0.3-alpha(react-dom@18.3.1)(react@18.3.1)
       sanity:
         specifier: ^3.47.1
@@ -390,7 +390,7 @@ importers:
         version: 2.3.0
     devDependencies:
       '@graphcms/rich-text-types':
-        specifier: ^0.5.0
+        specifier: ^0.5.1
         version: 0.5.1
       '@portabletext/types':
         specifier: ^2.0.13
@@ -449,25 +449,25 @@ importers:
   packages/eslint-config:
     devDependencies:
       '@typescript-eslint/eslint-plugin':
-        specifier: ^6.17.0
+        specifier: ^6.21.0
         version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.4.5)
       '@typescript-eslint/parser':
-        specifier: ^6.17.0
+        specifier: ^6.21.0
         version: 6.21.0(eslint@8.57.0)(typescript@5.4.5)
       '@vercel/style-guide':
-        specifier: ^5.1.0
+        specifier: ^5.2.0
         version: 5.2.0(eslint@8.57.0)(prettier@3.3.2)(typescript@5.4.5)
       eslint-config-prettier:
         specifier: ^9.1.0
         version: 9.1.0(eslint@8.57.0)
       eslint-config-turbo:
-        specifier: ^1.11.3
+        specifier: ^1.13.4
         version: 1.13.4(eslint@8.57.0)
       eslint-plugin-only-warn:
         specifier: ^1.1.0
         version: 1.1.0
       typescript:
-        specifier: ^5.3.3
+        specifier: ^5.4.5
         version: 5.4.5
 
   packages/i18n:
@@ -477,7 +477,7 @@ importers:
         version: 0.0.1
     devDependencies:
       typescript:
-        specifier: ^5.3.3
+        specifier: ^5.4.5
         version: 5.4.5
 
   packages/sanity:
@@ -489,20 +489,20 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2
       next:
-        specifier: ^14.0.4
+        specifier: ^14.2.4
         version: 14.2.4(@babel/core@7.24.7)(react-dom@18.3.1)(react@18.3.1)
       next-sanity:
-        specifier: ^7.0.7
-        version: 7.1.4(@sanity/client@6.20.1)(@sanity/icons@2.11.8)(@sanity/types@3.47.1)(@sanity/ui@1.9.3)(next@14.2.4)(react@18.3.1)(sanity@3.47.1)(styled-components@6.1.11)
+        specifier: ^7.1.4
+        version: 7.1.4(@sanity/client@6.20.1)(@sanity/icons@2.11.8)(@sanity/types@3.47.1)(@sanity/ui@2.4.0)(next@14.2.4)(react@18.3.1)(sanity@3.47.1)(styled-components@6.1.11)
       sanity:
-        specifier: ^3.23.4
+        specifier: ^3.47.1
         version: 3.47.1(@types/node@20.14.6)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)(styled-components@6.1.11)
     devDependencies:
       '@portabletext/types':
-        specifier: ^2.0.8
+        specifier: ^2.0.13
         version: 2.0.13
       typescript:
-        specifier: ^5.3.3
+        specifier: ^5.4.5
         version: 5.4.5
 
   packages/tailwind-config:
@@ -514,10 +514,10 @@ importers:
         specifier: ^0.5.7
         version: 0.5.7(tailwindcss@3.4.4)
       '@tailwindcss/typography':
-        specifier: ^0.5.10
+        specifier: ^0.5.13
         version: 0.5.13(tailwindcss@3.4.4)
       tailwindcss:
-        specifier: ^3.4.1
+        specifier: ^3.4.4
         version: 3.4.4
 
   packages/typescript-config: {}
@@ -525,7 +525,7 @@ importers:
   packages/ui:
     dependencies:
       '@phosphor-icons/react':
-        specifier: ^2.0.15
+        specifier: ^2.1.6
         version: 2.1.6(react-dom@18.3.1)(react@18.3.1)
       '@repo/i18n':
         specifier: workspace:^
@@ -534,16 +534,16 @@ importers:
         specifier: workspace:^
         version: link:../sanity
       framer-motion:
-        specifier: ^10.17.12
+        specifier: ^10.18.0
         version: 10.18.0(react-dom@18.3.1)(react@18.3.1)
       next:
-        specifier: ^14.0.4
+        specifier: ^14.2.4
         version: 14.2.4(@babel/core@7.24.7)(react-dom@18.3.1)(react@18.3.1)
       swr:
-        specifier: ^2.2.4
+        specifier: ^2.2.5
         version: 2.2.5(react@18.3.1)
       tailwind-merge:
-        specifier: ^2.2.0
+        specifier: ^2.3.0
         version: 2.3.0
     devDependencies:
       '@repo/eslint-config':
@@ -556,43 +556,43 @@ importers:
         specifier: workspace:^
         version: link:../typescript-config
       '@types/eslint':
-        specifier: ^8.56.1
+        specifier: ^8.56.10
         version: 8.56.10
       '@types/node':
-        specifier: ^20.10.7
+        specifier: ^20.14.6
         version: 20.14.6
       '@types/react':
-        specifier: ^18.2.47
+        specifier: ^18.3.3
         version: 18.3.3
       '@types/react-dom':
-        specifier: ^18.2.18
+        specifier: ^18.3.0
         version: 18.3.0
       autoprefixer:
-        specifier: ^10.4.16
+        specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
       eslint:
-        specifier: ^8.56.0
+        specifier: ^8.57.0
         version: 8.57.0
       postcss:
-        specifier: ^8.4.33
+        specifier: ^8.4.38
         version: 8.4.38
       react:
-        specifier: ^18.2.0
+        specifier: ^18.3.1
         version: 18.3.1
       rimraf:
-        specifier: ^5.0.5
+        specifier: ^5.0.7
         version: 5.0.7
       tailwindcss:
-        specifier: ^3.4.1
+        specifier: ^3.4.4
         version: 3.4.4
       tsup:
-        specifier: ^8.0.1
+        specifier: ^8.1.0
         version: 8.1.0(postcss@8.4.38)(typescript@5.4.5)
       typescript:
-        specifier: ^5.3.3
+        specifier: ^5.4.5
         version: 5.4.5
 
 packages:
@@ -5533,6 +5533,26 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5):
+    resolution: {integrity: sha512-5FKsVcHTk6TafQKQbuIVkXq58Fnbkd2wDL4LB7AURN7RUOu1utVP+G8+6u3ZhEroW3DF6hyo3ZEXxgKgp4KeCg==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    peerDependencies:
+      eslint: ^8.56.0
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@typescript-eslint/scope-manager': 7.2.0
+      '@typescript-eslint/types': 7.2.0
+      '@typescript-eslint/typescript-estree': 7.2.0(typescript@5.4.5)
+      '@typescript-eslint/visitor-keys': 7.2.0
+      debug: 4.3.5
+      eslint: 8.57.0
+      typescript: 5.4.5
+    transitivePeerDependencies:
+      - supports-color
+
   /@typescript-eslint/scope-manager@5.62.0:
     resolution: {integrity: sha512-VXuvVvZeQCQb5Zgf4HAxc04q5j+WrNAtNh9OwCsCgpKqESMTu3tF/jhZ3xG6T4NZwWl65Bg8KuS2uEvhSfLl0w==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -5547,6 +5567,13 @@ packages:
     dependencies:
       '@typescript-eslint/types': 6.21.0
       '@typescript-eslint/visitor-keys': 6.21.0
+
+  /@typescript-eslint/scope-manager@7.2.0:
+    resolution: {integrity: sha512-Qh976RbQM/fYtjx9hs4XkayYujB/aPwglw2choHmf3zBjB4qOywWSdt9+KLRdHubGcoSwBnXUH2sR3hkyaERRg==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    dependencies:
+      '@typescript-eslint/types': 7.2.0
+      '@typescript-eslint/visitor-keys': 7.2.0
 
   /@typescript-eslint/type-utils@6.21.0(eslint@8.57.0)(typescript@5.4.5):
     resolution: {integrity: sha512-rZQI7wHfao8qMX3Rd3xqeYSMCL3SoiSQLBATSiVKARdFGCYSRvmViieZjqc58jKgs8Y8i9YvVVhRbHSTA4VBag==}
@@ -5575,6 +5602,10 @@ packages:
 
   /@typescript-eslint/types@6.21.0:
     resolution: {integrity: sha512-1kFmZ1rOm5epu9NZEZm1kckCDGj5UJEf7P1kliH4LKu/RkwpsfqqGmY2OOcUs18lSlQBKLDYBOGxRVtrMN5lpg==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+
+  /@typescript-eslint/types@7.2.0:
+    resolution: {integrity: sha512-XFtUHPI/abFhm4cbCDc5Ykc8npOKBSJePY3a3s+lwumt7XWJuzP5cZcfZ610MIPHjQjNsOLlYK8ASPaNG8UiyA==}
     engines: {node: ^16.0.0 || >=18.0.0}
 
   /@typescript-eslint/typescript-estree@5.62.0(typescript@5.4.5):
@@ -5609,6 +5640,27 @@ packages:
     dependencies:
       '@typescript-eslint/types': 6.21.0
       '@typescript-eslint/visitor-keys': 6.21.0
+      debug: 4.3.5
+      globby: 11.1.0
+      is-glob: 4.0.3
+      minimatch: 9.0.3
+      semver: 7.6.2
+      ts-api-utils: 1.3.0(typescript@5.4.5)
+      typescript: 5.4.5
+    transitivePeerDependencies:
+      - supports-color
+
+  /@typescript-eslint/typescript-estree@7.2.0(typescript@5.4.5):
+    resolution: {integrity: sha512-cyxS5WQQCoBwSakpMrvMXuMDEbhOo9bNHHrNcEWis6XHx6KF518tkF1wBvKIn/tpq5ZpUYK7Bdklu8qY0MsFIA==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@typescript-eslint/types': 7.2.0
+      '@typescript-eslint/visitor-keys': 7.2.0
       debug: 4.3.5
       globby: 11.1.0
       is-glob: 4.0.3
@@ -5671,6 +5723,13 @@ packages:
     engines: {node: ^16.0.0 || >=18.0.0}
     dependencies:
       '@typescript-eslint/types': 6.21.0
+      eslint-visitor-keys: 3.4.3
+
+  /@typescript-eslint/visitor-keys@7.2.0:
+    resolution: {integrity: sha512-c6EIQRHhcpl6+tO8EMR+kjkkV+ugUNXOmeASA1rlzkd8EPIriavpWoiEz1HR/VLhbVIdhqnV6E7JZm00cBDx2A==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    dependencies:
+      '@typescript-eslint/types': 7.2.0
       eslint-visitor-keys: 3.4.3
 
   /@uiw/codemirror-extensions-basic-setup@4.22.2(@codemirror/autocomplete@6.16.3)(@codemirror/commands@6.6.0)(@codemirror/language@6.10.2)(@codemirror/lint@6.8.1)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/view@6.28.1):
@@ -7906,10 +7965,10 @@ packages:
     dependencies:
       '@next/eslint-plugin-next': 14.2.4
       '@rushstack/eslint-patch': 1.10.3
-      '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/parser': 7.2.0(eslint@8.57.0)(typescript@5.4.5)
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
+      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.9.0(eslint@8.57.0)
       eslint-plugin-react: 7.34.3(eslint@8.57.0)
@@ -8000,6 +8059,28 @@ packages:
       - supports-color
     dev: true
 
+  /eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0):
+    resolution: {integrity: sha512-xgdptdoi5W3niYeuQxKmzVDTATvLYqhpwmykwsh7f6HIOStGWEIL9iqZgQDF9u9OEzrRwR8no5q2VT+bjAujTg==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      eslint: '*'
+      eslint-plugin-import: '*'
+    dependencies:
+      debug: 4.3.5
+      enhanced-resolve: 5.17.0
+      eslint: 8.57.0
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
+      fast-glob: 3.3.2
+      get-tsconfig: 4.7.5
+      is-core-module: 2.13.1
+      is-glob: 4.0.3
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-node
+      - eslint-import-resolver-webpack
+      - supports-color
+
   /eslint-module-utils@2.8.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
     resolution: {integrity: sha512-rXDXR3h7cs7dy9RNpUlQf80nX31XWJEyGq1tRMo+6GsO5VmTe4UTwtmonAD4ZkAsrfMVDA2wlGJ3790Ys+D49Q==}
     engines: {node: '>=4'}
@@ -8057,6 +8138,35 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /eslint-module-utils@2.8.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
+    resolution: {integrity: sha512-rXDXR3h7cs7dy9RNpUlQf80nX31XWJEyGq1tRMo+6GsO5VmTe4UTwtmonAD4ZkAsrfMVDA2wlGJ3790Ys+D49Q==}
+    engines: {node: '>=4'}
+    peerDependencies:
+      '@typescript-eslint/parser': '*'
+      eslint: '*'
+      eslint-import-resolver-node: '*'
+      eslint-import-resolver-typescript: '*'
+      eslint-import-resolver-webpack: '*'
+    peerDependenciesMeta:
+      '@typescript-eslint/parser':
+        optional: true
+      eslint:
+        optional: true
+      eslint-import-resolver-node:
+        optional: true
+      eslint-import-resolver-typescript:
+        optional: true
+      eslint-import-resolver-webpack:
+        optional: true
+    dependencies:
+      '@typescript-eslint/parser': 7.2.0(eslint@8.57.0)(typescript@5.4.5)
+      debug: 3.2.7
+      eslint: 8.57.0
+      eslint-import-resolver-node: 0.3.9
+      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
+    transitivePeerDependencies:
+      - supports-color
 
   /eslint-plugin-eslint-comments@3.2.0(eslint@8.57.0):
     resolution: {integrity: sha512-0jkOl0hfojIHHmEHgmNdqv4fmh7300NdpA9FFpF7zaoLvB/QeXOGNLIo86oAveJFrfB1p05kC8hpEMHM8DwWVQ==}
@@ -11060,7 +11170,7 @@ packages:
       - debug
     dev: false
 
-  /next-sanity@7.1.4(@sanity/client@6.20.1)(@sanity/icons@2.11.8)(@sanity/types@3.47.1)(@sanity/ui@1.9.3)(next@14.2.4)(react@18.3.1)(sanity@3.47.1)(styled-components@6.1.11):
+  /next-sanity@7.1.4(@sanity/client@6.20.1)(@sanity/icons@2.11.8)(@sanity/types@3.47.1)(@sanity/ui@2.4.0)(next@14.2.4)(react@18.3.1)(sanity@3.47.1)(styled-components@6.1.11):
     resolution: {integrity: sha512-bq/VkejvPgV95mi5fxR01rALG1QURe0nO2g3HyUuiZRyTd0teFgYvCVf1b5PBndKhD15Cd3UK/WwcLKRxxEr3A==}
     engines: {node: '>=18.17'}
     peerDependencies:
@@ -11077,7 +11187,7 @@ packages:
       '@sanity/icons': 2.11.8(react@18.3.1)
       '@sanity/preview-kit': 5.0.20(@sanity/client@6.20.1)(react@18.3.1)
       '@sanity/types': 3.47.1
-      '@sanity/ui': 1.9.3(react-dom@18.3.1)(react-is@18.3.1)(react@18.3.1)(styled-components@6.1.11)
+      '@sanity/ui': 2.4.0(react-dom@18.3.1)(react-is@18.3.1)(react@18.3.1)(styled-components@6.1.11)
       '@sanity/visual-editing': 1.2.2(next@14.2.4)
       '@sanity/webhook': 4.0.0
       groq: 3.47.1
