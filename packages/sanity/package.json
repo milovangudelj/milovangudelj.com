@@ -23,7 +23,7 @@
     "@repo/i18n": "workspace:^",
     "@sanity/image-url": "^1.0.2",
     "next": "^14.2.4",
-    "next-sanity": "^7.1.4",
+    "next-sanity": "^9.4.2",
     "sanity": "^3.47.1"
   },
   "devDependencies": {
