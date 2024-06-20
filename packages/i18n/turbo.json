@@ -3,6 +3,7 @@
   "extends": ["//"],
   "tasks": {
     "build": {
+      "dependsOn": [],
       "outputs": ["dist/**"]
     }
   }

@@ -2,7 +2,12 @@
   "$schema": "https://turbo.build/schema.json",
   "extends": ["//"],
   "tasks": {
+    "dev": {
+      "dependsOn": ["^build"],
+      "persistent": true
+    },
     "build": {
+      "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"],
       "env": ["NEXT_PUBLIC_WEBSITE_URL", "NEXT_PUBLIC_SUPABASE_URL", "SANITY_REVALIDATE_SECRET"]
     },
