@@ -43,7 +43,11 @@ const client = {
 
 // Query helpers
 
-export const getData = async <T>(query: string, params: QueryParams = {}, tags: string[] = []) => {
+export const getData = async <T>(
+  query: string,
+  params: QueryParams = {},
+  tags: string[] = []
+): Promise<T> => {
   const isDraftMode = draftMode().isEnabled
   const isProduction = process.env.NODE_ENV === 'production'
 

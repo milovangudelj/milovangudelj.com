@@ -1,7 +1,6 @@
 import { Desktop } from '@phosphor-icons/react'
 import { defineField, defineType } from 'sanity'
 
-import { isUniqueOtherThanLanguage } from '~/sanity/utils/isUniqueOtherThanLanguage'
 import { LANGUAGES } from '~/sanity/utils/languages'
 
 export const page = defineType({
@@ -12,12 +11,6 @@ export const page = defineType({
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [
-    defineField({
-      name: 'language',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
-    }),
     defineField({
       name: 'title',
       title: 'Title',
@@ -31,9 +24,8 @@ export const page = defineType({
       options: {
         source: 'title',
         maxLength: 96,
-        isUnique: isUniqueOtherThanLanguage,
       },
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().unique(),
     }),
     defineField({
       name: 'description',

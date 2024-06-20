@@ -92,11 +92,7 @@ export const structure: StructureResolver = (S, context) => {
       S.listItem()
         .title('Pages')
         .schemaType('page')
-        .child(
-          S.list()
-            .title('Pages')
-            .items(translatedTypeList(S, 'page', 'Pages'))
-        )
+        .child(S.documentTypeList('page').title('Pages'))
         .icon(Desktop),
       S.listItem()
         .title('Projects')

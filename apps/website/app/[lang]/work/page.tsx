@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { groq } from 'next-sanity'
 
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
@@ -10,13 +11,25 @@ import { CTA } from '~/components/cta'
 import heroImage from '~images/work-hero-image.webp'
 import { ProjectPayload, projectsQuery } from '@repo/sanity/queries'
 
-export const metadata = {
-  title: 'Milovan Gudelj - My work',
-  description: "A collection of past projects I've worked on an am proud of.",
-  alternates: {
-    canonical: 'https://www.milovangudelj.com/en/work',
-    languages: { 'it-IT': 'https://www.milovangudelj.com/it/work' },
-  },
+export async function generateMetadata() {
+  const { title, description, ogImage } = await getData<{
+    title: string
+    description: string
+    ogImage: any
+  }>(
+    groq`*[_type == "page" && slug.current == "work"][0]{title,description,ogImage}`,
+    { slug: 'work' },
+    ['page']
+  )
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: 'https://www.milovangudelj.com/en/work',
+      languages: { 'it-IT': 'https://www.milovangudelj.com/it/work' },
+    },
+  }
 }
 
 const WorkPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale } }) => {
