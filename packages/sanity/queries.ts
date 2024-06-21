@@ -74,7 +74,10 @@ export const projectsQuery = groq`
     "color": color.hex,
     client,
     "tags": tags[]->value,
-    caseStudy,
+    "caseStudy": select(
+      caseStudy->showcase == true => caseStudy,
+      null
+    ),
   }
 `
 
@@ -114,7 +117,7 @@ export interface SlimProjectPayload {
 // Case Studies
 
 export const caseStudyBySlugQuery = groq`
-  *[_type == "project" && showcase == true && slug.current == $slug][language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0][0].caseStudy->{
+  *[_type == "project" && showcase == true && slug.current == $slug][showcase == true][language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0][0].caseStudy->{
     title,
     subtitle,
     intro,
@@ -291,7 +294,7 @@ export const projectPaths = groq`
 `
 
 export const caseStudyPaths = groq`
-*[_type == "caseStudy" && language == "en" && project->showcase == true].project->slug.current
+*[_type == "caseStudy" && language == "en" && project->showcase == true && showcase == true].project->slug.current
 `
 
 export const postPaths = groq`

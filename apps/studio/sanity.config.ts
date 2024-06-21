@@ -76,7 +76,7 @@ export default defineConfig({
     colorInput(),
     codeInput(),
     unsplashImageAsset(),
-    media(),
+    // media(),
     visionTool({ defaultApiVersion: apiVersion }),
     dashboardTool({
       widgets: [sanityTutorialsWidget(), projectInfoWidget(), projectUsersWidget(), vercelWidget()],

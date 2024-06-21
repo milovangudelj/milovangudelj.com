@@ -42,6 +42,8 @@ export const project = defineType({
       type: 'boolean',
       description:
         'This will determine if the project is shown in the showcase section of the homepage.',
+      initialValue: true,
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'year',

@@ -1,7 +1,6 @@
 import { File, Image } from '@phosphor-icons/react'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-import { isUniqueOtherThanLanguage } from '~/sanity/utils/isUniqueOtherThanLanguage'
 import { LANGUAGES } from '~/sanity/utils/languages'
 
 export const caseStudy = defineType({
@@ -28,6 +27,14 @@ export const caseStudy = defineType({
       name: 'subtitle',
       title: 'Subtitle',
       type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'showcase',
+      title: 'Showcase',
+      type: 'boolean',
+      description: 'This will determine if the case study is shown for the related project.',
+      initialValue: false,
       validation: (rule) => rule.required(),
     }),
     defineField({
