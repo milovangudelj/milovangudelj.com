@@ -132,6 +132,11 @@ export const structure: StructureResolver = (S, context) => {
         .schemaType('postTag')
         .child(S.documentTypeList('postTag').title('Post Tags'))
         .icon(Tag),
+      // S.listItem()
+      //   .title('Media Tags')
+      //   .schemaType('media.tag')
+      //   .child(S.documentTypeList('media.tag').title('Media Tags').showIcons(false))
+      //   .icon(Tag),
       S.divider(),
       S.listItem()
         .title('Poster')

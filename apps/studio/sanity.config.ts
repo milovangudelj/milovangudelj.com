@@ -77,6 +77,7 @@ export default defineConfig({
     colorInput(),
     codeInput(),
     unsplashImageAsset(),
+    // media(),
     visionTool({ defaultApiVersion: apiVersion }),
     documentInternationalization({
       // Required configuration
