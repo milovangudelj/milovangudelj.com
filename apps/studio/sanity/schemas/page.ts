@@ -14,8 +14,12 @@ export const page = defineType({
     defineField({
       name: 'title',
       title: 'Title',
-      type: 'string',
-      validation: (rule) => rule.required(),
+      type: 'localisedString',
+      validation: (rule) =>
+        rule.fields({
+          en: (rule) => rule.required().max(160),
+          it: (rule) => rule.required().max(160),
+        }),
     }),
     defineField({
       name: 'slug',
@@ -25,13 +29,17 @@ export const page = defineType({
         source: 'title',
         maxLength: 96,
       },
-      validation: (rule) => rule.required().unique(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'description',
       title: 'Description',
-      type: 'string',
-      validation: (rule) => rule.required().max(65),
+      type: 'localisedString',
+      validation: (rule) =>
+        rule.fields({
+          en: (rule) => rule.required().max(160),
+          it: (rule) => rule.required().max(160),
+        }),
     }),
     defineField({
       name: 'ogImage',
@@ -46,15 +54,15 @@ export const page = defineType({
   preview: {
     select: {
       media: 'ogImage.asset',
-      title: 'title',
-      language: 'language',
+      title: 'title.en',
+      slug: 'slug.current',
     },
     prepare(selection) {
-      const { media, title, language } = selection
+      const { media, title, slug } = selection
       return {
         media,
         title,
-        subtitle: LANGUAGES.find((lang) => lang.id === language)?.id.toLocaleUpperCase(),
+        subtitle: slug ? `/${slug}` : '',
       }
     },
   },

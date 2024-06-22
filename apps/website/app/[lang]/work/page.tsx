@@ -1,33 +1,54 @@
 import Image from 'next/image'
-import { groq } from 'next-sanity'
 
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
 import { getData } from '@repo/sanity/fetch'
+import {
+  projectsQuery,
+  ProjectPayload,
+  pageMetadataQuery,
+  PageMetadataPayload,
+} from '@repo/sanity/queries'
 
 import { ProjectShowcase } from '~/components/project-showcase'
 import { CTA } from '~/components/cta'
 
 import heroImage from '~images/work-hero-image.webp'
-import { ProjectPayload, projectsQuery } from '@repo/sanity/queries'
+import { Metadata } from 'next'
+import { urlForImage } from '@repo/sanity/image'
 
-export async function generateMetadata() {
-  const { title, description, ogImage } = await getData<{
-    title: string
-    description: string
-    ogImage: any
-  }>(
-    groq`*[_type == "page" && slug.current == "work"][0]{title,description,ogImage}`,
-    { slug: 'work' },
-    ['page']
-  )
+export async function generateMetadata({
+  params: { lang = 'en' },
+}: {
+  params: { lang: Locale }
+}): Promise<Metadata> {
+  const metadata = await getData<PageMetadataPayload | null>(pageMetadataQuery, { slug: 'work' }, [
+    'page',
+  ])
+  if (!metadata) return {}
+
+  const { title, description, ogImage } = metadata
 
   return {
-    title,
-    description,
+    title: title[lang],
+    description: description[lang],
     alternates: {
       canonical: 'https://www.milovangudelj.com/en/work',
       languages: { 'it-IT': 'https://www.milovangudelj.com/it/work' },
+    },
+    openGraph: {
+      title: title[lang],
+      description: description[lang],
+      siteName: 'Milovan Gudelj',
+      images: [
+        {
+          url: urlForImage(ogImage).width(1200).height(630).fit('crop').url(),
+          width: 1200,
+          height: 630,
+        },
+      ],
+      locale: lang,
+      type: 'website',
     },
   }
 }

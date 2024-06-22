@@ -4,13 +4,52 @@ import { type Locale, getDictionary } from '@repo/i18n'
 import { CTA } from '~components/cta'
 import { TopArtists } from '~/components/top-artists'
 import { NowPlaying } from '~/components/now-playing'
+import { Metadata } from 'next'
+import { getData } from '@repo/sanity/fetch'
+import { PageMetadataPayload, pageMetadataQuery } from '@repo/sanity/queries'
+import { urlForImage } from '@repo/sanity/image'
 
-export const metadata = {
-  title: 'Milovan Gudelj - About me',
-  alternates: {
-    canonical: 'https://www.milovangudelj.com/en/about',
-    languages: { 'it-IT': 'https://www.milovangudelj.com/it/about' },
-  },
+// export const metadata = {
+//   title: 'Milovan Gudelj - About me',
+//   alternates: {
+//     canonical: 'https://www.milovangudelj.com/en/about',
+//     languages: { 'it-IT': 'https://www.milovangudelj.com/it/about' },
+//   },
+// }
+export async function generateMetadata({
+  params: { lang = 'en' },
+}: {
+  params: { lang: Locale }
+}): Promise<Metadata> {
+  const metadata = await getData<PageMetadataPayload | null>(pageMetadataQuery, { slug: 'about' }, [
+    'page',
+  ])
+  if (!metadata) return {}
+
+  const { title, description, ogImage } = metadata
+
+  return {
+    title: title[lang],
+    description: description[lang],
+    alternates: {
+      canonical: 'https://www.milovangudelj.com/en/about',
+      languages: { 'it-IT': 'https://www.milovangudelj.com/it/about' },
+    },
+    openGraph: {
+      title: title[lang],
+      description: description[lang],
+      siteName: 'Milovan Gudelj',
+      images: [
+        {
+          url: urlForImage(ogImage).width(1200).height(630).fit('crop').url(),
+          width: 1200,
+          height: 630,
+        },
+      ],
+      locale: lang,
+      type: 'website',
+    },
+  }
 }
 
 const AboutPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale } }) => {

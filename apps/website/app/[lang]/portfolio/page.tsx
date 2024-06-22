@@ -11,19 +11,60 @@ import { SoftwarePlanets } from './SoftwarePlanets'
 import squiggle from '~images/squiggly-line.svg'
 import semicircle from '~images/semicircle.svg'
 import {
+  PageMetadataPayload,
   PosterPayload,
   SlimProjectPayload,
+  pageMetadataQuery,
   postersQuery,
   slimProjectsQuery,
 } from '@repo/sanity/queries'
+import { Metadata } from 'next'
+import { urlForImage } from '@repo/sanity/image'
 
-export const metadata = {
-  title: 'Milovan Gudelj - Portfolio',
-  description: 'My portfolio! Feel free to reach out to me for any questions you might have.',
-  alternates: {
-    canonical: 'https://www.milovangudelj.com/en/portfolio',
-    languages: { 'it-IT': 'https://www.milovangudelj.com/it/portfolio' },
-  },
+// export const metadata = {
+//   title: 'Milovan Gudelj - Portfolio',
+//   description: 'My portfolio! Feel free to reach out to me for any questions you might have.',
+//   alternates: {
+//     canonical: 'https://www.milovangudelj.com/en/portfolio',
+//     languages: { 'it-IT': 'https://www.milovangudelj.com/it/portfolio' },
+//   },
+// }
+export async function generateMetadata({
+  params: { lang = 'en' },
+}: {
+  params: { lang: Locale }
+}): Promise<Metadata> {
+  const metadata = await getData<PageMetadataPayload | null>(
+    pageMetadataQuery,
+    { slug: 'portfolio' },
+    ['page']
+  )
+  if (!metadata) return {}
+
+  const { title, description, ogImage } = metadata
+
+  return {
+    title: title[lang],
+    description: description[lang],
+    alternates: {
+      canonical: 'https://www.milovangudelj.com/en/portfolio',
+      languages: { 'it-IT': 'https://www.milovangudelj.com/it/portfolio' },
+    },
+    openGraph: {
+      title: title[lang],
+      description: description[lang],
+      siteName: 'Milovan Gudelj',
+      images: [
+        {
+          url: urlForImage(ogImage).width(1200).height(630).fit('crop').url(),
+          width: 1200,
+          height: 630,
+        },
+      ],
+      locale: lang,
+      type: 'website',
+    },
+  }
 }
 
 const PortfolioPage = async ({ params: { lang = 'en' } }: { params: { lang: Locale } }) => {

@@ -1,5 +1,5 @@
 import { groq } from 'next-sanity'
-import { type Image, type Reference } from 'sanity'
+import { type Image, type ImageAsset, type Reference } from 'sanity'
 import { type PortableTextBlock } from '@portabletext/types'
 
 // Site Navigation
@@ -19,6 +19,27 @@ export interface SiteNavigationPayload {
     url: string
     _key: string
   }[]
+}
+
+// Page metadata
+
+export const pageMetadataQuery = groq`
+  *[_type == "page" && slug.current == $slug][0]{
+    title,
+    description,
+    'ogImage': ogImage.asset->
+  }
+`
+export interface PageMetadataPayload {
+  title: {
+    en: string
+    it: string
+  }
+  description: {
+    en: string
+    it: string
+  }
+  ogImage: ImageAsset
 }
 
 // Projects
