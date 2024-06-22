@@ -27,7 +27,6 @@ export const SanityEditorToast = () => {
           action={{
             type: 'link',
             label: 'Studio',
-            // eslint-disable-next-line turbo/no-undeclared-env-vars
             onClick: () => window.open(process.env.NEXT_PUBLIC_SANITY_STUDIO_URL, '_blank'),
           }}
         />
