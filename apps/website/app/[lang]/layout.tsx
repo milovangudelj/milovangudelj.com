@@ -30,7 +30,10 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Milovan Gudelj - Web developer / UI designer',
+  title: {
+    template: 'Milovan Gudelj - %s',
+    default: 'Milovan Gudelj - Web developer / UI designer',
+  },
   description: 'I design and develop engaging websites and delightful digital experiences.',
   metadataBase: new URL('https://www.milovangudelj.com'),
   alternates: {

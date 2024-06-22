@@ -50,7 +50,7 @@ export async function generateMetadata({
   )
 
   return {
-    title: `${title} | Milovan Gudelj`,
+    title: { absolute: `${title} | Milovan Gudelj` },
     description: subtitle,
     alternates: {
       canonical: `https://www.milovangudelj.com/en/work/${slug}`,
@@ -59,11 +59,18 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      images: {
-        url: urlForImage(cover.image).url(),
-        width: cover.width,
-        height: cover.height,
-      },
+      title: { absolute: `${title} | Milovan Gudelj` },
+      description: subtitle,
+      siteName: 'Milovan Gudelj',
+      images: [
+        {
+          url: urlForImage(cover.image).width(1200).height(630).fit('crop').url(),
+          width: 1200,
+          height: 630,
+        },
+      ],
+      locale: lang,
+      type: 'website',
     },
   }
 }
