@@ -1,27 +1,18 @@
 import Image from 'next/image'
+import { Metadata } from 'next'
 
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
+import { getData } from '@repo/sanity/fetch'
+import { PageMetadataPayload, pageMetadataQuery } from '@repo/sanity/queries'
+import { urlForImage } from '@repo/sanity/image'
 
 import { CTA } from '~components/cta'
 
 import igLogo from '~images/igLogo.png'
 import twLogo from '~images/twLogo.svg'
 import drLogo from '~images/drLogo.svg'
-import { Metadata } from 'next'
-import { getData } from '@repo/sanity/fetch'
-import { PageMetadataPayload, pageMetadataQuery } from '@repo/sanity/queries'
-import { urlForImage } from '@repo/sanity/image'
 
-// export const metadata = {
-//   title: 'Milovan Gudelj - Contact me',
-//   description:
-//     "Let's work together! Feel free to reach out to me for any questions you might have.",
-//   alternates: {
-//     canonical: 'https://www.milovangudelj.com/en/contact',
-//     languages: { 'it-IT': 'https://www.milovangudelj.com/it/contact' },
-//   },
-// }
 export async function generateMetadata({
   params: { lang = 'en' },
 }: {

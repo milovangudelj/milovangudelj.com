@@ -1,8 +1,6 @@
 import { Desktop } from '@phosphor-icons/react'
 import { defineField, defineType } from 'sanity'
 
-import { LANGUAGES } from '~/sanity/utils/languages'
-
 export const page = defineType({
   name: 'page',
   title: 'Page',

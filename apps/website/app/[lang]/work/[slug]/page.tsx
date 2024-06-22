@@ -7,10 +7,10 @@ import { Container } from '@repo/ui'
 import { getDictionary, type Locale } from '@repo/i18n'
 import { getData } from '@repo/sanity/fetch'
 import { urlForImage } from '@repo/sanity/image'
-
-import { CTA } from '~/components/cta'
 import { CaseStudyPayload, caseStudyBySlugQuery, caseStudyPaths } from '@repo/sanity/queries'
 import { client } from '@repo/sanity'
+
+import { CTA } from '~/components/cta'
 
 export async function generateStaticParams() {
   return (await client.fetch<string[]>(caseStudyPaths)).map((path) => ({ slug: path }))
