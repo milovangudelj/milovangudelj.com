@@ -14,6 +14,9 @@
     "start": {
       "env": ["SPOTIFY_AUTHORIZATION", "SUPABASE_SERVICE_KEY"],
       "cache": false
+    },
+    "lint": {
+      "dependsOn": []
     }
   }
 }
