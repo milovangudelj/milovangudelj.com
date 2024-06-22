@@ -45,7 +45,7 @@ const Toast = ({
 }: {
   message: string
   type?: 'error' | 'success' | 'info' | 'warning'
-  action?: ToastT['action'] & { type?: 'edit' | 'link' }
+  action?: Action & { type?: 'edit' | 'link' }
 }) => {
   const icons = {
     error: <WarningOctagon className="text-orange h-6 w-6" />,
@@ -69,11 +69,7 @@ const Toast = ({
   )
 }
 
-const ToastAction = ({
-  type = 'link',
-  label,
-  onClick,
-}: ToastT['action'] & { type?: 'edit' | 'link' }) => {
+const ToastAction = ({ type = 'link', label, onClick }: Action & { type?: 'edit' | 'link' }) => {
   const icons = {
     edit: <Pen className="h-4 w-4" />,
     link: <ArrowSquareOut className="h-4 w-4" />,
@@ -88,4 +84,10 @@ const ToastAction = ({
       {icons[type]}
     </button>
   )
+}
+
+interface Action {
+  label: React.ReactNode
+  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  actionButtonStyle?: React.CSSProperties
 }
