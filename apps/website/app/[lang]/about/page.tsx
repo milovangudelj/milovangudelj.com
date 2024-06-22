@@ -1,21 +1,15 @@
+import { Metadata } from 'next'
+
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
-
-import { CTA } from '~components/cta'
-import { TopArtists } from '~/components/top-artists'
-import { NowPlaying } from '~/components/now-playing'
-import { Metadata } from 'next'
 import { getData } from '@repo/sanity/fetch'
 import { PageMetadataPayload, pageMetadataQuery } from '@repo/sanity/queries'
 import { urlForImage } from '@repo/sanity/image'
 
-// export const metadata = {
-//   title: 'Milovan Gudelj - About me',
-//   alternates: {
-//     canonical: 'https://www.milovangudelj.com/en/about',
-//     languages: { 'it-IT': 'https://www.milovangudelj.com/it/about' },
-//   },
-// }
+import { CTA } from '~components/cta'
+import { TopArtists } from '~/components/top-artists'
+import { NowPlaying } from '~/components/now-playing'
+
 export async function generateMetadata({
   params: { lang = 'en' },
 }: {

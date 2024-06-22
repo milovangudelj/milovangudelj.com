@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Metadata } from 'next'
 
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
@@ -9,13 +10,12 @@ import {
   pageMetadataQuery,
   PageMetadataPayload,
 } from '@repo/sanity/queries'
+import { urlForImage } from '@repo/sanity/image'
 
 import { ProjectShowcase } from '~/components/project-showcase'
 import { CTA } from '~/components/cta'
 
 import heroImage from '~images/work-hero-image.webp'
-import { Metadata } from 'next'
-import { urlForImage } from '@repo/sanity/image'
 
 export async function generateMetadata({
   params: { lang = 'en' },
