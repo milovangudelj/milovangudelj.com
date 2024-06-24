@@ -118,6 +118,22 @@ export const slimProjectsQuery = groq`
   }
 `
 
+export const slimProjectBySlugQuery = groq`
+  *[_type == "project" && slug.current == $slug && showcase == true && (language == $lang || count(*[_type == "translation.metadata" && references(^._id)]) == 0)] | order(year desc) {
+    _id,
+    title,
+    "slug": slug.current,
+    site,
+    year,
+    "cover": {
+      "image": cover,
+      "lqip": cover.asset->metadata.lqip,
+      "width": cover.asset->metadata.dimensions.width,
+      "height": cover.asset->metadata.dimensions.height,
+    },
+  }
+`
+
 export interface SlimProjectPayload {
   _id: string
   title: string
