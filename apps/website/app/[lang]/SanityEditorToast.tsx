@@ -3,7 +3,7 @@
 import { ArrowSquareOut, Check, Info, Pen, Warning, WarningOctagon } from '@phosphor-icons/react'
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
-import { toast, ToastT } from 'sonner'
+import { toast } from 'sonner'
 
 const getCookieValue = (name: string) =>
   document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || ''
@@ -87,6 +87,7 @@ const ToastAction = ({ type = 'link', label, onClick }: Action & { type?: 'edit'
 
 interface Action {
   label: React.ReactNode
+  // eslint-disable-next-line no-unused-vars
   onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   actionButtonStyle?: React.CSSProperties
 }

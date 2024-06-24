@@ -4,15 +4,47 @@
   "tasks": {
     "dev": {
       "dependsOn": ["^build"],
-      "persistent": true
+      "persistent": true,
+      "env": [
+        "SANITY_REVALIDATE_SECRET",
+        "SANITY_PREVIEW_SECRET",
+        "SPOTIFY_AUTHORIZATION",
+        "SUPABASE_SERVICE_KEY",
+        "NEXT_PUBLIC_WEBSITE_URL",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SANITY_SESSION_DOMAIN",
+        "NEXT_PUBLIC_SANITY_PROJECT_ID",
+        "NEXT_PUBLIC_SANITY_STUDIO_URL"
+      ]
     },
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["NEXT_PUBLIC_WEBSITE_URL", "NEXT_PUBLIC_SUPABASE_URL", "SANITY_REVALIDATE_SECRET"]
+      "env": [
+        "SANITY_REVALIDATE_SECRET",
+        "SANITY_PREVIEW_SECRET",
+        "SPOTIFY_AUTHORIZATION",
+        "SUPABASE_SERVICE_KEY",
+        "NEXT_PUBLIC_WEBSITE_URL",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SANITY_SESSION_DOMAIN",
+        "NEXT_PUBLIC_SANITY_PROJECT_ID",
+        "NEXT_PUBLIC_SANITY_STUDIO_URL"
+      ]
     },
     "start": {
-      "env": ["SPOTIFY_AUTHORIZATION", "SUPABASE_SERVICE_KEY"],
+      "dependsOn": ["^build"],
+      "env": [
+        "SANITY_REVALIDATE_SECRET",
+        "SANITY_PREVIEW_SECRET",
+        "SPOTIFY_AUTHORIZATION",
+        "SUPABASE_SERVICE_KEY",
+        "NEXT_PUBLIC_WEBSITE_URL",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SANITY_SESSION_DOMAIN",
+        "NEXT_PUBLIC_SANITY_PROJECT_ID",
+        "NEXT_PUBLIC_SANITY_STUDIO_URL"
+      ],
       "cache": false
     },
     "lint": {
