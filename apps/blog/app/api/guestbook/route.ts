@@ -16,7 +16,7 @@ export const dynamic = 'force-dynamic'
 
 export async function POST(request: NextRequest) {
   const ip = request.ip ?? '127.0.0.1'
-  const { success, pending, limit, reset, remaining } = await ratelimit.limit(ip)
+  const { success, limit, reset, remaining } = await ratelimit.limit(ip)
   if (!success) return rateLimitedResponse({ limit, remaining, reset })
 
   const supabase = createRouteHandlerClient<Database>({ cookies })
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   const ip = request.ip ?? '127.0.0.1'
-  const { success, pending, limit, reset, remaining } = await ratelimit.limit(ip)
+  const { success, limit, reset, remaining } = await ratelimit.limit(ip)
   if (!success) return rateLimitedResponse({ limit, remaining, reset })
 
   const supabase = createRouteHandlerClient<Database>({ cookies })
@@ -86,7 +86,7 @@ export async function PATCH(request: NextRequest) {
     })
   }
 
-  const { status, statusText, error } = await supabase
+  const { status, statusText } = await supabase
     .from('guestbook')
     .update({ is_published: entry_is_published })
     .eq('id', entry_id)
