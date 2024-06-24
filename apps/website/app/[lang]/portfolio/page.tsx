@@ -139,7 +139,7 @@ const PortfolioPage = async ({ params: { lang = 'en' } }: { params: { lang: Loca
         </Container>
       </Section>
       <Section className="relative overflow-hidden max-xl:pb-[calc(182px+64px)]">
-        <Container className="xl:relative">
+        <Container className="max-xl:pb-32 xl:relative">
           <h2 className="text-h2-mobile 2xl:text-h2">{dictionary.Portfolio.software.title}</h2>
           <p className="text-sub-heading-mobile 2xl:text-sub-heading">
             {dictionary.Portfolio.software.description}
