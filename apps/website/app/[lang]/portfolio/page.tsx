@@ -65,24 +65,6 @@ const PortfolioPage = async ({ params: { lang = 'en' } }: { params: { lang: Loca
   const posters = await getData<PosterPayload[]>(postersQuery, undefined, ['poster'])
   const projects = await getData<SlimProjectPayload[]>(slimProjectsQuery, { lang }, ['project'])
 
-  const projects_alt = [
-    {
-      id: 'pr_01',
-      title: 'DoYourThing',
-      year: 2022,
-    },
-    {
-      id: 'pr_02',
-      title: 'UniOrari',
-      year: 2021,
-    },
-    {
-      id: 'pr_03',
-      title: 'Piscina di Agordo',
-      year: 2019,
-    },
-  ]
-
   return (
     <>
       <Section className="relative xl:h-[var(--mobile-nav-height)]">

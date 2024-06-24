@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { incrementViewCount } from '~/lib/viewCount'
 
 export default function RootTemplate({ children }: { children: React.ReactNode }) {
