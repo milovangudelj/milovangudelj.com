@@ -12,6 +12,7 @@ import { client } from '@repo/sanity'
 
 import { CTA } from '~/components/cta'
 
+export const dynamicParams = false
 export async function generateStaticParams() {
   return (
     await client.fetch<string[]>(
