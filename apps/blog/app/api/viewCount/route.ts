@@ -1,9 +1,8 @@
-import { type NextRequest } from 'next/server'
 import { getViewCount } from '~/lib/viewCount'
 
 export const runtime = 'edge'
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   const { count, error } = await getViewCount()
 
   if (error)

@@ -4,11 +4,38 @@
   "tasks": {
     "dev": {
       "dependsOn": ["^build"],
-      "persistent": true
+      "persistent": true,
+      "env": [
+        "NEXT_PUBLIC_WEBSITE_URL",
+        "SUPABASE_OWNER_ID",
+        "OPENAI_API_KEY",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "SUPABASE_SERVICE_KEY"
+      ]
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": [
+        "NEXT_PUBLIC_WEBSITE_URL",
+        "SUPABASE_OWNER_ID",
+        "OPENAI_API_KEY",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "SUPABASE_SERVICE_KEY"
+      ]
+    },
+    "start": {
+      "dependsOn": ["^build"],
+      "env": [
+        "NEXT_PUBLIC_WEBSITE_URL",
+        "SUPABASE_OWNER_ID",
+        "OPENAI_API_KEY",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "SUPABASE_SERVICE_KEY"
+      ]
+    },
+    "lint": {
+      "dependsOn": []
     }
   }
 }

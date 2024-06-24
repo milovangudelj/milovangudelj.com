@@ -29,7 +29,7 @@
     "build:types": "tsc",
     "build:css": "tailwindcss -i ./src/styles/globals.css -o ./dist/index.css --minify",
     "build": "pnpm clean && pnpm build:types && pnpm build:css",
-    "lint": "eslint src/components/",
+    "lint": "eslint src/",
     "dev": "pnpm clean && concurrently \"pnpm build:types --watch\" \"pnpm build:css --watch\"",
     "clean": "rimraf dist"
   },
@@ -43,7 +43,7 @@
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
     "concurrently": "^8.2.2",
-    "eslint": "^9.5.0",
+    "eslint": "8.57.0",
     "postcss": "^8.4.38",
     "react": "^18.3.1",
     "rimraf": "^5.0.7",
