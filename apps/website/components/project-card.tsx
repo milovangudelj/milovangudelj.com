@@ -9,7 +9,7 @@ type ProjectCardProps = {
   cover: SlimProjectPayload['cover']
 }
 
-export const ProjectCard = async ({ title, site, cover }: ProjectCardProps) => {
+export const ProjectCard = ({ title, site, cover }: ProjectCardProps) => {
   return (
     <div className="w-[calc(150px*16/9)] space-y-8 md:w-[calc(300px*16/9)] md:space-y-[26px]">
       <a

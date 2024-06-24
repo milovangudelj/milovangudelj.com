@@ -1,11 +1,10 @@
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
-import { SlimProjectPayload, slimProjectsQuery } from '@repo/sanity/queries'
 import { getData } from '@repo/sanity/fetch'
+import { SlimProjectPayload, slimProjectsQuery } from '@repo/sanity/queries'
 
 import { CTA } from '~components/cta'
 import { Projects } from '~/components/projects'
-import { ProjectCard } from '~/components/project-card'
 
 const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
   const projects = await getData<SlimProjectPayload[]>(slimProjectsQuery, { lang }, ['project'])
@@ -51,13 +50,7 @@ const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
         <Container>
           <h2 className="text-h2-mobile md:text-h2">{dictionary.Work.title}</h2>
           <p className="text-body max-w-[680px] text-white/70">{dictionary.Work.description}</p>
-          <Projects>
-            {projects.map(({ slug, ...props }) => (
-              <li key={slug} className="relative flex-none">
-                <ProjectCard {...props} />
-              </li>
-            ))}
-          </Projects>
+          <Projects projects={projects} />
         </Container>
       </Section>
       <CTA lang={lang} />
