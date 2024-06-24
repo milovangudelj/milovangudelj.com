@@ -13,7 +13,17 @@ import { client } from '@repo/sanity'
 import { CTA } from '~/components/cta'
 
 export async function generateStaticParams() {
-  return (await client.fetch<string[]>(caseStudyPaths)).map((path) => ({ slug: path }))
+  return (
+    await client.fetch<string[]>(
+      caseStudyPaths,
+      {},
+      {
+        next: {
+          tags: ['caseStudy', 'project'],
+        },
+      }
+    )
+  ).map((path) => ({ slug: path }))
 }
 
 export async function generateViewport({
