@@ -32,7 +32,7 @@ const Artist = ({ item, rank }: { item: _Artist; rank: number }) => {
   return (
     <li className="flex items-center">
       <Image
-        className="pointer-events-none aspect-square h-16 w-16 select-none rounded-lg bg-white/20 object-cover"
+        className="pointer-events-none aspect-square h-16 w-16 flex-none select-none rounded-lg bg-white/20 object-cover"
         sizes={`64px`}
         quality={100}
         src={item.image.url}
@@ -45,11 +45,12 @@ const Artist = ({ item, rank }: { item: _Artist; rank: number }) => {
         href={item.url}
         rel="noreferrer noopener"
         target="_blank"
-        className="underline-none text-sub-heading-mobile group inline-block px-4 py-2"
+        className="underline-none text-sub-heading-mobile group inline-flex min-w-0 flex-1 items-center px-4 py-2"
+        title={item.name}
       >
-        <span className="text-white/70">{rank}.</span>
-        <span className="mx-2 inline-block">{item.name}</span>
-        <span className="text-yellow pointer-events-none select-none opacity-0 transition group-hover:pointer-events-auto group-hover:select-auto group-hover:opacity-100">
+        <span className="flex-none text-white/70">{rank}.</span>
+        <span className="mx-2 inline-block truncate">{item.name}</span>
+        <span className="text-yellow pointer-events-none flex-none select-none opacity-0 transition group-hover:pointer-events-auto group-hover:select-auto group-hover:opacity-100">
           ↗
         </span>
       </a>
