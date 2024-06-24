@@ -580,9 +580,6 @@ importers:
       react:
         specifier: ^18.3.1
         version: 18.3.1
-      react.js@workspace^:
-        specifier: link:@repo/eslint-config/react.js@workspace^
-        version: link:@repo/eslint-config/react.js@workspace^
       rimraf:
         specifier: ^5.0.7
         version: 5.0.7
