@@ -1,13 +1,17 @@
 import { Container, Section } from '@repo/ui'
 import { type Locale, getDictionary } from '@repo/i18n'
-import { getData } from '@repo/sanity/fetch'
-import { SlimProjectPayload, slimProjectsQuery } from '@repo/sanity/queries'
+import { projectPaths } from '@repo/sanity/queries'
 
 import { CTA } from '~components/cta'
 import { Projects } from '~/components/projects'
+import { client } from '@repo/sanity'
 
 const Home = async ({ params: { lang } }: { params: { lang: Locale } }) => {
-  const projects = await getData<SlimProjectPayload[]>(slimProjectsQuery, { lang }, ['project'])
+  const projects = await client.fetch<string[]>(
+    projectPaths,
+    { lang },
+    { next: { tags: ['project'] } }
+  )
 
   const dictionary = await getDictionary(lang, 'website')
 

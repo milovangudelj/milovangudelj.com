@@ -1,15 +1,20 @@
 import Image from 'next/image'
 
 import { urlForImage } from '@repo/sanity/image'
-import { SlimProjectPayload } from '@repo/sanity/queries'
+import { SlimProjectPayload, slimProjectBySlugQuery } from '@repo/sanity/queries'
+import { getData } from '@repo/sanity/fetch'
 
 type ProjectCardProps = {
-  title: string
-  site: string
-  cover: SlimProjectPayload['cover']
+  slug: string
 }
 
-export const ProjectCard = ({ title, site, cover }: ProjectCardProps) => {
+export const ProjectCard = async ({ slug }: ProjectCardProps) => {
+  const { title, site, cover } = await getData<SlimProjectPayload>(
+    slimProjectBySlugQuery,
+    { slug },
+    ['project']
+  )
+
   return (
     <div className="w-[calc(150px*16/9)] space-y-8 md:w-[calc(300px*16/9)] md:space-y-[26px]">
       <a

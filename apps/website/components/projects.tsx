@@ -4,10 +4,9 @@ import { ComponentProps } from 'react'
 import { useScrollContainer } from 'react-indiana-drag-scroll'
 
 import { ProjectCard } from './project-card'
-import { SlimProjectPayload } from '@repo/sanity/queries'
 
 interface ProjectsProps extends ComponentProps<'div'> {
-  projects: SlimProjectPayload[]
+  projects: string[]
 }
 
 export const Projects = ({ projects }: ProjectsProps) => {
@@ -24,9 +23,9 @@ export const Projects = ({ projects }: ProjectsProps) => {
         ref={scrollContainer.ref}
         className="scrollbar-hidden -mx-8 flex gap-8 overflow-y-hidden overflow-x-scroll px-8 xl:-mx-[var(--side-width)] xl:gap-16 xl:px-[var(--side-width)]"
       >
-        {projects.map(({ slug, ...props }) => (
-          <li key={slug} className="relative flex-none">
-            <ProjectCard {...props} />
+        {projects.map((project) => (
+          <li key={project} className="relative flex-none">
+            <ProjectCard slug={project} />
           </li>
         ))}
       </ul>
