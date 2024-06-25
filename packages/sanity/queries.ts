@@ -318,6 +318,10 @@ export const caseStudyPaths = groq`
 *[_type == "caseStudy" && language == "en" && project->showcase == true && showcase == true].project->slug.current
 `
 
+export const caseStudyExistsAndIsPublished = groq`
+*[_type == "caseStudy" && language == "en" && project->slug.current == $slug && showcase == true][0]._id
+`
+
 export const postPaths = groq`
   *[_type == "post" && language == "en" && slug.current != null] | order(publishedAt desc).slug.current
 `

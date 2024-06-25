@@ -1,13 +1,19 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import { PortableText } from '@portabletext/react'
 
 import { Container } from '@repo/ui'
 import { getDictionary, type Locale } from '@repo/i18n'
 import { getData } from '@repo/sanity/fetch'
 import { urlForImage } from '@repo/sanity/image'
-import { CaseStudyPayload, caseStudyBySlugQuery, caseStudyPaths } from '@repo/sanity/queries'
+import {
+  CaseStudyPayload,
+  caseStudyBySlugQuery,
+  caseStudyExistsAndIsPublished,
+  caseStudyPaths,
+} from '@repo/sanity/queries'
 import { client } from '@repo/sanity'
 
 import { CTA } from '~/components/cta'
@@ -32,6 +38,13 @@ export async function generateViewport({
 }: {
   params: { slug: string; lang: Locale }
 }): Promise<Metadata> {
+  const csExists = await getData<string | null>(caseStudyExistsAndIsPublished, { slug }, [
+    'caseStudy',
+    'project',
+  ])
+
+  if (!csExists) return {}
+
   const { color } = await getData<CaseStudyPayload>(
     caseStudyBySlugQuery,
     {
@@ -51,6 +64,13 @@ export async function generateMetadata({
 }: {
   params: { slug: string; lang: Locale }
 }): Promise<Metadata> {
+  const csExists = await getData<string | null>(caseStudyExistsAndIsPublished, { slug }, [
+    'caseStudy',
+    'project',
+  ])
+
+  if (!csExists) return {}
+
   const { title, subtitle, cover } = await getData<CaseStudyPayload>(
     caseStudyBySlugQuery,
     {
@@ -91,6 +111,13 @@ const ProjectPage = async ({
 }: {
   params: { slug: string; lang: Locale }
 }) => {
+  const csExists = await getData<string | null>(caseStudyExistsAndIsPublished, { slug }, [
+    'caseStudy',
+    'project',
+  ])
+
+  if (!csExists) return notFound()
+
   const dictionary = await getDictionary(lang, 'website')
 
   const { title, subtitle, intro, cover, body } = await getData<CaseStudyPayload>(
