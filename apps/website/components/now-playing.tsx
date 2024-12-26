@@ -19,7 +19,7 @@ export const NowPlaying = ({
   const { data } = useSWR<_Song>('/api/nowPlaying', fetcher)
   const [titleWidth, setTitleWidth] = useState(0)
   const [artistWidth, setArtistWidth] = useState(0)
-
+  
   useIsomorphicLayoutEffect(() => {
     if (!data) return
 
