@@ -95,7 +95,7 @@ export const Snowflakes: React.FC<SnowflakesProps> = ({ className = '', quantity
 
   return (
     <div
-      className={cn('pointer-events-none', className)}
+      className={cn('pointer-events-none fill-mode-forwards animate-in fade-in duration-500', className)}
       ref={canvasContainerRef}
       aria-hidden="true"
     >

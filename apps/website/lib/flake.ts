@@ -20,7 +20,7 @@ export class Flake {
   velocity: Vector
   mass: number = MASS
   radius: number = Math.random() * (MAX_RADIUS - MIN_RADIUS) + MIN_RADIUS
-  wind: number = 20
+  wind: number = Math.random() * 40 - 20
   windTime: number = 0
 
   constructor(x: number, y: number) {
@@ -46,7 +46,7 @@ export class Flake {
     context.translate(this.position.x, this.position.y)
     context.beginPath()
     context.arc(0, 0, this.radius * 300, 0, Math.PI * 2)
-    context.fillStyle = 'rgba(255, 255, 255, 0.7)'
+    context.fillStyle = 'rgba(255, 255, 255, 0.6)'
     context.fill()
     context.closePath()
     context.restore()
