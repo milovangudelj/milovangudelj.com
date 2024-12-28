@@ -99,8 +99,9 @@ export const Snowflakes: React.FC<SnowflakesProps> = ({ className = '', quantity
       className={cn('pointer-events-none', className)}
       ref={canvasContainerRef}
       aria-hidden="true"
+      initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, ease: 'linear' }}
     >
       <canvas ref={canvasRef} className="size-full" />
     </motion.div>
