@@ -3,10 +3,9 @@
 import type { Config } from 'tailwindcss'
 import sharedConfig from '@repo/tailwind-config/tailwind.config'
 
-const config: Pick<Config, 'content' | 'presets' | 'plugins'> = {
+const config: Pick<Config, 'content' | 'presets'> = {
   content: ['./app/**/*.tsx', './components/**/*.tsx'],
   presets: [sharedConfig],
-  plugins: [require("tailwindcss-animate")],
 }
 
 export default config

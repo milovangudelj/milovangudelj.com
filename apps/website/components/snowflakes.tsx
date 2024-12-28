@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 
 import { cn, mapValue } from '~/utils'
 
@@ -94,12 +95,14 @@ export const Snowflakes: React.FC<SnowflakesProps> = ({ className = '', quantity
   }
 
   return (
-    <div
-      className={cn('pointer-events-none fill-mode-forwards animate-in fade-in duration-500', className)}
+    <motion.div
+      className={cn('pointer-events-none', className)}
       ref={canvasContainerRef}
       aria-hidden="true"
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
       <canvas ref={canvasRef} className="size-full" />
-    </div>
+    </motion.div>
   )
 }
