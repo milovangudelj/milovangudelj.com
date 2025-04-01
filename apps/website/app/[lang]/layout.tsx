@@ -15,7 +15,7 @@ import '~styles/globals.css'
 import '@repo/ui/styles.css'
 
 import { SanityEditorToast } from './SanityEditorToast'
-import { Snowflakes } from '~/components/snowflakes'
+// import { Snowflakes } from '~/components/snowflakes'
 
 const spaceGrotesk = localFont({
   src: '../../public/fonts/SpaceGrotesk-Var.woff2',
@@ -114,7 +114,7 @@ export default async function RootLayout({
         <Navbar lang={lang} links={links} />
         {children}
         <Footer lang={lang} />
-        <Snowflakes className="fixed left-0 top-0 h-screen w-full" quantity={200} />
+        {/** <Snowflakes className="fixed left-0 top-0 h-screen w-full" quantity={200} /> **/}
         <Toaster
           richColors={true}
           toastOptions={{
