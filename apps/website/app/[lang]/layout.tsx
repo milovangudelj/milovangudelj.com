@@ -45,7 +45,7 @@ export async function generateMetadata({
       lang === 'en'
         ? 'I design and develop engaging websites and delightful digital experiences.'
         : 'Sviluppo e progetto siti web coinvolgenti ed esperienze digitali uniche.',
-    metadataBase: new URL('https://www.milovangudelj.com'),
+    metadataBase: new URL('https://milo.im'),
     alternates: {
       canonical: '/en',
       languages: { 'it-IT': '/it' },
